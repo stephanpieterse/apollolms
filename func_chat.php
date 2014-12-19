@@ -1,5 +1,8 @@
 <?php
 /*
+@author Stephan Pieterse
+@package ApolloLMS
+
 
 require 'vendor/autoload.php';
 
