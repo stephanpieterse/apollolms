@@ -379,13 +379,14 @@ function buildPermissionsForm($oldPermissions = "<none></none>"){
 /**
  * Log the user out and destroy the session
  */
-function logout(){
+function base_func_logout(){
 	if(isset($GLOBALS['sqlcon'])){
 		mysqli_close($GLOBALS['sqlcon']);
 	}
     session_destroy();
 	unset($_SESSION['userID']);
 	page_redirect('index.php');
+	return true;
 }
 
 /**
@@ -614,7 +615,7 @@ function goHome($statMsg = ""){
  * 
  * @param $data
  */
-function log_report_item($data){
+function base_func_report_item($data){
 	$msg = '';
 	if(isset($data['offensive'])){$msg .= ' - Offensive';};
 	if(isset($data['false'])){$msg .= ' - False / Misleading';};
@@ -628,6 +629,8 @@ function log_report_item($data){
 	//$q = "INSERT INTO flagged_items SET link='" . $data['reporturl'] . "' reasons='" . $msg . "'";
 	$q = "INSERT INTO flagged_items(link,reasons,submitted_by) VALUES('".$data['reporturl']."','".$msg."','".$subBy."') ";
 	$r = sql_execute($q);
+	
+	return true;
 }
 
 /**

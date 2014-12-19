@@ -18,43 +18,11 @@ if(isset($_SESSION['userID'])){
 		$gq = isset( $_GET['gq'] ) ? $_GET['gq'] : "";
 		$mq = isset( $_GET['mq'] ) ? $_GET['mq'] : "";
 		$mailq = isset( $_GET['mail'] ) ? $_GET['mail'] : "";
-		
-		if(isset( $_GET['search_course'] )){
-			$sq = $_GET['search_course'];
-			$sqw = 'courses';
-		}
+
 		
 		//unset($_SESSION['searchResults']);	
 
-		if((isset($sq)) && ($sq != "")){
-			if((isset($sqw)) && ($sqw != "")){
-			$whereIs = makeSafe($sqw);
-			$contains = makeSafe($sq);
-			switch ($sqw){
-				case 'courses':
-				 if($list = search_courses($sq)){
-				 $csvlist = implode("','",$list);
-	
-					$q = "SELECT id,name FROM courses WHERE id IN ('" . $csvlist . "')";
-					$r = sql_execute($q);
-					
-					echo 'Search Results: ';
-					br();
-					while($d = sql_get($r)){
-						if(userHasCoursePermission($_SESSION['userID'], $d['id'])){
-							//echo $d['id'];
-							echo $d['name'];
-							br();
-						}
-					}
-					}else{
-				echo 'Nothing matches your search';
-			}
-				 break;	
-			}
-			//$_SESSION['searchResults'] = $data;	
-				}
-		}
+		
 		 // Display a status message
 		
 		if(isset($msg)){

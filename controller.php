@@ -139,6 +139,7 @@ class Controller {
 		$gq = (isset($GETDAT['gq']) ? $GETDAT['gq'] : null);
 		$fq = (isset($GETDAT['fq']) ? $GETDAT['fq'] : null);
 		$s = (isset($GETDAT['s']) ? $GETDAT['s'] : null);
+		$msg = (isset($GETDAT['msg']) ? $GETDAT['msg'] : null);
 		$searchFor = (isset($POSTDAT['search']) ? $POSTDAT['search'] : null);
 		
 		$this->build_site_start();

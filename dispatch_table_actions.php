@@ -9,10 +9,10 @@
  * @package ApolloLMS
  */
 
-$dispatch_gq = array(
-	'report_item'=>function(){log_report_item($_POST); goToLastPage();},
-	'report_form'=>function(){include(TEMPLATE_PATH . "form_reportitem.php");},
-);
+//$dispatch_gq = array(
+	//'report_item'=>function(){log_report_item($_POST); goToLastPage();},
+	//'report_form'=>function(){include(TEMPLATE_PATH . "form_reportitem.php");},
+//);
 
 $dispatch_aq = array(
 'rm_page'=>function(){removeItem('pages', $_GET['pid']); verifyXML('articles',$_GET['aid']);},
@@ -41,7 +41,7 @@ $dispatch_aq = array(
 'frm_installModule'=>function(){include(TEMPLATE_PATH . 'form_select_installModule.php');},
 'uploadModule'=>function(){installModule($_FILES);goToLastPage();},
 'disp_course'=>function(){displayCourse($_GET['id'],-1);},
-'mail_allgroupmembers'=>function(){include(TEMPLATE_PATH . 'form_sendemail.php');},
+//'mail_allgroupmembers'=>function(){include(TEMPLATE_PATH . 'form_sendemail.php');},
 
 );
 
@@ -51,7 +51,6 @@ $dispatch_uq = array(
 'msg'=>function(){displayMsg($_GET['mid']);},
 'viewGroups'=>function(){markLastPage($_GET); viewGroups();},
 'group_lv'=>function(){leave_group($_GET['gid']); goToLastPage();},
-'requestform'=>function(){include(TEMPLATE_PATH . 'form_request.php');},
 'submitRequest'=>function(){submitContentRequest($_POST);},
 'help'=>function(){helpPage();},
 //'reg_course'=>function(){include(TEMPLATE_PATH. "form_registerForCourse.php");},
@@ -60,9 +59,7 @@ $dispatch_uq = array(
 );
 
 $dispatch_action = array(
-'clogin'=>function(){checkLogin($_POST['username'], $_POST['password']);},
- 'login'=>function(){login();},
- 'logout'=>function(){logout();},
+//'clogin'=>function(){checkLogin($_POST['username'], $_POST['password']);},
 'addUser'=>function(){include ( TEMPLATE_PATH . "form_adduseritem.php" );},
 'addNewUser'=>function(){$retval=addUserItem($_POST);if($retval !== true){page_redirect("index.php",'',array('SITE_ERROR_MSG'=>$retval));}}, //ech o$retval;
 'regNewUser'=>function(){include ( TEMPLATE_PATH . "form_adduseritem.php" );},							
@@ -79,22 +76,16 @@ $dispatch_action = array(
 'getGroupStats'=>function(){getGroupStats();},
 'course'=>function(){displayCourse($_GET['id']);},
 'article'=>function(){displayArticle($_GET['id'], $_GET['cid']);},
-
 'linkArtData'=>function(){linkArtToCou($_GET['cid'], $_POST);},
-
 'insertResult'=>function(){insertResult($_POST);goHome("result_add_success");},
 'addNewArticle'=>function(){add_new_article(); goToLastPage();},
-
 'newRoleItem'=>function(){newRoleItem();},
 'updateRoleItem'=>function(){updateRoleItem($_GET['id'],$_POST);},
 'del_role'=>function(){rm_roleItem($_GET['id']);},
 'addToGroup'=>function(){addGroupData();},
-
 'rem_group'=>function(){removeItem('groupslist', $_GET['group']);},//removeGroupData($_GET['group']);},
-
 'insertNewGroupType'=>function(){insertNewGroupType($_POST['name'], $_POST['description']); goToLastPage();},
 'rm_groupType'=>function(){rm_groupType($_GET['id']);},
-
 'update_groupType'=>function(){update_groupType($_GET['id'], $_POST['description']);},
 'setInitTest'=>function(){initTestData(); echo '<META HTTP-EQUIV="Refresh" Content="0; URL=index.php?action=test">';},
 'test'=>function(){showTest($_SESSION['currentTestName']);},
@@ -109,9 +100,6 @@ $dispatch_action = array(
 'uploadFile'=>function(){fileUpload();},
 'uploadForm'=>function(){include(TEMPLATE_PATH . "/form_media_plupload.php");},
 'mknewFolder'=>function(){makeNewFolder($_POST['rootDirPath'] . $_POST['newFolderName']);},
-'composeMsg'=>function(){include(TEMPLATE_PATH . "form_msgCompose.php");},
-'sendMsg'=>function(){sendMsg($_POST);}, 
-
 'set_module_a'=>function(){setModuleStatus($_GET['mid'], 1);},
 'set_module_i'=>function(){setModuleStatus($_GET['mid'], 0);},
 'a_del_result'=>function(){if(deleteTestResult($_GET['id']) !== true){goHome("permission_denied");}else{ goToLastPage();}},
@@ -125,8 +113,8 @@ $dispatch_action = array(
 );
 
 $dispatch_mail = array(
-'allgroupmembers'=>function(){mail_informGroupUsers($_POST['gid'],$_POST['subject'],$_POST['msgbox']);},
-'allmembers'=>function(){mail_informAllUsers($_POST['subject'],$_POST['msgbox']);},
-'course'=>function(){mail_informCourse($_POST['cid'],$_POST['subject'],$_POST['msgbox']);},
+	'allgroupmembers'=>function(){mail_informGroupUsers($_POST['gid'],$_POST['subject'],$_POST['msgbox']);},
+	'allmembers'=>function(){mail_informAllUsers($_POST['subject'],$_POST['msgbox']);},
+	'course'=>function(){mail_informCourse($_POST['cid'],$_POST['subject'],$_POST['msgbox']);},
 );
 ?>

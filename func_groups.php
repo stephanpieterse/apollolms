@@ -1,5 +1,12 @@
 <?php
 /**
+ * @author Stephan Pieterse
+ * @package ApolloLMS
+ * 
+ * @description Basic functions pertaining to groups
+ * */
+
+/**
  * Parameters: gid - id of the group to retrieve name from
  * 
  */

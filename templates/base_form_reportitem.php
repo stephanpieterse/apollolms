@@ -1,11 +1,18 @@
 <?php
 /**
+ * @author Stephan Pieterse
  * @package ApolloLMS
  * */
 ?>
 
-<form method="post" action="index.php?gq=report_item">
-<input type="hidden" name="reporturl" value="<?php echo $_SERVER['SCRIPT_NAME'] . '?';foreach($_GET as $key=>$value){ echo . $key . '=' . $value . '&' ;}; ?>" />
+<form method="post" action="index.php?pq=report_item">
+<input type="hidden" name="reporturl" value="
+<?php 
+	echo $_SERVER['SCRIPT_NAME'] . '?';
+	foreach($_GET as $key=>$value){ 
+	echo $key . '=' . $value . '&'	;}; 
+
+?>" />
 
 <input type="checkbox" id="icp" name="copyright" /> <label for="icp">Copyright Issues
 </label>
@@ -21,7 +28,3 @@ Details:<br/>
 <input type="submit" value="Report" />
 </p>
 </form>
-
-<p>
-*PLEASE NOTE*<br/>
-</p>

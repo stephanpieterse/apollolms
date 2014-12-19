@@ -11,8 +11,10 @@
 		echo '<div class="fl_right">';
 	    echo "You are logged in as " . $_SESSION['username'] . '<br/><a href="users.php?f=viewProfile">' . 'Edit Profile' . '</a>';
 		br();
-		echo "<a href=\"index.php?action=logout\">Logout</a>";
-		echo "</div>";
+		?>
+		<a href="index.php?q=logout">Logout</a>
+		</div>
+	<?php
     }else{
     	echo '<div class="fl_right">';   
 	    include("form_login.php" );

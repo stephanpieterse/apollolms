@@ -2,10 +2,12 @@
 	include('controller.php');
 	$control = new Controller;
 	$control->_SITE_TITLE = 'Home';
-	$control->build_site_start();
-	$control->build_header();
-	$control->build_navigation();
+	//$control->build_site_start();
+	//$control->build_header();
+	//$control->build_navigation();
+	$control->formPre = 'base_form_';
+	$control->funcPre = 'base_func_';
+	$control->executeControl($_GET, $_POST);
 	require("home.php");
-//	$control->executeControl($_GET, $_POST);
-    $control->build_footer();
+//    $control->build_footer();
 ?>

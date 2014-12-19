@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.17, created on 2014-12-15 11:16:24
+<?php /* Smarty version Smarty-3.1.17, created on 2014-12-19 16:41:51
          compiled from "./templates/courses_form_editCoursePackage.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:1767583817539c57418bd8a6-81479862%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'f8141b75cc97558bb379c81540da024d2cc0c1e2' => 
     array (
       0 => './templates/courses_form_editCoursePackage.tpl',
-      1 => 1403673915,
+      1 => 1418996758,
       2 => 'file',
     ),
   ),
