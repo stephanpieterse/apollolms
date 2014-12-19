@@ -4,5 +4,6 @@
 	$control->secNav = 'articles.php';
 	$control->formPre = 'articles_form_';
 	$control->funcPre = 'articles_func_';
+	$control->protectedPages = true;
 	$control->executeControl($_GET,$_POST);
 ?>

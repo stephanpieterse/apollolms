@@ -7,5 +7,6 @@
 	$control->secNav = 'pages.php';
 	$control->formPre = 'pages_form_';
 	$control->funcPre = 'pages_func_';
+	$control->protectedPages = true;
 	$control->executeControl($_GET,$_POST);
 ?>

@@ -146,6 +146,14 @@ class Controller {
 		$formPre = $this->formPre;
 		$funcPre = $this->funcPre;
 		
+		if(!isset($_SESSION['userID']) && $this->protectedPages){
+			if(!$this->headerBuilt){$this->build_header();}
+			$this->build_navigation();
+			defaultHome();
+			$this->build_footer();
+			exit;
+		}
+		
 		if(isset($searchFor)){
 			$queryToExec = $funcPre . 'search';
 			if(function_exists($queryToExec)){
@@ -275,10 +283,6 @@ class Controller {
 				//goHome('failure_nofunc');
 				page_redirect('index.php');
 			}
-		}
-		
-		if(!isset($_SESSION['userID'])){
-			defaultHome();
 		}
 
 		 $this->build_footer();

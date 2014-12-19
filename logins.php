@@ -6,8 +6,7 @@
 	include('controller.php');
 	$control = new Controller;
 	$control->secNav = 'users.php';
-	$control->formPre = 'users_form_';
-	$control->funcPre = 'users_func_';
-	$control->protectedPages = true;
+	$control->formPre = 'login_form_';
+	$control->funcPre = 'login_func_';
 	$control->executeControl($_GET,$_POST);
 ?>

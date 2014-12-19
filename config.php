@@ -22,7 +22,7 @@ define( "SITE_NAME", "Apollo LMS Development");
 define( "SITE_COMPANY", "Apollo LMS");
 define( "SITE_LOGO", "./media/logo.png");
 define( "SITE_SLOGAN", "");
-define( "SITE_EMAIL", "admin@apollolms.co.za");
+define( "SITE_EMAIL", "webmaster@apollolms.co.za");
 define( "SITE_EMAIL_AUTOMATED", "no-reply@apollolms.co.za");
 define( "SITE_OPEN_REGISTRATIONS", "true" );
 define( "MAX_TOTAL_UPLOADS", "5242880");

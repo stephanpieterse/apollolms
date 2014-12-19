@@ -8,5 +8,6 @@
 	$control->secNav = 'mail.php';
 	$control->formPre = 'mail_form_';
 	$control->funcPre = 'mail_func_';
+	$control->protectedPages = true;
 	$control->executeControl($_GET,$_POST);
 ?>

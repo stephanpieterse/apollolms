@@ -7,5 +7,6 @@
 //	$control->secNav = 'groups.php';
 	$control->formPre = 'help_form_';
 	$control->funcPre = 'help_func_';
+	$control->protectedPages = true;
 	$control->executeControl($_GET,$_POST);
 ?>

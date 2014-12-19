@@ -571,10 +571,11 @@ function defaultHome(){
 		//include("default_homepage.php");
 		$q = "SELECT value FROM site_settings WHERE item='default_homepage' LIMIT 1";
 		$d = sql_get(sql_execute($q));
-		echo $d['value'];
+		echo '<div class="defaultContent">' . $d['value'] . '</div>';
 		if(SITE_OPEN_REGISTRATIONS == 'true'){
 			include(TEMPLATE_PATH . "form_adduseritem.php");
 		}
+		echo '<br class="clear"/>';
 		echo '<a href="open_course_loader.php">View our public content</a>';
 	}
 }

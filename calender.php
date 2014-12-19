@@ -7,5 +7,6 @@
 	$control->secNav = 'calender.php';
 	$control->formPre = 'calender_form_';
 	$control->funcPre = 'calender_func_';
+	$control->protectedPages = true;
 	$control->executeControl($_GET,$_POST);
 ?>
