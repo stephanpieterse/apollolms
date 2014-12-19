@@ -30,7 +30,7 @@ function isArticleAlreadySelected($cdata, $aid){
 ?>
 <br/>
 <p><a href="courses.php?f=admin_CourseManage">Back to Courses</a></p>
-<p><a href="index.php?aq=new_article&cid=<?php echo $_GET['id']; ?>">Add a New Article</a></p>
+<p><a href="articles.php?f=editArticle&cid=<?php echo $_GET['id']; ?>">Add a New Article</a></p>
 <p><a href="courses.php?f=editResource&cid=<?php echo $_GET['id']; ?>">Add a New Resource</a></p>
 <br/>
 <?php

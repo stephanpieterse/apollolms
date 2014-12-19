@@ -94,7 +94,7 @@
 			if(!is_dir($dir.$item)){
 				
 			if (check_user_permission('media_modify')){
-				echo '<a href="index.php?aq=rnmeForm&dir=' . rawurlencode($dir) . '&file=' . rawurlencode($item) . ' "> <img src="' . ICONS_PATH . 'pencil.png" alt="Rename"/></a>';
+				echo '<a href="media.php?f=rename&dir=' . rawurlencode($dir) . '&file=' . rawurlencode($item) . ' "> <img src="' . ICONS_PATH . 'pencil.png" alt="Rename"/></a>';
 				$link = '<a href="index.php?aq=rem_media&media=' . rawurlencode($dir) . rawurlencode($item) .' "> <img src="' . ICONS_PATH . 'cancel.png" alt="Delete"/></a>';
 				echo $link;
 				$link = '<a href="media.php?f=moveFile&dir=' . rawurlencode($dir) . '&file=' . rawurlencode($item) .' "> <img src="' . ICONS_PATH . 'folder_go.png" alt="Move"/></a>';

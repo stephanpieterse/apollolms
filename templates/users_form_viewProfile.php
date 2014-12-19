@@ -4,9 +4,6 @@
 	echo $link;
 
 	$link = '<a href="index.php?action=mod_user_pref&user=' . $username . '">Edit Preferences</a><br/>';
-	//echo $link;
-	//br();
-	//$link = '<a href="index.php?action=chngPass">Change Password</a>';
 	$link = '<a href="index.php?action=lostpassword">Change Password</a><br/>';
 	echo $link;
 	

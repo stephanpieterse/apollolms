@@ -1,4 +1,6 @@
 <?php
+	$smarty = new Smarty;
+	
 	$new = true;
 	if(isset($_GET['rid'])){
 	$new = false;
@@ -56,5 +58,8 @@ Permissions:
 	}else{
 		echo '<input type="submit" value="Update Role" />';
 	}
+	
+	$smarty->assign('roledata',$dataArray);
+	$tplName = changeExtension(pathinfo(__FILE__,PATHINFO_BASENAME),'tpl');
+	$smarty->display($tplName);
 ?>
-</form>

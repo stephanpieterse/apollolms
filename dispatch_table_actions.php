@@ -21,12 +21,11 @@ $dispatch_aq = array(
 'add_page'=>function(){a_page_AddNewData($_GET['aid'],$_POST); goToLastPage("add_success");},
 'upd_page'=>function(){a_update_page($_GET['pid'],$_POST); goToLastPage("update_success");},
 'rm_article'=>function(){removeItem('articles', $_GET['aid']); verifyXML('courses',$_GET['cid']);},
-'new_article'=>function(){include(TEMPLATE_PATH . 'form_edit_article.php');},
+//'new_article'=>function(){include(TEMPLATE_PATH . 'form_edit_article.php');},
 'mod_page'=>function(){include(TEMPLATE_PATH . 'form_edit_page.php');},
 'mod_group'=>function(){include(TEMPLATE_PATH . 'form_edit_groupItem.php');},
 'mv_page'=>function(){moveNode('articles', $_GET['aid'], 'PAGES', $_GET['pid'], $_GET['dir']); goToLastPage();},
 'upd_group'=>function(){update_group_item($_GET['gid'], $_POST); goToLastPage();},
-'rnmeForm'=>function(){include(TEMPLATE_PATH . 'form_item_rename.php');},
 'rnmeFile'=>function(){renameFile(($_GET['dir'] . $_GET['file']), ($_GET['dir'] . $_POST['newFileName'])); goToLastPage();},
 
 'mve_file'=>function(){renameFile(($_POST['dir'] . makeSafe($_POST['file'])), ($_POST['rootDirPath'] . $_POST['file'])); goToLastPage();},
@@ -95,7 +94,6 @@ $dispatch_action = array(
 'addNewArticle'=>function(){add_new_article(); goToLastPage();},
 
 'newRoleItem'=>function(){newRoleItem();},
-'mod_role'=>function(){include(TEMPLATE_PATH ."form_editRoleItem.php");},
 'updateRoleItem'=>function(){updateRoleItem($_GET['id'],$_POST);},
 'del_role'=>function(){rm_roleItem($_GET['id']);},
 'addToGroup'=>function(){addGroupData();},
@@ -117,15 +115,11 @@ $dispatch_action = array(
 'addQuestion'=>function(){mod_test_addQuestion($_GET['id'], $_POST['question_type']);},
 'insertQuestion'=>function(){mod_test_insertQuestion($_GET['id'], $_POST); goToLastPage();},
 'uploadFile'=>function(){fileUpload();},
-
 'uploadForm'=>function(){include(TEMPLATE_PATH . "/form_media_plupload.php");},
-//'user_upload_photo'=>function(){include(TEMPLATE_PATH . "/form_upload_profilePic.php");},
-'newFolder'=>function(){include(TEMPLATE_PATH . 'form_newFolder.php');},
 'mknewFolder'=>function(){makeNewFolder($_POST['rootDirPath'] . $_POST['newFolderName']);},
 'composeMsg'=>function(){include(TEMPLATE_PATH . "form_msgCompose.php");},
 'sendMsg'=>function(){sendMsg($_POST);}, 
 
-'chngPass'=>function(){include(TEMPLATE_PATH . "form_changePassword.php");},	
 'set_module_a'=>function(){setModuleStatus($_GET['mid'], 1);},
 'set_module_i'=>function(){setModuleStatus($_GET['mid'], 0);},
 'a_del_result'=>function(){if(deleteTestResult($_GET['id']) !== true){goHome("permission_denied");}else{ goToLastPage();}},
