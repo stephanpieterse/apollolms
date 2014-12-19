@@ -298,13 +298,10 @@
 }
 
 #page-wrap{ 
-width: 40%; 
-margin: 30px auto; 
 position: relative;
 }
 
 #chat-wrap { 
-border: 1px solid #eee;
 margin: 0 0 5px 0;
 }
  
