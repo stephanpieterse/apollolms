@@ -13,7 +13,7 @@
 		echo '</td><td>';
 		echo $data['COMMENTS'];
 		echo '</td><td>';
-	$link = '<a href="backup.php?q=previewData&bid=' . $data['ID'] . '"><img src="' . ICONS_PATH . 'eye.png" alt="preview" /></a>';
+	$link = '<a href="backup.php?f=previewData&bid=' . $data['ID'] . '"><img src="' . ICONS_PATH . 'eye.png" alt="preview" /></a>';
 	echo $link;
 	echo '</td><td>';
 	$link = '<a href="backup.php?q=restoreData&bid=' . $data['ID'] . '"><img src="' . ICONS_PATH . 'arrow_redo.png" alt="restore" /></a>';

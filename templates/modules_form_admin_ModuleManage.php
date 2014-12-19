@@ -24,7 +24,7 @@
 			}else{
 				echo "<a href=\"index.php?action=set_module_i&mid=" . $x['ID'] ." \"> <img src=\"" . ICONS_PATH . "tick.png\" alt=\"De-activate Module\"/></a>";
 		}
-		$link = "<a href=\"index.php?aq=module_settings_view&mid=" . $x['ID'] ." \"> <img src=\"" . ICONS_PATH . "cog.png\" alt=\"Module Settings\"/></a>";
+		$link = "<a href=\"modules.php?f=settingsView&mid=" . $x['ID'] ." \"> <img src=\"" . ICONS_PATH . "cog.png\" alt=\"Module Settings\"/></a>";
 		echo $link;
 		tag('td',false);
 			//br();

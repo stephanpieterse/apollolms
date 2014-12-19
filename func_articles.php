@@ -266,7 +266,6 @@ function articles_func_updateArticle($data){
 	return true;
 	}else{
 	page_redirect('articles.php?f=editArticle&aid=' . $id);
-	//echo '<META HTTP-EQUIV="Refresh" Content="0; URL=index.php?action=mod_article&aid=' . $id . '">';
 	}
 }
 

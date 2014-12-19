@@ -16,7 +16,6 @@ $dispatch_gq = array(
 
 $dispatch_aq = array(
 'rm_page'=>function(){removeItem('pages', $_GET['pid']); verifyXML('articles',$_GET['aid']);},
-'mod_article'=>function(){include(TEMPLATE_PATH . 'form_edit_article.php');},
 'mod_article_pages'=>function(){markLastPage($_GET); include(TEMPLATE_PATH . 'form_article_pages.php');},
 'newPage'=>function(){include(TEMPLATE_PATH . 'form_edit_page.php');},
 'add_page'=>function(){a_page_AddNewData($_GET['aid'],$_POST); goToLastPage("add_success");},
@@ -29,10 +28,8 @@ $dispatch_aq = array(
 'upd_group'=>function(){update_group_item($_GET['gid'], $_POST); goToLastPage();},
 'rnmeForm'=>function(){include(TEMPLATE_PATH . 'form_item_rename.php');},
 'rnmeFile'=>function(){renameFile(($_GET['dir'] . $_GET['file']), ($_GET['dir'] . $_POST['newFileName'])); goToLastPage();},
-'move_media'=>function(){include(TEMPLATE_PATH . "moveFile.php");},
 
 'mve_file'=>function(){renameFile(($_POST['dir'] . makeSafe($_POST['file'])), ($_POST['rootDirPath'] . $_POST['file'])); goToLastPage();},
-'restoreData'=>function(){restore_backup($_GET['bid']);goToLastPage();},
 'newgroupadmin'=>function(){assign_group_admin($_GET['uid'],$_GET['gid']);goToLastPage();},
 'reg_course_pendact'=>function(){activate_user_to_course($_GET['cid'],$_GET['uid']); goToLastPage();},
 
@@ -45,9 +42,6 @@ $dispatch_aq = array(
 'rem_test'=>function(){removeItem('tests', $_GET['id']); goToLastPage();},
 'rem_media'=>function(){removeFile($_GET['media']); goToLastPage();},
 'updateUserItem'=>function(){updateUserItem($_GET['uid'], $_POST);},
-'impCSVform'=>function(){include(TEMPLATE_PATH . 'form_uploadcsv_users.php');},
-
-'module_settings_view'=>function(){markLastPage($_GET); include(TEMPLATE_PATH . 'form_module_settings.php');},
 'module_settings_update'=>function(){module_update_settings($_GET['mid'],$_POST); goToLastPage();},
 'frm_installModule'=>function(){include(TEMPLATE_PATH . 'form_select_installModule.php');},
 'uploadModule'=>function(){installModule($_FILES);goToLastPage();},
@@ -58,7 +52,6 @@ $dispatch_aq = array(
 
 $dispatch_uq = array(
 'upload_profilePicture'=>function(){upload_profilePicture($_FILES);},
-
 'viewPage'=>function(){displayPage($_GET['pnm'], $_GET['aid']);},
 'msg'=>function(){displayMsg($_GET['mid']);},
 'viewGroups'=>function(){markLastPage($_GET); viewGroups();},

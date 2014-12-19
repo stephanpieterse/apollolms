@@ -6,7 +6,9 @@
 	$r = sql_execute($q);
 	$data = sql_get($r);
 	}
+	if(isset($_GET['cid'])){
 	$cid = $_GET['cid'];
+	}
 ?>
 <?php
 if(isset($aid)){

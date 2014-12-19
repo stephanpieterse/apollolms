@@ -65,7 +65,7 @@ function isArticleAlreadySelected($cdata, $aid){
 			}
 			if(check_user_permission("content_modify")){
 			echo '<td>';
-			echo "<a href=\"index.php?aq=mod_article&aid=" . $data['ID'] ." \"><img src=\"" . ICONS_PATH . "pencil.png\" alt=\"Edit\"/>Article</a>";
+			echo "<a href=\"articles.php?f=mod_article&aid=" . $data['ID'] ." \"><img src=\"" . ICONS_PATH . "pencil.png\" alt=\"Edit\"/>Article</a>";
 			echo '</td>';
 			echo '<td>';
 			echo "<a href=\"index.php?aq=mod_article_pages&aid=" . $data['ID'] ." \"><img src=\"" . ICONS_PATH . "pencil.png\" alt=\"Edit\"/>Pages</a>";

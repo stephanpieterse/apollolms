@@ -91,7 +91,7 @@ function findOrphans(){
  * Restores a selected backup unit back into the system
  * @param int $backID id of the backup
  * */
-function restore_backup($backID){
+function backup_func_restoreData($backID){
 	
 	$backID = makeSafe($backID);
 	$q = "SELECT * FROM archived_data WHERE id='$backID' LIMIT 1";
@@ -115,6 +115,7 @@ function restore_backup($backID){
 	$q = "DELETE archived_data WHERE id='$backID'";
 	$r = sql_execute($q);
 	
+	return true;
 }
 
 /**

@@ -18,7 +18,7 @@ if(check_user_permission(array('user_view','user_modify','user_add','user_remove
 			$subs .= '<li><a href="users.php?f=admin_viewPending">View Pending Requests</a></li>';
 			}
 		if(check_user_permission("user_add")){
-			$subs .= '<li><a href="index.php?aq=impCSVform">Import from CSV</a></li>';
+			$subs .= '<li><a href="users.php?f=uploadcsv">Import from CSV</a></li>';
 			}
 	$subs .= '<li><a href="mail.php?f=compose&to=allmembers">Mail Everyone</a></li>';
 	$subs .= '</ul></li>';
