@@ -1,0 +1,109 @@
+[18-Feb-2014 06:22:52 UTC] PHP Warning:  mysqli_query(): Couldn't fetch mysqli in /home/apollobd/public_html/dev/config.php on line 42
+[18-Feb-2014 06:22:52 UTC] PHP Warning:  mysqli_error(): Couldn't fetch mysqli in /home/apollobd/public_html/dev/config.php on line 42
+[18-Feb-2014 10:39:30 UTC] PHP Warning:  file_get_contents(templates/emails/header.php): failed to open stream: No such file or directory in /home/apollobd/public_html/dev/func_email.php on line 168
+[18-Feb-2014 10:39:30 UTC] PHP Warning:  file_get_contents(templates/emails/footer.php): failed to open stream: No such file or directory in /home/apollobd/public_html/dev/func_email.php on line 173
+[18-Feb-2014 10:39:30 UTC] PHP Warning:  Variable passed to each() is not an array or object in /home/apollobd/public_html/dev/func_misc.php on line 171
+[18-Feb-2014 11:22:35 UTC] PHP Warning:  file_get_contents(templates/emails/header.php): failed to open stream: No such file or directory in /home/apollobd/public_html/dev/func_email.php on line 168
+[18-Feb-2014 11:22:35 UTC] PHP Warning:  file_get_contents(templates/emails/footer.php): failed to open stream: No such file or directory in /home/apollobd/public_html/dev/func_email.php on line 173
+[18-Feb-2014 11:22:35 UTC] PHP Warning:  Variable passed to each() is not an array or object in /home/apollobd/public_html/dev/func_misc.php on line 171
+[18-Feb-2014 11:23:52 UTC] PHP Warning:  file_get_contents(templates/emails/header.php): failed to open stream: No such file or directory in /home/apollobd/public_html/dev/func_email.php on line 168
+[18-Feb-2014 11:23:52 UTC] PHP Warning:  file_get_contents(templates/emails/footer.php): failed to open stream: No such file or directory in /home/apollobd/public_html/dev/func_email.php on line 173
+[18-Feb-2014 11:23:52 UTC] PHP Warning:  Variable passed to each() is not an array or object in /home/apollobd/public_html/dev/func_misc.php on line 171
+[18-Feb-2014 15:06:36 UTC] PHP Warning:  file_get_contents(templates/emails/header.php): failed to open stream: No such file or directory in /home/apollobd/public_html/dev/func_email.php on line 168
+[18-Feb-2014 15:06:36 UTC] PHP Warning:  file_get_contents(templates/emails/footer.php): failed to open stream: No such file or directory in /home/apollobd/public_html/dev/func_email.php on line 173
+[18-Feb-2014 15:06:36 UTC] PHP Warning:  Variable passed to each() is not an array or object in /home/apollobd/public_html/dev/func_misc.php on line 171
+[18-Feb-2014 15:06:41 UTC] PHP Warning:  file_get_contents(templates/emails/header.php): failed to open stream: No such file or directory in /home/apollobd/public_html/dev/func_email.php on line 168
+[18-Feb-2014 15:06:41 UTC] PHP Warning:  file_get_contents(templates/emails/footer.php): failed to open stream: No such file or directory in /home/apollobd/public_html/dev/func_email.php on line 173
+[18-Feb-2014 15:06:41 UTC] PHP Warning:  Variable passed to each() is not an array or object in /home/apollobd/public_html/dev/func_misc.php on line 171
+[18-Feb-2014 15:06:45 UTC] PHP Warning:  file_get_contents(templates/emails/header.php): failed to open stream: No such file or directory in /home/apollobd/public_html/dev/func_email.php on line 168
+[18-Feb-2014 15:06:45 UTC] PHP Warning:  file_get_contents(templates/emails/footer.php): failed to open stream: No such file or directory in /home/apollobd/public_html/dev/func_email.php on line 173
+[18-Feb-2014 15:06:45 UTC] PHP Warning:  Variable passed to each() is not an array or object in /home/apollobd/public_html/dev/func_misc.php on line 171
+[18-Feb-2014 15:06:51 UTC] PHP Warning:  file_get_contents(templates/emails/header.php): failed to open stream: No such file or directory in /home/apollobd/public_html/dev/func_email.php on line 168
+[18-Feb-2014 15:06:51 UTC] PHP Warning:  file_get_contents(templates/emails/footer.php): failed to open stream: No such file or directory in /home/apollobd/public_html/dev/func_email.php on line 173
+[18-Feb-2014 15:06:51 UTC] PHP Warning:  Variable passed to each() is not an array or object in /home/apollobd/public_html/dev/func_misc.php on line 171
+[18-Feb-2014 15:06:54 UTC] PHP Warning:  file_get_contents(templates/emails/header.php): failed to open stream: No such file or directory in /home/apollobd/public_html/dev/func_email.php on line 168
+[18-Feb-2014 15:06:54 UTC] PHP Warning:  file_get_contents(templates/emails/footer.php): failed to open stream: No such file or directory in /home/apollobd/public_html/dev/func_email.php on line 173
+[18-Feb-2014 15:06:54 UTC] PHP Warning:  Variable passed to each() is not an array or object in /home/apollobd/public_html/dev/func_misc.php on line 171
+[18-Feb-2014 15:06:56 UTC] PHP Warning:  file_get_contents(templates/emails/header.php): failed to open stream: No such file or directory in /home/apollobd/public_html/dev/func_email.php on line 168
+[18-Feb-2014 15:06:56 UTC] PHP Warning:  file_get_contents(templates/emails/footer.php): failed to open stream: No such file or directory in /home/apollobd/public_html/dev/func_email.php on line 173
+[18-Feb-2014 15:06:56 UTC] PHP Warning:  Variable passed to each() is not an array or object in /home/apollobd/public_html/dev/func_misc.php on line 171
+[18-Feb-2014 16:04:22 UTC] PHP Warning:  mysqli_query(): Couldn't fetch mysqli in /home/apollobd/public_html/dev/config.php on line 44
+[18-Feb-2014 16:04:22 UTC] PHP Warning:  mysqli_error(): Couldn't fetch mysqli in /home/apollobd/public_html/dev/config.php on line 44
+[20-Feb-2014 17:57:35 UTC] PHP Warning:  mysqli_query(): Couldn't fetch mysqli in /home/apollobd/public_html/dev/config.php on line 45
+[20-Feb-2014 17:57:35 UTC] PHP Warning:  mysqli_error(): Couldn't fetch mysqli in /home/apollobd/public_html/dev/config.php on line 45
+[20-Feb-2014 18:02:38 UTC] PHP Warning:  mysqli_real_escape_string(): Couldn't fetch mysqli in /home/apollobd/public_html/dev/func_security.php on line 86
+[20-Feb-2014 18:02:38 UTC] PHP Warning:  mysqli_query(): Couldn't fetch mysqli in /home/apollobd/public_html/dev/config.php on line 45
+[20-Feb-2014 18:02:38 UTC] PHP Warning:  mysqli_error(): Couldn't fetch mysqli in /home/apollobd/public_html/dev/config.php on line 45
+[20-Feb-2014 18:16:24 UTC] PHP Warning:  mysqli_query(): Couldn't fetch mysqli in /home/apollobd/public_html/dev/config.php on line 45
+[20-Feb-2014 18:16:24 UTC] PHP Warning:  mysqli_error(): Couldn't fetch mysqli in /home/apollobd/public_html/dev/config.php on line 45
+[20-Feb-2014 18:52:55 UTC] PHP Warning:  mysqli_query(): Couldn't fetch mysqli in /home/apollobd/public_html/dev/config.php on line 45
+[20-Feb-2014 18:52:55 UTC] PHP Warning:  mysqli_error(): Couldn't fetch mysqli in /home/apollobd/public_html/dev/config.php on line 45
+[20-Feb-2014 18:53:14 UTC] PHP Warning:  mysqli_query(): Couldn't fetch mysqli in /home/apollobd/public_html/dev/config.php on line 45
+[20-Feb-2014 18:53:14 UTC] PHP Warning:  mysqli_error(): Couldn't fetch mysqli in /home/apollobd/public_html/dev/config.php on line 45
+[20-Feb-2014 19:20:50 UTC] PHP Warning:  mysqli_query(): Couldn't fetch mysqli in /home/apollobd/public_html/dev/config.php on line 45
+[20-Feb-2014 19:20:50 UTC] PHP Warning:  mysqli_error(): Couldn't fetch mysqli in /home/apollobd/public_html/dev/config.php on line 45
+[20-Feb-2014 19:58:19 UTC] PHP Warning:  mysqli_query(): Couldn't fetch mysqli in /home/apollobd/public_html/dev/config.php on line 45
+[20-Feb-2014 19:58:19 UTC] PHP Warning:  mysqli_error(): Couldn't fetch mysqli in /home/apollobd/public_html/dev/config.php on line 45
+[20-Feb-2014 19:58:35 UTC] PHP Warning:  mysqli_query(): Couldn't fetch mysqli in /home/apollobd/public_html/dev/config.php on line 45
+[20-Feb-2014 19:58:35 UTC] PHP Warning:  mysqli_error(): Couldn't fetch mysqli in /home/apollobd/public_html/dev/config.php on line 45
+[20-Feb-2014 19:58:45 UTC] PHP Warning:  mysqli_query(): Couldn't fetch mysqli in /home/apollobd/public_html/dev/config.php on line 45
+[20-Feb-2014 19:58:45 UTC] PHP Warning:  mysqli_error(): Couldn't fetch mysqli in /home/apollobd/public_html/dev/config.php on line 45
+[20-Feb-2014 19:59:51 UTC] PHP Warning:  mysqli_query(): Couldn't fetch mysqli in /home/apollobd/public_html/dev/config.php on line 45
+[20-Feb-2014 19:59:51 UTC] PHP Warning:  mysqli_error(): Couldn't fetch mysqli in /home/apollobd/public_html/dev/config.php on line 45
+[20-Feb-2014 20:00:09 UTC] PHP Warning:  mysqli_query(): Couldn't fetch mysqli in /home/apollobd/public_html/dev/config.php on line 45
+[20-Feb-2014 20:00:09 UTC] PHP Warning:  mysqli_error(): Couldn't fetch mysqli in /home/apollobd/public_html/dev/config.php on line 45
+[21-Feb-2014 06:54:59 UTC] PHP Warning:  mysqli_query(): Couldn't fetch mysqli in /home/apollobd/public_html/dev/config.php on line 45
+[21-Feb-2014 06:54:59 UTC] PHP Warning:  mysqli_error(): Couldn't fetch mysqli in /home/apollobd/public_html/dev/config.php on line 45
+[21-Feb-2014 06:55:48 UTC] PHP Warning:  mysqli_query(): Couldn't fetch mysqli in /home/apollobd/public_html/dev/config.php on line 45
+[21-Feb-2014 06:55:48 UTC] PHP Warning:  mysqli_error(): Couldn't fetch mysqli in /home/apollobd/public_html/dev/config.php on line 45
+[21-Feb-2014 06:57:43 UTC] PHP Warning:  mysqli_query(): Couldn't fetch mysqli in /home/apollobd/public_html/dev/config.php on line 45
+[21-Feb-2014 06:57:43 UTC] PHP Warning:  mysqli_error(): Couldn't fetch mysqli in /home/apollobd/public_html/dev/config.php on line 45
+[21-Feb-2014 07:05:27 UTC] PHP Warning:  mysqli_query(): Couldn't fetch mysqli in /home/apollobd/public_html/dev/config.php on line 45
+[21-Feb-2014 07:05:27 UTC] PHP Warning:  mysqli_error(): Couldn't fetch mysqli in /home/apollobd/public_html/dev/config.php on line 45
+[21-Feb-2014 07:05:39 UTC] PHP Warning:  mysqli_query(): Couldn't fetch mysqli in /home/apollobd/public_html/dev/config.php on line 45
+[21-Feb-2014 07:05:39 UTC] PHP Warning:  mysqli_error(): Couldn't fetch mysqli in /home/apollobd/public_html/dev/config.php on line 45
+[21-Feb-2014 07:09:43 UTC] PHP Warning:  mysqli_query(): Couldn't fetch mysqli in /home/apollobd/public_html/dev/config.php on line 45
+[21-Feb-2014 07:09:43 UTC] PHP Warning:  mysqli_error(): Couldn't fetch mysqli in /home/apollobd/public_html/dev/config.php on line 45
+[21-Feb-2014 07:10:40 UTC] PHP Warning:  mysqli_query(): Couldn't fetch mysqli in /home/apollobd/public_html/dev/config.php on line 45
+[21-Feb-2014 07:10:40 UTC] PHP Warning:  mysqli_error(): Couldn't fetch mysqli in /home/apollobd/public_html/dev/config.php on line 45
+[21-Feb-2014 07:12:05 UTC] PHP Warning:  mysqli_query(): Couldn't fetch mysqli in /home/apollobd/public_html/dev/config.php on line 45
+[21-Feb-2014 07:12:05 UTC] PHP Warning:  mysqli_error(): Couldn't fetch mysqli in /home/apollobd/public_html/dev/config.php on line 45
+[21-Feb-2014 07:24:57 UTC] PHP Warning:  mysqli_query(): Couldn't fetch mysqli in /home/apollobd/public_html/dev/config.php on line 45
+[21-Feb-2014 07:24:57 UTC] PHP Warning:  mysqli_error(): Couldn't fetch mysqli in /home/apollobd/public_html/dev/config.php on line 45
+[21-Feb-2014 09:20:19 UTC] PHP Warning:  mysqli_query(): Couldn't fetch mysqli in /home/apollobd/public_html/dev/config.php on line 45
+[21-Feb-2014 09:20:19 UTC] PHP Warning:  mysqli_error(): Couldn't fetch mysqli in /home/apollobd/public_html/dev/config.php on line 45
+[21-Feb-2014 09:33:43 UTC] PHP Warning:  mysqli_query(): Couldn't fetch mysqli in /home/apollobd/public_html/dev/config.php on line 45
+[21-Feb-2014 09:33:43 UTC] PHP Warning:  mysqli_error(): Couldn't fetch mysqli in /home/apollobd/public_html/dev/config.php on line 45
+[24-Feb-2014 08:10:24 UTC] PHP Warning:  mysqli_real_escape_string(): Couldn't fetch mysqli in /home/apollobd/public_html/dev/func_security.php on line 86
+[24-Feb-2014 08:10:24 UTC] PHP Warning:  mysqli_query(): Couldn't fetch mysqli in /home/apollobd/public_html/dev/config.php on line 45
+[24-Feb-2014 08:10:24 UTC] PHP Warning:  mysqli_error(): Couldn't fetch mysqli in /home/apollobd/public_html/dev/config.php on line 45
+[24-Feb-2014 09:35:45 UTC] PHP Warning:  mysqli_real_escape_string(): Couldn't fetch mysqli in /home/apollobd/public_html/dev/func_security.php on line 86
+[24-Feb-2014 09:35:45 UTC] PHP Warning:  mysqli_query(): Couldn't fetch mysqli in /home/apollobd/public_html/dev/config.php on line 45
+[24-Feb-2014 09:35:45 UTC] PHP Warning:  mysqli_error(): Couldn't fetch mysqli in /home/apollobd/public_html/dev/config.php on line 45
+[27-Feb-2014 12:01:41 UTC] PHP Warning:  mysqli_real_escape_string(): Couldn't fetch mysqli in /home/apollobd/public_html/dev/func_security.php on line 86
+[27-Feb-2014 12:01:41 UTC] PHP Warning:  mysqli_query(): Couldn't fetch mysqli in /home/apollobd/public_html/dev/config.php on line 45
+[27-Feb-2014 12:01:41 UTC] PHP Warning:  mysqli_error(): Couldn't fetch mysqli in /home/apollobd/public_html/dev/config.php on line 45
+[27-Feb-2014 14:22:09 UTC] PHP Warning:  mysqli_real_escape_string(): Couldn't fetch mysqli in /home/apollobd/public_html/dev/func_security.php on line 86
+[27-Feb-2014 14:22:09 UTC] PHP Warning:  mysqli_query(): Couldn't fetch mysqli in /home/apollobd/public_html/dev/config.php on line 45
+[27-Feb-2014 14:22:09 UTC] PHP Warning:  mysqli_error(): Couldn't fetch mysqli in /home/apollobd/public_html/dev/config.php on line 45
+[27-Feb-2014 16:42:13 UTC] PHP Warning:  mysqli_real_escape_string(): Couldn't fetch mysqli in /home/apollobd/public_html/dev/func_security.php on line 86
+[27-Feb-2014 16:42:13 UTC] PHP Warning:  mysqli_query(): Couldn't fetch mysqli in /home/apollobd/public_html/dev/config.php on line 45
+[27-Feb-2014 16:42:13 UTC] PHP Warning:  mysqli_error(): Couldn't fetch mysqli in /home/apollobd/public_html/dev/config.php on line 45
+[27-Feb-2014 19:02:18 UTC] PHP Warning:  mysqli_real_escape_string(): Couldn't fetch mysqli in /home/apollobd/public_html/dev/func_security.php on line 86
+[27-Feb-2014 19:02:18 UTC] PHP Warning:  mysqli_query(): Couldn't fetch mysqli in /home/apollobd/public_html/dev/config.php on line 45
+[27-Feb-2014 19:02:18 UTC] PHP Warning:  mysqli_error(): Couldn't fetch mysqli in /home/apollobd/public_html/dev/config.php on line 45
+[27-Feb-2014 21:22:21 UTC] PHP Warning:  mysqli_real_escape_string(): Couldn't fetch mysqli in /home/apollobd/public_html/dev/func_security.php on line 86
+[27-Feb-2014 21:22:21 UTC] PHP Warning:  mysqli_query(): Couldn't fetch mysqli in /home/apollobd/public_html/dev/config.php on line 45
+[27-Feb-2014 21:22:21 UTC] PHP Warning:  mysqli_error(): Couldn't fetch mysqli in /home/apollobd/public_html/dev/config.php on line 45
+[27-Feb-2014 23:42:29 UTC] PHP Warning:  mysqli_real_escape_string(): Couldn't fetch mysqli in /home/apollobd/public_html/dev/func_security.php on line 86
+[27-Feb-2014 23:42:29 UTC] PHP Warning:  mysqli_query(): Couldn't fetch mysqli in /home/apollobd/public_html/dev/config.php on line 45
+[27-Feb-2014 23:42:29 UTC] PHP Warning:  mysqli_error(): Couldn't fetch mysqli in /home/apollobd/public_html/dev/config.php on line 45
+[28-Feb-2014 02:02:34 UTC] PHP Warning:  mysqli_real_escape_string(): Couldn't fetch mysqli in /home/apollobd/public_html/dev/func_security.php on line 86
+[28-Feb-2014 02:02:34 UTC] PHP Warning:  mysqli_query(): Couldn't fetch mysqli in /home/apollobd/public_html/dev/config.php on line 45
+[28-Feb-2014 02:02:34 UTC] PHP Warning:  mysqli_error(): Couldn't fetch mysqli in /home/apollobd/public_html/dev/config.php on line 45
+[28-Feb-2014 04:22:37 UTC] PHP Warning:  mysqli_real_escape_string(): Couldn't fetch mysqli in /home/apollobd/public_html/dev/func_security.php on line 86
+[28-Feb-2014 04:22:37 UTC] PHP Warning:  mysqli_query(): Couldn't fetch mysqli in /home/apollobd/public_html/dev/config.php on line 45
+[28-Feb-2014 04:22:37 UTC] PHP Warning:  mysqli_error(): Couldn't fetch mysqli in /home/apollobd/public_html/dev/config.php on line 45
+[28-Feb-2014 06:42:44 UTC] PHP Warning:  mysqli_real_escape_string(): Couldn't fetch mysqli in /home/apollobd/public_html/dev/func_security.php on line 86
+[28-Feb-2014 06:42:44 UTC] PHP Warning:  mysqli_query(): Couldn't fetch mysqli in /home/apollobd/public_html/dev/config.php on line 45
+[28-Feb-2014 06:42:44 UTC] PHP Warning:  mysqli_error(): Couldn't fetch mysqli in /home/apollobd/public_html/dev/config.php on line 45

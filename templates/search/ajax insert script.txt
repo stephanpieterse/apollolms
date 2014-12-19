@@ -1,0 +1,4 @@
+<script type="text/javascript">
+document.write('Find Users:<input type="text" name="searchbox_user" value=""/>');
+document.write('<input type="button" onclick="genPasswordStr(); checkPasswordStr();" value="Search"/>');
+</script>

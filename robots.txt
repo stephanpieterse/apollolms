@@ -1,0 +1,9 @@
+User-agent: *
+Disallow: /archive/
+Disallow: /admin/
+Disallow: /cgi-bin/
+Disallow: /modules/
+Disallow: /uploads/
+Disallow: /templates/
+Disallow: /styles/
+Disallow: /sagi/

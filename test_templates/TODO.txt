@@ -1,0 +1,13 @@
+standard template for new questions
+
+questions:
+true false
+mult 2
+mult 3
+mult 5
+mult 6
+file upload 
+description (no answer)
+short answer
+matching
+fill in blanks
