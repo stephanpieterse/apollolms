@@ -8,5 +8,5 @@
 </label>
 <input class="ui-button ui-widget ui-state-default ui-corner-all" type="submit" id="Submit" role="button" value="Login">
 <br/>
-<a href="index.php?action=lostpassword">Recover Lost Password</a>
+<a href="users.php?f=lostpassword">Recover Lost Password</a>
 </form>

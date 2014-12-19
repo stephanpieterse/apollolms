@@ -444,28 +444,6 @@ function users_func_updateUserItem($data){
 }
 
 /**
- * Displays a form to edit user preferences if permissions allow
- * 
- * @param $userdata The id of the user to be edited
- * 
- */
-function modifyUserPreferences($userdata){
-	if((check_user_permission('user_modify_prefs')) || ($userdata = $_SESSION['username'])){
-	$query = 'SELECT * FROM members WHERE id="' . $userdata . '"';
-	$result = sql_execute($query);
-	if((sql_numrows($result)) != 1){
-		echo "User cannot be found. <br />";
-		echo '<a href="index.php">Return Home</a>';
-	}else{
-	$row = sql_get($result);
-    include ( TEMPLATE_PATH . "form_editUserPreferences.php" );
-	}
-	}else{
-		goHome("permission_denied");
-	}
-}
-
-/**
  * Uploads a file as the users profile picture
  * 
  * @param $filedata A passed $_FILES array

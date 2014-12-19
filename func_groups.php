@@ -441,16 +441,6 @@ function createNewGroup(){
 	}
 }
 
-/*
-function removeGroupData($groupID){
-	if(check_user_permission('groups_remove')){
-		$query = "DELETE FROM groupslist WHERE id='$groupID'";
-		$result = sql_execute($query);
-		echo '<META HTTP-EQUIV="Refresh" Content="0; URL=index.php?msg=group_remove_success">';
-	}
-}
-*/
-
 /**
  * Displays all the available group types
  * 
@@ -506,7 +496,7 @@ function view_all_groups(){
 	while($rowdata = sql_get($sqlresult)){
 		//echo $rowdata['NAME'];
 		echo "<a href=\"groups.php?f=viewGroup&gid=" . $rowdata['ID'] ." \">" . $rowdata['NAME'] . "</a>";
-		echo "<a href=\"index.php?aq=mod_group&group=" . $rowdata['ID'] ." \"> <img src=\"" . ICONS_PATH . "pencil.png\" alt=\"Edit\"/></a>";
+		echo "<a href=\"groups.php?f=editItem&gid=" . $rowdata['ID'] ." \"> <img src=\"" . ICONS_PATH . "pencil.png\" alt=\"Edit\"/></a>";
 		echo "<a href=\"index.php?action=rem_group&group=" . $rowdata['ID'] ." \"> <img src=\"" . ICONS_PATH . "cancel.png\" alt=\"Delete\"/></a>";
 		br();
 		echo $rowdata['GROUPTYPE'];
@@ -638,46 +628,4 @@ function leave_group($groupID){
 	
 	return true;	
 }
-
-
-/*
-
-DEPRECATE THIS FUNCTION - SEEMS A LONG WAY OF DOING SOMETHING DONTCHA THINK
-
-
-function removeFromGroup($groupData){
-	if(check_user_permission("user_remove")){
-		$query = 'SELECT * FROM members WHERE id="' . $_SESSION['userID'] . '" LIMIT 1';
-		$result = sql_execute($query);
-		$data = sql_get($result);
-		$doc = new DOMDocument; 
-		$doc->loadXML($data['GROUPS']);
-		$docRoot = $doc->documentElement;
-
-		$nodeToRemove = null;
-		foreach($docRoot->childNodes as $child){
-			if($child->hasAttributes()){
-			foreach($child->attributes as $attr){
-					if(($attr->value) == $groupData) {
-						 $nodeToRemove = $child; 
-						 break;
-					}
-					}	
-				}
-			}
-
-		if ($nodeToRemove != null){
-		$docRoot->removeChild($nodeToRemove);
-		$newGroups = $doc->saveHTML(); 		
-
-			$query = "UPDATE members SET groups='" . $newGroups . "' WHERE id='" . $_SESSION['userID'] . "'";
-			$result = sql_execute($query);
-		
-			echo '<META HTTP-EQUIV="Refresh" Content="0; URL=index.php?msg=group_leave_success">';
-		}
-		}else{
-			echo '<META HTTP-EQUIV="Refresh" Content="0; URL=index.php?msg=permission_denied">';
-		}
-}
-*/
 ?>

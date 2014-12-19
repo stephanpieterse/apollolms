@@ -68,36 +68,16 @@ function view_pages($aid){
 		echo '<a href="index.php?aq=page&pid=' . $childID .' "><img src="' . ICONS_PATH . 'magnifier.png" alt="View"/></a>';
 		}
 		if(check_user_permission("content_modify")){
-		echo '<a href="index.php?aq=mod_page&pid=' . $childID . ' "><img src="' . ICONS_PATH . 'pencil.png" alt="Edit"/></a>';
+		echo '<a href="pages.php?f=mod_page&pid=' . $childID . ' "><img src="' . ICONS_PATH . 'pencil.png" alt="Edit"/></a>';
 		}
 		if(check_user_permission("content_remove")){
-		echo '<a href="index.php?aq=rm_page&pid=' . $childID .' "><img src="' . ICONS_PATH . 'cancel.png" alt="Delete"/></a>';
+		echo '<a href="pages.php?aq=rm_page&pid=' . $childID .' "><img src="' . ICONS_PATH . 'cancel.png" alt="Delete"/></a>';
 		}
 		echo "<br />";
 
 			}
 }
-/*
-function deprec_view_pages($aid){
-	$sqlquery = "SELECT * FROM pages WHERE article='" . $aid ."'";
-	$sqlresult = sql_execute($sqlquery);
-		
-	while($rowdata = sql_get($sqlresult)){
-		echo $rowdata['NAME'];
-		if(check_user_permission("content_view")){
-		echo "<a href=\"index.php?aq=page&pid=" . $rowdata['ID'] ." \"><img src=\"icons/silk/icons/magnifier.png\" alt=\"View\"/></a>";
-		}
-		if(check_user_permission("content_modify")){
-		echo "<a href=\"index.php?aq=mod_page&pid=" . $rowdata['ID'] ." \"><img src=\"icons/silk/icons/pencil.png\" alt=\"Edit\"/></a>";
-		}
-		if(check_user_permission("content_remove")){
-		echo "<a href=\"index.php?aq=rm_page&pid=" . $rowdata['ID'] ." \"><img src=\"icons/silk/icons/cancel.png\" alt=\"Delete\"/></a>";
-		}
-		
-		echo "<br />";
-	}
-}
-*/
+
 function a_page_AddNewData($aid,$pdata){
 	$pName = $pdata['pageName'];
 	$pName = makeSafe($pName);
@@ -154,7 +134,7 @@ function a_update_page($id,$data){
 	if(isset($data['save'])){
 		goHome("update_page_success");
 	}else{
-	echo '<META HTTP-EQUIV="Refresh" Content="0; URL=index.php?action=mod_page&pid=' . $id . '">';
+	echo '<META HTTP-EQUIV="Refresh" Content="0; URL=pages.php?f=mod_page&pid=' . $id . '">';
 	}
 }
 

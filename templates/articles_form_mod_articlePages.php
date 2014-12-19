@@ -39,7 +39,7 @@
 						echo $link;
 						echo '</td>';
 						echo '<td>';
-						$link = '<a href="?aq=mod_page&pid=' . $artID . '"><img src="' . ICONS_PATH . 'pencil.png" alt="Edit"/> Edit</a>';
+						$link = '<a href="pages.php?f=mod_page&pid=' . $artID . '"><img src="' . ICONS_PATH . 'pencil.png" alt="Edit"/> Edit</a>';
 						echo $link;
 						echo '</td>';
 						echo '<td>';

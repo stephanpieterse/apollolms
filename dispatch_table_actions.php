@@ -4,7 +4,7 @@
  * since then a seperate controller has been built which allows more flexible access to the functions
  * still included since not all functions have been remapped yet and the gq section might stay in permanent use.
  *
- * 
+ * @TODO remap all these ASAP
  * @author Stephan
  * @package ApolloLMS
  */
@@ -16,14 +16,10 @@ $dispatch_gq = array(
 
 $dispatch_aq = array(
 'rm_page'=>function(){removeItem('pages', $_GET['pid']); verifyXML('articles',$_GET['aid']);},
-'mod_article_pages'=>function(){markLastPage($_GET); include(TEMPLATE_PATH . 'form_article_pages.php');},
 'newPage'=>function(){include(TEMPLATE_PATH . 'form_edit_page.php');},
 'add_page'=>function(){a_page_AddNewData($_GET['aid'],$_POST); goToLastPage("add_success");},
 'upd_page'=>function(){a_update_page($_GET['pid'],$_POST); goToLastPage("update_success");},
 'rm_article'=>function(){removeItem('articles', $_GET['aid']); verifyXML('courses',$_GET['cid']);},
-//'new_article'=>function(){include(TEMPLATE_PATH . 'form_edit_article.php');},
-'mod_page'=>function(){include(TEMPLATE_PATH . 'form_edit_page.php');},
-'mod_group'=>function(){include(TEMPLATE_PATH . 'form_edit_groupItem.php');},
 'mv_page'=>function(){moveNode('articles', $_GET['aid'], 'PAGES', $_GET['pid'], $_GET['dir']); goToLastPage();},
 'upd_group'=>function(){update_group_item($_GET['gid'], $_POST); goToLastPage();},
 'rnmeFile'=>function(){renameFile(($_GET['dir'] . $_GET['file']), ($_GET['dir'] . $_POST['newFileName'])); goToLastPage();},
@@ -72,13 +68,9 @@ $dispatch_action = array(
 'regNewUser'=>function(){include ( TEMPLATE_PATH . "form_adduseritem.php" );},							
 'edituser'=>function(){editUser();},	
 'rem_user'=>function(){removeItem('members',$_GET['uid']);},	 //removeUser($_GET['user']);
-'mod_user'=>function(){modifyUser($_GET['uid']);},
-'mod_user_pref'=>function(){modifyUserPreferences($_GET['user']);},
 'rem_course'=>function(){removeItem('courses', $_GET['course']); findOrphans();}, //removeCourse($_GET['course']);
 'new_article'=>function(){new_Article();},
 'upd_article'=>function(){update_article($_GET['id'],$_POST); goToLastPage();},
-
-'lostpassword'=>function(){require ( TEMPLATE_PATH . "form_lostpassword.php" );},
 'lostpassword2'=>function(){lostPassword2();},
 'checkSecurityQ'=>function(){checkSecurityQ();},
 'updatePasswordOnly'=>function(){updatePasswordOnly($_POST['newPass'],$_POST['nameCell']);},

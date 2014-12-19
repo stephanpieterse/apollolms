@@ -68,7 +68,7 @@ function isArticleAlreadySelected($cdata, $aid){
 			echo "<a href=\"articles.php?f=mod_article&aid=" . $data['ID'] ." \"><img src=\"" . ICONS_PATH . "pencil.png\" alt=\"Edit\"/>Article</a>";
 			echo '</td>';
 			echo '<td>';
-			echo "<a href=\"index.php?aq=mod_article_pages&aid=" . $data['ID'] ." \"><img src=\"" . ICONS_PATH . "pencil.png\" alt=\"Edit\"/>Pages</a>";
+			echo "<a href=\"articles.php?f=mod_articlePages&aid=" . $data['ID'] ." \"><img src=\"" . ICONS_PATH . "pencil.png\" alt=\"Edit\"/>Pages</a>";
 			echo '</td>';
 			echo '<td>';
 			echo "<a href=\"index.php?action=mv_art&id=" . $cid ."&dir=up&aid=". $nodeID ." \"><img src=\"" . ICONS_PATH . "arrow_up.png\" alt=\"Move Up\"/></a>";

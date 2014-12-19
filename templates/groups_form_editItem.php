@@ -1,7 +1,7 @@
 <script type="text/javascript" src="scripts/ckeditor/ckeditor.js"></script>
 <?php
-	if(isset($_GET['group'])){
-	$gid = makeSafe($_GET['group']);
+	if(isset($_GET['gid'])){
+	$gid = makeSafe($_GET['gid']);
 	$q = "SELECT * FROM groupslist WHERE id='$gid'";
 	$r = sql_execute($q);
 	$rd = sql_get($r);

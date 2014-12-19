@@ -3,8 +3,7 @@
 	$link = '<a href="users.php?f=editUser&uid=' . $username . '">Update Profile Data</a><br/>';
 	echo $link;
 
-	$link = '<a href="index.php?action=mod_user_pref&user=' . $username . '">Edit Preferences</a><br/>';
-	$link = '<a href="index.php?action=lostpassword">Change Password</a><br/>';
+	$link = '<a href="users.php?f=lostpassword">Change Password</a><br/>';
 	echo $link;
 	
 	$link = '<a href="users.php?f=upload_profilePic">Upload a photo</a><br/>';
