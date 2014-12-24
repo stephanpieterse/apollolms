@@ -10,8 +10,8 @@
 <p>
 Are you sure you wish to do this? This action can only be undone by the system administrator.
 </p>
-<input name="submit" type="submit" value="Yes I'm sure" />
+<input name="submit" type="submit" value="Yes, I'm sure" />
 <p>
-<a href="index.php?uq=lastpage">No take me back now! </a>
+<a href="index.php?q=goToLastPage">No! Take me back now! </a>
 </p>
 </form>

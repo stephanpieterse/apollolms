@@ -239,6 +239,10 @@ function goToLastURL(){
 	page_redirect($_SESSION['getlastpage']);
 }
 
+function base_func_goToLastPage($data){
+	goToLastPage();
+}
+
 /**
  * Goes to the url saved previously in the session
  */

@@ -54,7 +54,6 @@ $dispatch_uq = array(
 	'help'=>function(){helpPage();},
 	//'reg_course'=>function(){include(TEMPLATE_PATH. "form_registerForCourse.php");},
 	'reg_course_pend'=>function(){if(register_user_to_course($_GET['cid'],$_SESSION['userID'],$_POST)){ goHome('register_success');}},
-	'lastpage'=>function(){goToLastPage();},
 );
 
 $dispatch_action = array(
