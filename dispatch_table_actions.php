@@ -103,10 +103,6 @@ $dispatch_action = array(
 	'set_module_i'=>function(){setModuleStatus($_GET['mid'], 0);},
 	'a_del_result'=>function(){if(deleteTestResult($_GET['id']) !== true){goHome("permission_denied");}else{ goToLastPage();}},
 	'view_role'=>function(){viewRoleItem($_GET['role']);},
-
-	'mod_course_art'=>function(){markLastPage($_GET); include(TEMPLATE_PATH . "form_linkArticles.php");},
-	'mod_course_artOrd'=>function(){include(TEMPLATE_PATH . "form_articlesOrder.php");},
-
 	'mv_art'=>function(){moveNode('courses', $_GET['id'], 'ARTICLES', $_GET['aid'], $_GET['dir']);goToLastPage();},
 	'uplcsvuser'=>function(){importCSVFileToUser($_FILES, $_POST);},
 );
