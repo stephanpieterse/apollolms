@@ -29,8 +29,7 @@ $dispatch_aq = array(
 	'reg_course_pendact'=>function(){activate_user_to_course($_GET['cid'],$_GET['uid']); goToLastPage();},
 	'mv_tstQ'=>function(){moveNode('tests', $_GET['id'], 'QUESTIONS', $_GET['qid'], $_GET['dir']);},
 	'mod_test'=>function(){markLastPage($_GET); include(TEMPLATE_PATH . "form_editTestItem.php");},
-	'mod_test_questions'=>function(){include(TEMPLATE_PATH . "form_editTestItem_questions.php");},
-	'mod_test_prereq'=>function(){include(TEMPLATE_PATH . 'form_editTestItem_prereqs.php');},
+
 	'mod_test_prerequisites'=>function(){mod_test_prerequisites($_GET['tid']);},
 	'rem_test'=>function(){removeItem('tests', $_GET['id']); goToLastPage();},
 	'rem_media'=>function(){removeFile($_GET['media']); goToLastPage();},
@@ -94,7 +93,6 @@ $dispatch_action = array(
 	'addQuestion'=>function(){mod_test_addQuestion($_GET['id'], $_POST['question_type']);},
 	'insertQuestion'=>function(){mod_test_insertQuestion($_GET['id'], $_POST); goToLastPage();},
 	'uploadFile'=>function(){fileUpload();},
-	'uploadForm'=>function(){include(TEMPLATE_PATH . "/form_media_plupload.php");},
 	'mknewFolder'=>function(){makeNewFolder($_POST['rootDirPath'] . $_POST['newFolderName']);},
 	'set_module_a'=>function(){setModuleStatus($_GET['mid'], 1);},
 	'set_module_i'=>function(){setModuleStatus($_GET['mid'], 0);},
