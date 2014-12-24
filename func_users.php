@@ -211,7 +211,8 @@ function importCSVFileToUser($file, $extra){
 		
 		$mailBody = $totalrecords . " new users have been imported to the site by user id " . $_SESSION['userID'];
 		mail_informAdmin('New users have been added', '');
-	}
+		return true;
+}
 
 /**
  * Parameters:

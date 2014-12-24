@@ -42,18 +42,14 @@ $dispatch_aq = array(
 $dispatch_uq = array(
 	'upload_profilePicture'=>function(){upload_profilePicture($_FILES);},
 	'viewPage'=>function(){displayPage($_GET['pnm'], $_GET['aid']);},
-	'msg'=>function(){displayMsg($_GET['mid']);},
-	'viewGroups'=>function(){markLastPage($_GET); viewGroups();},
 	'submitRequest'=>function(){submitContentRequest($_POST);},
 	//'reg_course'=>function(){include(TEMPLATE_PATH. "form_registerForCourse.php");},
 	'reg_course_pend'=>function(){if(register_user_to_course($_GET['cid'],$_SESSION['userID'],$_POST)){ goHome('register_success');}},
 );
 
 $dispatch_action = array(
-	//'clogin'=>function(){checkLogin($_POST['username'], $_POST['password']);},
 	'addUser'=>function(){include ( TEMPLATE_PATH . "form_adduseritem.php" );},
-	'addNewUser'=>function(){$retval=addUserItem($_POST);if($retval !== true){page_redirect("index.php",'',array('SITE_ERROR_MSG'=>$retval));}}, //ech o$retval;
-	'regNewUser'=>function(){include ( TEMPLATE_PATH . "form_adduseritem.php" );},							
+	'addNewUser'=>function(){$retval=addUserItem($_POST);if($retval !== true){page_redirect("index.php",'',array('SITE_ERROR_MSG'=>$retval));}}, //ech o$retval;							
 	'rem_user'=>function(){removeItem('members',$_GET['uid']);},	 //removeUser($_GET['user']);
 	'rem_course'=>function(){removeItem('courses', $_GET['course']); findOrphans();}, //removeCourse($_GET['course']);
 	'upd_article'=>function(){update_article($_GET['id'],$_POST); goToLastPage();},
@@ -65,7 +61,6 @@ $dispatch_action = array(
 	'article'=>function(){displayArticle($_GET['id'], $_GET['cid']);},
 	'linkArtData'=>function(){linkArtToCou($_GET['cid'], $_POST);},
 	'insertResult'=>function(){insertResult($_POST);goHome("result_add_success");},
-	'addNewArticle'=>function(){add_new_article(); goToLastPage();},
 	'updateRoleItem'=>function(){updateRoleItem($_GET['id'],$_POST);},
 	'del_role'=>function(){rm_roleItem($_GET['id']);},
 	'rem_group'=>function(){removeItem('groupslist', $_GET['group']);},//removeGroupData($_GET['group']);},
