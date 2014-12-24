@@ -1,6 +1,6 @@
 <?php
 if(check_user_permission("tests_add")){
-	$link = '<li><a href="index.php?action=newTest">Add New Test</a></li>';
+	$link = '<li><a href="test.php?f=addTest">Add New Test</a></li>';
 	echo $link;
 	}
 if(check_user_permission("tests_installQ")){

@@ -19,7 +19,9 @@
 		
 		if(check_user_permission("content_view")){
 			$dataArray[$curPos]['LINKS'][] =  '<a id="a_admin_user_view" href="courses.php?f=displayCourse&cid=' . $rowdata['ID'] . ' "> <img src="' . ICONS_PATH . 'magnifier.png" alt="View"/></a></td><td>';
-		}else{ echo $rowdata['NAME']; }
+		}else{ 
+			$dataArray[$curPos]['LINKS'][] = $rowdata['NAME']; 
+			}
 		if(check_user_permission("content_modify")){
 			$dataArray[$curPos]['LINKS'][] = '<a href="courses.php?f=editCourse&id=' . $rowdata['ID'] . ' "> <img src="' . ICONS_PATH . 'pencil.png" alt="Edit Course"/></a>';
 			$dataArray[$curPos]['LINKS'][] = '<a href="courses.php?f=editArticles&id=' . $rowdata['ID'] .' "> Articles <img src="' . ICONS_PATH . 'page_white_text.png" alt="Edit Articles"/></a>';
@@ -43,7 +45,9 @@
 		
 		if(check_user_permission("content_view")){
 			$dataArrayPack[$curPos]['LINKS'][] =  '<a id="a_admin_user_view" href="courses.php?f=displayCourse&cid=' . $rowdata['ID'] . ' "> <img src="' . ICONS_PATH . 'magnifier.png" alt="View"/></a></td><td>';
-		}else{ echo $rowdata['NAME']; }
+		}else{ 
+			$dataArrayPack[$curPos]['LINKS'][] = $rowdata['NAME']; 
+			}
 		if(check_user_permission("content_modify")){
 			$dataArrayPack[$curPos]['LINKS'][] = '<a href="courses.php?f=editCourse&id=' . $rowdata['ID'] . ' "> <img src="' . ICONS_PATH . 'pencil.png" alt="Edit Course"/></a>';
 			$dataArrayPack[$curPos]['LINKS'][] = '<a href="courses.php?f=editArticles&id=' . $rowdata['ID'] .' "> Articles <img src="' . ICONS_PATH . 'page_white_text.png" alt="Edit Articles"/></a>';
