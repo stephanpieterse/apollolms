@@ -82,7 +82,7 @@ REF;
 	}
 	
 	if($Home){
-		defaultHome();
+	//	defaultHome();
 	}
 	}
 ?>

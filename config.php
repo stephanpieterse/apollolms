@@ -26,7 +26,7 @@ define( "SITE_EMAIL", "webmaster@apollolms.co.za");
 define( "SITE_EMAIL_AUTOMATED", "no-reply@apollolms.co.za");
 define( "SITE_OPEN_REGISTRATIONS", "true" );
 define( "MAX_TOTAL_UPLOADS", "5242880");
-define( "DEBUG_MODE", "on");
+define( "DEBUG_MODE", "off");
 define( "NO_LOGIN_SCAN", "on");
 
 function handleWarning($errno,$errstr){

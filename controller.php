@@ -105,7 +105,7 @@ class Controller {
 			$_SESSION['post_'.$key] = $val;
 			br();
 		}
-		br();br();
+		br();
 	//	system('dmesg | tail');
 				
 				echo'<script type="text/javascript">
