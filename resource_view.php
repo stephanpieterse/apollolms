@@ -6,6 +6,7 @@
  * @package ApolloLMS
  * @version 1.0.0
  *
+ * @TODO fix swf loading code
  */
 	include('controller.php');
 	$control = new Controller;

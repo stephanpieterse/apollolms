@@ -32,7 +32,7 @@
 	if ( (isset($_SESSION['last_active']) && (time() > ($_SESSION['last_active']+$timeout)))
 		|| (isset($_SESSION['fingerprint']) && $_SESSION['fingerprint']!=$fingerprint)  
 		|| (isset($_SESSION['last_id']) && $_SESSION['last_id']!=$_SESSION['userID']) ){
-	logout();
+	base_func_logout();
 }
 	session_regenerate_id(); 
 	$_SESSION['last_active'] = time();

@@ -116,4 +116,33 @@ function renameFile($origName, $newName){
 	//	$retval = rename($origName, $newName);
 	return false;
 }
+
+/*
+ * We need web playble files as h264, webm, and ogv
+ * 
+ * we should pull the data from a sql db via cron job
+ * we should daily scan all dirs for files that may have been deleted
+ * */
+function media_func_convertFile($fname){
+	chdir(dirname(__FILE__));
+	
+	$filename = pathinfo($fname,PATHINFO_BASENAME);
+	$safedir = pathinfo($fname,PATHINFO_DIRNAME);
+	
+	if(!file_exists($safedir.'/vid_res')){
+		mkdir($safedir.'/vid_res');
+	}
+	
+	$finaldir = $safedir.'/vid_res/';
+	
+	shell_exec("./classes/ffmpeg/ffmpeg -y -i " . $fname . " " . $finaldir . $filename . ".mp4");
+	shell_exec("./classes/ffmpeg/ffmpeg -y -i " . $fname . " " . $finaldir . $filename . ".webm");
+	shell_exec("./classes/ffmpeg/ffmpeg -y -i " . $fname . " " . $finaldir . $filename . ".ogv");
+	
+	if(file_exists($finaldir . $filename . ".mp4") && file_exists($finaldir . $filename . ".webm") && file_exists($finaldir . $filename . ".ogv")){
+		return true;
+	}else{
+		return false;
+	}
+}
 ?>
