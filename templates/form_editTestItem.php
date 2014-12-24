@@ -85,7 +85,7 @@
 	}
 	br();
 	if(check_user_permission('test_modify')){
-		echo "<a href=\"index.php?aq=mod_test_permissions&id=" . $row['ID'] ." \"> Edit Permissions <img src=\"" . ICONS_PATH . "pencil.png\" alt=\"Edit\"/></a>";
+		echo "<a href=\"tests.php?f=editItem_permissions&id=" . $row['ID'] ." \"> Edit Permissions <img src=\"" . ICONS_PATH . "pencil.png\" alt=\"Edit\"/></a>";
 		br();
 		echo "<a href=\"index.php?aq=mod_test_questions&id=" . $row['ID'] ." \"> Add a Question <img src=\"" . ICONS_PATH . "pencil.png\" alt=\"Edit\"/></a>";
 		br();

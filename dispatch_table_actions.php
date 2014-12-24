@@ -27,10 +27,8 @@ $dispatch_aq = array(
 	'mve_file'=>function(){renameFile(($_POST['dir'] . makeSafe($_POST['file'])), ($_POST['rootDirPath'] . $_POST['file'])); goToLastPage();},
 	'newgroupadmin'=>function(){assign_group_admin($_GET['uid'],$_GET['gid']);goToLastPage();},
 	'reg_course_pendact'=>function(){activate_user_to_course($_GET['cid'],$_GET['uid']); goToLastPage();},
-
 	'mv_tstQ'=>function(){moveNode('tests', $_GET['id'], 'QUESTIONS', $_GET['qid'], $_GET['dir']);},
 	'mod_test'=>function(){markLastPage($_GET); include(TEMPLATE_PATH . "form_editTestItem.php");},
-	'mod_test_permissions'=>function(){include(TEMPLATE_PATH . "form_editTestItem_permissions.php");},
 	'mod_test_questions'=>function(){include(TEMPLATE_PATH . "form_editTestItem_questions.php");},
 	'mod_test_prereq'=>function(){include(TEMPLATE_PATH . 'form_editTestItem_prereqs.php');},
 	'mod_test_prerequisites'=>function(){mod_test_prerequisites($_GET['tid']);},
