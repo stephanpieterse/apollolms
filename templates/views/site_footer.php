@@ -10,12 +10,10 @@
     <div class="footbox">
     	<h2>Misc</h2>
     	<ul>
-        <!--<li class="last"><a href="#">Search</a></li>-->
 		<?php
 		if(isset($_SESSION['userID'])){
         echo '<li class="last"><a href="index.php?f=request">Content Request</a></li>';
-        echo '<li class="last"><a href="index.php?uq=help">Help</a></li>';
-        // echo '<li class="last"><a target="_blank" href="./info/standard_faq.pdf" title="Frequently Asked Questions">F.A.Q</a></li>';
+        echo '<li class="last"><a href="index.php?f=help">Help</a></li>';
 		}
 		?>
 		<?php

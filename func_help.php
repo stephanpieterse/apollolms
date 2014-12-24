@@ -10,10 +10,6 @@ function deleteHelpMsg($msgid){
 	goHome('helpmsg_delete_success');	
 }
 
-function helpPage(){
-	require ( TEMPLATE_PATH . "help.php" );
-}
-
 function submitHelpMsg(){
 //if(isset($_SESSION['userID'])){
 	//$username = $_SESSION['userID'];

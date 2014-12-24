@@ -48,7 +48,6 @@ $dispatch_uq = array(
 	'msg'=>function(){displayMsg($_GET['mid']);},
 	'viewGroups'=>function(){markLastPage($_GET); viewGroups();},
 	'submitRequest'=>function(){submitContentRequest($_POST);},
-	'help'=>function(){helpPage();},
 	//'reg_course'=>function(){include(TEMPLATE_PATH. "form_registerForCourse.php");},
 	'reg_course_pend'=>function(){if(register_user_to_course($_GET['cid'],$_SESSION['userID'],$_POST)){ goHome('register_success');}},
 );
