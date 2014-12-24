@@ -1,8 +1,9 @@
-<!--
-BY STEPHAN PIETERSE
-THIS FORM IS THE BASIC TEMPLATE FOR DATA WHEN EDITING EXISTING USERS IN THE DATABASE
--->
 <?php
+	/*
+	 * @author Stephan Pieterse
+	 * @package ApolloLMS
+	 * * */
+
 	$monthsNames = array(1=>'January','February','March','April','May','June','July','August','September','October','November','December');
 
 	$q = "SELECT * FROM roles";

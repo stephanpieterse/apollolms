@@ -23,17 +23,14 @@ $dispatch_aq = array(
 	'mv_page'=>function(){moveNode('articles', $_GET['aid'], 'PAGES', $_GET['pid'], $_GET['dir']); goToLastPage();},
 	'upd_group'=>function(){update_group_item($_GET['gid'], $_POST); goToLastPage();},
 	'rnmeFile'=>function(){renameFile(($_GET['dir'] . $_GET['file']), ($_GET['dir'] . $_POST['newFileName'])); goToLastPage();},
-
 	'mve_file'=>function(){renameFile(($_POST['dir'] . makeSafe($_POST['file'])), ($_POST['rootDirPath'] . $_POST['file'])); goToLastPage();},
 	'newgroupadmin'=>function(){assign_group_admin($_GET['uid'],$_GET['gid']);goToLastPage();},
 	'reg_course_pendact'=>function(){activate_user_to_course($_GET['cid'],$_GET['uid']); goToLastPage();},
 	'mv_tstQ'=>function(){moveNode('tests', $_GET['id'], 'QUESTIONS', $_GET['qid'], $_GET['dir']);},
 	//'mod_test'=>function(){markLastPage($_GET); include(TEMPLATE_PATH . "form_editTestItem.php");},
-
 	'mod_test_prerequisites'=>function(){mod_test_prerequisites($_GET['tid']);},
 	'rem_test'=>function(){removeItem('tests', $_GET['id']); goToLastPage();},
 	'rem_media'=>function(){removeFile($_GET['media']); goToLastPage();},
-	'updateUserItem'=>function(){updateUserItem($_GET['uid'], $_POST);},
 	'module_settings_update'=>function(){module_update_settings($_GET['mid'],$_POST); goToLastPage();},
 	'frm_installModule'=>function(){include(TEMPLATE_PATH . 'form_select_installModule.php');},
 	'uploadModule'=>function(){installModule($_FILES);goToLastPage();},
