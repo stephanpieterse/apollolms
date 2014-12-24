@@ -309,111 +309,6 @@ function isUserInGroup($uid, $gid){
 		return $isInGroup;
 }
 
-/*
-function getGroupStats(){	
-	// assign variables for searching
-	$groupName = $_POST['groupName'];
-	$grade = $_POST['grade'];
-	$class = $_POST['class'];
-	
-	if($groupName == "--ALL--"){
-	$group2search = "%";
-}else {
-	$group2search = $groupName;
-}
-	if($grade == "--ALL--"){
-	$grade2search = "%";
-}else{
-	$grade2search = $grade;
-}
-	if($class == "--ALL--"){
-	$class2search = "%";
-	}else{
-	$class2search = $class;
-}
-	
-	// get all data from members in correct group
-	$query1 = "SELECT * FROM members WHERE groupname LIKE '$group2search' AND grade LIKE '$grade2search' AND class LIKE '$class2search'";
-	$result = mysql_query($query1) or die(mysql_error());
-
-	// compile list of members in correct group
-	$x = 0;
-	while($row = mysql_fetch_array($result)){
-		$membersList[$x] = $row['USERNAME'];
-		$x++;
-	}
-
-	// retrieve the entire testresults db (less sql exec time)
-	$query2 = "SELECT * FROM testresults";
-	$result = mysql_query($query2) or die(mysql_error());
-	
-	$query3 = "SELECT * FROM tests";
-	$result3 = mysql_query($query3) or die(mysql_error());
-	
-	$a = 0;
-	while($rA = mysql_fetch_array($result3)){
-		$testNames[$a] = $rA['NAME'];
-		$testResults[$a] = 0;
-		$a++;
-	}
-	
-	// check through all tests which have been written by member of array
-	while($row = mysql_fetch_array($result)){
-		$mlArrLen = count($membersList);
-		for($y = 0; $y < $mlArrLen; $y++){
-		
-		$memberName = $membersList[$y];
-			if($memberName == $row['STUDENT']){ // check name of member
-				
-				// for each testname, get the ratings of all members that have written and average them
-				$namesCount = count($testNames);
-		
-				for($z = 0; $z < $namesCount; $z++){
-					$tempname = $testNames[$z];
-					if($tempname == $row['NAME']){
-							$testResults[$z] = ($testResults[$z] + $row['RATING']) / 2;
-					
-					}
-				//	if($matchFound == false){
-					//	$testNames[$curTestsNum + 1] = $row['NAME'];
-				//		$curTestsNum++;
-				//	}
-				} // end foreach testnames
-
-			} //end if of membername
-		} // end for memberslist arr			
-	} //end while of rows
-	for($x=0; $x < count($testNames); $x++){
-		echo $testNames[$x];
-		br();
-	}
-	for($x=0; $x < count($testResults); $x++){
-		echo $testResults[$x];
-		br();
-	}
-	for($x=0; $x < count($membersList); $x++){
-		echo $membersList[$x];
-		br();
-	}
-	
-} // end function
-
-*/
-
-/*
-function rm_groupType($id){
-	if(check_user_permission('grouptype_remove')){
-		$query = 'DELETE FROM groups_types WHERE id="' . $id . '"';
-		$result = sql_execute($query);
-	}
-}
-
-*/
-
-/**
- * No Parameters
- * 
- */
 function createNewGroup(){
 	if(check_user_permission('groups_add')){
 	$groupName = makeSafe($_POST['groupName']);
@@ -561,10 +456,6 @@ function update_group_item($gid, $data){
 	return true;
 }
 
-/**
- * No Parameters
- * 
- */
 function addGroupData(){
 	// TODO
 	// check if user is not already a part of the group they are joining
@@ -600,12 +491,6 @@ function addGroupData(){
 	
 }
 
-/**
- * Parameters:
- * 		name
- * 		desc
- * 
- */
 function insertNewGroupType($name, $desc){
 if(check_user_permission('grouptype_add')){
 	$name = makeSafe($name);
@@ -619,12 +504,9 @@ if(check_user_permission('grouptype_add')){
 	}
 }
 
-/**
- * Parameters:
- * 		groupid - 
- * 
- */
-function leave_group($groupID){
+function groups_func_leave($data){
+	$groupID = $data['gid'];
+	
 	$q = "SELECT * FROM members WHERE id='" . $_SESSION['userID'] . "' LIMIT 1";
 	$r = sql_execute($q);
 	$d = sql_get($r);
@@ -633,6 +515,6 @@ function leave_group($groupID){
 	$query = "UPDATE members SET groups='" . $newdat . "' WHERE id='" . $_SESSION['userID'] . "'";
 	$result = sql_execute($query);
 	
-	return true;	
+	return true;
 }
 ?>
