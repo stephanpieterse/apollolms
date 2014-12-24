@@ -62,11 +62,11 @@ if(check_user_permission("roles_modify")){
 /**
  * Creates a new role item
  * */
-function newRoleItem(){
+function roles_func_newRoleItem($data){
 if(!check_user_permission("roles_add")){
 	return false;
 }
-	$rolename = makeSafe($_POST['rolename']);
+	$rolename = makeSafe($data['rolename']);
 	
 	$q = "SELECT * FROM roles WHERE rolename='$rolename' LIMIT 1";
 	$r = sql_execute($q);
@@ -75,7 +75,7 @@ if(!check_user_permission("roles_add")){
 	$xmlDoc = new DOMDocument();
 	$rootNode = $xmlDoc->createElement("permissions");
 	$xmlDoc->appendChild($rootNode);
-	foreach($_POST as $key=>$value){
+	foreach($data as $key=>$value){
 		if((isset($key)) && (($key == "Submit") || ($key == "rolename"))){
 		continue;
 		}

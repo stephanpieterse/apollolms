@@ -57,10 +57,8 @@ $dispatch_action = array(
 	'addUser'=>function(){include ( TEMPLATE_PATH . "form_adduseritem.php" );},
 	'addNewUser'=>function(){$retval=addUserItem($_POST);if($retval !== true){page_redirect("index.php",'',array('SITE_ERROR_MSG'=>$retval));}}, //ech o$retval;
 	'regNewUser'=>function(){include ( TEMPLATE_PATH . "form_adduseritem.php" );},							
-	'edituser'=>function(){editUser();},	
 	'rem_user'=>function(){removeItem('members',$_GET['uid']);},	 //removeUser($_GET['user']);
 	'rem_course'=>function(){removeItem('courses', $_GET['course']); findOrphans();}, //removeCourse($_GET['course']);
-	'new_article'=>function(){new_Article();},
 	'upd_article'=>function(){update_article($_GET['id'],$_POST); goToLastPage();},
 	'lostpassword2'=>function(){lostPassword2();},
 	'checkSecurityQ'=>function(){checkSecurityQ();},
@@ -72,7 +70,7 @@ $dispatch_action = array(
 	'linkArtData'=>function(){linkArtToCou($_GET['cid'], $_POST);},
 	'insertResult'=>function(){insertResult($_POST);goHome("result_add_success");},
 	'addNewArticle'=>function(){add_new_article(); goToLastPage();},
-	'newRoleItem'=>function(){newRoleItem();},
+
 	'updateRoleItem'=>function(){updateRoleItem($_GET['id'],$_POST);},
 	'del_role'=>function(){rm_roleItem($_GET['id']);},
 	'addToGroup'=>function(){addGroupData();},
