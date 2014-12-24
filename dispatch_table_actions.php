@@ -28,7 +28,7 @@ $dispatch_aq = array(
 	'newgroupadmin'=>function(){assign_group_admin($_GET['uid'],$_GET['gid']);goToLastPage();},
 	'reg_course_pendact'=>function(){activate_user_to_course($_GET['cid'],$_GET['uid']); goToLastPage();},
 	'mv_tstQ'=>function(){moveNode('tests', $_GET['id'], 'QUESTIONS', $_GET['qid'], $_GET['dir']);},
-	'mod_test'=>function(){markLastPage($_GET); include(TEMPLATE_PATH . "form_editTestItem.php");},
+	//'mod_test'=>function(){markLastPage($_GET); include(TEMPLATE_PATH . "form_editTestItem.php");},
 
 	'mod_test_prerequisites'=>function(){mod_test_prerequisites($_GET['tid']);},
 	'rem_test'=>function(){removeItem('tests', $_GET['id']); goToLastPage();},
@@ -70,7 +70,6 @@ $dispatch_action = array(
 	'linkArtData'=>function(){linkArtToCou($_GET['cid'], $_POST);},
 	'insertResult'=>function(){insertResult($_POST);goHome("result_add_success");},
 	'addNewArticle'=>function(){add_new_article(); goToLastPage();},
-
 	'updateRoleItem'=>function(){updateRoleItem($_GET['id'],$_POST);},
 	'del_role'=>function(){rm_roleItem($_GET['id']);},
 	'addToGroup'=>function(){addGroupData();},
