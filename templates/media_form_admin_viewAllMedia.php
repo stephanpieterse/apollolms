@@ -32,16 +32,11 @@
 		echo $item;
 		echo '<li>';
 		$ext = pathinfo($item, PATHINFO_EXTENSION);
-		
 		if(is_dir($dir . $item)){
 			$itemLink = '<a href="media.php?f=admin_viewAllMedia&dir=' . rawurlencode($dir) . rawurlencode($item) . ' ">';
 			$itemLinkImg = '<img src="' . ICONS_PATH . 'arrow_up.png" alt="View"/>';
 			$itemLinkEnd = '</a>';
 			echo $itemLink . '<img src="' . ICONS_PATH . 'quartz/Folder.png" alt="Item Icon"/>' . $itemLinkEnd;
-			
-			$rmlink = '<a href="media.php?q=rmFolder&folder=' . rawurlencode($dir) . rawurlencode($item) .' "> <img src="' . ICONS_PATH . 'cancel.png" alt="Delete"/></a>';
-			echo $rmlink;
-			
 		}else{
 			$itemLink = '<a target="_blank" href="' . ($dir) . ($item) . ' ">';
 			$itemLinkEnd = '</a>';
