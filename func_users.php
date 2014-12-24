@@ -39,7 +39,7 @@ function users_func_search($data){
 /**
  * Checks login details, then redirects or returns an error.
  */
-function users_func_checkLogin($data){
+function login_func_checkLogin($data){
 	$user = $data['username'];
 	$pass = $data['password'];
 	$fromwhere = $data['fromURL'];
