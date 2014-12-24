@@ -4,7 +4,6 @@
  * Displays the content of the selected course;
  * 
  */
-	//include(TEMPLATE_PATH . 'views/' . 'course_display.php');
 	$courseID = $_GET['cid'];
 	
 	$query = "SELECT * FROM courses WHERE id='" . $courseID . "' AND open_trial='1' LIMIT 1";

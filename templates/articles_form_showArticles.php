@@ -60,7 +60,7 @@ function isArticleAlreadySelected($cdata, $aid){
 			$data = sql_get($sqlresult);
 			if(check_user_permission("content_view")){
 			echo '<td>';
-			echo "<a href=\"index.php?action=article&id=" . $data['ID'] ." \"><img src=\"" . ICONS_PATH . "magnifier.png\" alt=\"View\"/>" . $data['NAME'] . "</a>";
+			echo "<a href=\"articles.php?f=displayArticle&id=" . $data['ID'] ." \"><img src=\"" . ICONS_PATH . "magnifier.png\" alt=\"View\"/>" . $data['NAME'] . "</a>";
 			echo '</td>';
 			}
 			if(check_user_permission("content_modify")){

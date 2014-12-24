@@ -108,6 +108,7 @@ function mail_withAttachments($to,$subject,$message,$from,$filenames){
  */
 function mail_inform($to, $subj, $body) {
 	sendEmail($to, $subj, $body, SITE_EMAIL_AUTOMATED);
+	return true;
 }
 
 /**
@@ -122,7 +123,8 @@ function mail_informUser($uid, $subj, $body) {
 	$r = sql_execute($q);
 	$d = sql_get($r);
 
-	sendEmail($d['EMAIL'], $subj, $body, SITE_EMAIL_AUTOMATED);
+	$stat = sendEmail($d['EMAIL'], $subj, $body, SITE_EMAIL_AUTOMATED);
+	return $stat;
 }
 
 /**
@@ -142,11 +144,12 @@ function mail_informAllUsers($subj, $body) {
 	if (isset($allmails)) {
 		$toppl = implode(",", $allmails);
 		if (sendEmail($toppl, $subj, $body, SITE_EMAIL_AUTOMATED)) {
-			echo "All users have been notified of your request";
-		} else {echo "An error occured while sending the mail. Please try again later.";
-		}
+			return true;
+		} else {
+			return "failure";
+			}
 	} else {
-		echo "No mails were sent to anyone";
+		return "failure";
 	}
 }
 
@@ -221,9 +224,10 @@ function mail_informGroupAdmins($gid, $subj, $body) {
 	if (isset($allmails)) {
 		$toppl = implode(",", $allmails);
 		sendEmail($toppl, $subj, $body, SITE_EMAIL_AUTOMATED);
-		echo "Group admins have been notified of your request";
+		//echo "Group admins have been notified of your request";
+		return true;
 	} else {
-		echo "No mails were sent to anyone";
+		return "failure";
 	}
 }
 
@@ -234,7 +238,8 @@ function mail_informGroupAdmins($gid, $subj, $body) {
 function mail_informAdmin($subj, $body) {
 	$to = SITE_EMAIL;
 	$from = SITE_EMAIL;
-	sendEmail($to, $subj, $body, $from);
+	$tat = sendEmail($to, $subj, $body, $from);
+	return $stat;
 }
 
 /**

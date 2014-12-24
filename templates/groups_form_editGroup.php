@@ -14,7 +14,8 @@
 if($gid == false){
 	echo' <form name="newGroup" method="post" action="index.php?action=newGroup">';
 }else{
-	echo '<form name="newGroup" method="post" action="index.php?aq=upd_group&gid=' . $gid . '">';
+	echo '<form name="newGroup" method="post" action="groups.php?pq=updateGroup">';
+	echo '<input type="hidden" name="gid" value="' . $gid . '" />';
 }
 ?>
 <label for="groupName">Group Name</label>

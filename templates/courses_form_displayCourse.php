@@ -4,7 +4,6 @@
  * Displays the content of the selected course;
  * 
  */
-	//include(TEMPLATE_PATH . 'views/' . 'course_display.php');
 	$courseID = $_GET['cid'];
 	
 	if((!isset($_GET['uid'])) || ($_GET['uid'] != -1)){
@@ -18,7 +17,6 @@
 	
 	if($normUser == true && !isUserRegisteredForCourse($userID,$courseID)){
 		page_redirect('courses.php?f=register&cid=' . $courseID);
-//		echo '<META HTTP-EQUIV="Refresh" Content="0; URL=index.php?uq=reg_course&cid=' . $courseID . '">';
 		return false;
 	}
 	

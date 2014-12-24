@@ -23,7 +23,9 @@ function retrieve_groupName($gid){
  * 				gid - the id of the group to add to
  * 
  */
-function assign_group_admin($newUser, $gid){
+function groups_func_addGroupAdmin($data){
+	$newUser = $data['uid'];
+	$gid = $data['gid'];
 	$q = "SELECT adminusers FROM groupslist WHERE id='$gid' LIMIT 1";
 	$r = sql_execute($q);
 	$d = sql_get($r);
@@ -344,29 +346,6 @@ function createNewGroup(){
 }
 
 /**
- * Displays all the available group types
- * 
- */
-function view_all_groups_types(){
-	$sqlquery = "SELECT * FROM groups_types";
-	$sqlresult = sql_execute($sqlquery);
-	echo '<div style="width:50%; float:left">';
-	echo '<input name="grouptype_search" id="grouptype_search" value="Search Group Types" /><button>Search</button>';
-	br();br();
-	while($rowdata = sql_get($sqlresult)){
-		echo $rowdata['NAME'];
-		
-		echo "<a href=\"groups.php?f=editGroupType&id=" . $rowdata['ID'] ." \"> <img src=\"" . ICONS_PATH . "pencil.png\" alt=\"Edit\"/></a>";
-		echo "<a href=\"index.php?action=rm_groupType&id=" . $rowdata['ID'] ." \"> <img src=\"" . ICONS_PATH . "cancel.png\" alt=\"Delete\"/></a>";
-		br();
-		echo $rowdata['DESCRIPTION'];
-		br();br();
-	}
-	hr();
-	echo "</div>";
-}
-
-/**
  * Parameters:
  * 		id - 
  * 		newdesc -
@@ -385,46 +364,23 @@ function update_groupType($id, $newDesc){
 }
 
 /**
- * Displays all the groups
- * 
- */
-function view_all_groups(){
-	$sqlquery = "SELECT * FROM groupslist ORDER BY grouptype ASC";
-	$sqlresult = sql_execute($sqlquery);
-	echo '<div style="width:50%; float:left">';
-	echo '<input name="group_search" id="group_search" value="Search Groups" /><button>Search</button>';
-	br();br();
-
-	while($rowdata = sql_get($sqlresult)){
-		//echo $rowdata['NAME'];
-		echo "<a href=\"groups.php?f=viewGroup&gid=" . $rowdata['ID'] ." \">" . $rowdata['NAME'] . "</a>";
-		echo "<a href=\"groups.php?f=editItem&gid=" . $rowdata['ID'] ." \"> <img src=\"" . ICONS_PATH . "pencil.png\" alt=\"Edit\"/></a>";
-		echo "<a href=\"index.php?action=rem_group&group=" . $rowdata['ID'] ." \"> <img src=\"" . ICONS_PATH . "cancel.png\" alt=\"Delete\"/></a>";
-		br();
-		echo $rowdata['GROUPTYPE'];
-		br();
-		echo $rowdata['DESCRIPTION'];
-		br();br();
-	}
-	hr();
-	echo "</div>";
-}
-
-/**
  * Parameters:
  * 		gid - 
  * 		data - 
  * 
  */
-function update_group_item($gid, $data){
+function groups_func_updateGroup($data){
 	if(!check_user_permission('groups_modify')){
 		return false;
 	}
-	$groupName = makeSafe($_POST['groupName']);
-	$groupDesc = $_POST['groupDescription'];
-	$groupType = makeSafe($_POST['groupType']);
-	$closedT = makeSafe($_POST['closed']);
-	$autoJoin = makeSafe($_POST['autojoin']);
+	
+	$gid = $data['gid'];
+	
+	$groupName = makeSafe($data['groupName']);
+	$groupDesc = $data['groupDescription'];
+	$groupType = makeSafe($data['groupType']);
+	$closedT = makeSafe($data['closed']);
+	$autoJoin = makeSafe($data['autojoin']);
 	
 	$gq = "SELECT ID FROM groups_types WHERE name='$groupType' LIMIT 1";
 	$gd = sql_execute($gq);

@@ -96,24 +96,6 @@ function bill_calculateCoursesCost(){
 	return $bill_allUser;
 }
 }
- 
- /*
-function bill_calculateUserCost($amntUsers){
-		
-	$maxUsers = 100000;
-	$minPercent = 0.10;
-	$pricePerUser = 0.65;
-	$calcUsers = $maxUsers - ($maxUsers * $minPercent);
-
-	$i = $calcUsers - $amntUsers;
-	$j = $i / $maxUsers;
-
-	$userBill = floor(($j * $pricePerUser) * $amntUsers);
-	
-	return $userBill;
-	}
-* 
- */
 
 /**
  * Displays in MB the space on the bill

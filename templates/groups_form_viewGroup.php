@@ -87,7 +87,7 @@
 		echo $row['NAME'];
 		br();
 		if($curIsAdmin && (!isUserInGroupAdminID($row['ID'],$group))){
-					$link = '<a href="?aq=newgroupadmin&uid=' . $row['ID'] . '&gid=' . $group . '">Assign user as admin</a>';
+					$link = '<a href="groups.php?q=addGroupAdmin&uid=' . $row['ID'] . '&gid=' . $group . '">Assign user as admin</a>';
 					echo $link;
 				}
 	}
