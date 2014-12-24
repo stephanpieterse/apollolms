@@ -21,7 +21,7 @@ Course Info:
 <p>
 <?php
 if(userHasCoursePermission($userID,$courseID)){
-echo '<div class="centerfloat centertext"><a class="biglinkT2 asButton centertext greenButton" href="courses.php?q=registerForCourse&cid=' . $courseID . '">REGISTER FOR THIS COURSE</a></div>';
+	echo '<div class="centerfloat centertext"><a class="biglinkT2 asButton centertext greenButton" href="courses.php?q=registerForCourse&cid=' . $courseID . '">REGISTER FOR THIS COURSE</a></div>';
 }else{
 	echo '<div class="centertext centerfloat biglinkT1">You do not have access to this course item.</div>';
 }

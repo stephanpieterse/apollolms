@@ -206,7 +206,7 @@ function courses_func_activateRequest($data){ //activate_user_to_course($cid, $u
  * @param captcha_code
  * @param no_catch
  */
-function courses_func_registerForCourse($data){//register_user_to_course($cid, $uid, $paymentData = null){
+function courses_func_registerForCourse($data){
 	$cid = $data['cid'];
 	$uid = (isset($data['uid'])) ? $data['uid'] : $_SESSION['userID'];
 	//$paymentData = (isset($data['paymentData'])) ? $data['paymentData'] : null;
@@ -214,9 +214,8 @@ function courses_func_registerForCourse($data){//register_user_to_course($cid, $
 	$paymentData['captcha_code'] = (isset($data['captcha_code'])) ? $data['captcha_code'] : null;
 		
 		
-		
-		if((isUserRegisteredForCourse($uid,$cid))  || (isUserPendingForCourse($uid,$cid))){
-		page_redirect('courses.php?f=viewCourses','',array('SITE_INFO_MSG'=>'You have already been registered or a request is still pending for your registration.'));
+		if((isUserRegisteredForCourse($uid,$cid)) || (isUserPendingForCourse($uid,$cid))){
+			page_redirect('courses.php?f=viewCourses','',array('SITE_INFO_MSG'=>'You have already been registered or a request is still pending for your registration.'));
 		}
 		
 		$q = "SELECT * FROM course_registrations WHERE uid='$uid' LIMIT 1";
@@ -230,19 +229,23 @@ function courses_func_registerForCourse($data){//register_user_to_course($cid, $
 		
 		$d = sql_get($r);
 		
-		if(!$d['AUTOJOIN'] == 1 && !$d['PRICE'] == 0){
-			page_redirect('courses.php?f=paymentForm&cid=' . $cid);
-		}
-		
 		$newPending = $d['PENDING'];
 		
 		if($newPending == ''){
 			$newPending = "<pending></pending>";
 		}
 		
+		// GOTCHA : the r and d vars for sql change here. didnt notice this. sat a while with an issue with this.
+		//		it doesnt need to change, just watch out when adding new things.
+		
 		$q = "SELECT * FROM courses WHERE id='$cid' LIMIT 1";
 		$r = sql_execute($q);
 		$d = sql_get($r);
+		
+		if($d['AUTOJOIN'] != 1 && $d['PRICE'] != 0){
+			page_redirect('courses.php?f=paymentForm&cid=' . $cid);
+		}
+		
 		if(is_array($paymentData)){
 		
 			if(isset($paymentData['purchRef'])){
@@ -294,6 +297,7 @@ function courses_func_registerForCourse($data){//register_user_to_course($cid, $
 			courses_func_activateRequest(array('uid'=>$uid,'cid'=>$cid));
 			page_redirect('courses.php?f=displayCourse&cid=' . $cid);
 		}
+		return true;
 }
 
 /**

@@ -26,9 +26,9 @@
 
 ?>
 <p>
-Your Reference Number: <?php echo $userReferenceNum; ?>
+Your Reference Number: <b><?php echo $userReferenceNum; ?></b>
 <br/>
-Price of this course: R <?php echo $courseprice; ?>
+Price of this course:<b>R <?php echo $courseprice; ?></b>
 </p>
 <p><h1>Pay manually:</h1>
 <span class="bold">Banking details:</span><br/>
@@ -66,7 +66,9 @@ Pay via Paypal <a></a>
 <input type="image" src="http://www.paypalobjects.com/en_US/i/btn/btn_buynow_LG.gif" border="0" name="submit" alt="Make payments with PayPal - it's fast, free and secure!">
 </form>
 <?php
-} //endif
+}else{
+	echo "Paypal account details are not yet available.<br/>";
+	} //endif
 ?>
 <?php
 	$payfastaccount = get_site_payfast_account();
@@ -92,6 +94,8 @@ Pay via Paypal <a></a>
 <input type="hidden" name="confirmation_address" value="<?php echo SITE_EMAIL;?>" />
 </form>
 <?php
-	}//endif payfast
+	}else{
+	echo "Payfast account details are not yet available.<br/>";
+	} //endif
 ?>
 </p>
