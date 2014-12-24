@@ -60,7 +60,6 @@ $dispatch_action = array(
 	'lostpassword2'=>function(){lostPassword2();},
 	'checkSecurityQ'=>function(){checkSecurityQ();},
 	'updatePasswordOnly'=>function(){updatePasswordOnly($_POST['newPass'],$_POST['nameCell']);},
-	'submitHelp'=>function(){submitHelpMsg();},
 	'rem_helpmsg'=>function(){deleteHelpMsg($_GET['msgid']); goToLastPage();},
 	'course'=>function(){displayCourse($_GET['id']);},
 	'article'=>function(){displayArticle($_GET['id'], $_GET['cid']);},
@@ -69,7 +68,6 @@ $dispatch_action = array(
 	'addNewArticle'=>function(){add_new_article(); goToLastPage();},
 	'updateRoleItem'=>function(){updateRoleItem($_GET['id'],$_POST);},
 	'del_role'=>function(){rm_roleItem($_GET['id']);},
-	'addToGroup'=>function(){addGroupData();},
 	'rem_group'=>function(){removeItem('groupslist', $_GET['group']);},//removeGroupData($_GET['group']);},
 	'insertNewGroupType'=>function(){insertNewGroupType($_POST['name'], $_POST['description']); goToLastPage();},
 	'rm_groupType'=>function(){rm_groupType($_GET['id']);},
@@ -88,7 +86,6 @@ $dispatch_action = array(
 	'set_module_a'=>function(){setModuleStatus($_GET['mid'], 1);},
 	'set_module_i'=>function(){setModuleStatus($_GET['mid'], 0);},
 	'a_del_result'=>function(){if(deleteTestResult($_GET['id']) !== true){goHome("permission_denied");}else{ goToLastPage();}},
-	'view_role'=>function(){viewRoleItem($_GET['role']);},
 	'mv_art'=>function(){moveNode('courses', $_GET['id'], 'ARTICLES', $_GET['aid'], $_GET['dir']);goToLastPage();},
 	'uplcsvuser'=>function(){importCSVFileToUser($_FILES, $_POST);},
 );

@@ -1,7 +1,7 @@
 <p>
 If you are unable to contact the developer or content managers in any way, please leave a message regarding the problem you are having in the box below. A technician will have a look at the situation and (if possible) contact you regarding the matter.
 
-<form name="msgForm" method="post" action="index.php?action=submitHelp">
+<form name="msgForm" method="post" action="logins.php?pq=submitHelp">
 
 <?php
 	if(!isset($_SESSION['userID'])){
