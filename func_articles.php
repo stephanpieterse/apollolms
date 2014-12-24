@@ -157,8 +157,9 @@ function sidebarIndex($course,$article){
 	if($course >= 1){
 	echo '<div class="sidebarIndex css-treeview" >';
 	//	echo "Course";
-		displayCourseIndex($course);
-		br();
+		//displayCourseIndex($course);
+		//br();
+		include(TEMPLATE_PATH . 'courses_form_displayCourseIndex.php');
 		echo print_bold("Article Index");
 		
 		br();

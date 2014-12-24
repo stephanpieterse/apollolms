@@ -70,31 +70,31 @@ if(!check_user_permission("roles_add")){
 	
 	$q = "SELECT * FROM roles WHERE rolename='$rolename' LIMIT 1";
 	$r = sql_execute($q);
-	if(sql_numrows($r) != 1){
 	
-	$xmlDoc = new DOMDocument();
-	$rootNode = $xmlDoc->createElement("permissions");
-	$xmlDoc->appendChild($rootNode);
-	foreach($data as $key=>$value){
-		if((isset($key)) && (($key == "Submit") || ($key == "rolename"))){
-		continue;
+	if(sql_numrows($r) != 1){
+		$xmlDoc = new DOMDocument();
+		$rootNode = $xmlDoc->createElement("permissions");
+		$xmlDoc->appendChild($rootNode);
+		foreach($data as $key=>$value){
+			if((isset($key)) && (($key == "Submit") || ($key == "rolename"))){
+			continue;
+			}
+			
+			if(isset($value)){
+			$value = makeSafe($value);
+			$childBase = $xmlDoc->createElement($key);
+			$content = $xmlDoc->createTextNode('1');
+			$text = $childBase->appendChild($content);
+			$childRef = $rootNode->appendChild($childBase);		
+			}
 		}
-		
-		if(isset($value)){
-		$value = makeSafe($value);
-		$childBase = $xmlDoc->createElement($key);
-		$content = $xmlDoc->createTextNode('1');
-		$text = $childBase->appendChild($content);
-		$childRef = $rootNode->appendChild($childBase);		
-		}
-	}
-	$permissionsXML = $xmlDoc->saveHTML();
-	$query = "INSERT INTO roles(rolename, permissions) VALUES('$rolename','$permissionsXML')";
-	$result = sql_execute($query);
-	goHome("role_add_success");
+		$permissionsXML = $xmlDoc->saveHTML();
+		$query = "INSERT INTO roles(rolename, permissions) VALUES('$rolename','$permissionsXML')";
+		$result = sql_execute($query);
+		return true;
 	}
 	else{
-		goHome("role_add_failure");
+		return "role_add_failure";
 	}		
 }
 
