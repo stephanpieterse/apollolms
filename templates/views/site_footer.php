@@ -5,6 +5,7 @@
 <div class="wrapper col5 bannercolour">
   <div id="footer">
     <div id="newsletter">
+		<img src="media/bottomAdDefault.png" title="Default Ad"/>
     </div>
     <div class="footbox">
     	<h2>Misc</h2>
@@ -32,6 +33,9 @@
 		<li><a target="_blank" href="http:/apollolms.co.za/info/standard_pp.pdf" title="View the privacy policy">Privacy Policy</a></li>
 		<li><a target="_blank" href="http://wiki.apollolms.co.za/index.php/Help:FAQ" title="View the privacy policy">F.A.Q.</a></li>
       </ul>
+    </div>
+    <div class="footbox">
+    <!-- Just a spacer -->
     </div>
     <br class="clear" />
   </div>
