@@ -53,6 +53,31 @@ function scanForFiles($dir,$prefix = ''){
   return $result; 
 }
 
+/*
+ * Recursively deletes entire folder and subs.
+ * */
+
+function media_func_rmFolder($data){
+	$fileName = $data['folder'];
+	chdir(dirname(__FILE__));
+	if (check_user_permission('media_remove')){
+		
+		if(file_exists($fileName)){
+			foreach(scanForFiles($fileName) as $fname){
+				$cname = $filename . '/' . $fname;
+				if(is_dir($cname)){
+						media_func_rmFolder(array('folder'=>$cname));
+				}else{
+					unlink($fileName . '/' . $fname);
+				}
+			}
+			rmdir($fileName);
+			return true;
+		}
+	}
+	return false;
+}
+
 /**
  * Makes a new folder
  * */
