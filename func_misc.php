@@ -532,7 +532,7 @@ function logAction($getDataSet,$customData = ""){
 		$ref = $rootNode->appendChild($newNode);			
 		
 	$xmlData = $xmlDoc->saveHTML();
-	$xmlData = mysqli_real_escape_string($xmlData);
+	$xmlData = mysqli_real_escape_string($GLOBALS['sqlcon'],$xmlData);
 	$q = "UPDATE member_view_history SET history='$xmlData' WHERE uid='" . $_SESSION['userID'] . "'";
 	$r = sql_execute($q);
 	
