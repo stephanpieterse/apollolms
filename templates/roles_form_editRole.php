@@ -16,7 +16,8 @@
 	if($new){
 		echo '<form class="roleForm" name="addRole" method="post" action="roles.php?pq=newRoleItem">';
 	}else{
-		echo '<form class="roleForm" name="editRole" method="post" action="index.php?action=updateRoleItem&id=' . $_GET['rid'] .  '">';
+		echo '<form class="roleForm" name="editRole" method="post" action="roles.php?pq=updateRoleItem">';
+		echo '<input type="hidden" name="rid" value="' . $_GET['rid'] . '" />';
 	}
 
 ?>

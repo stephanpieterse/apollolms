@@ -31,13 +31,17 @@ function roles_func_rm_roleItem($data){
 /**
  * Updates a given role item
  * */
-function updateRoleItem($rid, $data){
-if(check_user_permission("roles_modify")){
+function roles_func_updateRoleItem($data){
+if(!check_user_permission("roles_modify")){
+	return false;
+}
+	$rid = $data['rid'];
+
 	$xmlDoc = new DOMDocument();
 	$rootNode = $xmlDoc->createElement("permissions");
 	$xmlDoc->appendChild($rootNode);
 	foreach($data as $key=>$value){
-		if((isset($key)) && (($key == "Submit") || ($key == "rolename"))){
+		if((isset($key)) && (($key == "rid") || ($key == "Submit") || ($key == "rolename"))){
 		continue;
 		}
 		
@@ -52,11 +56,8 @@ if(check_user_permission("roles_modify")){
 	$permissionsXML = $xmlDoc->saveHTML();
 	$query = "UPDATE roles SET permissions='$permissionsXML' WHERE id='$rid'";
 	$result = sql_execute($query);
-	page_redirect('index.php?msg=role_add_success');
-	}
-	else{
-	page_redirect('index.php?msg=role_add_failure');
-	}
+	//page_redirect('index.php?msg=role_add_success');
+	return true;
 }
 
 /**

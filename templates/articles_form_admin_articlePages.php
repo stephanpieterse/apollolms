@@ -33,7 +33,7 @@
 					$aQ = "SELECT * FROM pages WHERE id='" . $artID . "' LIMIT 1";
 					$aR = sql_execute($aQ);
 					$adata = sql_get($aR);
-						$dataArray[$curI]['NAME'] = '<a target="_blank" href=?uq=viewPage&pnm=' . $x . '&aid=' . $aid . '>' . $adata['NAME'] . '</a>';
+						$dataArray[$curI]['NAME'] = '<a target="_blank" href="index.php?uq=viewPage&pnm=' . $x . '&aid=' . $aid . '">' . $adata['NAME'] . '</a>';
 						$dataArray[$curI]['LINKS'][] = '<a href="pages.php?f=mod_page&pid=' . $artID . '"><img src="' . ICONS_PATH . 'pencil.png" alt="Edit"/> Edit</a>';
 						$dataArray[$curI]['LINKS'][] =  "<a href=\"index.php?aq=mv_page&aid=" . $aid ."&dir=up&pid=". $x ." \"><img src=\"" . ICONS_PATH . "arrow_up.png\" alt=\"Move Up\"/></a>";
 						$dataArray[$curI]['LINKS'][] =  "<a href=\"index.php?aq=mv_page&aid=" . $aid ."&dir=down&pid=" . $x ." \"><img src=\"" . ICONS_PATH . "arrow_down.png\" alt=\"Move Down\"/></a>";

@@ -6,7 +6,7 @@
 	?>
 	
 	<p><a href="articles.php?f=showArticles&id=<?php echo $data['COURSE'] ?>">Back to Course</a></p>
-	<p><a href="index.php?aq=newPage&aid=<?php echo $_GET['aid'] ?>">Add a New Page</a></p>
+	<p><a href="pages.php?f=edit&aid=<?php echo $_GET['aid'] ?>">Add a New Page</a></p>
 	<p><a href="index.php?aq=new_page_resource&aid=<?php echo $_GET['aid']; ?>">Add a New Resource</a></p>
 	
 	<?php

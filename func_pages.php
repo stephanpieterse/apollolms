@@ -110,6 +110,7 @@ function a_page_AddNewData($aid,$pdata){
 	$q = "UPDATE articles SET pages='$newXML' WHERE id='$aid'";
 	$r = sql_execute($q);
 	
+	return true;	
 }
 
 function a_update_page($id,$data){

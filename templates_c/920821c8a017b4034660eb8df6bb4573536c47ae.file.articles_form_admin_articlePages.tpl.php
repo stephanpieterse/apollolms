@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.17, created on 2014-05-22 16:11:24
+<?php /* Smarty version Smarty-3.1.17, created on 2014-12-24 14:40:31
          compiled from "./templates/articles_form_admin_articlePages.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:570364899537e21ac08ca57-53381430%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '920821c8a017b4034660eb8df6bb4573536c47ae' => 
     array (
       0 => './templates/articles_form_admin_articlePages.tpl',
-      1 => 1400775033,
+      1 => 1419431918,
       2 => 'file',
     ),
   ),
@@ -15,16 +15,25 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'function' => 
   array (
   ),
+  'version' => 'Smarty-3.1.17',
+  'unifunc' => 'content_537e21ac167797_30162683',
   'variables' => 
   array (
+    'headerData' => 0,
     'pageData' => 0,
     'link' => 0,
   ),
   'has_nocache_code' => false,
-  'version' => 'Smarty-3.1.17',
-  'unifunc' => 'content_537e21ac167797_30162683',
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_537e21ac167797_30162683')) {function content_537e21ac167797_30162683($_smarty_tpl) {?><div name="custUserArea" id="custUserArea">
+
+<p><a href="courses.php?f=editArticles&id=<?php echo $_smarty_tpl->tpl_vars['headerData']->value['COURSE'];?>
+">Back to Article</a></p>
+<p><a href="pages.php?f=edit&aid=<?php echo $_smarty_tpl->tpl_vars['headerData']->value['AID'];?>
+">Add a New Page</a></p>
+<p><a href="articles.php?f=editResource&aid=<?php echo $_smarty_tpl->tpl_vars['headerData']->value['AID'];?>
+">Add a New Resource</a></p>
+
 <table class="admin_view_table">
 <?php if (isset($_smarty_tpl->tpl_vars['smarty']->value['section']['sec1'])) unset($_smarty_tpl->tpl_vars['smarty']->value['section']['sec1']);
 $_smarty_tpl->tpl_vars['smarty']->value['section']['sec1']['name'] = 'sec1';

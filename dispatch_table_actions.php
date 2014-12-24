@@ -16,7 +16,6 @@
 
 $dispatch_aq = array(
 	'rm_page'=>function(){removeItem('pages', $_GET['pid']); verifyXML('articles',$_GET['aid']);},
-	'newPage'=>function(){include(TEMPLATE_PATH . 'form_edit_page.php');},
 	'add_page'=>function(){a_page_AddNewData($_GET['aid'],$_POST); goToLastPage("add_success");},
 	'upd_page'=>function(){a_update_page($_GET['pid'],$_POST); goToLastPage("update_success");},
 	'rm_article'=>function(){removeItem('articles', $_GET['aid']); verifyXML('courses',$_GET['cid']);},
@@ -56,9 +55,7 @@ $dispatch_action = array(
 	'checkSecurityQ'=>function(){checkSecurityQ();},
 	'updatePasswordOnly'=>function(){updatePasswordOnly($_POST['newPass'],$_POST['nameCell']);},
 	'rem_helpmsg'=>function(){deleteHelpMsg($_GET['msgid']); goToLastPage();},
-	'linkArtData'=>function(){linkArtToCou($_GET['cid'], $_POST);},
 	'insertResult'=>function(){insertResult($_POST);goHome("result_add_success");},
-	'updateRoleItem'=>function(){updateRoleItem($_GET['id'],$_POST);},
 	'del_role'=>function(){rm_roleItem($_GET['id']);},
 	'rem_group'=>function(){removeItem('groupslist', $_GET['group']);},//removeGroupData($_GET['group']);},
 	'insertNewGroupType'=>function(){insertNewGroupType($_POST['name'], $_POST['description']); goToLastPage();},
