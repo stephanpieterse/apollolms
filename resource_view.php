@@ -27,7 +27,7 @@ if(isset($_GET['f'])){
 	$mediaData = new getID3;
 	
 	if(!fopen($file,'r')){
-		echo "The specified file could not be opened. Please contact your site / course administrator or report this page to have the issue resolved.";
+		echo "<p>The specified file could not be opened. Please contact your site / course administrator or report this page to have the issue resolved. We apologise for any inconvenience caused. </p>";
 	}else{
 
 	$downloaddir = "symlinks/";

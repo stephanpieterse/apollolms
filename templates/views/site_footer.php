@@ -5,8 +5,10 @@
 <div class="wrapper col5 bannercolour">
   <div id="footer">
     <div id="newsletter">
-		<img src="media/bottomAdDefault.png" title="Default Ad"/>
+		<div><img src="media/bottomAdDefault.png" title="Default Ad"/></div>
+		<div>ads section not populated yet</div>
     </div>
+    <script type="text/javascript" src="scripts/ad-slideshow.js"></script>
     <div class="footbox">
     	<h2>Misc</h2>
     	<ul>
