@@ -93,7 +93,8 @@ function media_func_mkNewFolder($data){
 /**
  * Deletes a file
  * */
-function removeFile($fileName){
+function media_func_removeFile($data){
+	$filename = $data['media'];
 	chdir(dirname(__FILE__));
 	if (check_user_permission('media_remove')){
 		if(file_exists($fileName)){

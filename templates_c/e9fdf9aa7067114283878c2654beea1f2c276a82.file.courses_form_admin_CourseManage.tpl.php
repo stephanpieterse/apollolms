@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.17, created on 2014-12-19 15:35:32
+<?php /* Smarty version Smarty-3.1.17, created on 2014-12-25 19:50:12
          compiled from "./templates/courses_form_admin_CourseManage.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:173342726753767dcc13c7c1-21003016%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'e9fdf9aa7067114283878c2654beea1f2c276a82' => 
     array (
       0 => './templates/courses_form_admin_CourseManage.tpl',
-      1 => 1418996758,
+      1 => 1419533759,
       2 => 'file',
     ),
   ),
@@ -25,8 +25,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_53767dcc1d6135_98800533')) {function content_53767dcc1d6135_98800533($_smarty_tpl) {?><table class="admin_view_table">
-	<noscript>
+<?php if ($_valid && !is_callable('content_53767dcc1d6135_98800533')) {function content_53767dcc1d6135_98800533($_smarty_tpl) {?><noscript>
 	<form method="GET" action="courses.php">
 	<input name="s" type="text" value="Search"/>
 	<input type="submit" value="Search"/>
@@ -37,6 +36,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 	document.write('<input class="searchBox" type="text" id="searchbox_courses" name="searchbox_courses" value="" />');
 	document.write('<input class="searchButton" type="button" onclick="searchForCoursesComplete(document.getElementById(\'searchbox_courses\').value);" value="Search"/>');
 	</script>
+<table class="admin_view_table">
 
 <?php if (isset($_smarty_tpl->tpl_vars['smarty']->value['section']['sec1'])) unset($_smarty_tpl->tpl_vars['smarty']->value['section']['sec1']);
 $_smarty_tpl->tpl_vars['smarty']->value['section']['sec1']['name'] = 'sec1';
@@ -66,11 +66,6 @@ $_smarty_tpl->tpl_vars['smarty']->value['section']['sec1']['last']       = ($_sm
 	<td>
 	<?php echo $_smarty_tpl->tpl_vars['courseData']->value[$_smarty_tpl->getVariable('smarty')->value['section']['sec1']['index']]['NAME'];?>
 
-	</td>
-	<td>
-	<a href="mail.php?f=compose&to=course&cid=<?php echo $_smarty_tpl->tpl_vars['courseData']->value[$_smarty_tpl->getVariable('smarty')->value['section']['sec1']['index']]['ID'];?>
-"><img src="<?php echo @constant('ICONS_PATH');?>
-email_edit.png" alt="Mail"/></a>
 	</td>
 	<?php  $_smarty_tpl->tpl_vars['link'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['link']->_loop = false;
  $_from = $_smarty_tpl->tpl_vars['courseData']->value[$_smarty_tpl->getVariable('smarty')->value['section']['sec1']['index']]['LINKS']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
@@ -114,11 +109,6 @@ $_smarty_tpl->tpl_vars['smarty']->value['section']['sec1']['last']       = ($_sm
 	<td>
 	<?php echo $_smarty_tpl->tpl_vars['coursePackagesData']->value[$_smarty_tpl->getVariable('smarty')->value['section']['sec1']['index']]['NAME'];?>
 
-	</td>
-	<td>
-	<a href="mail.php?f=compose&to=course&cid=<?php echo $_smarty_tpl->tpl_vars['coursePackagesData']->value[$_smarty_tpl->getVariable('smarty')->value['section']['sec1']['index']]['ID'];?>
-"><img src="<?php echo @constant('ICONS_PATH');?>
-email_edit.png" alt="Mail"/></a>
 	</td>
 	<?php  $_smarty_tpl->tpl_vars['link'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['link']->_loop = false;
  $_from = $_smarty_tpl->tpl_vars['coursePackagesData']->value[$_smarty_tpl->getVariable('smarty')->value['section']['sec1']['index']]['LINKS']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}

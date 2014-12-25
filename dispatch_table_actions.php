@@ -25,7 +25,6 @@ $dispatch_aq = array(
 	'mv_tstQ'=>function(){moveNode('tests', $_GET['id'], 'QUESTIONS', $_GET['qid'], $_GET['dir']);},
 	'mod_test_prerequisites'=>function(){mod_test_prerequisites($_GET['tid']);},
 	'rem_test'=>function(){removeItem('tests', $_GET['id']); goToLastPage();},
-	'rem_media'=>function(){removeFile($_GET['media']); goToLastPage();},
 	'module_settings_update'=>function(){module_update_settings($_GET['mid'],$_POST); goToLastPage();},
 	'uploadModule'=>function(){installModule($_FILES);goToLastPage();},
 );

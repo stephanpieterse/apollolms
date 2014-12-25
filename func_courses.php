@@ -648,7 +648,7 @@ function userHasCourseTime($uid,$cid){
 }
 
 /**
- * @todo: the function itself seems to work now
+ * @todo: the function itself seems to work now, so maybe integrate it into somewhere
  */
 function make_certificate($certificateBody, $user){
 	//$svg = SVGDocument::getInstance( $certificateBody );
