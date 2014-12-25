@@ -17,8 +17,8 @@ if(!isset($res)){
 }else{
 	echo 'courses.php?pq=updateResource';
 }
-echo '" >';
 ?>
+>
 Please provide the URL for the resource to be embedded.
 	<label for="resname">Name: </label><input style="width:50%;" type="text" id="resname" name="resource_name" value="<?php if(isset($res)){echo $resname;} ?>" /><br/>
 	<label for="resurl">URL: </label><input style="width:50%;" type="text" id="resurl" name="resource_url" value="<?php if(isset($res)){echo urldecode($resurl);} ?>" /><br/>
@@ -26,3 +26,4 @@ Please provide the URL for the resource to be embedded.
 	<?php if(isset($res)){ echo '<input type="hidden" name="resid" value="' . $res . '" />';} ?>
 	<input type="submit" value="Submit" />
 </form>
+Or select a file from Media
