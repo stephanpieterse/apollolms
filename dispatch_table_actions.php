@@ -72,9 +72,4 @@ $dispatch_action = array(
 	'mv_art'=>function(){moveNode('courses', $_GET['id'], 'ARTICLES', $_GET['aid'], $_GET['dir']);goToLastPage();},
 	'uplcsvuser'=>function(){importCSVFileToUser($_FILES, $_POST);},
 );
-
-$dispatch_mail = array(
-	//'allgroupmembers'=>function(){mail_informGroupUsers($_POST['gid'],$_POST['subject'],$_POST['msgbox']);},
-	//'allmembers'=>function(){mail_informAllUsers($_POST['subject'],$_POST['msgbox']);},
-);
 ?>

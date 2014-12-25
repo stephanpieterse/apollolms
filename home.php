@@ -17,12 +17,7 @@ if(isset($_SESSION['userID'])){
 		$aq = isset( $_GET['aq'] ) ? $_GET['aq'] : "";
 		$gq = isset( $_GET['gq'] ) ? $_GET['gq'] : "";
 		$mq = isset( $_GET['mq'] ) ? $_GET['mq'] : "";
-		$mailq = isset( $_GET['mail'] ) ? $_GET['mail'] : "";
 
-		
-		//unset($_SESSION['searchResults']);	
-
-		
 		 // Display a status message
 		
 		if(isset($msg)){
@@ -50,10 +45,6 @@ REF;
 	 }
 	 
 	 $Home = true;
-	if((isset($mail)) && ($uq != "") && (isset($dispatch_mail[$mail])) && $loggedIn){
-		call_user_func($dispatch_mail[$mail],"");
-		$Home = false;
-	 }
 	if(isset($_GET['confirm']) && ($_GET['confirm'] != 1)){
 		include(TEMPLATE_PATH . "form_confirm_action.php");
 	}else{
