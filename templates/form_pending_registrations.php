@@ -32,7 +32,7 @@
 			$cq = "SELECT name FROM courses WHERE id='$curCID'";
 			$cr = sql_execute($cq);
 			$cd = sql_get($cr);
-			$link = $cd['name'] . '<a href="?aq=reg_course_pendact&cid=' . $curCID . '&uid=' . $d['UID'] . '"> Activate</a>';
+			$link = $cd['name'] . '<a href="courses.php?q=activateRequest&cid=' . $curCID . '&uid=' . $d['UID'] . '"> Activate</a>';
 			echo $link;
 			echo $reference;
 			br();

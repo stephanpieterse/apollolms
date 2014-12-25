@@ -65,13 +65,13 @@ REF;
 
 		$Home = false;
 	}
-	
+	/*
 	if((isset($mq)) && ($mq != "") && (isset($_GET['mi'])) && $loggedIn){
 		module_getCSS($_GET['mi']);
 		module_runFunction($_GET['mi'],$mq,$_GET);
 		$Home = false;
 	}
-	
+	*/
 	if($Home){
 	//	defaultHome();
 	}

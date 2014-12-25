@@ -139,6 +139,7 @@ class Controller {
 		$gq = (isset($GETDAT['gq']) ? $GETDAT['gq'] : null);
 		$fq = (isset($GETDAT['fq']) ? $GETDAT['fq'] : null);
 		$s = (isset($GETDAT['s']) ? $GETDAT['s'] : null);
+		$mq = (isset($GETDAT['mq']) ? $GETDAT['mq'] : null);
 		$msg = (isset($GETDAT['msg']) ? $GETDAT['msg'] : null);
 		$searchFor = (isset($POSTDAT['search']) ? $POSTDAT['search'] : null);
 		
@@ -166,6 +167,7 @@ class Controller {
 		if(isset($fq)){
 			$queryToExec = $funcPre . $fq;
 			if(function_exists($queryToExec)){
+				$POSTDAT = (isset($POSTDAT) ? $POSTDAT : array());
 				$POSTDAT = array_merge($POSTDAT,$_FILES);
 				$stat = call_user_func($queryToExec, $POSTDAT);
 				if($stat !== false){
@@ -185,7 +187,7 @@ class Controller {
 			exit;
 		}
 		
-		if(!isset($s) && !isset($pq) && !isset($q) && !isset($f) && !isset($searchFor)){
+		if(!isset($s) && !isset($mq) && !isset($pq) && !isset($q) && !isset($f) && !isset($searchFor)){
 			//$this->build_header();
 			$f = 'home';
 		}
@@ -206,6 +208,14 @@ class Controller {
 				goHome('404');
 			}
 			
+		}
+		
+		if((isset($mq)) && (isset($GETDAT['mi']))){
+			if(!$this->headerBuilt){$this->build_header();}
+			$this->build_navigation();
+			markLastPage($GETDAT);
+			module_getCSS($GETDAT['mi']);
+			module_runFunction($GETDAT['mi'],$mq,$GETDAT);
 		}
 		
 		if(isset($gq)){

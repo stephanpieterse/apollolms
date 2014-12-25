@@ -1,10 +1,5 @@
 <!-- production -->
 <script type="text/javascript" src="<?php echo SCRIPTS_PATH ?>/plupload/js/plupload.full.min.js"></script>
-
-<!-- debug 
-<script type="text/javascript" src="../js/moxie.js"></script>
-<script type="text/javascript" src="../js/plupload.dev.js"></script>
--->
 <div id="filelist">Your browser doesn't have Flash, Silverlight or HTML5 support.</div>
 <br />
 
@@ -12,6 +7,7 @@
 	Files can be a maximum of 500MB in size.<br>
     <a id="pickfiles" href="javascript:;">[Select files]</a> 
     <a id="uploadfiles" href="javascript:;">[Upload files]</a>
+    <a id="clearfiles" href="javascript:;">[Clear files]</a>
 </div>
 
 <br />
@@ -26,7 +22,7 @@ var uploader = new plupload.Uploader({
 	url : 'uploads.php<?php if(isset($_GET['dir'])){echo '?ppath=' . rawurlencode($_GET['dir']);} ?>',
 	flash_swf_url : '<?php echo SCRIPTS_PATH ?>/plupload/js/Moxie.swf',
 	silverlight_xap_url : '<?php echo SCRIPTS_PATH ?>/plupload/js/Moxie.xap',
-	chunk_size:'2mb',
+	chunk_size:'1mb',
 	
 	filters : {
 		max_file_size : '500mb',
@@ -48,6 +44,7 @@ var uploader = new plupload.Uploader({
 				uploader.start();
 				return false;
 			};
+			
 		},
 
 		FilesAdded: function(up, files) {
@@ -67,4 +64,12 @@ var uploader = new plupload.Uploader({
 });
 
 uploader.init();
+
+$('#clearfiles').click(function(e) {
+    $.each(uploader.files, function(i, file) {
+            uploader.removeFile(file);
+       });
+      document.getElementById('filelist').innerHTML = '';
+      document.getElementById('console').innerHTML = '';
+});
 </script>

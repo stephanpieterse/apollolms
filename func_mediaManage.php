@@ -5,10 +5,10 @@
  * @package ApolloLMS
  * @author Stephan Pieterse
  * */
-function fileUpload(){
+function media_func_fileUploadBasic(){
 	if((bill_calculateSpaceUsed() * 1024 + $_FILES['uploadedfile']['size']) > MAX_TOTAL_UPLOADS){
 		return false;
-		}
+	}
 	
 	// Where the file is going to be placed
 	$target_path = "uploads/";

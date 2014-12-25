@@ -1,5 +1,4 @@
-<table class="admin_view_table">
-	<noscript>
+<noscript>
 	<form method="GET" action="courses.php">
 	<input name="s" type="text" value="Search"/>
 	<input type="submit" value="Search"/>
@@ -10,6 +9,7 @@
 	document.write('<input class="searchBox" type="text" id="searchbox_courses" name="searchbox_courses" value="" />');
 	document.write('<input class="searchButton" type="button" onclick="searchForCoursesComplete(document.getElementById(\'searchbox_courses\').value);" value="Search"/>');
 	</script>
+<table class="admin_view_table">
 
 {section name=sec1 loop=$courseData}
 	<tr>

@@ -22,7 +22,6 @@ $dispatch_aq = array(
 	'mv_page'=>function(){moveNode('articles', $_GET['aid'], 'PAGES', $_GET['pid'], $_GET['dir']); goToLastPage();},
 	'rnmeFile'=>function(){renameFile(($_GET['dir'] . $_GET['file']), ($_GET['dir'] . $_POST['newFileName'])); goToLastPage();},
 	'mve_file'=>function(){renameFile(($_POST['dir'] . makeSafe($_POST['file'])), ($_POST['rootDirPath'] . $_POST['file'])); goToLastPage();},
-	'reg_course_pendact'=>function(){activate_user_to_course($_GET['cid'],$_GET['uid']); goToLastPage();},
 	'mv_tstQ'=>function(){moveNode('tests', $_GET['id'], 'QUESTIONS', $_GET['qid'], $_GET['dir']);},
 	'mod_test_prerequisites'=>function(){mod_test_prerequisites($_GET['tid']);},
 	'rem_test'=>function(){removeItem('tests', $_GET['id']); goToLastPage();},
@@ -35,7 +34,6 @@ $dispatch_uq = array(
 	'upload_profilePicture'=>function(){upload_profilePicture($_FILES);},
 	'viewPage'=>function(){displayPage($_GET['pnm'], $_GET['aid']);},
 	'submitRequest'=>function(){submitContentRequest($_POST);},
-	'reg_course_pend'=>function(){if(register_user_to_course($_GET['cid'],$_SESSION['userID'],$_POST)){ goHome('register_success');}},
 );
 
 $dispatch_action = array(
@@ -59,7 +57,6 @@ $dispatch_action = array(
 	'mod_test_rmQuestion'=>function(){rm_question($_GET['tid'],$_GET['qid']);},
 	'addQuestion'=>function(){mod_test_addQuestion($_GET['id'], $_POST['question_type']);},
 	'insertQuestion'=>function(){mod_test_insertQuestion($_GET['id'], $_POST); goToLastPage();},
-	'uploadFile'=>function(){fileUpload();},
 	'mknewFolder'=>function(){makeNewFolder($_POST['rootDirPath'] . $_POST['newFolderName']);},
 	'set_module_a'=>function(){setModuleStatus($_GET['mid'], 1);},
 	'set_module_i'=>function(){setModuleStatus($_GET['mid'], 0);},
