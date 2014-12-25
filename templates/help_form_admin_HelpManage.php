@@ -15,7 +15,7 @@
 		echo $row['HELPMSG'];
 				
 		if(check_user_permission("help_remove")){
-		echo "<a href=\"index.php?action=rem_helpmsg&msgid=" . $row['ID'] ." \"> <img src=\"" . ICONS_PATH . "cancel.png\" alt=\"Delete\"/></a>";
+		echo "<a href=\"help.php?q=deleteMsg&msgid=" . $row['ID'] ." \"> <img src=\"" . ICONS_PATH . "cancel.png\" alt=\"Delete\"/></a>";
 		echo "<br />";
 		}
 		}

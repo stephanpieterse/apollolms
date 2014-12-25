@@ -86,11 +86,10 @@ if(check_user_permission('results_view',true)){
 if(check_user_permission(array('module_enable','module_move','module_install'),true)){
 	$link = '<li><a href="modules.php?f=admin_ModuleManage"><img src="' . ICONS_PATH . 'server.png"/>Modules</a><ul>';
 	if(check_user_permission("module_install")){
-	$link .= '<li><a href="index.php?aq=frm_installModule">Install a module</a></li>';
+	$link .= '<li><a href="modules.php?f=installModule">Install a module</a></li>';
 	}
 	$link .= '</ul></li>';
 	echo $link;
-	
 }
 if(check_user_permission('test_mark',true)){
 	echo '<li><a href="tests.php?f=viewAllResultsMarkable"><img src="' . ICONS_PATH . 'report_edit.png"/>Mark Tests</a></li>';

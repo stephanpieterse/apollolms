@@ -5,7 +5,9 @@
  * 
  * */
 
-function deleteHelpMsg($msgid){
+function help_func_deleteMsg($data){
+	$msgid = $data['msgid'];
+	
 	$query = 'SELECT * FROM help WHERE id="' . $msgid . '"';
 	$result = sql_get(sql_execute($query));
 	backupData($result, ("Help message " . $msgid . " " . $result['HELPMSG']), 'help');
@@ -51,5 +53,4 @@ function submitContentRequest($data){
 	
 	return 'success';
 }
-
 ?>

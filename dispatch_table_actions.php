@@ -28,7 +28,6 @@ $dispatch_aq = array(
 	'rem_test'=>function(){removeItem('tests', $_GET['id']); goToLastPage();},
 	'rem_media'=>function(){removeFile($_GET['media']); goToLastPage();},
 	'module_settings_update'=>function(){module_update_settings($_GET['mid'],$_POST); goToLastPage();},
-	'frm_installModule'=>function(){include(TEMPLATE_PATH . 'form_select_installModule.php');},
 	'uploadModule'=>function(){installModule($_FILES);goToLastPage();},
 );
 
@@ -48,7 +47,6 @@ $dispatch_action = array(
 	'lostpassword2'=>function(){lostPassword2();},
 	'checkSecurityQ'=>function(){checkSecurityQ();},
 	'updatePasswordOnly'=>function(){updatePasswordOnly($_POST['newPass'],$_POST['nameCell']);},
-	'rem_helpmsg'=>function(){deleteHelpMsg($_GET['msgid']); goToLastPage();},
 	'insertResult'=>function(){insertResult($_POST);goHome("result_add_success");},
 	'del_role'=>function(){rm_roleItem($_GET['id']);},
 	'rem_group'=>function(){removeItem('groupslist', $_GET['group']);},//removeGroupData($_GET['group']);},
