@@ -232,7 +232,7 @@ class Controller {
 		
 		if(isset($f)){
 			if(!$this->headerBuilt){$this->build_header();}
-			markLastPage($GETDAT);
+			markLastPage(pathinfo($_SERVER['SCRIPT_FILENAME'],PATHINFO_BASENAME) . '?' .  $_SERVER['QUERY_STRING']);
 			$formToShow = '' . TEMPLATE_PATH . $formPre . $f .'.php';
 			
 			if(strpos($f,'admin') !== false){

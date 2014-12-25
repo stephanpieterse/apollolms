@@ -228,8 +228,8 @@ function page_redirect($url,$time=0,$POSTDAT = '') {
 /**
  * Marks the url in the session
  */
-function markLastPage($data){
-	$_SESSION['getlastpage'] = $data;
+function markLastPage($string){
+	$_SESSION['getlastpage'] = $string;
 }
 
 /**
@@ -246,6 +246,16 @@ function base_func_goToLastPage($data){
 /**
  * Goes to the url saved previously in the session
  */
+ 
+function goToLastPage($msg = ""){
+	$link = isset($_SESSION['getlastpage']) ? $_SESSION['getlastpage'] : "index.php";
+	if(!$msg == ""){
+		$link .= '&msg=' . $msg;
+	}
+	page_redirect($link);
+}
+ 
+ /** THIS IS THE OLDER FUNC -
 function goToLastPage($msg = ""){
 	$data = isset($_SESSION['getlastpage']) ? $_SESSION['getlastpage'] : null;
 	//$newLink = '<META HTTP-EQUIV="Refresh" Content="0; URL=index.php?';
@@ -264,6 +274,7 @@ function goToLastPage($msg = ""){
 	//echo $newLink;
 	page_redirect($newLink);
 }
+*/
 
 /**
  * Returns the complete URL of the current page.
