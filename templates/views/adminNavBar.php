@@ -20,7 +20,7 @@ if(check_user_permission(array('user_view','user_modify','user_add','user_remove
 		if(check_user_permission("user_add")){
 			$subs .= '<li><a href="users.php?f=uploadcsv">Import from CSV</a></li>';
 			}
-	$subs .= '<li><a href="mail.php?f=compose&to=allmembers">Mail Everyone</a></li>';
+	$subs .= '<li><a href="mail.php?f=sendemail&type=allmembers">Mail Everyone</a></li>';
 	$subs .= '</ul></li>';
 	echo $subs;
 }

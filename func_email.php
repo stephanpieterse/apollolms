@@ -133,7 +133,10 @@ function mail_informUser($uid, $subj, $body) {
  * @param subj
  * @param body
  * */
-function mail_informAllUsers($subj, $body) {
+function mail_func_informAllUsers($data) {
+	$subj = $data['subject'];
+	$body = $data['msgbox'];
+	
 	$q = "SELECT EMAIL FROM members";
 	$r = sql_execute($q);
 
@@ -161,7 +164,11 @@ function mail_informAllUsers($subj, $body) {
  * @param body
  *
  */
-function mail_informGroupUsers($gid, $subj, $body) {
+function mail_func_informGroupUsers($data) {
+	$gid = $data['gid'];
+	$subj = $data['subject'];
+	$body = $data['msgbox'];
+	
 	$q = "SELECT * FROM members WHERE groups LIKE %'$gid'%";
 	$r = sql_execute($q);
 

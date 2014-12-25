@@ -74,7 +74,7 @@ $dispatch_action = array(
 );
 
 $dispatch_mail = array(
-	'allgroupmembers'=>function(){mail_informGroupUsers($_POST['gid'],$_POST['subject'],$_POST['msgbox']);},
-	'allmembers'=>function(){mail_informAllUsers($_POST['subject'],$_POST['msgbox']);},
+	//'allgroupmembers'=>function(){mail_informGroupUsers($_POST['gid'],$_POST['subject'],$_POST['msgbox']);},
+	//'allmembers'=>function(){mail_informAllUsers($_POST['subject'],$_POST['msgbox']);},
 );
 ?>
