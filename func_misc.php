@@ -854,7 +854,6 @@ function changeExtension($nameString, $newExt){
 	$changedName .= '.' . $newExt;
 	
 	return $changedName;
-	
 }
 
 /**
@@ -878,7 +877,7 @@ function scanMkDir($dir, $prefix = ''){
 	}
 	
 	return $result;
-	}
+}
 
 /**
  * Gets the image to be used for the site logo in whichever standard format it may be
