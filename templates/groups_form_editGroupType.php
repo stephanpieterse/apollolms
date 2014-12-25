@@ -11,14 +11,16 @@ if(isset($_GET['id'])){
 }
 ?>
 <?php if(isset($gtid)){
-	echo '<form method="post" action="index.php?action=update_groupType&id=' . $gtid . ' ">';
+	echo '<form method="post" action="groups.php?pq=updateGroupType">';
+	echo '<input type="hidden" name="id" value="' . $gtid . '" />';
 }else{
-	echo '<form method="post" action="index.php?action=insertNewGroupType">';
+	echo '<form method="post" action="groups.php?pq=insertNewGroupType">';
 }
 ?>
-Name: 
-	<input type="text" name="name" value="<?php if(isset($gtid)){echo $row['NAME'];} ?>"/>
-	<br/>
+<label for="name">Name: 
+<input type="text" id="name" name="name" value="<?php if(isset($gtid)){echo $row['NAME'];} ?>"/>
+</label>
+<br/>
 <br/>
 <textarea rows="5" cols="250" type="text" id="description" name="description" ><?php if(isset($gtid)){echo $row['DESCRIPTION'];} ?></textarea>
 <br/>

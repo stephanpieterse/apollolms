@@ -1,4 +1,4 @@
-<form method="POST" action="tests.php?q=insertResult">
+<form method="POST" action="tests.php?pq=insertResult">
 <?php
 	$rid = $_GET['rid'];
 	

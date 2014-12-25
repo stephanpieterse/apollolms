@@ -401,10 +401,6 @@ function listAvailableTestsWithResults(){
 	return $linklist;
 }
 
-/**
- * 
- * 
- */
 function deleteTestResult($id){
 		if(check_user_permission("test_result_remove")){
 		
@@ -454,11 +450,7 @@ function retrieve_question($xml, $id){
 		return $finArr;
 }
 
-/**
- * 
- * 
- */
-function insertResult($data){
+function test_func_insertResult($data){
 	foreach($data as $key=>$value){
 	switch($key){
 	
@@ -545,10 +537,6 @@ function insertNewTestItem($name, $desc, $code){
 	}	
 }
 
-/**
- * 
- * 
- */
 function loadInsertForm($type){
 	echo '<form method="post" action="">';
 	$testForm = new $type;
@@ -557,9 +545,6 @@ function loadInsertForm($type){
 	echo '</form>';
 }
 
-/**
- * 
- */
 function test_func_installQuestion(){
 	$target_path = MODULE_PATH;
 	$ext = pathinfo($moduleFile['uploadedfile']['name'], PATHINFO_EXTENSION);

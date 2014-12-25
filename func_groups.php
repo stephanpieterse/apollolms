@@ -345,30 +345,19 @@ function createNewGroup(){
 	}
 }
 
-/**
- * Parameters:
- * 		id - 
- * 		newdesc -
- * 
- */
-function update_groupType($id, $newDesc){
+function groups_func_updateGroupType($data){
+	$id = $data['id'];
+	$newDesc = $data['description'];
+	
 	if(check_user_permission('grouptype_modify')){
 	$query = "UPDATE groups_types SET description='$newDesc' WHERE id='$id'";
 	$result = sql_execute($query);
-		//page_redirect('index.php?msg=grouptype_mod_success');	
 		return true;
 	}else{
-		//page_redirect('index.php?msg=grouptype_mod_failure');	
 		return false;
 	}
 }
 
-/**
- * Parameters:
- * 		gid - 
- * 		data - 
- * 
- */
 function groups_func_updateGroup($data){
 	if(!check_user_permission('groups_modify')){
 		return false;
@@ -447,7 +436,10 @@ function addGroupData(){
 	
 }
 
-function insertNewGroupType($name, $desc){
+function groups_func_insertNewGroupType($data){
+	$name = $data['name'];
+	$desc = $data['description'];
+	
 if(check_user_permission('grouptype_add')){
 	$name = makeSafe($name);
 	$desc = makeSafe($desc);
