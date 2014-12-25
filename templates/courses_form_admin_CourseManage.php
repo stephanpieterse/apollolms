@@ -29,6 +29,7 @@
 		if(check_user_permission("content_remove")){
 			$dataArray[$curPos]['LINKS'][] = '<a href="index.php?confirm&action=rem_course&course=' . $rowdata['ID'] .' "> Remove <img src="' . ICONS_PATH . 'cancel.png" alt="Delete"/></a>';
 		}
+		$dataArray[$curPos]['LINKS'][] = '<a href="mail.php?f=sendemail&type=informCourseUsers&cid=' . $rowdata['ID'] .' "> E-Mail <img src="' . ICONS_PATH . 'email.png" alt="Email"/></a>';
 		$curPos++;
 	}
 	

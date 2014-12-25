@@ -110,15 +110,12 @@
 			//$knownMediaExts = array('mp4','m4v','flv','f4v','mp3','mpg','mpeg','wav','pdf');
 			//if(in_array($ext,$knownMediaExts)){
 			if($knownMedia){
-			//$link = '<a alt="Embed Code" title="Show the code for embedding" target="_blank" href="embedcode.php?f=' . urlencode($dir) . $item .' "><img src="' . ICONS_PATH . 'page_white_code.png" alt="Embed Code"/></a>';
 			$link = '<a alt="View Resource" title="Show the resource in the player" target="_blank" href="resource_view.php?f=' . rawurlencode($dir) . rawurlencode($item) .' "><img src="' . ICONS_PATH . 'page_white_code.png" alt="Embed Code"/></a>';
 			echo $link;
 				}
 			}
 			br();
-			
-			//$embed = '<br/>Embed Code:<br/><input type="text" value="' .rawurlencode($dir) . rawurlencode($item) .'"/>';
-			//echo $embed;
+			//echo '<br/>Embed Code:<br/><input type="text" value="' .rawurlencode($dir) . rawurlencode($item) .'"/>';
 			echo "</div>";			
 		}
 		echo "</ul>";

@@ -16,9 +16,6 @@
 	<td>
 	{$courseData[sec1].NAME}
 	</td>
-	<td>
-	<a href="mail.php?f=compose&to=course&cid={$courseData[sec1].ID}"><img src="{$smarty.const.ICONS_PATH}email_edit.png" alt="Mail"/></a>
-	</td>
 	{foreach name=sec2 from=$courseData[sec1].LINKS item=link}
 	<td>{$link}</td>
 	{/foreach}
@@ -32,9 +29,6 @@ Course Packages:
 	<tr>
 	<td>
 	{$coursePackagesData[sec1].NAME}
-	</td>
-	<td>
-	<a href="mail.php?f=compose&to=course&cid={$coursePackagesData[sec1].ID}"><img src="{$smarty.const.ICONS_PATH}email_edit.png" alt="Mail"/></a>
 	</td>
 	{foreach name=sec2 from=$coursePackagesData[sec1].LINKS item=link}
 	<td>{$link}</td>

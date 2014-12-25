@@ -4,12 +4,12 @@
 	 * @author Stephan Pieterse
 	 * */
 
-/**
- * @param cid
- * @param subj
- * @param body
- * */
-function mail_informCourseUsers($cid,$subj,$body){
+
+function mail_func_informCourseUsers($data){
+	$cid = $data['cid'];
+	$subj= $data['subject'];
+	$body = $data['msgbox'];
+	
 	
 	$q = "SELECT name FROM courses WHERE id='$cid' LIMIT 1";
 	$d = sql_execute($q);
