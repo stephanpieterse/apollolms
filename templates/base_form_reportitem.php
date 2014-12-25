@@ -8,10 +8,7 @@
 <form method="post" action="index.php?pq=report_item">
 <input type="hidden" name="reporturl" value="
 <?php 
-	echo $_SERVER['SCRIPT_NAME'] . '?';
-	foreach($_GET as $key=>$value){ 
-	echo $key . '=' . $value . '&'	;}; 
-
+	echo pathinfo($_SERVER['SCRIPT_FILENAME'],PATHINFO_BASENAME) . '?' .  $_SERVER['QUERY_STRING'];
 ?>" />
 
 <input type="checkbox" id="icp" name="copyright" /> <label for="icp">Copyright Issues

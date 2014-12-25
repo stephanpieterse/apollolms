@@ -555,7 +555,6 @@ function logAction($getDataSet,$customData = ""){
 }
 
 /**
- * 
  * Used in Test feature, check if the time of the last request is greater than the time
  * allowed by the test.
  * 
