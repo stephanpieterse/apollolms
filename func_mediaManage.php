@@ -128,7 +128,7 @@ function renameFile($origName, $newName){
 /*
  * We need web playble files as h264, webm, and ogv
  * 
- * we should pull the data from a sql db via cron job
+ * we should pull the data from a sql db
  * we should daily scan all dirs for files that may have been deleted
  * */
 function media_func_convertFile($fname){
@@ -137,11 +137,11 @@ function media_func_convertFile($fname){
 	$filename = pathinfo($fname,PATHINFO_BASENAME);
 	$safedir = pathinfo($fname,PATHINFO_DIRNAME);
 	
-	if(!file_exists($safedir.'/vid_res')){
-		mkdir($safedir.'/vid_res');
-	}
+	$finaldir = $safedir.'/.vid_res/';
 	
-	$finaldir = $safedir.'/vid_res/';
+	if(!file_exists($finaldir)){
+		mkdir($finaldir);
+	}
 	
 	shell_exec("./classes/ffmpeg/ffmpeg -y -i " . $fname . " " . $finaldir . $filename . ".mp4");
 	shell_exec("./classes/ffmpeg/ffmpeg -y -i " . $fname . " " . $finaldir . $filename . ".webm");
@@ -151,6 +151,28 @@ function media_func_convertFile($fname){
 		return true;
 	}else{
 		return false;
+	}
+}
+
+function media_func_addConversionJob($fname){
+	$fname = mysqli_real_escape_string($GLOBALS['sqlcon'],trim($fname));
+	$q = "INSERT INTO conv_jobs(name)VALUES('$fname')";
+	$r = sql_execute($q);
+	
+	return true;
+}
+
+function media_func_getLatestandConvert(){
+	$q = "SELECT * FROM conv_jobs";
+	$r = sql_execute($q);
+	
+	while($d = sql_get($r)){	
+		$stat = media_func_convertFile($d['NAME']);
+		
+		if($stat){
+			$q2 = "DELETE FROM conv_jobs WHERE ID='" . $d['ID'] . "'";
+			$r2 = sql_execute($q2);
+		}
 	}
 }
 ?>

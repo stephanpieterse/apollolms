@@ -302,7 +302,7 @@ function set_tempEmailVerify($email){
 		$q = "UPDATE tmp_email_validation SET code='$code' WHERE email='$email'";
 		$d = sql_execute($q);
 	}else{
-		$q = "INSERT INTO tmp_email_validation (email,code,request_time,) VALUES ('$email','$code','$timestamp')";
+		$q = "INSERT INTO tmp_email_validation (email,code,request_time) VALUES ('$email','$code','$timestamp')";
 		$d = sql_execute($q);
 	}
 

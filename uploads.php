@@ -1,4 +1,6 @@
 <?php
+require_once("config.php");
+require_once("func_misc.php");
 /**
  * upload.php
  *
@@ -114,10 +116,17 @@ while ($buff = fread($in, 4096)) {
 // Check if file has been uploaded
 if (!$chunks || $chunk == $chunks - 1) {
 	// Strip the temp .part suffix off 
-	rename("{$filePath}.part", $filePath);
-// check filetype
-// if video, run through ffmpeg converter for nice mp4
+	rename("{$filePath}.part", $filePath);	
+}
+
+if(file_exists($filePath)){
+	$checkExt = pathinfo($filePath, PATHINFO_EXTENSION);
+	$vidExts = array('mp4','mpeg','mpg','ogv','webm','avi','flv');
+	if(in_array($checkExt,$vidExts)){
+		$stat = media_func_addConversionJob($filePath);
+	}
 }
 
 // Return Success JSON-RPC response
 die('{"jsonrpc" : "2.0", "result" : null, "id" : "id"}');
+?>

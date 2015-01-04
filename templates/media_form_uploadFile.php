@@ -5,6 +5,7 @@
 
 <div id="container">
 	Files can be a maximum of 500MB in size.<br>
+	Up to 50 Files can be uploaded at one time.<br/>
     <a id="pickfiles" href="javascript:;">[Select files]</a> 
     <a id="uploadfiles" href="javascript:;">[Upload files]</a>
     <a id="clearfiles" href="javascript:;">[Clear files]</a>
@@ -13,7 +14,7 @@
 <br />
 <pre id="console"></pre>
 <script type="text/javascript">
-// Custom example logic
+
 
 var uploader = new plupload.Uploader({
 	runtimes : 'html5,flash,silverlight,html4',
