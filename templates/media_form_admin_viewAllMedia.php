@@ -27,7 +27,7 @@
 		}
 		
 		$curfile = 0;
-		foreach ( scanForFiles($dir) as $item ){
+		foreach ( scanForFiles($dir,'',false,false) as $item ){
 
 		$fileDataArray[$curfile]['NAME'] = $item;
 

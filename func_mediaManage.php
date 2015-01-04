@@ -36,17 +36,24 @@ function media_func_fileUploadBasic(){
 /**
  * Returns an array of filenames with dir prefixes
  * */
-function scanForFiles($dir,$prefix = ''){
+function scanForFiles($dir, $prefix = '',$recurse = false, $includeHidden = true){
   $dir = rtrim(dirname(__FILE__) . '/' .$dir, '\\/');
   $result = array();
     foreach (scandir($dir) as $f) {
-      if ($f !== '.' and $f !== '..') {
-        if(1==2){
-		//if (is_dir("$dir/$f")) {
-        //  $result = array_merge($result, scanForFiles("$dir/$f", "$prefix$f/"));
-        }
+      if (($f !== '.') && ($f !== '..')) {
+        if($recurse){
+			if (is_dir("$dir/$f")) {
+			  $result = array_merge($result, scanForFiles("$dir/$f", "$prefix$f/"));
+			}
+		}
 		else {
-          $result[] = $prefix.$f;
+			if($includeHidden){
+				$result[] = $prefix.$f;
+			}else{
+				if(strpos($f,'.') !== 0){
+					$result[] = $prefix.$f;
+				}
+			}
         }
       }
     }
