@@ -115,7 +115,10 @@ function media_func_removeFile($data){
 /**
  * Renames a file
  * */
-function renameFile($origName, $newName){
+function media_func_renameFile($data){
+	$origName = $data['orignalName'];
+	$newName = $data['newName'];
+
 	chdir(dirname(__FILE__));
 	if(copy($origName, $newName)){
 		unlink($origName);
