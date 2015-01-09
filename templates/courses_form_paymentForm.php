@@ -48,6 +48,7 @@ Once you have completed the manual payment, please submit the captcha. <br/>
 <a href="" onclick="document.getElementById('captcha').src = 'scripts/securimage/securimage_show.php?' + Math.random(); return false;">[ Different Image ]</a><br/>
 <input type="submit" value="Submit" />
 </form>
+Please forward a proof of payment to <a href="mailto:payments@wnledu.apollolms.co.za">payments@wnledu.apollolms.co.za</a> to expedite activation.
 </p>
 <p>
 <?php

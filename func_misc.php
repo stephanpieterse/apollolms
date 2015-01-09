@@ -43,6 +43,15 @@ require(CLASS_PATH . 'resource_handler.php');
 require(CLASS_PATH . 'smarty/libs/Smarty.class.php');
 require(CLASS_PATH . 'php-svg/svglib/svglib.php');
 
+/*
+ * Really simple human readable filesize func
+ * */
+function misc_human_filesize($bytes, $decimals = 2) {
+  $sz = 'BKMGTP';
+  $factor = floor((strlen($bytes) - 1) / 3);
+  return sprintf("%.{$decimals}f", $bytes / pow(1024, $factor)) . @$sz[$factor];
+}
+
 /**
  * Check if the supplied time is within a specific month
  * @param

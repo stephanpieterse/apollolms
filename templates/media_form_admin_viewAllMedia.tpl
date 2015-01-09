@@ -47,6 +47,7 @@
 	{if $itemData[sec1].MEDIAKNOWN == true}
 	<a alt="View Resource" title="Show the resource in the player" target="_blank" href="{$itemData[sec1].RESOURCEVIEW}"><img src="{$iconpath}page_white_code.png" alt="Embed Code"/></a>
 	{/if}
+	{$itemData[sec1.FILESIZE}
 	{/if}
 	</li>
 	</div>

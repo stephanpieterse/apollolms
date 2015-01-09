@@ -99,6 +99,7 @@
 			}else{
 				$fileDataArray[$curfile]['MEDIAKNOWN'] = false;
 			}
+				$fileDataArray[$curfile]['FILESIZE'] = misc_human_filesize(filesize($dir.$item));
 			}
 			
 			$curfile++;

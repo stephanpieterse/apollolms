@@ -97,6 +97,6 @@ function updateResource($resdata){
 	
 	return $finalxml;
 }
-}
 
+}
 ?>
