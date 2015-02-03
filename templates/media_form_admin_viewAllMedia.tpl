@@ -11,13 +11,18 @@
 	<li>		
 		
 	{if $itemData[sec1].TYPE == "folder"}
+	
 	<a href="{$itemData[sec1].LINKVIEW}">
 	<img src="{$iconpath}quartz/Folder.png" alt="Item Icon"/>
 	</a>
 	<a href="{$itemData[sec1].LINKREMOVE}"> <img src="{$iconpath}cancel.png" alt="Delete"/></a>
 	
 	{else}
-	
+	{if isset($selectors)} 
+		{if $selectors == "radiobtn"}
+		<input name="fileurl" type="radio" value="{$itemData[sec1].LINKVIEW}" />
+	{/if}
+	{/if}
 	<a target="_blank" href="{$itemData[sec1].LINKVIEW}">
 	{if $itemData[sec1].TYPE == "pdf"}
 	<img src="{$iconpath}'quartz/File_Pdf.png" alt="PDF Item"/>
@@ -47,7 +52,8 @@
 	{if $itemData[sec1].MEDIAKNOWN == true}
 	<a alt="View Resource" title="Show the resource in the player" target="_blank" href="{$itemData[sec1].RESOURCEVIEW}"><img src="{$iconpath}page_white_code.png" alt="Embed Code"/></a>
 	{/if}
-	{$itemData[sec1.FILESIZE}
+	<br/>
+	{$itemData[sec1].FILESIZE}
 	{/if}
 	</li>
 	</div>

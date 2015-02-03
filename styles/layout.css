@@ -200,13 +200,12 @@ body{
 	font-size:12px;
 	font-family:tahoma,arial,sans-serif;
 	color:#111111;
-	background: #fcfff;
+	background: #E2EFF6;;
 	}
 
 div.wrapper{
 	
 }
-	
 	
 .sitelogo img{
 	margin-left:10px;
@@ -250,7 +249,7 @@ div.wrapper h1, div.wrapper h2, div.wrapper h3, div.wrapper h4, div.wrapper h5, 
 	color:#333333;
 }
 	
-.col0{color:#535353; background-color: #E0E9F0;}
+.col0{color:#535353; background-color: #ffffff;}
 .col1, .col1 a{color:#767772;background-color:#fefefe;}
 .col1 a:hover{color:#223311;}
 .col2{color:#333333;}

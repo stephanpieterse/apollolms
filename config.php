@@ -28,6 +28,7 @@ define( "SITE_OPEN_REGISTRATIONS", "true" );
 define( "MAX_TOTAL_UPLOADS", "5242880");
 define( "DEBUG_MODE", "off");
 define( "NO_LOGIN_SCAN", "on");
+define( "SUBDOMAIN_NAME", "dev");
 
 function handleWarning($errno,$errstr){
 	echo "Sorry, a problem occurred. Please try again later. <br />";

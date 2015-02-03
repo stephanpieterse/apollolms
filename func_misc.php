@@ -286,6 +286,20 @@ function goToLastPage($msg = ""){
 */
 
 /**
+ * Returns the complete URL of the server.
+ */
+function get_serverURL() {
+	$s = empty($_SERVER["HTTPS"]) ? ''
+		: ($_SERVER["HTTPS"] == "on") ? "s"
+		: "";
+	$protocol = strleft(strtolower($_SERVER["SERVER_PROTOCOL"]), "/").$s;
+	$port = ($_SERVER["SERVER_PORT"] == "80") ? ""
+		: (":".$_SERVER["SERVER_PORT"]);
+	return $protocol."://".$_SERVER['SERVER_NAME'].$port;
+}
+
+
+/**
  * Returns the complete URL of the current page.
  */
 function selfURL() {

@@ -8,6 +8,12 @@
 		$breadcrumbData = '';
 		$fileDataArray = array();
 		
+		if(isset($_GET['selector'])){
+			if($_GET['selector'] == 'single'){
+					$selectFor = 'radiobtn';
+			}
+		}
+		
 		$dir = $_GET['dir'] .'/';
 		if($dir == '/' || $dir == '../' || $dir == './'){
 			$dir = 'uploads/';
@@ -39,7 +45,7 @@
 			$fileDataArray[$curfile]['LINKREMOVE'] = 'media.php?q=rmFolder&folder=' . rawurlencode($dir) . rawurlencode($item);
 			
 		}else{
-			$fileDataArray[$curfile]['LINKVIEW'] = ($dir) . ($item);
+			$fileDataArray[$curfile]['LINKVIEW'] = get_serverURL() . '/' . SUBDOMAIN_NAME . '/' . ($dir) . ($item);
 			$knownMedia = true;
 			switch($ext){
 			
@@ -99,12 +105,14 @@
 			}else{
 				$fileDataArray[$curfile]['MEDIAKNOWN'] = false;
 			}
-				$fileDataArray[$curfile]['FILESIZE'] = misc_human_filesize(filesize($dir.$item));
+			
+			$fileDataArray[$curfile]['FILESIZE'] = misc_human_filesize(filesize($dir.$item));
 			}
 			
 			$curfile++;
 		}
 		
+	if(isset($selectFor)){$smarty->assign('selectors',$selectFor);}
 	$smarty->assign('itemData',$fileDataArray);
 	$smarty->assign('breadcrumbs',$breadcrumbData);
 	$smarty->assign('iconpath',ICONS_PATH);
