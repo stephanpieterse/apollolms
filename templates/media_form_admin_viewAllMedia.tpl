@@ -4,6 +4,10 @@
 </span>
 <div>
 <br/>
+{if isset($selectors)} 
+		<form name="selector" method="POST" action="">
+{/if}
+
 <ul>
 {section name=sec1 loop=$itemData}
 	<div class="mediaItem">
@@ -60,5 +64,9 @@
 {/section}
 </div>	
 </ul>
+{if isset($selectors)} 
+		<input type="button" value="Submit" onclick="post_value();">
+		</form>
+{/if}
 </div>
 <br class="clear" />

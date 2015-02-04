@@ -40,10 +40,14 @@
 		$ext = pathinfo($item, PATHINFO_EXTENSION);
 		
 		if(is_dir($dir . $item)){
-			$fileDataArray[$curfile]['TYPE'] = 'folder';
-			$fileDataArray[$curfile]['LINKVIEW'] = 'media.php?f=admin_viewAllMedia&dir=' . rawurlencode($dir) . rawurlencode($item);
-			$fileDataArray[$curfile]['LINKREMOVE'] = 'media.php?q=rmFolder&folder=' . rawurlencode($dir) . rawurlencode($item);
-			
+			if(isset($_GET['selector'])){
+				$fileDataArray[$curfile]['TYPE'] = 'folder';
+				$fileDataArray[$curfile]['LINKVIEW'] = 'mediaslim.php?selector=' . $_GET['selector'] . '&f=mediaSelect&dir=' . rawurlencode($dir) . rawurlencode($item);
+			}else{
+				$fileDataArray[$curfile]['TYPE'] = 'folder';
+				$fileDataArray[$curfile]['LINKVIEW'] = 'media.php?f=admin_viewAllMedia&dir=' . rawurlencode($dir) . rawurlencode($item);
+				$fileDataArray[$curfile]['LINKREMOVE'] = 'media.php?q=rmFolder&folder=' . rawurlencode($dir) . rawurlencode($item);	
+			}			
 		}else{
 			$fileDataArray[$curfile]['LINKVIEW'] = get_serverURL() . '/' . SUBDOMAIN_NAME . '/' . ($dir) . ($item);
 			$knownMedia = true;

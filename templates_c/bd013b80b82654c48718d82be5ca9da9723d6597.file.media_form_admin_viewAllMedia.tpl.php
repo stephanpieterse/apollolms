@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.17, created on 2015-02-03 18:06:55
+<?php /* Smarty version Smarty-3.1.17, created on 2015-02-04 06:20:22
          compiled from "./templates/media_form_admin_viewAllMedia.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:1614116974549c91a0a5e064-40527335%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'bd013b80b82654c48718d82be5ca9da9723d6597' => 
     array (
       0 => './templates/media_form_admin_viewAllMedia.tpl',
-      1 => 1422986719,
+      1 => 1423030732,
       2 => 'file',
     ),
   ),
@@ -20,9 +20,9 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'variables' => 
   array (
     'breadcrumbs' => 0,
+    'selectors' => 0,
     'itemData' => 0,
     'iconpath' => 0,
-    'selectors' => 0,
     'userCanMod' => 0,
   ),
   'has_nocache_code' => false,
@@ -34,6 +34,10 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 </span>
 <div>
 <br/>
+<?php if (isset($_smarty_tpl->tpl_vars['selectors']->value)) {?> 
+		<form name="selector" method="POST" action="">
+<?php }?>
+
 <ul>
 <?php if (isset($_smarty_tpl->tpl_vars['smarty']->value['section']['sec1'])) unset($_smarty_tpl->tpl_vars['smarty']->value['section']['sec1']);
 $_smarty_tpl->tpl_vars['smarty']->value['section']['sec1']['name'] = 'sec1';
@@ -133,6 +137,10 @@ page_white_code.png" alt="Embed Code"/></a>
 <?php endfor; endif; ?>
 </div>	
 </ul>
+<?php if (isset($_smarty_tpl->tpl_vars['selectors']->value)) {?> 
+		<input type="button" value="Submit" onclick="post_value();">
+		</form>
+<?php }?>
 </div>
 <br class="clear" />
 <?php }} ?>

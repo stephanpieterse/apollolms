@@ -241,7 +241,7 @@ class Controller {
 				$this->secNav = 'user_' . $this->secNav;
 			}
 				
-			$this->build_navigation();
+			if(!$this->slimPage){$this->build_navigation();}
 		
 			chdir(dirname(__FILE__));
 			
@@ -295,7 +295,7 @@ class Controller {
 			}
 		}
 
-		 $this->build_footer();
+		 if(!$this->slimPage){$this->build_footer();}
 	}
 }
 ?>

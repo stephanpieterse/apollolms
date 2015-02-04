@@ -29,7 +29,7 @@ Please provide the URL for the resource to be embedded.
 
 <script type="text/javascript">
 function openChildSelector(){
-		window.open("media.php?f=mediaSelect&dir=uploads&selector=single","SelectFile","width=550,height=550");		
+		window.open("mediaslim.php?f=mediaSelect&dir=uploads&selector=single","SelectFile","width=550,height=550");		
 }
 </script>
 
