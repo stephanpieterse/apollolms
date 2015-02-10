@@ -311,13 +311,15 @@ function isUserInGroup($uid, $gid){
 		return $isInGroup;
 }
 
-function createNewGroup(){
+function groups_func_addGroup($data){
+
+
 	if(check_user_permission('groups_add')){
-	$groupName = makeSafe($_POST['groupName']);
-	$groupDesc = $_POST['groupDescription'];
-	$groupType = makeSafe($_POST['groupType']);
-	$closedT = makeSafe($_POST['closed']);
-	$autoJoin = makeSafe($_POST['autojoin']);
+	$groupName = makeSafe($data['groupName']);
+	$groupDesc = $data['groupDescription'];
+	$groupType = makeSafe($dataT['groupType']);
+	$closedT = makeSafe($data['closed']);
+	$autoJoin = makeSafe($data['autojoin']);
 	
 	switch($closedT){
 		case 'No' :

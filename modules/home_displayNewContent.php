@@ -2,11 +2,16 @@
 	class module_displayNewContent extends module_item {
 	
 	private $myID = 0;
+	public $plugin_support = array('course_edit');
 	
 	function set_module_id($id){
 		$myID = $id;
-		}
-	
+	}
+		
+	function m_plug_course_edit(){
+		echo '<input type="text" /> '. "die sal n featured option wees";
+	}
+
 	function default_action_home(){
 		$smarty = new Smarty();
 		
@@ -81,6 +86,9 @@
 			switch($pagename){
 				case 'home':
 				$this->default_action_home();
+				break;
+				case 'course_edit':
+				$this->action_course_edit();
 				break;
 				default:
 				echo "Module Loaded - No action present";

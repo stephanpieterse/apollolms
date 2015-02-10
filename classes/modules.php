@@ -42,10 +42,14 @@ function installModuleVars(){
 function default_action($location){
 		echo "action received";
 	}
+	
+function m_plugin_handler($type,$data){
+        if(!in_array($type, $this->plugin_support)){
+                return array();
+        }
 
-function m_plugin_hander($type,$data){
-	return array();
-	}	
-
+        $pluginFunc = 'm_plug_' . $type;
+        return $this->$pluginFunc($data);
+}
 }
 ?>

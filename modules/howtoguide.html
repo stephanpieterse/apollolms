@@ -1,0 +1,10 @@
+Modules have two parts
+ a normal action part which can be controlled where it is displayed
+a plugin part which shows where needed as long as the module is active
+
+plugin support should be listed at top
+prefix m_plug_ to all plugin callable functions
+
+when using plugins in forms, always supply id,datacolumn,pluginname,data as hidden, start the name with module_specs_
+
+the plugin handler is nou standard in the base class and shouldnt be overwritten

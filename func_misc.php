@@ -358,7 +358,10 @@ Module Location:
 <input type="checkbox" id="mod_loc-events" name="mod_loc-events"/>
 <label for="mod_loc-events">Events</label>
 <input type="checkbox" id="mod_loc-tests" name="mod_loc-tests"/>
-<label for="mod_loc-tests">Tests</label>';
+<label for="mod_loc-tests">Tests</label>
+<input type="checkbox" id="mod_loc-course_edit" name="mod_loc-course_edit"/>
+<label for="mod_loc-course_edit">Course Edit Page</label>
+';
 }
 
 /**

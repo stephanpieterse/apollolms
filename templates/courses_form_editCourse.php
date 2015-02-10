@@ -100,6 +100,10 @@ Auto-Join only works for free courses (Price at R0)</td>
 	}else{
 		buildPermissionsForm();
 	}
+
+	//loadPageModules('course_edit');
+	modules_plugin_feature('course_edit',array());
+
 ?>
 </div>
 <p><input type="submit" value="Submit" /></p>

@@ -361,6 +361,12 @@ function courses_func_addCourse($data){
 	
 	set_course_permissions($r['ID'], $data);
 	
+	$plugDataSet = modules_backend_plugin_stripData($data);
+
+	if(modules_backend_plugin_addData($plugMid,$plugCol,$plugName,$plugData)){
+			//nice
+	}
+
 	if($pubStat == 1){
 		inform_users_aboutNewCourse($r['ID']);
 	}
@@ -452,6 +458,12 @@ function courses_func_updateCourse($data){
 	$r = sql_get(sql_execute($q));
 	
 	set_course_permissions($r['ID'], $data);
+
+	$plugDataSet = modules_backend_plugin_stripData($data);
+
+	if(modules_backend_plugin_updateData($plugMid,$plugCol,$plugName,$plugData)){
+		//nice
+	}
 	
 	if($pubstat == 1){
 		inform_users_aboutNewCourse($cid);

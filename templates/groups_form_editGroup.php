@@ -12,7 +12,7 @@
 ?>
 <?php
 if($gid == false){
-	echo' <form name="newGroup" method="post" action="index.php?action=newGroup">';
+	echo' <form name="newGroup" method="post" action="groups.php?pq=addGroup">';
 }else{
 	echo '<form name="newGroup" method="post" action="groups.php?pq=updateGroup">';
 	echo '<input type="hidden" name="gid" value="' . $gid . '" />';

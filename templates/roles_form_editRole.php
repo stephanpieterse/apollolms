@@ -55,12 +55,11 @@ Permissions:
 <?php
 
 	if($new){
-		echo '<input type="submit" value="Create Role" />';
+		$shouldNew = true;		
 	}else{
-		echo '<input type="submit" value="Update Role" />';
+		$shouldNew = false;
 	}
-	
-	$smarty->assign('roledata',$dataArray);
+	$smarty->assign('newrole',$shouldNew);
 	$tplName = changeExtension(pathinfo(__FILE__,PATHINFO_BASENAME),'tpl');
 	$smarty->display($tplName);
 ?>

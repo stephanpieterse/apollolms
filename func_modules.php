@@ -209,8 +209,8 @@ function setModuleStatus($mid, $stat){
  * @param int $id id of module
  * @param array $data posted data
  * */
-function module_update_settings($id,$data){
-	$mid = $id;
+function modules_func_updateSettings($data){
+	$mid = $data['mid'];
 	
 	foreach($data as $key=>$value){
 		$datamodloc = explode('-',$key);
@@ -253,4 +253,17 @@ if(!check_user_permission('module_move')){
 	$query = "UPDATE modules SET permissions='$newDoc' WHERE id='$id'";
 	$result = sql_execute($query);
 }
+
+/**
+Strips away all data but that allocated or named as used by modules
+*/
+function modules_backend_plugin_stripData($dirtyData){
+
+	$cleanarr['mid'] = 0;
+	$cleanarr['mcol'] = 0;
+	$cleanarr['mname'] = 'editme';
+	$cleanarr['mdata'] = array(''=>'');
+	return true;
+}
+
 ?>

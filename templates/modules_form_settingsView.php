@@ -1,6 +1,6 @@
-<form class="centerfloat" method="post" action="index.php?aq=module_settings_update&mid=<?php echo $_GET['mid'];?>">
+<form class="centerfloat" method="post" action="modules.php?pq=settingsUpdate">
 <?php
-
+	echo '<input type="hidden" name="mid" value="' . $_GET['mid']  . '" />';
 
 	buildLocationsForm();
 
