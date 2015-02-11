@@ -143,7 +143,7 @@ function courses_func_expireRegistration($data){
 		$curdate = date("Y-m-d-H-i-s");
 		$newExpired = addNode($newExpired,'exp',array('cid'=>$cid,'regtime'=>$curdate,'purchaseRef'=>$purchref));
 		
-		$newActive = rmNode($newActive, $cid, 'cid');
+		$newActive = rmNode($newActive,'reg', $cid, 'cid');
 				
 		$q = "UPDATE course_registrations SET expired='$newExpired', registered='$newActive' WHERE uid='$uid'";
 		$d = sql_execute($q);
@@ -166,9 +166,6 @@ function courses_func_activateRequest($data){ //activate_user_to_course($cid, $u
 		$cid = $data['cid'];
 		$uid = $data['uid'];	
 	
-	if((isUserRegisteredForCourse($uid,$cid))){
-		return false;
-	}
 		$q = "SELECT * FROM course_registrations WHERE uid='$uid' LIMIT 1";
 		$r = sql_execute($q);
 		$d = sql_get($r);
@@ -176,21 +173,25 @@ function courses_func_activateRequest($data){ //activate_user_to_course($cid, $u
 		$newActive = $d['REGISTERED'];
 		$newPending = $d['PENDING'];
 
-/*		
 		if($newActive == ""){
 			$newActive = "<registrations></registrations>";
 		}
-	*/	
+	
 		$purchrefA = xmlGetSpecifiedNode($newPending, array('tagname'=>'pend','purchaseRef'=>''));
 		$purchref = isset($purchrefA['purchaseRef']) ? $purchrefA['purchaseRef'] : '0';
-	
-		$curdate = date("Y-m-d-H-i-s");
-		$newActive = addNode($newActive,'reg',array('cid'=>$cid,'regtime'=>$curdate,'purchaseRef'=>$purchref));
 		
-		$newPending = rmNode($newPending, $cid, 'cid');
-				
+		if(!isUserRegisteredForCourse($uid,$cid)){
+			$curdate = date("Y-m-d-H-i-s");
+			$newActive = addNode($newActive,'reg',array('cid'=>$cid,'regtime'=>$curdate,'purchaseRef'=>$purchref));
+		}
+
+		if(isUserPendingForCourse($uid,$cid)){
+			$newPending = rmNode($newPending,'pend',$cid, 'cid');
+		}
+			
+							
 		$q = "UPDATE course_registrations SET pending='$newPending', registered='$newActive' WHERE uid='$uid'";
-		$d = sql_execute($q);
+		$r = sql_execute($q);
 		
 		$msgbody = "Congratulations! Your registration for a course has been approved and you can now access the material. We hope you enjoy this course!";
 		mail_informUser($uid,'Course now open to you',$msgbody);

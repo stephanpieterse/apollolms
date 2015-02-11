@@ -266,4 +266,12 @@ function modules_backend_plugin_stripData($dirtyData){
 	return true;
 }
 
+function modules_backend_plugin_updateData($a,$b,$c,$d){
+	return true;
+}
+
+function modules_backend_plugin_addData($a,$b,$c,$d){
+	return true;
+}
+
 ?>

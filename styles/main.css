@@ -16,14 +16,14 @@
 .course_item{
 	background: #ffffff;
 	width:250px;
-	max-height:300px;
+	height:350px;
 	margin:10px;
-	padding:8px;
+	padding:11px;
 	display: block;
 	overflow: hidden;
-	-moz-box-shadow: 5px 5px 5px 6px #ccc;
-	-webkit-box-shadow: 5px 5px 5px 6px #ccc;
-	box-shadow: 5px 5px 5px 6px #ccc;
+	-moz-box-shadow: 10px 10px 2px 2px #ccc;
+	-webkit-box-shadow: 10px 10px 2px 2px #ccc;
+	box-shadow: 10px 10px 2px 2px #ccc;
 }
 
 .course_item_tags{

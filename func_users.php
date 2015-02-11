@@ -146,7 +146,7 @@ function isUserRegisteredForCourse($uid, $cid){
 	$isRegistered = false;
 	
 	$regData = $d['REGISTERED'];
-	$pendData = $d['PENDING'];
+ //	$pendData = $d['PENDING'];
 	
 	if($regData == ""){
 		$regData = "<registered></registered>";
