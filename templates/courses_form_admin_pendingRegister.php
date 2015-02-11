@@ -7,19 +7,20 @@
 		
 		if($pendreq == ""){
 			$pendreq = "<pending></pending>";
-			echo 'There are no pending requests.';
-			return false;
+			//echo 'There are no pending requests.';
+			continue;
 		}
 		
 		if(!xmlHasChildren($pendreq)){
-			echo 'There are no pending requests.';
-			return false;
+			//echo 'There are no pending requests.';
+			continue;
+			//return false
 		}
+
 		$uq = "SELECT name FROM members WHERE id='" . $d['UID'] . "' LIMIT 1";
 		$ur = sql_execute($uq);
 		$ud = sql_get($ur);
 		
-		br();
 		echo print_bold($ud['name']) . ' ';
 		
 		$xmlDoc = new DOMDocument;
@@ -33,8 +34,8 @@
 			$cr = sql_execute($cq);
 			$cd = sql_get($cr);
 			$link = $cd['name'] . '<a href="courses.php?q=activateRequest&cid=' . $curCID . '&uid=' . $d['UID'] . '"> Activate</a>';
-			echo $link;
-			echo $reference;
+			echo '---'. $link;
+			echo '---'.$reference;
 			br();
 		}
 	

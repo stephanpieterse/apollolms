@@ -49,7 +49,8 @@
 				$fileDataArray[$curfile]['LINKREMOVE'] = 'media.php?q=rmFolder&folder=' . rawurlencode($dir) . rawurlencode($item);	
 			}			
 		}else{
-			$fileDataArray[$curfile]['LINKVIEW'] = get_serverURL() . '/' . SUBDOMAIN_NAME . '/' . rawurlencode($dir) . rawurlencode($item);
+			//$fileDataArray[$curfile]['LINKVIEW'] = get_serverURL() . '/' . SUBDOMAIN_NAME . '/' . rawurlencode($dir) . rawurlencode($item);
+			$fileDataArray[$curfile]['LINKVIEW'] = rawurlencode($dir) . rawurlencode($item);
 			$knownMedia = true;
 			switch($ext){
 			
