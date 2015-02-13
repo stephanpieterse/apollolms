@@ -52,6 +52,10 @@ function groups_func_addGroupRequest($data){
 	$uid = $data['uid'];
 	$gid = $data['gid'];		
 		
+	if(isUserPendingForCourse($uid,$gid){
+		return 'group_join_pending';
+	}
+
 	$q = "SELECT * FROM groupslist WHERE id='$gid' LIMIT 1";
 	$d = sql_execute($q);
 	$r = sql_get($d);
@@ -87,6 +91,31 @@ function groups_func_addGroupRequest($data){
 	mail_informUser($uid, 'Group request sent', $body);
 	return 'group_join_pending';
 	}
+}
+
+/**
+	Checks if a specified user has already requested to join a group.
+*/
+function isUserPendingForGroup($uid, $gid){
+	    $q = "SELECT * FROM groupslist WHERE id='$gid' LIMIT 1";
+	    $d = sql_get($r);
+	    $isPending = false;
+
+        $pendData = $d['REQUESTS'];
+
+        if($pendData == ""){
+                $pendData = "<pending></pending>";
+        }
+        $xmlDoc = new DOMDocument();
+        $xmlDoc->loadXML($pendData);
+        $rootNode = $xmlDoc->documentElement;
+        foreach($rootNode->childNodes as $ci){
+        	    if($ci->getAttribute('id') == $uid){ 
+                $isPending = true; 
+                break;
+                }
+         }
+        return $isPending;
 }
 
 /**
@@ -451,6 +480,26 @@ if(check_user_permission('grouptype_add')){
 	page_redirect('index.php?msg=grouptype_add_success');
 	}else{
 	page_redirect('index.php?msg=grouptype_add_failure');
+	}
+}
+
+function groups_backend_listGroupCourses($gid){
+	$group = $gid;
+
+        $q = "SELECT * FROM courses WHERE permissions LIKE '%$group%'";
+        $r = sql_execute($q);
+
+        while($d = sql_get($r)){
+                $stat = groupHasCoursePermission($group, $d['ID']);
+                if($stat){
+			$resultSet['ID'][] = $d['ID'];
+			$resultSet['NAME'][] = $d['NAME'];
+                 }
+        }
+	if(isset($resultSet)){
+		return $resultSet;
+	}else{
+		return false;
 	}
 }
 

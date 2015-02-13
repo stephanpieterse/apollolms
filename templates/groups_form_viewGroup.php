@@ -1,3 +1,12 @@
+<?php
+/**
+@author Stephan Pieterse
+@package ApolloLMS
+
+This form displays the details of an individually selected group.
+
+*/
+?>
 <div id="normgroupwrap" style="float: left; width: 50%;">
 <?php
 	$group = $_GET['gid'];
@@ -66,8 +75,9 @@
 				echo $reqR['NAME'];
 				echo ' - ';
 		
-				if((isUserInGroupAdminID($_SESSION['userID'],$group)) || check_user_permission('group_all_requests')){
+				if(($curIsAdmin || check_user_permission('group_all_requests')){
 				$link = '<a class="biglinkT1" href="groups.php?q=acceptGroupRequest&uid=' . $reqUID . '&gid=' . $group . '">Accept Join Request</a> ';
+				$link .= ' -- ';
 				$link .= '<a class="biglinkT1" href="groups.php?q=denyGroupRequest&uid=' . $reqUID . '&gid=' . $group . '">Deny Join Request</a> ';
 				$link .= '<br/>';
 				echo $link;
@@ -95,17 +105,13 @@
 	echo '</p>';
 	echo '<p>';
 	echo print_bold("Courses available to this group:<br/>");
-	$q = "SELECT * FROM courses WHERE permissions LIKE '%$group%'";
-	$r = sql_execute($q);
-	
-	while($d = sql_get($r)){
-		$stat = groupHasCoursePermission($group, $d['ID']);
-		if($stat){
-			$link = '<a href="courses.php?f=displayCourse&cid=' . $d['ID'] . '">' . $d['NAME'] . '</a>';
+		$availCourses = groups_backend_listgroupCourses($group);
+		for($xi = 0; $xi < sizeOf($availCourses['ID']); $xi++){
+			$link = '<a href="courses.php?f=displayCourse&cid=' . $availCourses['ID'][$xi] . '">' . $availCourses['NAME'][$xi] . '</a>';
 			echo $link;
 			echo '<br/>';
 		}
-	}
+		
 	echo '<p>';
 	echo print_bold("Tests available to this group:");br();
 	//todo: display the available tests

@@ -118,14 +118,15 @@ function media_func_removeFile($data){
 function media_func_renameFile($data){
 	$origName = $data['orignalName'];
 	$newName = $data['newName'];
+	$dirName = $data['originalDir'];
 
 	chdir(dirname(__FILE__));
-	if(copy($origName, $newName)){
+	if(copy($origName,( $dirName . $newName ))){
 		unlink($origName);
 		return true;
+	}else{
+		return false;
 	}
-	//	$retval = rename($origName, $newName);
-	return false;
 }
 
 /*
@@ -157,6 +158,9 @@ function media_func_convertFile($fname){
 	}
 }
 
+/**
+	Add a job to a db table of a file to convert
+*/
 function media_func_addConversionJob($fname){
 	$fname = mysqli_real_escape_string($GLOBALS['sqlcon'],trim($fname));
 	$q = "INSERT INTO conv_jobs(name)VALUES('$fname')";

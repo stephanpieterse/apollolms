@@ -60,8 +60,8 @@ function resourceLink_view(){
 function addResource($resdata){
 	$xmldata = $this->XMLstore;
 	
-	$resname = $resdata['resource_name'];
-	$resurl = urlencode($resdata['resource_url']);
+	$resname = sql_escape_string($resdata['resource_name']);
+	$resurl = urlencode(sql_escape_string($resdata['resource_url']));
 	$resid = $this->get_nextAvailableID();
 	$newCXML = addNode($xmldata, 'resource', array('id'=>$resid,'url'=>$resurl,'name'=>$resname));
 	
@@ -85,8 +85,8 @@ function updateResource($resdata){
 	}else{
 		return false;
 	}
-	$resurl = $resdata['resource_url'];
-	$resname = $resdata['resource_name'];
+	$resurl = sql_escape_string($resdata['resource_url']);
+	$resname = sql_escape_string($resdata['resource_name']);
 	
 	echo $nodeNum = xmlGetSpecifiedNode_Position($xmldata, array('tagname'=>'resource','id'=>$resid,'url'=>$resurl,'name'=>$resname));
 	

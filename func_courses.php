@@ -86,8 +86,8 @@ function courses_func_updateResource($data){
 	$r = sql_execute($q);
 	$rd = sql_get($r);
 	
-	$resdata['resource_name'] = $data['resource_name'];
-	$resdata['resource_url'] = $data['resource_url'];
+	$resdata['resource_name'] = sql_escape_string($data['resource_name']);
+	$resdata['resource_url'] = sql_escape_string($data['resource_url']);
 	$resdata['resid'] = $nodeNum;
 	
 	
@@ -308,8 +308,8 @@ function courses_func_registerForCourse($data){
  */
 function courses_func_addCourse($data){
 	$courseName = makeSafe($data['courseName']);
-	$courseDesc = $data['courseDescription'];
-	$htmlContent = $data['courseIntroContent'];
+	$courseDesc = sql_escape_string($data['courseDescription']);
+	$htmlContent = sql_escape_string($data['courseIntroContent']);
 	$publishedStatus = makeSafe($data['publishedStatus']);
 	if(isset($_POST['autojoin'])){
 		$autojoin = 1;
@@ -382,8 +382,8 @@ function courses_func_addCourse($data){
 function courses_func_updateCourse($data){
 	$cid = $data['id'];
 	$courseName = makeSafe($data['courseName']);
-	$courseDesc = $data['courseDescription'];
-	$htmlContent = $data['courseIntroContent'];
+	$courseDesc = sql_escape_string( $data['courseDescription']);
+	$htmlContent = sql_escape_string($data['courseIntroContent']);
 	$publishedStatus = makeSafe($data['publishedStatus']);
 	
 	if(isset($_POST['autojoin'])){

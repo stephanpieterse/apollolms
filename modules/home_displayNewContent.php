@@ -14,7 +14,23 @@
 
 	function default_action_home(){
 		$smarty = new Smarty();
-		
+
+	echo '<span class="group_content_show">';	
+		$sqlquery = "SELECT * FROM groupslist";
+		$r = sql_execute($sqlquery);
+		while($d = sql_get($r)){
+			if(isUserInGroup($_SESSION['userID'],$d['ID'])){
+				echo $d['NAME'];
+				echo '<br/>';
+				$courseSet = groups_backend_listGroupCourses($d['ID']);
+				for($xi = 0; $xi < sizeOf($courseSet['ID']); $xi++){
+					echo $courseSet['NAME'][$xi];
+					echo '<br/>';
+				}
+			}
+		}
+	echo "</span>";
+
 		$sqlquery = "SELECT * FROM courses WHERE published_status='1' ORDER BY published_date ASC LIMIT 10";
 		echo print_bold("Check out these recently added courses:");
 		br();
@@ -30,7 +46,7 @@
 		
 		if(!$hasAccess){ continue; }
 		
-					$isRegistered = isUserRegisteredForCourse($memberID, $rowdata['ID']);
+				$isRegistered = isUserRegisteredForCourse($memberID, $rowdata['ID']);
 			if($isRegistered){
 				$dataArray[$curItem]['NAME'] = '<a class="disp_block" href="courses.php?f=displayCourse&cid=' . $rowdata['ID'] ." \">" . $rowdata['NAME'] . "";
 				$dataArray[$curItem]['HEADLINK'] = 'courses.php?f=displayCourse&cid=' . $rowdata['ID'];

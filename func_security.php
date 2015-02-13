@@ -150,4 +150,12 @@ function makeSafe($stringVar){
 	}
 	return $stringVar;
 }
+
+function sql_escape_string($stringVar){
+	if(isset($GLOBALS['sqlcon'])){
+		$stringVar = mysqli_real_escape_string($GLOBALS['sqlcon'],trim($stringVar));
+
+	}
+	return $stringVar;
+}
 ?>

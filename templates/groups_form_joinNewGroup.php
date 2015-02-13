@@ -1,9 +1,4 @@
 <?php
-
-	if(!is_user_loggedIn()){
-		return false;
-	}
-
 	if(check_user_permission('join_closed_groups',true)){
 		$sqlquery = "SELECT * FROM groupslist";
 	}else{
@@ -21,10 +16,15 @@
 				echo '</td>';
 				echo '<td>';
 				if(!isUserInGroup($_SESSION['userID'], $row['ID'])){
+					if(isUserPendingForGroup($_SESSION['userID'],$row['ID'])){
+						$link = "JOIN REQUEST ALREADY SENT";
+						echo $link;
+					}else{
 					$link = '<a href="groups.php?q=addGroupRequest&gid=' . $row['ID'] . '&uid=' . $_SESSION['userID'] . '">';
 					$link = $link . "REQUEST TO JOIN";
 					$link = $link . '</a>';
 					echo $link;
+					}
 				}else{
 					$link = '<a href="groups.php?f=viewGroup&gid=' . $row['ID'] . '">';
 					$link = $link . "VIEW GROUP";

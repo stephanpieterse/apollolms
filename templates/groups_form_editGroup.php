@@ -82,6 +82,12 @@ if($rd['AUTOJOIN'] == 0){
 ?>
 </select>
 
+Group parents:
+<br/>
+<?php
+	buildGroupsForm();
+?>
+
 <br />
 <input type="submit" value="Update Group"/>
 </form>

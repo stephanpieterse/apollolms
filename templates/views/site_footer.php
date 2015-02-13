@@ -29,8 +29,8 @@
     <div class="footbox">
       <h2>Site Information</h2>  
       <ul>
-        <li><a target="_blank" href="http:/apollolms.co.za/info/standard_tos.pdf" title="View the terms of service">Terms of Service</a></li>
-		<li><a target="_blank" href="http:/apollolms.co.za/info/standard_pp.pdf" title="View the privacy policy">Privacy Policy</a></li>
+        <li><a target="_blank" href="http:/apollolms.co.za/termsOfService.html" title="View the terms of service">Terms of Service</a></li>
+		<li><a target="_blank" href="http:/apollolms.co.za/privacyPolicy.html" title="View the privacy policy">Privacy Policy</a></li>
 		<li><a target="_blank" href="http://wiki.apollolms.co.za/index.php/Help:FAQ" title="View the privacy policy">F.A.Q.</a></li>
       </ul>
     </div>

@@ -50,7 +50,7 @@
 			}			
 		}else{
 			//$fileDataArray[$curfile]['LINKVIEW'] = get_serverURL() . '/' . SUBDOMAIN_NAME . '/' . rawurlencode($dir) . rawurlencode($item);
-			$fileDataArray[$curfile]['LINKVIEW'] = rawurlencode($dir) . rawurlencode($item);
+			$fileDataArray[$curfile]['LINKVIEW'] = ($dir) .($item);
 			$knownMedia = true;
 			switch($ext){
 			
