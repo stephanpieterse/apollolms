@@ -595,9 +595,15 @@ function userHasCourseTime($uid,$cid){
 	$avBetDates = explode('%',$timeDuring);
 	$avFor = explode('-',$timeAvail);
 
-	if(!isset($avFor[0]) || ($avFor[0] == 0)){$avFor[0] = 999;}
-	if(!isset($avFor[1]) || ($avFor[1] == 0)){$avFor[1] = 999;}
-	if(!isset($avFor[2]) || ($avFor[2] == 0)){$avFor[2] = 9999;}
+	if($avFor[0] == 0 && $avFor[1] == 0 && $avFor[2] == 0){
+		$avFor[0] = 999;
+		$avFor[1] = 999;
+		$avFor[2] = 9999;
+	}
+
+	if(!isset($avFor[0])){$avFor[0] = 999;}
+	if(!isset($avFor[1])){$avFor[1] = 999;}
+	if(!isset($avFor[2])){$avFor[2] = 9999;}
 
 	for($x = 0;$x < sizeof($avFor); $x++){
 		$avFor[$x] = $avFor[$x] + 0;
@@ -613,7 +619,6 @@ function userHasCourseTime($uid,$cid){
 	if(!isset($avBetTill[0]) || $avBetTill[0] == 0){$avBetTill[0] = 999;}
 	if(!isset($avBetTill[1]) || $avBetTill[1] == 0){$avBetTill[1] = 999;}
 	if(!isset($avBetTill[2]) || $avBetTill[2] == 0){$avBetTill[2] = 99999;}
-	
 		
 	for($x = 0;$x < sizeof($avBetSince); $x++){
 		$avBetSince[$x] = $avBetSince[$x] + 0;

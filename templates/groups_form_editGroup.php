@@ -27,9 +27,11 @@ if($gid == false){
 </textarea>
 
 <br />
+<!--
 <label for="groupType">Group Type</label>
 <select id="groupType" name="groupType">
 <?php
+/**
 		$query = 'SELECT * FROM groups_types';
 		$result = sql_execute($query);
 		
@@ -42,8 +44,10 @@ if($gid == false){
 			echo $row['NAME'];
 			echo "</option>";
 		}	
+*/
 ?>
 </select>
+-->
 
 <br />
 <label for="groupClosed">Closed Group</label>
@@ -85,7 +89,11 @@ if($rd['AUTOJOIN'] == 0){
 Group parents:
 <br/>
 <?php
+	if(isset($gid)){
+	buildGroupsForm($gid,$rd['PARENTS']);
+	}else{
 	buildGroupsForm();
+	}
 ?>
 
 <br />

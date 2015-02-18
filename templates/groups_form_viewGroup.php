@@ -75,7 +75,7 @@ This form displays the details of an individually selected group.
 				echo $reqR['NAME'];
 				echo ' - ';
 		
-				if(($curIsAdmin || check_user_permission('group_all_requests')){
+				if($curIsAdmin || check_user_permission('group_all_requests')){
 				$link = '<a class="biglinkT1" href="groups.php?q=acceptGroupRequest&uid=' . $reqUID . '&gid=' . $group . '">Accept Join Request</a> ';
 				$link .= ' -- ';
 				$link .= '<a class="biglinkT1" href="groups.php?q=denyGroupRequest&uid=' . $reqUID . '&gid=' . $group . '">Deny Join Request</a> ';
@@ -105,7 +105,7 @@ This form displays the details of an individually selected group.
 	echo '</p>';
 	echo '<p>';
 	echo print_bold("Courses available to this group:<br/>");
-		$availCourses = groups_backend_listgroupCourses($group);
+		$availCourses = groups_backend_listgroupCourses($group,true);
 		for($xi = 0; $xi < sizeOf($availCourses['ID']); $xi++){
 			$link = '<a href="courses.php?f=displayCourse&cid=' . $availCourses['ID'][$xi] . '">' . $availCourses['NAME'][$xi] . '</a>';
 			echo $link;
@@ -161,6 +161,20 @@ This form displays the details of an individually selected group.
 		echo $link;
 	}
 	?>
+	<br/>
+	SUBGROUPS:
+	<br/>
+<?php
+	$sq = "SELECT * FROM groupslist";
+	$sr = sql_execute($sq);
+	while($sd = sql_get($sr)){
+		if(strpos($sd['PARENTS'],'id="' . $group . '"')){
+		echo $sd['NAME'];
+		echo "<br/>";
+		}
+	}
+?>
+
 	</div>
 	<div id="chatwrap" style="float: left;">
 	<?php

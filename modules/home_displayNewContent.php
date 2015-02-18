@@ -14,27 +14,41 @@
 
 	function default_action_home(){
 		$smarty = new Smarty();
-
-	echo '<span class="group_content_show">';	
+	
 		$sqlquery = "SELECT * FROM groupslist";
 		$r = sql_execute($sqlquery);
+		
+		$gx = 0;
 		while($d = sql_get($r)){
 			if(isUserInGroup($_SESSION['userID'],$d['ID'])){
-				echo $d['NAME'];
-				echo '<br/>';
+				$groupdataArray[$gx]['HEADLINK'] = 'groups.php?f=viewGroup&gid=' . $d['ID'];
+				$groupdataArray[$gx]['NAME'] = $d['NAME'];
+				$groupdataArray[$gx]['DESCRIPTION'] = strip_tags($d['DESCRIPTION'],'<p><br><ul><li>');
+				
+				$xmlDoc = new DOMDocument();
+				
+				if ($d['DESCRIPTION'] == ''){
+					$d['DESCRIPTION'] = '<html></html>';
+				}
+				
+				$xmlDoc->loadHTML($d['DESCRIPTION']);
+				$rootNode = $xmlDoc->documentElement;
+	
+				$imgList = $rootNode->getElementsByTagName('img');
+				if(($imgList->item(0))){
+					$firstImgVal = $imgList->item(0)->getAttribute('src');
+				}else{ $firstImgVal = ''; }
+				$groupdataArray[$gx]['ITEMIMG'] = $firstImgVal;
+				
 				$courseSet = groups_backend_listGroupCourses($d['ID']);
 				for($xi = 0; $xi < sizeOf($courseSet['ID']); $xi++){
-					echo $courseSet['NAME'][$xi];
-					echo '<br/>';
+					$groupdataArray[$gx]['COURSES']['LINK'][] = $courseSet['NAME'][$xi];	
 				}
 			}
+			$gx++;
 		}
-	echo "</span>";
 
 		$sqlquery = "SELECT * FROM courses WHERE published_status='1' ORDER BY published_date ASC LIMIT 10";
-		echo print_bold("Check out these recently added courses:");
-		br();
-		br();
 		$sqlresult = sql_execute($sqlquery);
 		//echo '<link type="text/css" rel="stylesheet" href="modules/content_icons/style.css"/>';
 	//	echo '<ul class="displayNewContent">';
@@ -45,7 +59,6 @@
 		$hasAccess = userHasCoursePermissionXML($memberID, $rowdata['PERMISSIONS']);
 		
 		if(!$hasAccess){ continue; }
-		
 				$isRegistered = isUserRegisteredForCourse($memberID, $rowdata['ID']);
 			if($isRegistered){
 				$dataArray[$curItem]['NAME'] = '<a class="disp_block" href="courses.php?f=displayCourse&cid=' . $rowdata['ID'] ." \">" . $rowdata['NAME'] . "";
@@ -92,6 +105,7 @@
 			$curItem++;
 	}
 			$smarty->assign('courseData',$dataArray);
+			$smarty->assign('groupData',$groupdataArray);
 			$tplName = changeExtension(pathinfo(__FILE__,PATHINFO_BASENAME),'tpl');
 			$smarty->display(MODULE_PATH . $tplName);
 	//echo "</ul>";

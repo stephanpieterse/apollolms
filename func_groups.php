@@ -52,7 +52,7 @@ function groups_func_addGroupRequest($data){
 	$uid = $data['uid'];
 	$gid = $data['gid'];		
 		
-	if(isUserPendingForCourse($uid,$gid){
+	if(isUserPendingForCourse($uid,$gid)){
 		return 'group_join_pending';
 	}
 
@@ -98,6 +98,7 @@ function groups_func_addGroupRequest($data){
 */
 function isUserPendingForGroup($uid, $gid){
 	    $q = "SELECT * FROM groupslist WHERE id='$gid' LIMIT 1";
+		$r = sql_execute($q);
 	    $d = sql_get($r);
 	    $isPending = false;
 
@@ -342,7 +343,6 @@ function isUserInGroup($uid, $gid){
 
 function groups_func_addGroup($data){
 
-
 	if(check_user_permission('groups_add')){
 	$groupName = makeSafe($data['groupName']);
 	$groupDesc = $data['groupDescription'];
@@ -367,11 +367,13 @@ function groups_func_addGroup($data){
 		break;
 	}
 	
+	$parents = common_set_permissions($data);
+
 	$adminUsers = '<admins></admins>';
 	$adminUsers = addNode($adminUsers,'user',array('id'=>$_SESSION['userID']));
 	$requests = '<requests></requests>';
 	
-	$query = "INSERT INTO groupslist(name, description, grouptype, closed, autojoin, adminusers, requests) VALUES('$groupName','$groupDesc','$groupType', '$closed', '$autoJoin', '$adminUsers', '$requests')";
+	$query = "INSERT INTO groupslist(name, description, closed, autojoin, adminusers, requests, parents) VALUES('$groupName','$groupDesc', '$closed', '$autoJoin', '$adminUsers', '$requests', '$parents')";
 	$result = sql_execute($query);
 	}
 }
@@ -424,8 +426,10 @@ function groups_func_updateGroup($data){
 			$autoJoin = 1;
 		break;
 	}
+
+	$parents = common_set_permissions($data);
 	
-	$q = "UPDATE groupslist SET name='$groupName', description='$groupDesc', grouptype='$groupType', closed='$closed', autojoin='$autoJoin' WHERE id='$gid'";
+	$q = "UPDATE groupslist SET name='$groupName', description='$groupDesc', closed='$closed', autojoin='$autoJoin', parents='$parents' WHERE id='$gid'";
 	//$query = "INSERT INTO groupslist(name, description, grouptype, closed, autojoin) VALUES('$groupName','$groupDesc','$groupType', '$closedT', '$autoJoin')";
 	$result = sql_execute($q);
 
@@ -433,39 +437,12 @@ function groups_func_updateGroup($data){
 }
 
 function addGroupData(){
-	// TODO
-	// check if user is not already a part of the group they are joining
-	/*
-	$query = "SELECT * FROM members WHERE id='" . $_SESSION['userID'] ."' LIMIT 1";
-	$result = sql_execute($query);
-	$row = sql_get($result);
-	$xmlDoc = new DOMDocument();
-	$xmlDoc->loadXML($row['GROUPS']);
-	$rootNode = $xmlDoc->documentElement;
-	while (list($key, $value) = each($_POST)){	
-	// append new child node for every selected grouptype as groupname	
-
-		if((isset($key)) && ($key == "submit")){
-		continue;
-		}
-		if(isset($value) && ($value != "-NONE-")){
-		$value = makeSafe($value);
-		$childBase = $xmlDoc->createElement('group');
-		$childBase->setAttribute($key, $value);
-		$childRef = $rootNode->appendChild($childBase);		
-		}
-
-	$data = $xmlDoc->saveHTML();
-
-	$query = "UPDATE members SET groups='" . $data . "' WHERE id='" . $_SESSION['userID'] . "'";
-	$result = sql_execute($query);
-	goHome("group_join_success");
-		}
-	*/
-	
 	set_user_groups($_SESSION['userID'], $_POST);
-	
 }
+
+/**
+THIS WILL BE DEPRECATED SOON
+*/
 
 function groups_func_insertNewGroupType($data){
 	$name = $data['name'];
@@ -483,7 +460,10 @@ if(check_user_permission('grouptype_add')){
 	}
 }
 
-function groups_backend_listGroupCourses($gid){
+/**
+	lists course id and name of selected group
+*/
+function groups_backend_listGroupCourses($gid, $includeParent = false){
 	$group = $gid;
 
         $q = "SELECT * FROM courses WHERE permissions LIKE '%$group%'";
@@ -496,6 +476,32 @@ function groups_backend_listGroupCourses($gid){
 			$resultSet['NAME'][] = $d['NAME'];
                  }
         }
+
+	if($includeParent){
+	
+	$q = "SELECT PARENTS FROM groupslist WHERE id='$gid' LIMIT 1";
+	$r = sql_execute($q);
+	$d = sql_get($r);
+
+	if($d['PARENTS'] == ''){
+		$d['PARENTS'] = "<data></data>";
+	}
+		
+	$xmldoc = new DOMDocument;
+	$xmldoc->loadXML($d['PARENTS']);
+
+	$rootNode = $xmldoc->documentElement;
+	foreach($rootNode->childNodes as $child){
+		$pgid = $child->getAttribute('id');
+		if(isset($resultSet)){
+			$otherarr = groups_backend_listGroupCourses($pgid);
+			if($otherarr !== false){
+				$resultSet = array_merge($resultSet, $otherarr);
+			}
+		}
+		}
+	}
+	
 	if(isset($resultSet)){
 		return $resultSet;
 	}else{
@@ -503,6 +509,9 @@ function groups_backend_listGroupCourses($gid){
 	}
 }
 
+/**
+	Remove a user from group
+*/
 function groups_func_leave($data){
 	$groupID = $data['gid'];
 	
