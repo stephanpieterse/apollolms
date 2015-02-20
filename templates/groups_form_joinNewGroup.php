@@ -1,4 +1,11 @@
 <?php
+/**
+ * @author Stephan Pieterse
+ * @package ApolloLMS
+ * */
+
+	$smarty = new Smarty();
+
 	if(check_user_permission('join_closed_groups',true)){
 		$sqlquery = "SELECT * FROM groupslist";
 	}else{
@@ -6,32 +13,28 @@
 	}
 		$result = sql_execute($sqlquery);
 	
-		echo '<table class="admin_view_table">';
+		$gx = 0;
 		while($row = sql_get($result)){
-		$link = "";
-			echo '<tr><td>';
-				echo '<a class="bold">' . $row['NAME'] . '</a>';
-				echo '<br/>';
-				echo $row['DESCRIPTION'];
-				echo '</td>';
-				echo '<td>';
+				$dataArray[$gx]['NAME'] = $row['NAME'];
+				$dataArray[$gx]['DESCRIPTION'] = $row['DESCRIPTION'];
+			
 				if(!isUserInGroup($_SESSION['userID'], $row['ID'])){
 					if(isUserPendingForGroup($_SESSION['userID'],$row['ID'])){
-						$link = "JOIN REQUEST ALREADY SENT";
-						echo $link;
+						$dataArray[$gx]['LINKNAME'] = "JOIN REQUEST ALREADY SENT";
+						$dataArray[$gx]['LINK'] = "";
 					}else{
-					$link = '<a href="groups.php?q=addGroupRequest&gid=' . $row['ID'] . '&uid=' . $_SESSION['userID'] . '">';
-					$link = $link . "REQUEST TO JOIN";
-					$link = $link . '</a>';
-					echo $link;
+					$dataArray[$gx]['LINK'] = 'groups.php?q=addGroupRequest&gid=' . $row['ID'] . '&uid=' . $_SESSION['userID'];
+					$dataArray[$gx]['LINKNAME'] = "REQUEST TO JOIN";
 					}
 				}else{
-					$link = '<a href="groups.php?f=viewGroup&gid=' . $row['ID'] . '">';
-					$link = $link . "VIEW GROUP";
-					$link = $link . '</a>';
-					echo $link;
+					$dataArray[$gx]['LINK'] = 'groups.php?f=viewGroup&gid=' . $row['ID'];
+					$dataArray[$gx]['LINKNAME'] = "VIEW GROUP";
 				}
-				echo '</td>';
+				
+				$gx++;
 		}
-		echo '</table>';
+		
+		$smarty->assign('groupData',$dataArray);
+		$tplName = changeExtension(pathinfo(__FILE__,PATHINFO_BASENAME),'tpl');
+		$smarty->display(TEMPLATE_PATH . $tplName);
 ?>

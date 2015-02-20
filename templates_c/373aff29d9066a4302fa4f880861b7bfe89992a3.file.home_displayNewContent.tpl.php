@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.17, created on 2015-02-18 09:21:38
+<?php /* Smarty version Smarty-3.1.17, created on 2015-02-20 14:02:38
          compiled from "modules/home_displayNewContent.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:1159288171548eb28f441355-92268417%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '373aff29d9066a4302fa4f880861b7bfe89992a3' => 
     array (
       0 => 'modules/home_displayNewContent.tpl',
-      1 => 1424251296,
+      1 => 1424438535,
       2 => 'file',
     ),
   ),
@@ -53,7 +53,7 @@ $_smarty_tpl->tpl_vars['smarty']->value['section']['sec1']['last']       = ($_sm
 " >
 	<li class="fl_L course_item">
 	<?php if ($_smarty_tpl->tpl_vars['groupData']->value[$_smarty_tpl->getVariable('smarty')->value['section']['sec1']['index']]['ITEMIMG']!='') {?>
-	<img src="<?php echo $_smarty_tpl->tpl_vars['groupData']->value[$_smarty_tpl->getVariable('smarty')->value['section']['sec1']['index']]['ITEMIMG'];?>
+		<img src="<?php echo $_smarty_tpl->tpl_vars['groupData']->value[$_smarty_tpl->getVariable('smarty')->value['section']['sec1']['index']]['ITEMIMG'];?>
 " />
 	<?php }?>
 	<br/>
@@ -97,7 +97,7 @@ $_smarty_tpl->tpl_vars['smarty']->value['section']['sec1']['last']       = ($_sm
 " >
 	<li class="fl_L course_item">
 	<?php if ($_smarty_tpl->tpl_vars['courseData']->value[$_smarty_tpl->getVariable('smarty')->value['section']['sec1']['index']]['ITEMIMG']!='') {?>
-	<img src="<?php echo $_smarty_tpl->tpl_vars['courseData']->value[$_smarty_tpl->getVariable('smarty')->value['section']['sec1']['index']]['ITEMIMG'];?>
+		<img src="<?php echo $_smarty_tpl->tpl_vars['courseData']->value[$_smarty_tpl->getVariable('smarty')->value['section']['sec1']['index']]['ITEMIMG'];?>
 " />
 	<?php }?>
 	<br/>

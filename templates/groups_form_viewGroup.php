@@ -6,6 +6,8 @@
 This form displays the details of an individually selected group.
 
 */
+	$smarty = new Smarty();
+
 ?>
 <div id="normgroupwrap" style="float: left; width: 50%;">
 <?php
@@ -79,7 +81,9 @@ This form displays the details of an individually selected group.
 				$link = '<a class="biglinkT1" href="groups.php?q=acceptGroupRequest&uid=' . $reqUID . '&gid=' . $group . '">Accept Join Request</a> ';
 				$link .= ' -- ';
 				$link .= '<a class="biglinkT1" href="groups.php?q=denyGroupRequest&uid=' . $reqUID . '&gid=' . $group . '">Deny Join Request</a> ';
-				$link .= '<br/>';
+				$link .= '<br/>';$smarty->assign('groupData',$dataArray);
+		$tplName = changeExtension(pathinfo(__FILE__,PATHINFO_BASENAME),'tpl');
+		$smarty->display(TEMPLATE_PATH . $tplName);
 				echo $link;
 				}
 				
@@ -162,7 +166,7 @@ This form displays the details of an individually selected group.
 	}
 	?>
 	<br/>
-	SUBGROUPS:
+	<b>SUBGROUPS</b>
 	<br/>
 <?php
 	$sq = "SELECT * FROM groupslist";
@@ -182,3 +186,8 @@ This form displays the details of an individually selected group.
 ?>
 </div>
 <br class="clear" />
+<?php
+	$smarty->assign('groupData',$dataArray);
+	$tplName = changeExtension(pathinfo(__FILE__,PATHINFO_BASENAME),'tpl');
+	$smarty->display(TEMPLATE_PATH . $tplName);
+?>
