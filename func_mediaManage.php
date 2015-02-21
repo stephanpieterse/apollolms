@@ -152,20 +152,20 @@ function media_func_convertVideo($fname){
 	}
 	if(!file_exists($finaldir . $filename . ".jpg")){
 		echo $filename . " as jpg poster";
-		shell_exec("./classes/ffmpeg/ffmpeg -y -i " . $fname . " -ss 0:00:15.000 -vframes 1 " . $finaldir . $filename . ".jpg");
+		shell_exec('./classes/ffmpeg/ffmpeg -y -i "' . $fname . '" -ss 0:00:15.000 -vframes 1 "' . $finaldir . $filename . '.jpg"');
 	}
 	
 	if(!file_exists($finaldir . $filename . ".mp4")){
 		echo $filename . 'as mp4';
-		shell_exec("./classes/ffmpeg/ffmpeg -y -i " . $fname . " -b:v 1500k -movflags faststart " . $finaldir . $filename . ".mp4");
+		shell_exec('./classes/ffmpeg/ffmpeg -y -i "' . $fname . '" -b:v 1500k -movflags faststart "' . $finaldir . $filename . '.mp4"');
 	}	
 	if(!file_exists($finaldir . $filename . ".webm")){
 		echo $filename . 'as webm';
-		shell_exec("./classes/ffmpeg/ffmpeg -y -i " . $fname . " -b:v 1500k " . $finaldir . $filename . ".webm");
+		shell_exec('./classes/ffmpeg/ffmpeg -y -i "' . $fname . '" -b:v 1500k "' . $finaldir . $filename . '.webm"');
 	}
 	if(!file_exists($finaldir . $filename . ".ogv")){
 		echo $filename . 'as ogv';
-		shell_exec("./classes/ffmpeg/ffmpeg -y -i " . $fname . " -b:v 1500k " . $finaldir . $filename . ".ogv");
+		shell_exec('./classes/ffmpeg/ffmpeg -y -i "' . $fname . '" -b:v 1500k "' . $finaldir . $filename . '.ogv"');
 	}
 	
 	if(file_exists($finaldir . $filename . ".mp4") && file_exists($finaldir . $filename . ".webm") && file_exists($finaldir . $filename . ".ogv")){
@@ -201,7 +201,7 @@ function media_func_convertAudio($fname){
 	}
 
 	if(file_exists($finaldir . $filename . ".mp3")){
-		shell_exec("./classes/ffmpeg/ffmpeg -i " . $fname . " " . $finaldir . $filename . ".mp3");
+		shell_exec('./classes/ffmpeg/ffmpeg -i "' . $fname . '" "' . $finaldir . $filename . '.mp3"');
 	}
 	
 	if(file_exists($finaldir . $filename . ".mp3")){
