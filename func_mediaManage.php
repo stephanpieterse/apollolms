@@ -37,16 +37,16 @@ function media_func_fileUploadBasic(){
  * Returns an array of filenames with dir prefixes
  * */
 function scanForFiles($dir, $prefix = '',$recurse = false, $includeHidden = true){
+  $origdir = $dir; 
   $dir = rtrim(dirname(__FILE__) . '/' .$dir, '\\/');
   $result = array();
     foreach (scandir($dir) as $f) {
       if (($f !== '.') && ($f !== '..')) {
         if($recurse){
 			if (is_dir("$dir/$f")) {
-			  $result = array_merge($result, scanForFiles("$dir/$f", "$prefix$f/"));
+			  $result = array_merge($result, scanForFiles("$origdir/$f", "$prefix", $recurse, $includeHidden));
 			}
 		}
-		else {
 			if($includeHidden){
 				$result[] = $prefix.$f;
 			}else{
@@ -54,7 +54,6 @@ function scanForFiles($dir, $prefix = '',$recurse = false, $includeHidden = true
 					$result[] = $prefix.$f;
 				}
 			}
-        }
       }
     }
   return $result; 
@@ -63,7 +62,6 @@ function scanForFiles($dir, $prefix = '',$recurse = false, $includeHidden = true
 /*
  * Recursively deletes entire folder and subs.
  * */
-
 function media_func_rmFolder($data){
 	$fileName = $data['folder'];
 	chdir(dirname(__FILE__));
@@ -135,27 +133,104 @@ function media_func_renameFile($data){
  * we should pull the data from a sql db
  * we should daily scan all dirs for files that may have been deleted
  * */
-function media_func_convertFile($fname){
+function media_func_convertVideo($fname){
 	chdir(dirname(__FILE__));
 	
-	$filename = pathinfo($fname,PATHINFO_BASENAME);
+	$filename = pathinfo($fname,PATHINFO_FILENAME);
 	$safedir = pathinfo($fname,PATHINFO_DIRNAME);
 	
 	$finaldir = $safedir.'/.vid_res/';
 	
+	$ext = pathinfo($fname, PATHINFO_EXTENSION); 
+	$vidarr = array('mpg','mpeg','mp4','flv','f4v','webm','ogv','vob');
+	if(!in_array($ext,$vidarr)){
+		return false;
+	}
+
 	if(!file_exists($finaldir)){
 		mkdir($finaldir);
 	}
+	if(!file_exists($finaldir . $filename . ".jpg")){
+		echo $filename . " as jpg poster";
+		shell_exec("./classes/ffmpeg/ffmpeg -y -i " . $fname . " -ss 0:00:15.000 -vframes 1 " . $finaldir . $filename . ".jpg");
+	}
 	
-	shell_exec("./classes/ffmpeg/ffmpeg -y -i " . $fname . " " . $finaldir . $filename . ".mp4");
-	shell_exec("./classes/ffmpeg/ffmpeg -y -i " . $fname . " " . $finaldir . $filename . ".webm");
-	shell_exec("./classes/ffmpeg/ffmpeg -y -i " . $fname . " " . $finaldir . $filename . ".ogv");
+	if(!file_exists($finaldir . $filename . ".mp4")){
+		echo $filename . 'as mp4';
+		shell_exec("./classes/ffmpeg/ffmpeg -y -i " . $fname . " -b:v 1500k -movflags faststart " . $finaldir . $filename . ".mp4");
+	}	
+	if(!file_exists($finaldir . $filename . ".webm")){
+		echo $filename . 'as webm';
+		shell_exec("./classes/ffmpeg/ffmpeg -y -i " . $fname . " -b:v 1500k " . $finaldir . $filename . ".webm");
+	}
+	if(!file_exists($finaldir . $filename . ".ogv")){
+		echo $filename . 'as ogv';
+		shell_exec("./classes/ffmpeg/ffmpeg -y -i " . $fname . " -b:v 1500k " . $finaldir . $filename . ".ogv");
+	}
 	
 	if(file_exists($finaldir . $filename . ".mp4") && file_exists($finaldir . $filename . ".webm") && file_exists($finaldir . $filename . ".ogv")){
 		return true;
 	}else{
 		return false;
 	}
+}
+
+/*
+ * We need smaller audios such as mp3
+ * 
+ * we should pull the data from a sql db
+ * we should daily scan all dirs for files that may have been deleted
+ * */
+function media_func_convertAudio($fname){
+	chdir(dirname(__FILE__));
+	
+	$filename = pathinfo($fname,PATHINFO_FILENAME);
+	$safedir = pathinfo($fname,PATHINFO_DIRNAME);
+	
+	$finaldir = $safedir.'/.aud_res/';
+	
+	if(!file_exists($finaldir)){
+		mkdir($finaldir);
+	}
+
+	$ext = pathinfo($fname, PATHINFO_EXTENSION);
+	$audarr =array('wav','mp2','ogg','mp3','aac','flac');
+
+	if(!in_array($ext,$audarr)){
+		return false;
+	}
+
+	if(file_exists($finaldir . $filename . ".mp3")){
+		shell_exec("./classes/ffmpeg/ffmpeg -i " . $fname . " " . $finaldir . $filename . ".mp3");
+	}
+	
+	if(file_exists($finaldir . $filename . ".mp3")){
+		return true;
+	}else{
+		return false;
+	}
+}
+
+function media_func_convertFile($fname){
+
+	$ext = pathinfo($fname,PATHINFO_EXTENSION);
+		$audarr =array('wav','mp2','ogg','mp3','aac','flac');
+
+	if(in_array($ext,$audarr)){
+		media_func_convertAudio($fname);
+	}	
+	$vidarr =array('mpg','mpeg','mp4','flv','f4v','webm','ogv','vob');
+
+	if(in_array($ext,$vidarr)){
+		media_func_convertVideo($fname);
+	}
+}
+
+function media_func_scanForOrphanedConverts(){
+	// scan entire directory tree
+	// check for .vid_res and .aud_res folders
+	// check if parent folder contains same name file 
+	// if not... delete it
 }
 
 /**

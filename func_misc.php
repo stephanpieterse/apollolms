@@ -34,6 +34,7 @@ require('func_flagged.php');
 require('func_sitesettings.php');
 require('func_resources.php');
 require('func_events.php');
+require('func_crons.php');
 
 require(CLASS_PATH . 'modules.php');
 require(CLASS_PATH . 'test_item.php');

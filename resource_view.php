@@ -100,6 +100,33 @@ switch($fileExt){
 		}
 		}
 	break;
+	case 'ogv':
+		$mimetype = "video/ogg";
+		$toload = "jplayer_video";
+		$mediaInfo = $mediaData->analyze($file);
+		if($desktop){
+		$objWidth = isset($mediaInfo['video']['resolution_x']) ? $mediaInfo['video']['resolution_x'] : $objWidth;
+		$objHeight = isset($mediaInfo['video']['resolution_y']) ? $mediaInfo['video']['resolution_y'] : $objHeight;
+		if($objWidth > 720){
+			$objWidth = $objWidth / 2;
+			$objHeight = $objHeight / 2;
+		}
+		}
+	break;
+	case 'webm':
+		$mimetype = "video/webm";
+		$toload = "jplayer_video";
+		$mediaInfo = $mediaData->analyze($file);
+		if($desktop){
+		$objWidth = isset($mediaInfo['video']['resolution_x']) ? $mediaInfo['video']['resolution_x'] : $objWidth;
+		$objHeight = isset($mediaInfo['video']['resolution_y']) ? $mediaInfo['video']['resolution_y'] : $objHeight;
+		if($objWidth > 720){
+			$objWidth = $objWidth / 2;
+			$objHeight = $objHeight / 2;
+		}
+		}
+	break;
+	
 	case 'swf':
 		$mimetype = "application/x-shockwave-flash";
 	break;
@@ -172,6 +199,39 @@ $('a.embed_this').gdocsViewer();
 if($toload == "jplayer_video"){
 	$suppliedA = explode('/',$mimetype);
 	$supplied = $suppliedA[1];
+
+	// check here if alternate video files are available yet and include them
+	$checkdir = pathinfo($file, PATHINFO_DIRNAME) . '/.vid_res/';
+	$cleanname = pathinfo($file, PATHINFO_FILENAME);
+	if(file_exists($checkdir . $cleanname .'.jpg')){
+		$posterfile = $checkdir . $cleanname . '.jpg';
+	}else{
+		$posterfile = '';
+	}
+	if(file_exists($checkdir . $cleanname .'.ogv')){
+		$altfiles[] = $checkdir . $cleanname . '.ogv';
+	}
+	if(file_exists($checkdir . $cleanname .'.mp4')){
+		$altfiles[] = $checkdir . $cleanname . '.mp4';
+	}	
+	if(file_exists($checkdir . $cleanname .'.webm')){
+		$altfiles[] = $checkdir . $cleanname . '.webm';
+	}	
+
+	if(isset($altfiles)){
+	$supplied ='"';
+	$setmedia = '';
+		foreach($altfiles as $alt){
+			$altext = pathinfo($alt,PATHINFO_EXTENSION);
+			$supplied .= $altext . ',';
+			$setmedia .= $altext . ':"' . $checkdir . $cleanname . '.' . $altext . '",';
+		}
+	$supplied .= '"';
+	}else{
+		$supplied = '"' . $fileExt . '"';
+		$setmedia = $fileExt . ':"' . $file . '",';
+	}
+
 	include(TEMPLATE_PATH . 'jplayer_video.html');
 	$scriptData = '
 	<script type="text/javascript">
@@ -181,12 +241,13 @@ if($toload == "jplayer_video"){
 		errorAlerts: true,
 		ready: function () {
 			$(this).jPlayer("setMedia", {
-				' . $fileExt . ':"' . $file . '"
+				' . $setmedia . '
+			poster :"' . $posterfile . '"
 			});
 		},
 		solution:"html,flash",
 		swfPath: "'.SCRIPTS_PATH.'jplayer",
-		supplied: "' . $fileExt . '",
+		supplied: ' . $supplied . ',
 		wmode: "window",
 		size: {
 			width: "' . $objWidth . 'px",
