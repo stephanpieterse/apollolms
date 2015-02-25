@@ -214,7 +214,6 @@ function courses_func_registerForCourse($data){
 	$paymentData['purchRef'] = (isset($data['purchRef'])) ? $data['purchRef'] : null;
 	$paymentData['captcha_code'] = (isset($data['captcha_code'])) ? $data['captcha_code'] : null;
 		
-		
 		if((isUserRegisteredForCourse($uid,$cid)) || (isUserPendingForCourse($uid,$cid))){
 			page_redirect('courses.php?f=viewCourses','',array('SITE_INFO_MSG'=>'You have already been registered or a request is still pending for your registration.'));
 		}
@@ -243,20 +242,19 @@ function courses_func_registerForCourse($data){
 		$r = sql_execute($q);
 		$d = sql_get($r);
 		
-		if($d['AUTOJOIN'] != 1 && $d['PRICE'] != 0){
-			page_redirect('courses.php?f=paymentForm&cid=' . $cid);
-		}
+		//if($d['AUTOJOIN'] != 1 && $d['PRICE'] != 0){
+	//		page_redirect('courses.php?f=paymentForm&cid=' . $cid);
+	//		}
 		
 		if(is_array($paymentData)){
 		
 			if(isset($paymentData['purchRef'])){
 				$purchRef = makeSafe($paymentData['purchRef']);
 			}
-
 			if(isset($paymentData['captcha_code'])){
-				include_once('scripts/securimage/securimage.php');
-	 			$securimage = new Securimage();
-	 			$securimage->session_name = session_name();
+				require_once('scripts/securimage/securimage.php');
+	 			$securimage = new Securimage(array('session_name'=>'lmsID' . SUBDOMAIN_NAME));
+	 			//$securimage->session_name = 'lmsID' . SUBDOMAIN_NAME; //$GLOBALS['site_session_name'];//session_name();
 	 			echo $paymentData['captcha_code'];
 	 			//var_dump( $securimage->getCode(true,true));
 				if($securimage->check($paymentData['captcha_code']) === false){
@@ -280,6 +278,7 @@ function courses_func_registerForCourse($data){
 			//	var_dump($newPending);
 				$msgbody = "A user is requesting to be registered for a paid course. <br/>Details: Purchase Ref: " . $purchRef;
 				mail_informAdmin('User requesting registration for paid course.',$msgbody);
+				page_redirect('courses.php?f=viewCourses','',array('SITE_INFO_MSG'=>'A request for your registration has been sent to the course administrator.'));	
 				return true;
 			}
 		}

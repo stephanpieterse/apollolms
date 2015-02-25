@@ -8,12 +8,12 @@
 		if($pendreq == ""){
 			$pendreq = "<pending></pending>";
 			echo 'There are no pending requests.';
-			return false;
+			continue;
 		}
 		
 		if(!xmlHasChildren($pendreq)){
 			echo 'There are no pending requests.';
-			return false;
+			continue;
 		}
 		$uq = "SELECT name FROM members WHERE id='" . $d['UID'] . "' LIMIT 1";
 		$ur = sql_execute($uq);
@@ -37,6 +37,7 @@
 			echo $reference;
 			br();
 		}
+		echo '<br/>';
 	
 	}
 ?>

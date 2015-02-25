@@ -20,10 +20,11 @@
 		?>
 		<?php
 		if(isset($_SESSION['userID'])){
-	//	load_user_permissions($_SESSION['userID']);
-	 }
 		?>
 	<li><a href="index.php?f=reportitem<?php foreach($_GET as $key=>$val){ echo '&' . $key . '=' . $val;} ?>">Report this page</a></li>
+	<?php
+		} //endif
+	?>
 	 </ul>
     </div>
     <div class="footbox">

@@ -48,8 +48,9 @@
 // error_reporting(E_ALL); ini_set('display_errors', 1);
 
 require_once dirname(__FILE__) . '/securimage.php';
+require_once dirname(__FILE__) . '/../../config.php';
 
-$img = new Securimage();
+$img = new Securimage(array('session_name'=>'lmsID' . SUBDOMAIN_NAME));
 
 // You can customize the image by making changes below, some examples are included - remove the "//" to uncomment
 
@@ -69,8 +70,7 @@ $img = new Securimage();
 //                                             rand(128, 255));  // random signature color
 
 // see securimage.php for more options that can be set
-
-
+//$img->session_name = 'lmsID' . SUBDOMAIN_NAME;
 
 $img->show();  // outputs the image and content headers to the browser
 // alternate use:

@@ -44,15 +44,21 @@ function scanForFiles($dir, $prefix = '',$recurse = false, $includeHidden = true
       if (($f !== '.') && ($f !== '..')) {
         if($recurse){
 			if (is_dir("$dir/$f")) {
-			  $result = array_merge($result, scanForFiles("$origdir/$f", "$prefix", $recurse, $includeHidden));
-			}
-		}
 			if($includeHidden){
-				$result[] = $prefix.$f;
+			  $result = array_merge($result, scanForFiles("$origdir/$f", $prefix . $f . '/', $recurse, $includeHidden));
 			}else{
 				if(strpos($f,'.') !== 0){
-					$result[] = $prefix.$f;
+				$result = array_merge($result, scanForFiles("$origdir/$f", $prefix . $f . '/', $recurse, $includeHidden));
 				}
+			}
+			}
+		}
+		if($includeHidden){
+			$result[] = $prefix.$f;
+		}else{
+			if(strpos($f,'.') !== 0){
+				$result[] = $prefix.$f;
+			}
 			}
       }
     }
@@ -157,15 +163,15 @@ function media_func_convertVideo($fname){
 	
 	if(!file_exists($finaldir . $filename . ".mp4")){
 		echo $filename . 'as mp4';
-		shell_exec('./classes/ffmpeg/ffmpeg -y -i "' . $fname . '" -b:v 1500k -movflags faststart "' . $finaldir . $filename . '.mp4"');
+		shell_exec('./classes/ffmpeg/ffmpeg -y -i "' . $fname . '" -b:v 750k -movflags faststart "' . $finaldir . $filename . '.mp4"');
 	}	
 	if(!file_exists($finaldir . $filename . ".webm")){
 		echo $filename . 'as webm';
-		shell_exec('./classes/ffmpeg/ffmpeg -y -i "' . $fname . '" -b:v 1500k "' . $finaldir . $filename . '.webm"');
+		shell_exec('./classes/ffmpeg/ffmpeg -y -i "' . $fname . '" -b:v 750k "' . $finaldir . $filename . '.webm"');
 	}
 	if(!file_exists($finaldir . $filename . ".ogv")){
 		echo $filename . 'as ogv';
-		shell_exec('./classes/ffmpeg/ffmpeg -y -i "' . $fname . '" -b:v 1500k "' . $finaldir . $filename . '.ogv"');
+		shell_exec('./classes/ffmpeg/ffmpeg -y -i "' . $fname . '" -b:v 750k "' . $finaldir . $filename . '.ogv"');
 	}
 	
 	if(file_exists($finaldir . $filename . ".mp4") && file_exists($finaldir . $filename . ".webm") && file_exists($finaldir . $filename . ".ogv")){

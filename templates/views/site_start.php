@@ -16,8 +16,9 @@
 	//--//$result = '/'.implode('/', $result);
 	$sitepath =  $result[0] ;
 
-	//session_name('lmsID' . $sitepath);
+	session_name('lmsID' . SUBDOMAIN_NAME);
 	session_set_cookie_params(86400,'/',$_SERVER['SERVER_NAME'],FALSE,TRUE);
+	$GLOBALS['site_session_name'] = 'lmsID' . SUBDOMAIN_NAME;
 	
 	if(!isset($_SERVER['HTTPS'])){
 		$https = "https://"; // there is a reason i did this but i'm not sure why anymore
