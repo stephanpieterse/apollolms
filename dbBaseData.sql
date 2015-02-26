@@ -805,7 +805,7 @@ CREATE TABLE `statmessages` (
   `MSGNAME` text NOT NULL,
   `MESSAGE` text NOT NULL,
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -839,6 +839,8 @@ INSERT INTO `statmessages` VALUES (22,'success','Action completed succesfully');
 INSERT INTO `statmessages` VALUES (23,'failure','Action completion failed');
 INSERT INTO `statmessages` VALUES (24,'404','The specified page you have requested could not be found.');
 INSERT INTO `statmessages` VALUES (25,'group_join_pending','Your request to join the group is pending for approval.');
+INSERT INTO `statmessages` VALUES (26,'wronguser','Please check your login e-mail if it is correct.');
+INSERT INTO `statmessages` VALUES (27,'wrongpassword','The supplied password was incorrect!');
 /*!40000 ALTER TABLE `statmessages` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1185,4 +1187,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-02-26 21:56:26
+-- Dump completed on 2015-02-26 22:25:41

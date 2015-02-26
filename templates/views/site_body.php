@@ -29,6 +29,14 @@
 		$SYSTEM_STAT_MSG = $_SESSION['SITE_INFO_MSG'];
 		unset($_SESSION['SITE_INFO_MSG']);
 	}
+	if(isset($_GET['msg'])){
+		$q = "SELECT * FROM statmessages WHERE msgname='" . $_GET['msg'] . "' LIMIT 1";
+		$r = sql_execute($q);
+		$d = sql_get($r);
+		if(isset($d['MESSAGE'])){
+			$SYSTEM_STAT_MSG = $d['MESSAGE'];
+		}
+	}
 ?>
 <div class="wrapper col0">
 	<div id="admin_floating_nav">
@@ -49,7 +57,7 @@ if(isset($SYSTEM_HELP_MSG)){
 	echo <<<REF
 <div class="yellowMsgBox" id="system_help_msg"> $SYSTEM_HELP_MSG </div>
 <script>
-	$('#system_help_msg').delay(5000).fadeOut(500);
+	$('#system_help_msg').delay(8000).fadeOut(1000);
 </script>
 REF;
 }
@@ -57,7 +65,7 @@ if(isset($SYSTEM_STAT_MSG)){
 	echo <<<REF
 <div class="greenMsgBox" id="system_stat_msg"> $SYSTEM_STAT_MSG </div>
 <script>
-	$('#system_stat_msg').delay(5000).fadeOut(500);
+	$('#system_stat_msg').delay(8000).fadeOut(1000);
 </script>
 REF;
 }

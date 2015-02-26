@@ -56,7 +56,7 @@ function login_func_checkLogin($data){
 	$c = sql_numrows($r);
 	
 	if($c == 0){
-		return "The supplied user name is incorrect.";
+		return "wronguser";
 	}
 
 	$sql="SELECT * FROM members WHERE email='$username' and password='$passwordref' LIMIT 1";
