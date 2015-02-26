@@ -203,7 +203,7 @@ function importCSVFileToUser($file, $extra){
 		$csvArr['addToGID'] = 0;
 		}
 		
-		$stat = addUserItem($csvArr, array('nomail_admin'=>'1'));
+		$stat = users_func_addUserItem($csvArr, array('nomail_admin'=>'1'));
 		if ($stat != true){ echo $stat; echo $csvArr['emailad']; $totalrecords--;}
 		}
 		br();
@@ -317,7 +317,7 @@ function set_tempEmailVerify($email){
  * 		nomail_admin - doesnt inform the admin user of the site
  * 
  */
-function addUserItem($data, $tags = null){
+function users_func_addUserItem($data, $tags = null){
 	$retval = true;
 	
 	if(isset($data['randomPass']) && $data['randomPass'] == 1){
@@ -376,7 +376,7 @@ function addUserItem($data, $tags = null){
 			$msgBody = "You have been succesfully registered on the site. Your details are as follows:<br/>Username: " . $emailad . " <br/>Password: " . $passwordref . ". <br/> Be sure to save this e-mail for future reference." ;
 			mail_inform($emailad,'Welcome',$msgBody);
 			
-			if(($_GET['login'] == 1) || ($_GET['login'] == true)){
+			if(($data['shouldLogin'] == 1) || ($data['shouldLogin'] == true)){
 				//checkLogin($emailad, $loginPass);
 				users_func_checkLogin(array('username'=>$emailad,'password'=>$passwordref));				
 			}

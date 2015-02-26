@@ -12,7 +12,7 @@ if(check_user_permission(array('user_view','user_modify','user_add','user_remove
 	$subs = '<li><a href="users.php?f=admin_UserManage"><img src="' . ICONS_PATH . 'user.png"/>Users</a><ul>';
 //users.php?f=admin_UserManage
 		if(check_user_permission("user_add")){
-		$subs .= '<li><a href="index.php?action=addUser">Add New User</a></li>';
+			$subs .= '<li><a href="users.php?f=addUserItem">Add New User</a></li>';
 		}
 		if(check_user_permission("user_add")){
 			$subs .= '<li><a href="users.php?f=admin_viewPending">View Pending Requests</a></li>';

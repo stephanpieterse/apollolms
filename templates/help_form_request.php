@@ -1,7 +1,7 @@
 <p>
 If you have any requests or suggestions regarding content, features etc for the site, please leave a description in the box below.
 
-<form name="msgForm" method="post" action="index.php?uq=submitRequest">
+<form name="msgForm" method="post" action="help.php?pq=submitContentRequest">
 
 <?php
 	echo print_bold("Describe your request:");

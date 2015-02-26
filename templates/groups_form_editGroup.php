@@ -85,8 +85,8 @@ if($rd['AUTOJOIN'] == 0){
 }
 ?>
 </select>
-
-Group parents:
+<br/><br/>
+<span class="bold">Group parents:</span>
 <br/>
 <?php
 	if(isset($gid)){

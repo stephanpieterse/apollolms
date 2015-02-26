@@ -35,8 +35,6 @@ $dispatch_uq = array(
 );
 
 $dispatch_action = array(
-	'addUser'=>function(){include ( TEMPLATE_PATH . "form_adduseritem.php" );},
-	'addNewUser'=>function(){$retval=addUserItem($_POST);if($retval !== true){page_redirect("index.php",'',array('SITE_ERROR_MSG'=>$retval));}}, //ech o$retval;							
 	'rem_user'=>function(){removeItem('members',$_GET['uid']);},	 //removeUser($_GET['user']);
 	'rem_course'=>function(){removeItem('courses', $_GET['course']); findOrphans();}, //removeCourse($_GET['course']);
 	'upd_article'=>function(){update_article($_GET['id'],$_POST); goToLastPage();},

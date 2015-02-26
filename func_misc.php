@@ -636,7 +636,7 @@ function defaultHome(){
 		$d = sql_get(sql_execute($q));
 		echo '<div class="defaultContent">' . $d['value'] . '</div>';
 		if(SITE_OPEN_REGISTRATIONS == 'true'){
-			include(TEMPLATE_PATH . "form_adduseritem.php");
+			include(TEMPLATE_PATH . "users_form_addUserItem.php");
 		}
 		echo '<br class="clear"/>';
 		echo '<a href="open_course_loader.php">View our public content</a>';

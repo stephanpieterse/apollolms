@@ -14,7 +14,7 @@
     	<ul>
 		<?php
 		if(isset($_SESSION['userID'])){
-        echo '<li class="last"><a href="index.php?f=request">Content Request</a></li>';
+        echo '<li class="last"><a href="help.php?f=request">Content Request</a></li>';
         echo '<li class="last"><a href="index.php?f=help">Help</a></li>';
 		}
 		?>

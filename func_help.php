@@ -36,7 +36,7 @@ function base_func_submitHelpMsg(){
 	return 'help_message_posted_success';
 }
 
-function submitContentRequest($data){
+function help_func_submitContentRequest($data){
 //if(isset($_SESSION['userID'])){
 	//$username = $_SESSION['userID'];
 //}else{
