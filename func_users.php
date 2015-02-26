@@ -381,11 +381,12 @@ function users_func_addUserItem($data, $tags = null){
 				users_func_checkLogin(array('username'=>$emailad,'password'=>$passwordref));				
 			}
 		}else{
-			$retval = "Some of the required fields are incorrect. Please make sure you are using a valid email address and that the passwords you have entered match.";
-			return $retval;
+		//	$retval = "Some of the required fields are incorrect. Please make sure you are using a valid email address and that the passwords you have entered match.";
+			return "err_register_invalid_data";
 		}
 	}else{
-	$retval = "The e-mail you have entered is already in use, please choose another and try again."; 
+	//$retval = "The e-mail you have entered is already in use, please choose another and try again."; 
+	$retval = "err_register_email_taken";
 	}
 	return $retval;
 }

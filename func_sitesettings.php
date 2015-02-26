@@ -28,7 +28,7 @@ function settings_func_update_siteLogo($post){
 		return true;
 	}
 	}
-	return 'It seems there was an error while uploading the new logo...';	
+	return 'err_upload_logo';
 }
 
 function settings_func_update_bulksmsDetails($post){
@@ -101,7 +101,7 @@ function settings_func_update_payfastDetails($post){
 			$q = "UPDATE site_settings SET value='$data' WHERE item='payfast_account'";
 			$d = sql_execute($q);
 			
-			return 'Details succesfully updated';
+			return 'success';
 	}
 	
 function settings_func_update_defaultHomepage($post){
@@ -116,6 +116,6 @@ function settings_func_update_defaultHomepage($post){
 		$q = "UPDATE site_settings SET value='$data' WHERE item='default_homepage'";
 		$d = sql_execute($q);
 		
-		return 'Details succesfully updated';
+		return 'success';
 	}	
 ?>

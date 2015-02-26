@@ -805,7 +805,7 @@ CREATE TABLE `statmessages` (
   `MSGNAME` text NOT NULL,
   `MESSAGE` text NOT NULL,
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -841,6 +841,9 @@ INSERT INTO `statmessages` VALUES (24,'404','The specified page you have request
 INSERT INTO `statmessages` VALUES (25,'group_join_pending','Your request to join the group is pending for approval.');
 INSERT INTO `statmessages` VALUES (26,'wronguser','Please check your login e-mail if it is correct.');
 INSERT INTO `statmessages` VALUES (27,'wrongpassword','The supplied password was incorrect!');
+INSERT INTO `statmessages` VALUES (28,'err_upload_logo','There was a problem uploading the logo. Please check the format of the file, and try again later. If the problem persists, please contact the system administrator.');
+INSERT INTO `statmessages` VALUES (29,'err_register_invalid_data','The supplied data is invalid. Please check that you have completed all the required fields, are using a valid email address, and that the passwords supplied match.');
+INSERT INTO `statmessages` VALUES (30,'err_register_email_taken','The email you have chosen already exists! Did you forget your password?');
 /*!40000 ALTER TABLE `statmessages` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1187,4 +1190,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-02-26 22:25:41
+-- Dump completed on 2015-02-26 22:45:07

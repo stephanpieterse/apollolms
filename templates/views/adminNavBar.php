@@ -67,12 +67,13 @@ if(check_user_permission(array('media_view','media_modify'),true)){
 }
 if(check_user_permission(array('groups_add','groups_remove','groups_view','groups_modify'),true)){
 	$link = '<li><a href="groups.php?f=admin_GroupManage"><img src="' . ICONS_PATH . 'group.png"/>Groups</a><ul>';
+	$link .= '<li><a href="groups.php?f=admin_GroupManage">Manage Groups</a></li>';
 	
 	if(check_user_permission("groups_add")){
 		$link .= '<li><a href="groups.php?f=editGroup">Add New Group</a></li>';
 		}
 		if(check_user_permission("groups_add")){
-		$link .= '<li><a href="groups.php?f=editGroupType">Add New Group Type</a></li>';
+		//$link .= '<li><a href="groups.php?f=editGroupType">Add New Group Type</a></li>';
 	}
 	$link .= '</ul></li>';
 	echo $link;
