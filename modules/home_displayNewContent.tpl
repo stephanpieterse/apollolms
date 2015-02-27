@@ -1,3 +1,4 @@
+{if isset($groupData)}
 <span class="group_content_show">
 {section name=sec1 loop=$groupData}
 	<a class="disp_block" href="{$groupData[sec1].HEADLINK}" >
@@ -12,6 +13,7 @@
 	</a>
 {/section}
 </span>
+{/if}
 <br/>
 <br class="clear" />
 <p>Available courses:</p>

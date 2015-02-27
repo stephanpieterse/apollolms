@@ -105,8 +105,12 @@
 					}
 				$curItem++;
 			}
+			if(isset($dataArray)){
 			$smarty->assign('courseData',$dataArray);
+			}
+			if(isset($groupdataArray)){
 			$smarty->assign('groupData',$groupdataArray);
+			}
 			$tplName = changeExtension(pathinfo(__FILE__,PATHINFO_BASENAME),'tpl');
 			$smarty->display(MODULE_PATH . $tplName);
 	//echo "</ul>";

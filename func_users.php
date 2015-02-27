@@ -42,7 +42,7 @@ function users_func_search($data){
 function login_func_checkLogin($data){
 	$user = $data['username'];
 	$pass = $data['password'];
-	$fromwhere = $data['fromURL'];
+	$fromwhere = isset($data['fromURL']) ? $data['fromURL'] : null;
 	
 	$password = $pass;
 	$username = makeSafe($user);
@@ -87,11 +87,13 @@ function login_func_checkLogin($data){
 	$result=sql_execute($sql);
 	//goHome();
 	//echo 'Please wait while redirecting your login... if the page does not redirect please click <a href="index.php">here</a>';
-	page_redirect($fromwhere);
-	//return true;
+	if(isset($fromwhere)){
+		page_redirect($fromwhere);
+	}else{
+		return true;
+	}
 }else{
 	sleep(3);
-	//goHome("invalid_login");
 	return "wrongpassword";
 	}
 }
@@ -312,6 +314,10 @@ function set_tempEmailVerify($email){
 	return true;
 }
 
+function login_func_addUserItem($data){
+	return users_func_addUserItem($data);
+}
+
 /**
  * possible tags:
  * 		nomail_admin - doesnt inform the admin user of the site
@@ -331,7 +337,7 @@ function users_func_addUserItem($data, $tags = null){
 	
 	$name=makeSafe($data['name']);
 	//$surname=makeSafe($_POST['surname']);
-	$emailad=makeSafe($data['emailad']);
+	$emailad=($data['emailad']);
 	$role= "User"; //$_POST['role'];
 	$contactnum=makeSafe($data['contactnum']);
 	$secuQ  = 'NA';//makeSafe($data['securityQ']);
@@ -378,7 +384,7 @@ function users_func_addUserItem($data, $tags = null){
 			
 			if(($data['shouldLogin'] == 1) || ($data['shouldLogin'] == true)){
 				//checkLogin($emailad, $loginPass);
-				users_func_checkLogin(array('username'=>$emailad,'password'=>$passwordref));				
+				return login_func_checkLogin(array('username'=>$emailad,'password'=>$passwordref));				
 			}
 		}else{
 		//	$retval = "Some of the required fields are incorrect. Please make sure you are using a valid email address and that the passwords you have entered match.";

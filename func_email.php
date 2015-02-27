@@ -249,6 +249,15 @@ function mail_informAdmin($subj, $body) {
 	return $stat;
 }
 
+
+function mail_func_sendEmail($data){
+	$to = $data['to'];
+	$subj = $data['subject'];
+	$body = $data['msgbody'];
+	$from = $data['from'];
+	sendEmail($to,$subj,$body,$form);
+}
+
 /**
  * Function to send emails - always wrap this function
  * Param:
@@ -257,8 +266,8 @@ function mail_informAdmin($subj, $body) {
  * body - msg content
  * from - from email address
  */
-function sendEmail($to, $subj, $body, $from) {
-	$fullsitelogo = '"' . "https://" . $_SERVER['HTTP_HOST'] . '/' . SITE_LOGO . '"';
+function sendEmail($to, $subj, $body, $from) {	
+	$fullsitelogo = '"' . "https://" . $_SERVER['HTTP_HOST'] . '/' . 'media/logo.png' . '"';
 	$fullsitelink = '"' . "https://" . $_SERVER['HTTP_HOST'] . '/' . 'index.php' . '"';
 
 	chdir(dirname(__FILE__));
@@ -268,7 +277,7 @@ function sendEmail($to, $subj, $body, $from) {
 	$headshape = $head;
 	$headshape = preg_replace('/REPLACE_SITE_NAME/', SITE_NAME, $headshape);
 	$headshape = preg_replace('/REPLACE_SITE_LOGO/', $fullsitelogo, $headshape);
-	$headshape = preg_replace('/REPLACE_SITE_LINK/', $fullsitelogo, $headshape);
+	$headshape = preg_replace('/REPLACE_SITE_LINK/', $fullsitelink, $headshape);
 
 	$foot = file_get_contents(TEMPLATE_PATH . 'emails/footer.php');
 	$footshape = preg_replace('/REPLACE_SITE_LOGO/', $fullsitelogo, $foot);

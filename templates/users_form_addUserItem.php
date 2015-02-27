@@ -6,7 +6,17 @@
 		$shouldLogin = false;
 	}
 ?>
-	<form class="registerMember defaultContent" method="post" action="users.php?pq=addUserItem">
+<?php if($shouldLogin){
+?>
+	<form class="registerMember defaultContent" method="post" action="logins.php?pq=addUserItem">
+<?php
+	}
+	else{
+?>
+	<form class="registerMember defaultContent" method="post" action="users.php?pq=addUserItem">	
+<?php
+	}
+?>
 	<input type="hidden" name="shouldLogin" value="<?php echo $shouldLogin; ?>" />
 	<fieldset>
 	<?php if($shouldLogin){echo '<h1><legend>Register as New User</legend></h1>';} ?>

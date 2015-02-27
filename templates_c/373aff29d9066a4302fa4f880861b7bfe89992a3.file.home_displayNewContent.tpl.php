@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.17, created on 2015-02-20 14:02:38
+<?php /* Smarty version Smarty-3.1.17, created on 2015-02-27 12:50:39
          compiled from "modules/home_displayNewContent.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:1159288171548eb28f441355-92268417%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '373aff29d9066a4302fa4f880861b7bfe89992a3' => 
     array (
       0 => 'modules/home_displayNewContent.tpl',
-      1 => 1424438535,
+      1 => 1425041429,
       2 => 'file',
     ),
   ),
@@ -24,7 +24,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_548eb28f49f496_32655961')) {function content_548eb28f49f496_32655961($_smarty_tpl) {?><span class="group_content_show">
+<?php if ($_valid && !is_callable('content_548eb28f49f496_32655961')) {function content_548eb28f49f496_32655961($_smarty_tpl) {?><?php if (isset($_smarty_tpl->tpl_vars['groupData']->value)) {?>
+<span class="group_content_show">
 <?php if (isset($_smarty_tpl->tpl_vars['smarty']->value['section']['sec1'])) unset($_smarty_tpl->tpl_vars['smarty']->value['section']['sec1']);
 $_smarty_tpl->tpl_vars['smarty']->value['section']['sec1']['name'] = 'sec1';
 $_smarty_tpl->tpl_vars['smarty']->value['section']['sec1']['loop'] = is_array($_loop=$_smarty_tpl->tpl_vars['groupData']->value) ? count($_loop) : max(0, (int) $_loop); unset($_loop);
@@ -65,6 +66,7 @@ $_smarty_tpl->tpl_vars['smarty']->value['section']['sec1']['last']       = ($_sm
 	</a>
 <?php endfor; endif; ?>
 </span>
+<?php }?>
 <br/>
 <br class="clear" />
 <p>Available courses:</p>
