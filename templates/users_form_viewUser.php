@@ -6,78 +6,52 @@
 	 * @package ApolloLMS
 	 */
 	//TODO
-	// add edit button
 	// add test results data
-
+	
+	$smarty = new Smarty();
+	
 	if(!check_user_permission('user_view')){
 		return false;
 	}
-	
-	echo '<a href="users.php?f=editUser&uid=' . $_GET['uid'] . ' "><img src="' .ICONS_PATH . 'pencil.png" alt="Edit"/></a><br/>';
-	
+	$userID = $_GET['uid'];
+	$userDataArr['ID'] = $userID;
 	$q = "SELECT id, name FROM groupslist";
 	$d = sql_execute($q);
 	while($r = sql_get($d)){
 		$groupsNameArr[$r['id']] = $r['name'];
 	}
 	
-	$query = "SELECT * FROM members WHERE id='" . $_GET['uid'] . "'";
+	$query = "SELECT * FROM members WHERE id='" . $userID . "'";
 	$result = sql_execute($query);
 	$row = sql_get($result);
 
-	echo print_bold("Registered at:<br />");
-	echo $row['REGDATE'];
-	echo "<br />";
-	echo "<br />";
+	$userDataArr['REGDATE'] = $row['REGDATE'];
+	$userDataArr['NAME'] = $row['NAME'];
+	$userDataArr['EMAIL'] = $row['EMAIL'];
+	$userDataArr['ROLE'] =  $row['ROLE'];
+	$userDataArr['CONTACTNUM'] = $row['CONTACTNUM'];
 	
-	echo print_bold("Full Name:<br />");
-	echo $row['NAME'];
-	echo "<br />";
-	echo "<br />";
-	
-	//echo print_bold("Surname:<br />");
-	//echo $row['SURNAME'];
-	//echo "<br />";
-	
-	echo print_bold("E-mail:<br />");
-	echo '<a href="mailto:' .$row['EMAIL'] . '" >' .$row['EMAIL'] . '</a>';
-	echo "<br />";
-	echo "<br />";
-	
-	echo print_bold("Role:<br />");
-	echo $row['ROLE'];
-	echo "<br />";
-	echo "<br />";
-	
-	echo print_bold("Contact Number:<br />");
-	echo $row['CONTACTNUM'];
-	echo "<br />";
-	echo "<br />";
-	
-	echo print_bold("Groups:<br />");
-	//echo $row['GROUPS'];
 	$xmlDoc = new DOMDocument;
 	$xmlDoc->loadXML($row['GROUPS']);
 	$docRoot = $xmlDoc->documentElement;
 	
-	foreach($docRoot->childNodes as $child){
-		
+	$xi = 0;
+	foreach($docRoot->childNodes as $child){	
 		$nodeid = $child->getAttribute('id');
-		//echo $groupsNameArr[$nodeid];
-		$link = '<br/><a target="_blank" href="groups.php?f=viewGroup&gid='.$nodeid.'">'.$groupsNameArr[$nodeid]."</a>";
-		echo $link;
-		
+		$groupsArr[$xi]['ID'] = $nodeid;
+		$groupsArr[$xi]['NAME'] = $groupsNameArr[$nodeid];
+		$xi++;
+		}
+	
+	$userDataArr['LASTLOGIN'] = $row['LASTLOGIN'];
+
+	$smarty->assign('userData',$userDataArr);
+	if(isset($groupsArr)){
+		$smarty->assign('groupData',$groupsArr);
 	}
+        $tplName = changeExtension(pathinfo(__FILE__,PATHINFO_BASENAME),'tpl');
+        $smarty->display($tplName);
 	
-	echo "<br />";
-	echo "<br />";
-	
-	echo print_bold("Last Login:<br />");
-	echo $row['LASTLOGIN'];
-	br();
-	echo print_bold("View History:");
-	br();
-	//u_viewHistory($row['ID']);
 	include('users_form_viewHistory.php');
 	br();
 	loadPageModules('user_item');

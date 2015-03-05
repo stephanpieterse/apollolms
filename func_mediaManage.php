@@ -163,15 +163,15 @@ function media_func_convertVideo($fname){
 	
 	if(!file_exists($finaldir . $filename . ".mp4")){
 		echo $filename . 'as mp4';
-		shell_exec('./classes/ffmpeg/ffmpeg -y -i "' . $fname . '" -b:v 750k -movflags faststart "' . $finaldir . $filename . '.mp4"');
+		shell_exec('./classes/ffmpeg/ffmpeg -y -i "' . $fname . '" -b:v 500k -movflags faststart "' . $finaldir . $filename . '.mp4"');
 	}	
 	if(!file_exists($finaldir . $filename . ".webm")){
 		echo $filename . 'as webm';
-		shell_exec('./classes/ffmpeg/ffmpeg -y -i "' . $fname . '" -b:v 750k "' . $finaldir . $filename . '.webm"');
+		shell_exec('./classes/ffmpeg/ffmpeg -y -i "' . $fname . '" -b:v 500k "' . $finaldir . $filename . '.webm"');
 	}
 	if(!file_exists($finaldir . $filename . ".ogv")){
 		echo $filename . 'as ogv';
-		shell_exec('./classes/ffmpeg/ffmpeg -y -i "' . $fname . '" -b:v 750k "' . $finaldir . $filename . '.ogv"');
+		shell_exec('./classes/ffmpeg/ffmpeg -y -i "' . $fname . '" -b:v 500k "' . $finaldir . $filename . '.ogv"');
 	}
 	
 	if(file_exists($finaldir . $filename . ".mp4") && file_exists($finaldir . $filename . ".webm") && file_exists($finaldir . $filename . ".ogv")){
@@ -207,7 +207,7 @@ function media_func_convertAudio($fname){
 	}
 
 	if(file_exists($finaldir . $filename . ".mp3")){
-		shell_exec('./classes/ffmpeg/ffmpeg -i "' . $fname . '" "' . $finaldir . $filename . '.mp3"');
+		shell_exec('./classes/ffmpeg/ffmpeg -i "' . $fname . '" -b:a 96k "' . $finaldir . $filename . '.mp3"');
 	}
 	
 	if(file_exists($finaldir . $filename . ".mp3")){
@@ -218,7 +218,6 @@ function media_func_convertAudio($fname){
 }
 
 function media_func_convertFile($fname){
-
 	$ext = pathinfo($fname,PATHINFO_EXTENSION);
 		$audarr =array('wav','mp2','ogg','mp3','aac','flac');
 
@@ -234,9 +233,23 @@ function media_func_convertFile($fname){
 
 function media_func_scanForOrphanedConverts(){
 	// scan entire directory tree
+	return false;
+
+	$allfiles = scanForFiles('uploads','',true,true);
+	foreach($allfiles as $file){
+		$fname = pathinfo($file,PATHINFO_BASENAME);
+		$fext = pathinfo($file,PATHINFO_EXTENSION);
+		$fdir = pathinfo($file,PATHINFO_DIRNAME);
+		if(strpos($dir,'.vid_res') != 0 ){
+			if(!file_exists($fdir . '../' . $fname)){ // die lyn gaan nie werk nie ek moet check vir exts
+				unlink($file);
+			}
+		}
+	}
 	// check for .vid_res and .aud_res folders
 	// check if parent folder contains same name file 
 	// if not... delete it
+	return true;
 }
 
 /**

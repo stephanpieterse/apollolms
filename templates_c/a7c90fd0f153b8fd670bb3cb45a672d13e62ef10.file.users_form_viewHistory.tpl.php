@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.17, created on 2014-12-25 19:19:51
+<?php /* Smarty version Smarty-3.1.17, created on 2015-03-05 21:44:18
          compiled from "./templates/users_form_viewHistory.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:1832197494536d206f598685-49875347%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'a7c90fd0f153b8fd670bb3cb45a672d13e62ef10' => 
     array (
       0 => './templates/users_form_viewHistory.tpl',
-      1 => 1418996758,
+      1 => 1425591850,
       2 => 'file',
     ),
   ),
@@ -27,6 +27,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_536d206f599370_22222606')) {function content_536d206f599370_22222606($_smarty_tpl) {?><div name="custUserArea" id="custUserArea">
 <table class="admin_view_table">
+<?php if (isset($_smarty_tpl->tpl_vars['itemdata']->value)) {?>
 <?php if (isset($_smarty_tpl->tpl_vars['smarty']->value['section']['sec1'])) unset($_smarty_tpl->tpl_vars['smarty']->value['section']['sec1']);
 $_smarty_tpl->tpl_vars['smarty']->value['section']['sec1']['name'] = 'sec1';
 $_smarty_tpl->tpl_vars['smarty']->value['section']['sec1']['loop'] = is_array($_loop=$_smarty_tpl->tpl_vars['itemdata']->value) ? count($_loop) : max(0, (int) $_loop); unset($_loop);
@@ -71,5 +72,8 @@ $_smarty_tpl->tpl_vars['itVal']->_loop = true;
 	</td>
 	</tr>
 <?php endfor; endif; ?>
+<?php } else { ?>
+	<tr><td>The user has no current history.</td></tr>
+<?php }?>
 </table>
 <?php }} ?>

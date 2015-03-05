@@ -565,13 +565,20 @@ function logAction($getDataSet,$customData = ""){
 	if(!isset($_SESSION['userID'])){
 		return false;
 	}
-	$q = "SELECT * FROM member_view_history WHERE uid='" . $_SESSION['userID'] . "' LIMIT 1";
+
+	$curDate = date('y-m-d');
+	$q = "SELECT * FROM member_view_history WHERE uid='" . $_SESSION['userID'] . "' AND date='" . $curDate . "' LIMIT 1";
 	$r = sql_execute($q);
 	if(sql_numrows($r) != 1){
-		$qi = "INSERT INTO member_view_history (uid, history) VALUES ('" . $_SESSION['userID'] . "','<history></history>')";
+		$qi = "INSERT INTO member_view_history (uid, history, date) VALUES ('" . $_SESSION['userID'] . "','<history></history>','" . $curDate . "')";
 		$ri = sql_execute($qi);
+		$q = "SELECT * FROM member_view_history WHERE uid='" . $_SESSION['userID'] . "' AND date='" . $curDate . "' LIMIT 1";
+		$r = sql_execute($q);
+	
 	}
 	$row = sql_get($r);
+	$rowID = $row['ID'];
+
 	$xmlDoc = new DOMDocument();
 		$data = $row['HISTORY'];
 		if($data == ''){
@@ -596,7 +603,7 @@ function logAction($getDataSet,$customData = ""){
 		
 	$xmlData = $xmlDoc->saveHTML();
 	$xmlData = mysqli_real_escape_string($GLOBALS['sqlcon'],$xmlData);
-	$q = "UPDATE member_view_history SET history='$xmlData' WHERE uid='" . $_SESSION['userID'] . "'";
+	$q = "UPDATE member_view_history SET history='$xmlData' WHERE id='" . $rowID . "'";
 	$r = sql_execute($q);
 	
 	return true;

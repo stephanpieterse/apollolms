@@ -448,7 +448,8 @@ function users_func_updateUserItem($data){
 	$sqlqueryA ="UPDATE members SET name='$name', email='$emailad', contactnum='$contactnum', role='$role', gender='$gender', birthdate='$birthDate' WHERE id='$uid'";
 	$result=sql_execute($sqlqueryA);
 	
-	page_redirect("users.php?f=admin_UserManage");
+//	page_redirect("users.php?f=admin_UserManage");
+	return "success";
 }
 
 /**
@@ -482,14 +483,14 @@ function upload_ProfilePicture($filedata){
 	//if(move_uploaded_file($_FILES['uploadedfile']['tmp_name'], $target_path)) {
 	if(saveThumb($filedata['uploadedfile']['tmp_name'], $target_path,256,256)){
 	//echo "Your profile picture has been successfully uploaded.";
-		return true;
+		return "success";
 	} else{
 	//echo "There was an error uploading your image, please try again!";
-		return false;
+		return "err_upload";
 	}
 	}else{
 		//echo "The file needs to be of image format png or jpeg.";
-		return false;
+		return "err_photo_format";
 	}	
 }
 ?>

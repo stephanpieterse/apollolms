@@ -41,7 +41,9 @@ function cron_func_mediaConversion(){
 
 function cron_func_killCaches(){
         chdir(dirname(__FILE__));
-        shell_exec("find . -name .vid_res -exec rm -rf {} \;");        
+        shell_exec("find . -name .vid_res -exec rm -rf {} \;");
+	shell_exec("find . -name .aud_res -exec rm -rf {} \;");
+	return true;
 }
 
 
