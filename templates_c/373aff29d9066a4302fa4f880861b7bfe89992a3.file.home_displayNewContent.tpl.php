@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.17, created on 2015-03-05 20:53:34
+<?php /* Smarty version Smarty-3.1.17, created on 2015-03-06 16:32:01
          compiled from "modules/home_displayNewContent.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:1159288171548eb28f441355-92268417%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '373aff29d9066a4302fa4f880861b7bfe89992a3' => 
     array (
       0 => 'modules/home_displayNewContent.tpl',
-      1 => 1425041532,
+      1 => 1425659517,
       2 => 'file',
     ),
   ),
@@ -26,6 +26,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_548eb28f49f496_32655961')) {function content_548eb28f49f496_32655961($_smarty_tpl) {?><?php if (isset($_smarty_tpl->tpl_vars['groupData']->value)) {?>
 <span class="group_content_show">
+<ul class="fullWidth" >
+<span class="bold centertext fullWidth">Your groups: </span><br/>
 <?php if (isset($_smarty_tpl->tpl_vars['smarty']->value['section']['sec1'])) unset($_smarty_tpl->tpl_vars['smarty']->value['section']['sec1']);
 $_smarty_tpl->tpl_vars['smarty']->value['section']['sec1']['name'] = 'sec1';
 $_smarty_tpl->tpl_vars['smarty']->value['section']['sec1']['loop'] = is_array($_loop=$_smarty_tpl->tpl_vars['groupData']->value) ? count($_loop) : max(0, (int) $_loop); unset($_loop);
@@ -58,19 +60,20 @@ $_smarty_tpl->tpl_vars['smarty']->value['section']['sec1']['last']       = ($_sm
 " />
 	<?php }?>
 	<br/>
-	<span class="center"><?php echo $_smarty_tpl->tpl_vars['groupData']->value[$_smarty_tpl->getVariable('smarty')->value['section']['sec1']['index']]['NAME'];?>
+	<span class="centertext"><?php echo $_smarty_tpl->tpl_vars['groupData']->value[$_smarty_tpl->getVariable('smarty')->value['section']['sec1']['index']]['NAME'];?>
 </span><br/>
 	<div class="course_item_description"><?php echo $_smarty_tpl->tpl_vars['groupData']->value[$_smarty_tpl->getVariable('smarty')->value['section']['sec1']['index']]['DESCRIPTION'];?>
 </div>
 	</li>
 	</a>
 <?php endfor; endif; ?>
+</ul>
 </span>
 <?php }?>
 <br/>
 <br class="clear" />
-<p>Available courses:</p>
 <ul class="fullWidth">
+<span class="bold centertext fullWidth">Most recent courses:</span><br/>
 <?php if (isset($_smarty_tpl->tpl_vars['smarty']->value['section']['sec1'])) unset($_smarty_tpl->tpl_vars['smarty']->value['section']['sec1']);
 $_smarty_tpl->tpl_vars['smarty']->value['section']['sec1']['name'] = 'sec1';
 $_smarty_tpl->tpl_vars['smarty']->value['section']['sec1']['loop'] = is_array($_loop=$_smarty_tpl->tpl_vars['courseData']->value) ? count($_loop) : max(0, (int) $_loop); unset($_loop);
@@ -103,7 +106,7 @@ $_smarty_tpl->tpl_vars['smarty']->value['section']['sec1']['last']       = ($_sm
 " />
 	<?php }?>
 	<br/>
-	<span class="center"><?php echo $_smarty_tpl->tpl_vars['courseData']->value[$_smarty_tpl->getVariable('smarty')->value['section']['sec1']['index']]['NAME'];?>
+	<span class="centertext"><?php echo $_smarty_tpl->tpl_vars['courseData']->value[$_smarty_tpl->getVariable('smarty')->value['section']['sec1']['index']]['NAME'];?>
 </span><br/>
 	<div class="course_item_description"><?php echo $_smarty_tpl->tpl_vars['courseData']->value[$_smarty_tpl->getVariable('smarty')->value['section']['sec1']['index']]['DESCRIPTION'];?>
 </div>
@@ -114,5 +117,4 @@ $_smarty_tpl->tpl_vars['smarty']->value['section']['sec1']['last']       = ($_sm
 <?php endfor; endif; ?>
 </ul>
 <br class="clear"/>
-<hr/>
 <?php }} ?>

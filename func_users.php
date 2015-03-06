@@ -271,7 +271,7 @@ function showProfilePic($width = '50', $picUID = 0){
 	$imgPath .= $picUID . '.' . $picExt;
 	
 	if(file_exists($imgPath)){
-		$link = '<img alt="" style="background: #ffffff; float:right; margin: 10px;" src="' . $imgPath . '" width="' . $width . '"/>';
+		$link = '<img alt="Edit Profile" class="roundImage" src="' . $imgPath . '" width="' . $width . '"/>';
 	}else{
 		$q = "SELECT GENDER FROM members WHERE id='" . $picUID . "'";
 		$r = sql_execute($q);

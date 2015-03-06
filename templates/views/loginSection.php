@@ -1,23 +1,23 @@
 <?php
 /**
  * @package ApolloLMS
+  @author Stephan Pieterse
  * */
-	br_clear();
+?>
+<div style="margin: 10px;" class="fl_right">
+<?php
 	//echo '<a href="index.php" class="fl_left"><img alt="" src="' .SITE_LOGO .'" height="65" /></a>';
-	echo siteLogoUrl();
     if(isset($_SESSION['userID'])) {
 		$username = $_SESSION['username'];
 		echo '<a href="users.php?f=viewProfile">' . showProfilePic("50") . '</a>';
-		echo '<div class="fl_right">';
-	    echo "You are logged in as " . $_SESSION['username'] . '<br/><a href="users.php?f=viewProfile">' . 'Edit Profile' . '</a>';
-		br();
+//	    echo "Welcome " . $_SESSION['username'] . '<br/>';
 		?>
+		<br/>
 		<a href="index.php?q=logout">Logout</a>
-		</div>
 	<?php
     }else{
-    	echo '<div class="fl_right">';   
+    
 	    include("form_login.php" );
-		echo "</div>";
     }
 ?>
+</div>

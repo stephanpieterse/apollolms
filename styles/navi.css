@@ -82,10 +82,6 @@
 	height:25px;
 	padding:7px 15px 1px 15px;
 	color: #000000;
-	border-radius: 5px;
-	moz-border-radius: 5px;
-	o-border-radius: 5px;
-	webkit-border-radius: 5px;
 	}
 
 #topnav ul ul li a:link, #topnav ul ul li a:visited, #topnav ul ul li a:hover{
@@ -105,8 +101,6 @@
 
 #topnav ul li.active a, #topnav ul li a:hover{
 	color:#eeeeee;
-	background: #2D837D;
-	border: 1px #0D413D inset;
 	}
 
 

@@ -200,7 +200,7 @@ body{
 	font-size:12px;
 	font-family:tahoma,arial,sans-serif;
 	color:#111111;
-	background: #E2EFF6;;
+	background: #f5f5f5;;
 	}
 
 div.wrapper{
@@ -208,7 +208,7 @@ div.wrapper{
 }
 	
 .sitelogo img{
-	margin-left:10px;
+	margin:8px;
 }
 
 img{
@@ -260,7 +260,7 @@ div.wrapper h1, div.wrapper h2, div.wrapper h3, div.wrapper h4, div.wrapper h5, 
 .col5{color:#101010;}
 .col5 a{color:#121212;}
 .col5 a:hover{color:#FFFFFF;}
-.col6, .col6 a{color:#767772; background-color: #E0E9F0;}
+.col6, .col6 a{color:##C5D0D5; background-color: #4C7EA5;}
 
 /* ----------------------------------------------Generalise-------------------------------------*/
 

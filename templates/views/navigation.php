@@ -1,10 +1,10 @@
 <ul class="box">
-<li><a href="index.php">HOME</a></li>
-<li><a href="groups.php?f=joinNewGroup">GROUPS</a></li>
-<!-- <li><a href="courses.php?f=viewCourses">COURSES</a></li> -->
-<li><a href="tests.php?f=listAvailableTests">TESTS</a></li>
-<!-- <li><a href="events.php?f=user_home">EVENTS</a></li> -->
-<li><a href="resources.php?f=user_home">RESOURCES</a></li>
+<li><a href="index.php">Home</a></li>
+<li><a href="groups.php?f=joinNewGroup">Groups</a></li>
+<!-- <li><a href="courses.php?f=viewCourses">Courses</a></li> -->
+<li><a href="tests.php?f=listAvailableTests">Tests</a></li>
+<!-- <li><a href="events.php?f=user_home">Events</a></li> -->
+<li><a href="resources.php?f=user_home">Resources</a></li>
 <?php
 	echo loadPageModules("navbar");
 ?>

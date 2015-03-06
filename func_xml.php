@@ -290,6 +290,9 @@ function addNodeChildren($xmldata, $tagname, $uniqID, $childArr){
  */
 function addNode($xmldata, $tagname, $attrArr, $maxRecords = 2000000){
 	$xmlDoc = new DOMDocument();
+	if($xmldata == ''){
+		$xmldata = "<xmldata></xmldata>";
+	}
 	$xmlDoc->loadXML($xmldata);
 	$rootNode = $xmlDoc->documentElement;
 	

@@ -24,13 +24,17 @@ function courses_func_addResource($data){
 	
 //	$newCXML = addNode($rd['ARTICLES'], 'resource', array('url'=>$resurl,'name'=>$resname));
 	
+	if($rd['ARTICLES'] == ''){
+		$rd['ARTICLES'] = '<articles></articles>';
+	}
+	
 	$res = new Resource_Handler();
 	$res->importXML($rd['ARTICLES']);
 	$newCXML = $res->addResource($data);
 
 	$q = "UPDATE courses SET articles='" . $newCXML . "' WHERE id='$cid'";
 	$r = sql_execute($q);
-	return true;
+	return 'success';
 }
 
 /**
@@ -63,7 +67,7 @@ function courses_func_removeResource($data){
 	
 	$q = "UPDATE courses SET articles='$xmldata' WHERE id='$cid'";
 	$d = sql_execute($q);
-	return true;
+	return 'success';
 }
 
 /**
@@ -104,7 +108,7 @@ function courses_func_updateResource($data){
 	*/
 	$q = "UPDATE courses SET articles='$finalxml' WHERE id='$cid'";
 	$d = sql_execute($q);
-	return true;
+	return 'success';
 }
 
 /**
@@ -154,7 +158,7 @@ function courses_func_expireRegistration($data){
 		$msgbody = "Your registration to " . $r['NAME'] . " has expired. If you would like to continue having access to the course material, please reregister.";
 		mail_informUser($uid,'Course registration expired',$msgbody);
 		
-		return true;
+		return 'success';
 }
 
 /**
@@ -195,7 +199,7 @@ function courses_func_activateRequest($data){ //activate_user_to_course($cid, $u
 		
 		$msgbody = "Congratulations! Your registration for a course has been approved and you can now access the material. We hope you enjoy this course!";
 		mail_informUser($uid,'Course now open to you',$msgbody);
-		return true;
+		return 'success';
 }
 
 /**
@@ -297,7 +301,7 @@ function courses_func_registerForCourse($data){
 			courses_func_activateRequest(array('uid'=>$uid,'cid'=>$cid));
 			page_redirect('courses.php?f=displayCourse&cid=' . $cid);
 		}
-		return true;
+		return 'success';
 }
 
 /**
@@ -324,7 +328,7 @@ function courses_func_addCourse($data){
 	
 	$courseCode = makeSafe( $data['courseCode'] );
 	$dateCreated = date("Y-m-d-H-i-s");
-	$publishedBy = $_SESSION['username'];	
+	$publishedBy = $_SESSION['userID'];	 // used to be username
 	$partime = makeSafe($data['partime']);
 	$partime = preg_replace( "/[^0-9]/", "", $partime );
 	
@@ -371,7 +375,7 @@ function courses_func_addCourse($data){
 		inform_users_aboutNewCourse($r['ID']);
 	}
 	
-	return true;
+	return 'success';
 }
 
 /**
@@ -469,7 +473,7 @@ function courses_func_updateCourse($data){
 		inform_users_aboutNewCourse($cid);
 	}
 	
-	return true;
+	return 'success';
 }
 
 /**
@@ -498,6 +502,8 @@ if(!check_user_permission('content_modify')){
 	
 	$query = "UPDATE courses SET permissions='$newDoc' WHERE id='$id'";
 	$result = sql_execute($query);
+	
+	return true; //no need to return though
 }
 
 /**

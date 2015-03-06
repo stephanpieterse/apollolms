@@ -417,6 +417,7 @@ function buildPermissionsForm($oldPermissions = "<none></none>"){
 	}
 	echo '</div>';
 	br();
+	/*
 	echo '<div class="permissions_area_box fancyPress" name="groupTypesArea">';
 	echo print_h1("Group Types: ");
 	$query = "SELECT * FROM groups_types";
@@ -426,6 +427,7 @@ function buildPermissionsForm($oldPermissions = "<none></none>"){
 		echo '<label for="grouptype-' . $row['ID'] .'">' . $row['NAME'] .'</label>';
 	}
 	echo '</div>';
+	* */
 	br();
 	echo '<div class="fancyPress">';
 	echo print_h1("Public: ");

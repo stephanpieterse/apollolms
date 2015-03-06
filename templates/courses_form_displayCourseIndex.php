@@ -20,7 +20,7 @@
 						$queryArt = 'SELECT * FROM articles WHERE id="' . $attr->value . '"';
 						$resultArt = sql_execute($queryArt);
 						$articleData = sql_get($resultArt);
-						$link = '<img src="' . ICONS_PATH . 'book.png" alt="Article"/>' . "<a href=\"article.php?f=displayArticle&id=" . $attr->value ."&cid=" . $courseID . " \">" . $articleData['NAME'] . "</a>";
+						$link = '<img src="' . ICONS_PATH . 'book.png" alt="Article"/>' . "<a href=\"articles.php?f=displayArticle&id=" . $attr->value ."&cid=" . $courseID . " \">" . $articleData['NAME'] . "</a>";
 						echo '<li>' . $link . '</li>';
 						br();
 					}

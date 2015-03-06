@@ -63,7 +63,7 @@ function isArticleAlreadySelected($cdata, $aid){
 				$articleTableData[$xi]['LINKS'][] = "<a href=\"articles.php?q=mv_art&id=" . $cid ."&dir=down&aid=" . $nodeID ." \"><img src=\"" . ICONS_PATH . "arrow_down.png\" alt=\"Move Down\"/></a>";
 			}
 			if(check_user_permission("content_remove")){
-				$articleTableData[$xi]['LINKS'][] = "<a href=\"index.php?confirm&aq=rm_article&aid=" . $data['ID'] ."&cid=" . $_GET['id'] . " \"><img src=\"" . ICONS_PATH . "cancel.png\" alt=\"Delete\"/></a>";
+				$articleTableData[$xi]['LINKS'][] = "<a href=\"index.php?confirm&aq=rm_article&aid=" . $data['ID'] ."&cid=" . $cid . " \"><img src=\"" . ICONS_PATH . "cancel.png\" alt=\"Delete\"/></a>";
 			}
 			
 		}

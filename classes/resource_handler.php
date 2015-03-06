@@ -74,6 +74,7 @@ function addResource($resdata){
 function removeResource($resdata){
 	$nodeNum = $resdata;
 	$xmldata = rmNode($this->XMLstore,'resource',$nodeNum);
+	//$xmldata, $nodeToRemTag, $nodeToRemID, $nodeToRemAttr = 'id'
 	return $xmldata;
 }
 

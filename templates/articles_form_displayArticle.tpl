@@ -9,7 +9,7 @@
 </div>	
 <div class="resources">
 {section name=sec1 loop=$resData}
-<img src="{$vars['ICONPATH']}brick.png" alt="Resource"/><a href="{$resData[sec1].RESURL}">{$resData[sec1].NAME}</a><br/>'
+<img src="{$smarty.const.ICONPATH}brick.png" alt="Resource"/><a href="{$resData[sec1].RESURL}">{$resData[sec1].NAME}</a><br/>'
 {/section}	
 </div>
 </div>

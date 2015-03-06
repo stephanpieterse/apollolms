@@ -2,7 +2,7 @@
 <br/>
 <p><a href="courses.php?f=admin_CourseManage">Back to Courses</a></p>
 <p><a href="articles.php?f=editArticle&cid={$articleData.COURSEID}">Add a New Article</a></p>
-<p><a href="courses.php?f=editResource&cid={$articleData.COURSENAME}">Add a New Resource</a></p>
+<p><a href="courses.php?f=editResource&cid={$articleData.COURSEID}">Add a New Resource</a></p>
 <br/>
 Articles:
 {if isset($tableData)}

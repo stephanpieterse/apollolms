@@ -79,9 +79,13 @@
 				$link = '<a class="biglinkT1" href="groups.php?q=acceptGroupRequest&uid=' . $reqUID . '&gid=' . $group . '">Accept Join Request</a> ';
 				$link .= ' -- ';
 				$link .= '<a class="biglinkT1" href="groups.php?q=denyGroupRequest&uid=' . $reqUID . '&gid=' . $group . '">Deny Join Request</a> ';
-				$link .= '<br/>';$smarty->assign('groupData',$dataArray);
-		$tplName = changeExtension(pathinfo(__FILE__,PATHINFO_BASENAME),'tpl');
-		$smarty->display(TEMPLATE_PATH . $tplName);
+				$link .= '<br/>';
+				
+				//ek dink hierdie is baie verkeerd. as niks breek by 8 maart dan delete.
+				
+	//			$smarty->assign('groupData',$dataArray);
+		//		$tplName = changeExtension(pathinfo(__FILE__,PATHINFO_BASENAME),'tpl');
+			//	$smarty->display(TEMPLATE_PATH . $tplName);
 				echo $link;
 				}
 				
@@ -171,7 +175,7 @@
 	$sr = sql_execute($sq);
 	while($sd = sql_get($sr)){
 		if(strpos($sd['PARENTS'],'id="' . $group . '"')){
-		echo $sd['NAME'];
+		echo '<a href="groups.php?f=viewGroup&gid=' . $sd['ID'] . '"' . $sd['NAME'] . '</a>';
 		echo "<br/>";
 		}
 	}
