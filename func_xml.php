@@ -324,7 +324,7 @@ function reorderNodes($xmldata, $nodenum, $direction, $offset='1'){
 		break;
 		case 'down':
 		$preNodeNum = $nodenum + $offset +1;
-		if($preNodeNum > $rootNode->childNodes->length){$error=true;};
+		if($preNodeNum > $rootNode->childNodes->length + 1){$error=true;};
 		break;
 		default:
 		$preNodeNum = 0;

@@ -412,7 +412,6 @@ function users_func_updateUserItem($data){
 	$oldEmail = $d['EMAIL'];
 
 	$name= makeSafe($data['name']);
-	//$surname=makeSafe($data['surname']);
 	$emailad=makeSafe($data['emailad']);
 	
 	$q = "SELECT * FROM roles";
@@ -445,10 +444,21 @@ function users_func_updateUserItem($data){
 		mail_inform($oldEmail,'Details updated',$msgBody);
 	}
 			// removed securityquestion='$secuQ', securityanswer='$secuA',
-	$sqlqueryA ="UPDATE members SET name='$name', email='$emailad', contactnum='$contactnum', role='$role', gender='$gender', birthdate='$birthDate' WHERE id='$uid'";
-	$result=sql_execute($sqlqueryA);
+	$sqlqueryA = "UPDATE members SET name='$name', email='$emailad', contactnum='$contactnum', role='$role', gender='$gender', birthdate='$birthDate' WHERE id='$uid'";
+	$result = sql_execute($sqlqueryA);
 	
 //	page_redirect("users.php?f=admin_UserManage");
+	return "success";
+}
+
+function users_func_updateGroupsOnly($data){
+	$uid = $data['uid'];
+	
+	$newGroupsData = common_set_permissions($data);
+	
+	$sqlqueryA = "UPDATE members SET groups='" . $newGroupsData . "' WHERE id='$uid'";
+	$result = sql_execute($sqlqueryA);
+	
 	return "success";
 }
 

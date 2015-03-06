@@ -1,5 +1,4 @@
 <?php
-
 	/**
 	 * By Stephan Pieterse
 	 * Displays some of the data for the individual user from the database.
@@ -30,6 +29,7 @@
 	$userDataArr['EMAIL'] = $row['EMAIL'];
 	$userDataArr['ROLE'] =  $row['ROLE'];
 	$userDataArr['CONTACTNUM'] = $row['CONTACTNUM'];
+	$userDataArr['LASTLOGIN'] = $row['LASTLOGIN'];
 	
 	$xmlDoc = new DOMDocument;
 	$xmlDoc->loadXML($row['GROUPS']);
@@ -42,8 +42,6 @@
 		$groupsArr[$xi]['NAME'] = $groupsNameArr[$nodeid];
 		$xi++;
 		}
-	
-	$userDataArr['LASTLOGIN'] = $row['LASTLOGIN'];
 
 	$smarty->assign('userData',$userDataArr);
 	if(isset($groupsArr)){

@@ -934,6 +934,36 @@ function scanMkDir($dir, $prefix = ''){
 	return $result;
 }
 
+function get_siteLogoFile(){
+	chdir(dirname(__FILE__));
+	
+	$imgPath = 'media/';
+	$scanPath = dirname(__FILE__) . '/media/';
+	$picExt = '';
+	
+	$prefix ='';
+ 	$dir = $scanPath;
+ 	$result = array();
+    foreach (scandir($dir) as $f) {
+      if ($f !== '.' and $f !== '..') {
+      	$filename = pathinfo($f, PATHINFO_FILENAME);
+      	$ext = pathinfo($f, PATHINFO_EXTENSION);
+		if('logo' == $filename){
+			$picExt = $ext;
+			break;
+		}
+      }
+    }
+
+	$imgPath .= 'logo' . '.' . $picExt;
+	
+	if(file_exists($imgPath)){
+		return $imgPath;
+	}else{
+		return false;
+	}
+}
+
 /**
  * Gets the image to be used for the site logo in whichever standard format it may be
  * @TODO maybe i need to specify valid extensions?

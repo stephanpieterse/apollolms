@@ -2,14 +2,14 @@
 	/**
 	 * @package ApolloLMS
 	 * @author Stephan Pieterse
+	 * 
+	 * Basic functions for the email system
 	 * */
-
 
 function mail_func_informCourseUsers($data){
 	$cid = $data['cid'];
 	$subj= $data['subject'];
 	$body = $data['msgbox'];
-	
 	
 	$q = "SELECT name FROM courses WHERE id='$cid' LIMIT 1";
 	$d = sql_execute($q);
@@ -266,9 +266,13 @@ function mail_func_sendEmail($data){
  * body - msg content
  * from - from email address
  */
-function sendEmail($to, $subj, $body, $from) {	
-	$fullsitelogo = '"' . "https://" . $_SERVER['HTTP_HOST'] . '/' . 'media/logo.png' . '"';
-	$fullsitelink = '"' . "https://" . $_SERVER['HTTP_HOST'] . '/' . 'index.php' . '"';
+function sendEmail($to, $subj, $body, $from){
+	if(get_siteLogoFile()){
+		$fullsitelogo = '"' . "https://" . $_SERVER['HTTP_HOST'] . '/' . SUBDOMAIN_NAME . '/media/' . get_siteLogoFile() . '"';
+	}else{
+		$fullsitelogo = '"' . "https://" . $_SERVER['HTTP_HOST'] . '/' . '/media/logo.png' . '"';
+	}
+	$fullsitelink = '"' . "https://" . $_SERVER['HTTP_HOST'] . '/' . SUBDOMAIN_NAME . '/index.php' . '"';
 
 	chdir(dirname(__FILE__));
 

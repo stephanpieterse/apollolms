@@ -57,7 +57,6 @@ $dispatch_action = array(
 	'set_module_a'=>function(){setModuleStatus($_GET['mid'], 1);},
 	'set_module_i'=>function(){setModuleStatus($_GET['mid'], 0);},
 	'a_del_result'=>function(){if(deleteTestResult($_GET['id']) !== true){goHome("permission_denied");}else{ goToLastPage();}},
-	'mv_art'=>function(){moveNode('courses', $_GET['id'], 'ARTICLES', $_GET['aid'], $_GET['dir']);goToLastPage();},
 	'uplcsvuser'=>function(){importCSVFileToUser($_FILES, $_POST);},
 );
 ?>

@@ -1,60 +1,45 @@
-<?php /* Smarty version Smarty-3.1.17, created on 2015-03-06 09:13:38
-         compiled from "./templates/users_form_viewUser.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:30562881454f8c27287adc1-61275090%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /* Smarty version Smarty-3.1.17, created on 2015-03-06 10:20:37
+         compiled from "./templates/courses_form_editArticles.tpl" */ ?>
+<?php /*%%SmartyHeaderCode:31614325254f97e5f67a837-72801903%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
-    '04303ceabce8e8a228729d3db6e6e377f4277999' => 
+    '294f01d0d586001e81af6bfd8952b2575513e654' => 
     array (
-      0 => './templates/users_form_viewUser.tpl',
-      1 => 1425633215,
+      0 => './templates/courses_form_editArticles.tpl',
+      1 => 1425637237,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '30562881454f8c27287adc1-61275090',
+  'nocache_hash' => '31614325254f97e5f67a837-72801903',
   'function' => 
   array (
   ),
   'version' => 'Smarty-3.1.17',
-  'unifunc' => 'content_54f8c272915942_25873939',
+  'unifunc' => 'content_54f97e5f8594a7_90839110',
   'variables' => 
   array (
-    'userData' => 0,
-    'groupData' => 0,
+    'articleData' => 0,
+    'tableData' => 0,
+    'link' => 0,
   ),
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_54f8c272915942_25873939')) {function content_54f8c272915942_25873939($_smarty_tpl) {?>	<span class="bold">Registered at:</span>
-	<?php echo $_smarty_tpl->tpl_vars['userData']->value['REGDATE'];?>
-
-	<br/>
-	<span class="bold">Full Name:</span>
-	<?php echo $_smarty_tpl->tpl_vars['userData']->value['NAME'];?>
- <a href="users.php?f=editUser&uid=<?php echo $_smarty_tpl->tpl_vars['userData']->value['ID'];?>
-"><img src="<?php echo @constant('ICONS_PATH');?>
-pencil.png" alt="Edit"/></a>
-	<br/>
-	<span class="bold">E-mail:</span>
-	<a href="mailto:<?php echo $_smarty_tpl->tpl_vars['userData']->value['EMAIL'];?>
-"><?php echo $_smarty_tpl->tpl_vars['userData']->value['EMAIL'];?>
-</a>
-	<br/>
-	<span class="bold">Role:</span>
-	<?php echo $_smarty_tpl->tpl_vars['userData']->value['ROLE'];?>
-
-	<br/>
-	<span class="bold">Contact Number:</span>
-	<?php echo $_smarty_tpl->tpl_vars['userData']->value['CONTACTNUM'];?>
-
-	<br/>
-	<span class="bold">Groups:</span><a href="users.php?f=editUserGroups&uid=<?php echo $_smarty_tpl->tpl_vars['userData']->value['ID'];?>
-"><img src="<?php echo @constant('ICONS_PATH');?>
-pencil.png" alt="Edit"/></a><br/>
-	<?php if (isset($_smarty_tpl->tpl_vars['groupData']->value)) {?>
-	<p>
-	<?php if (isset($_smarty_tpl->tpl_vars['smarty']->value['section']['s1'])) unset($_smarty_tpl->tpl_vars['smarty']->value['section']['s1']);
+<?php if ($_valid && !is_callable('content_54f97e5f8594a7_90839110')) {function content_54f97e5f8594a7_90839110($_smarty_tpl) {?><span class="bold"><?php echo $_smarty_tpl->tpl_vars['articleData']->value['COURSENAME'];?>
+</span>
+<br/>
+<p><a href="courses.php?f=admin_CourseManage">Back to Courses</a></p>
+<p><a href="articles.php?f=editArticle&cid=<?php echo $_smarty_tpl->tpl_vars['articleData']->value['COURSEID'];?>
+">Add a New Article</a></p>
+<p><a href="courses.php?f=editResource&cid=<?php echo $_smarty_tpl->tpl_vars['articleData']->value['COURSENAME'];?>
+">Add a New Resource</a></p>
+<br/>
+Articles:
+<?php if (isset($_smarty_tpl->tpl_vars['tableData']->value)) {?>
+<table class="admin_view_table">
+<?php if (isset($_smarty_tpl->tpl_vars['smarty']->value['section']['s1'])) unset($_smarty_tpl->tpl_vars['smarty']->value['section']['s1']);
 $_smarty_tpl->tpl_vars['smarty']->value['section']['s1']['name'] = 's1';
-$_smarty_tpl->tpl_vars['smarty']->value['section']['s1']['loop'] = is_array($_loop=$_smarty_tpl->tpl_vars['groupData']->value) ? count($_loop) : max(0, (int) $_loop); unset($_loop);
+$_smarty_tpl->tpl_vars['smarty']->value['section']['s1']['loop'] = is_array($_loop=$_smarty_tpl->tpl_vars['tableData']->value) ? count($_loop) : max(0, (int) $_loop); unset($_loop);
 $_smarty_tpl->tpl_vars['smarty']->value['section']['s1']['show'] = true;
 $_smarty_tpl->tpl_vars['smarty']->value['section']['s1']['max'] = $_smarty_tpl->tpl_vars['smarty']->value['section']['s1']['loop'];
 $_smarty_tpl->tpl_vars['smarty']->value['section']['s1']['step'] = 1;
@@ -76,19 +61,19 @@ $_smarty_tpl->tpl_vars['smarty']->value['section']['s1']['index_next'] = $_smart
 $_smarty_tpl->tpl_vars['smarty']->value['section']['s1']['first']      = ($_smarty_tpl->tpl_vars['smarty']->value['section']['s1']['iteration'] == 1);
 $_smarty_tpl->tpl_vars['smarty']->value['section']['s1']['last']       = ($_smarty_tpl->tpl_vars['smarty']->value['section']['s1']['iteration'] == $_smarty_tpl->tpl_vars['smarty']->value['section']['s1']['total']);
 ?>
-	
-	<a target="_blank" href="groups.php?f=viewGroup&gid=<?php echo $_smarty_tpl->tpl_vars['groupData']->value[$_smarty_tpl->getVariable('smarty')->value['section']['s1']['index']]['ID'];?>
-"><?php echo $_smarty_tpl->tpl_vars['groupData']->value[$_smarty_tpl->getVariable('smarty')->value['section']['s1']['index']]['NAME'];?>
-</a><br/>
-	
-	<?php endfor; endif; ?>
-	</p>
-	<?php } else { ?>
-	The user is not currently in any groups.
-	<?php }?>
-	<br/>
-	Last Login:<br/>
-	<?php echo $_smarty_tpl->tpl_vars['userData']->value['LASTLOGIN'];?>
-
-	<br/>
+<tr>
+<td><?php echo $_smarty_tpl->tpl_vars['tableData']->value[$_smarty_tpl->getVariable('smarty')->value['section']['s1']['index']]['ITEMNAME'];?>
+</td>
+<?php  $_smarty_tpl->tpl_vars['link'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['link']->_loop = false;
+ $_from = $_smarty_tpl->tpl_vars['tableData']->value[$_smarty_tpl->getVariable('smarty')->value['section']['s1']['index']]['LINKS']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
+foreach ($_from as $_smarty_tpl->tpl_vars['link']->key => $_smarty_tpl->tpl_vars['link']->value) {
+$_smarty_tpl->tpl_vars['link']->_loop = true;
+?>
+	<td><?php echo $_smarty_tpl->tpl_vars['link']->value;?>
+</td>
+<?php } ?>
+</tr>
+<?php endfor; endif; ?>
+</table>
+<?php }?>
 <?php }} ?>

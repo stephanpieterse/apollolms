@@ -14,6 +14,7 @@
 }
 
 .course_item{
+	text-align: center;
 	background: #ffffff;
 	width:250px;
 	height:350px;
@@ -26,6 +27,11 @@
 	box-shadow: 10px 10px 2px 2px #ccc;
 }
 
+.course_item img{
+	margin-left: auto;
+	margin-right: auto;
+}
+
 .course_item_tags{
 	font-size: 0.8em;
 	color: #dddddd;
@@ -34,6 +40,7 @@
 .course_item_description{
 	font-size: 1em;
 	color: #121212;
+	text-align: justify;
 }
 
 .course_item img{

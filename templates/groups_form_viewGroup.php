@@ -1,13 +1,11 @@
 <?php
 /**
-@author Stephan Pieterse
-@package ApolloLMS
+	@author Stephan Pieterse
+	@package ApolloLMS
 
-This form displays the details of an individually selected group.
-
+	This form displays the details of an individually selected group.
 */
 	$smarty = new Smarty();
-
 ?>
 <div id="normgroupwrap" style="float: left; width: 50%;">
 <?php
@@ -184,10 +182,11 @@ This form displays the details of an individually selected group.
 	<?php
 	include(TEMPLATE_PATH . 'groups_form_chatSection.php');
 ?>
-</div>
-<br class="clear" />
+
 <?php
-	$smarty->assign('groupData',$dataArray);
+	if(isset($dataArray)){
+		$smarty->assign('groupData',$dataArray);
+	}
 	$tplName = changeExtension(pathinfo(__FILE__,PATHINFO_BASENAME),'tpl');
 	$smarty->display(TEMPLATE_PATH . $tplName);
 ?>

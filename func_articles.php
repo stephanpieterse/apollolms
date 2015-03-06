@@ -306,10 +306,13 @@ function displayArticleIndex($articleID, $courseID = "0"){
 			$link = '<img src="' . ICONS_PATH . 'brick.png" alt="Resource"/><a target="_blank" href="resource_view.php?f=' . $resurl . ' ">' . $resname . '</a><br/>';
 			echo $link;
 			break;
-				break;
 		}
 	}
 	echo '<br class="clear" />';
+}
+
+function articles_func_mv_art($data){
+	moveNode('courses', $data['id'], 'ARTICLES', $data['aid'], $data['dir']);
 }
 
 ?>
