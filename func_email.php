@@ -268,7 +268,7 @@ function mail_func_sendEmail($data){
  */
 function sendEmail($to, $subj, $body, $from){
 	if(get_siteLogoFile()){
-		$fullsitelogo = '"' . "https://" . $_SERVER['HTTP_HOST'] . '/' . SUBDOMAIN_NAME . '/media/' . get_siteLogoFile() . '"';
+		$fullsitelogo = '"' . "https://" . $_SERVER['HTTP_HOST'] . '/' . SUBDOMAIN_NAME . '/' . get_siteLogoFile() . '"';
 	}else{
 		$fullsitelogo = '"' . "https://" . $_SERVER['HTTP_HOST'] . '/' . '/media/logo.png' . '"';
 	}

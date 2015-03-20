@@ -1,36 +1,13 @@
 <?php
 /**
  * @package ApolloLMS
+ * @author Stephan Pieterse
  * */
 ?>
-<form method="post" action="index.php?aq=mve_file" >
+<form method="post" action="media.php?pq=moveMedia" >
 <select name="rootDirPath">
 
 <?php
-
-/* THIS IS ALREADY DECLARED?
-function scanMkDir($dir, $prefix = ''){
-
-$dir = rtrim($dir, '\\/');
-  $result = array();
-   
-    foreach (scandir($dir) as $f) {
-      if ($f !== '.' and $f !== '..') {
-		if (is_dir("$dir/$f")) {
-		 $result[] = $prefix.$f;
-          $result = array_merge($result, scanMkDir("$dir/$f", "$prefix$f/"));
-		 
-        }
-		else {
-         // $result[] = $prefix.$f;
-        }
-      }
-    }
-
-return $result;
-}
-*/
-
 	echo print_option("uploads/");
 	$result = scanMkDir("uploads/","uploads/");
 	
@@ -40,10 +17,8 @@ return $result;
 ?>
 
 </select>
-<?php
-	tagarg('input',array('type'=>'hidden','name'=>'dir','value'=>$_GET['dir']),true);
-	tagarg('input',array('type'=>'hidden','name'=>'file','value'=>$_GET['file']),true);
-	
-?>
+
+<input type="hidden" name="dir" value="<?php echo $_GET['dir'];?>" />
+<input type="hidden" name="file" value="<?php echo $_GET['file'];?>" />
 <input type="submit" value="Move To Folder" />
 </form>

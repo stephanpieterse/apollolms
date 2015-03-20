@@ -116,6 +116,10 @@ function media_func_removeFile($data){
 	return false;
 }
 
+function media_func_moveFile($data){
+	media_func_renameFile(($data['dir'] . makeSafe($data['file'])), ($data['rootDirPath'] . $data['file']));
+}
+
 /**
  * Renames a file
  * */

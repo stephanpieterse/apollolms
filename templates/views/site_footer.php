@@ -1,7 +1,7 @@
 </div>
 </div>
 </div>
-
+<!--
 <div class="wrapper col5 bannercolour">
   <div id="footer">
     <div id="newsletter">
@@ -36,11 +36,12 @@
       </ul>
     </div>
     <div class="footbox">
-    <!-- Just a spacer -->
+   
     </div>
     <br class="clear" />
   </div>
 </div>
+-->
 
 <div class="wrapper col6">
   <div id="copyright">
