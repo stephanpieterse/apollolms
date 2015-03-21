@@ -13,4 +13,3 @@
 	// remove this required controller once everything has been shifted over
 	require("home.php");
 //    $control->build_footer();
-?>

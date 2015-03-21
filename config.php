@@ -71,4 +71,3 @@ function flag(){
 	
 	$GLOBALS['sqlcon'] = mysqli_connect(DB_DSN_HOST, DB_USERNAME, DB_PASSWORD, DB_DSN_DB) or die (mysqli_error($sqlcon));
 	//$selectdbq = mysqli_select_db($sqlcon, DB_DSN_DB) or die(mysqli_error($sqlcon));
-?>

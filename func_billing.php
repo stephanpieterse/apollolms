@@ -132,4 +132,3 @@ function foldersize($dir){
  // access with $ret[0] and $ret[1];
  return array($count_size,$count);
 }
-?>

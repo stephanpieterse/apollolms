@@ -298,4 +298,4 @@ class Controller {
 		 if(!$this->slimPage){$this->build_footer();}
 	}
 }
-?>
+

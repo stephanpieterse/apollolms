@@ -1,6 +1,7 @@
 <?php
 /**
  * @package ApolloLMS
+ * @author Stephan Pieterse
  * */
 	if(!check_user_permission('user_view') || !is_user_loggedIn()){
 		return false;
@@ -19,14 +20,15 @@
 		$dataArray[$curPos]['NAME'] = $rowdata['NAME'];
 		$dataArray[$curPos]['ID'] = $rowdata['ID'];
 		$dataArray[$curPos]['EMAIL'] = $rowdata['EMAIL'];
-	    $dataArray[$curPos]['PROFILEPIC'] = showProfilePic('50',$rowdata['ID']);
+	    $dataArray[$curPos]['PROFILEPIC'] = showProfilePic('35',$rowdata['ID']);
 
+/*
 	if($rowdata['GENDER'] == 1){
 		$dataArray[$curPos]['GENDER'] =  '<img src="' .ICONS_PATH . 'user_female.png" alt="Female"" />';
 	}else{
 		$dataArray[$curPos]['GENDER'] =  '<img src="' .ICONS_PATH . 'user.png" alt="Male"" />';
 	}
-
+*/
 		if(check_user_permission("user_view")){
 			$dataArray[$curPos]['LINKS'][] = '<a href="users.php?f=viewUser&uid=' . $rowdata['ID'] .' "><img src="' .ICONS_PATH . 'magnifier.png" alt="View"/></a>';
 		}else {$dataArray[$curPos]['LINKS'][] = ""; }

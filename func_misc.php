@@ -1001,4 +1001,3 @@ function siteLogoUrl(){
 	}
 	return $link;
 }
-?>

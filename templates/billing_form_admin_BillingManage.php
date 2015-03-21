@@ -1,5 +1,5 @@
 <?php
-	define('BASE_COST',300);
+	define('BASE_COST',350);
 
 	$smarty = new Smarty;
 
@@ -40,9 +40,9 @@
 	$totalSpaceUsed = bill_calculateSpaceUsed();
 	$smarty->assign('totalSpaceUsed',$totalSpaceUsed);
 	$smarty->assign('totalUploadsMax',MAX_TOTAL_UPLOADS / 1024);
-	$totalSpaceUsedBandwith = $totalSpaceUsed * 0.2;
+	$totalSpaceUsedBandwith = $totalSpaceUsed * 0.15;
 	$smarty->assign('totalSpaceUsedBandwith',round($totalSpaceUsedBandwith));
-	$costSoFar += round(BASE_COST + ($totalSpaceUsedBandwith / 1024 * $activeMembers * 5));
+	$costSoFar += round(BASE_COST + ($totalSpaceUsedBandwith / 1024 * $activeMembers * 4)); // im not so sure what the 4 does anymore
 	$smarty->assign('totalAdminCost',$costSoFar);
 	$smarty->assign('listAllUsers',$membersList);
 	$billCourse = bill_calculateCoursesCost();
@@ -51,4 +51,3 @@
 	$smarty->assign('totalFinalCost',$costSoFar);
 	$tplName = changeExtension(pathinfo(__FILE__,PATHINFO_BASENAME),'tpl');
 	$smarty->display($tplName);
-?>

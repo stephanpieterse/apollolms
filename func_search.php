@@ -1,5 +1,4 @@
 <?php
-
 /**
  * 
  * Search functions used by the php form method, should return friendly enough stuff for use in AJAX
@@ -34,18 +33,21 @@ function search_events($contains){
 function search_users($contains){
 	
 	if(is_string($contains)){
-		$q = "SELECT id FROM members WHERE name LIKE '%" . $contains . "%' OR email LIKE '%" . $contains . "%' OR contactnum LIKE '%" . $contains . "%'";
+		$q = "SELECT id,name FROM members WHERE name LIKE '%" . $contains . "%' OR email LIKE '%" . $contains . "%' OR contactnum LIKE '%" . $contains . "%'";
 		$r = sql_execute($q);	
 	}
 	
 	if(is_array($contains)){
 		$container = implode('|',$contains);
-		$q = "SELECT id FROM members WHERE name REGEXP '" . $container . "' OR email REGEXP '" . $container . "' OR contactnum REGEXP '" . $container . "'";
+		$q = "SELECT id,name FROM members WHERE name REGEXP '" . $container . "' OR email REGEXP '" . $container . "' OR contactnum REGEXP '" . $container . "'";
 		$r = sql_execute($q);	
 	}
 	
+	$xi = 0;
 	while($d = sql_get($r)){
-		$fullarr[] = $d['id'];
+		$fullarr[$xi]['ID'] = $d['id'];
+		$fullarr[$xi]['NAME'] = $d['name'];
+		$xi++;
 	}
 
 	if(isset($fullarr)){
@@ -190,4 +192,3 @@ function search_groups($contains){
 		return false;
 	}
 }
-?>

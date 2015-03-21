@@ -18,24 +18,6 @@ function is_user_loggedIn(){
 	}
 }
 
-function users_func_search($data){
-	$searchFor = makeSafe($data['search']);
-	$outputLike = makeSafe($data['output']);
-	
-	$q = "SELECT * FROM members WHERE email LIKE '%".$searchFor."%' OR name LIKE '%".$searchFor."%'";
-	$d = sql_execute($q);
-	
-	switch ($outputLike){
-		case 'user_admin':
-			while($r = sql_get($d)){
-				echo '<td>';
-				echo '<a id="a_admin_user_view" href="index.php?action=admin_view_user&uid=' . $r['ID'] .' ">' . $r['NAME'] . '<img src="' .ICONS_PATH . 'magnifier.png" alt="View"/></a>';
-				echo '</td><br/>';
-			} 
-		break;
-	}
-}
-
 /**
  * Checks login details, then redirects or returns an error.
  */
@@ -503,4 +485,3 @@ function upload_ProfilePicture($filedata){
 		return "err_photo_format";
 	}	
 }
-?>
