@@ -273,5 +273,3 @@ function modules_backend_plugin_updateData($a,$b,$c,$d){
 function modules_backend_plugin_addData($a,$b,$c,$d){
 	return true;
 }
-
-?>

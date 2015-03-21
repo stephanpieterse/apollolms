@@ -1,7 +1,3 @@
-<script type="text/javascript" src="<?php echo SCRIPTS_PATH; ?>jplayer/jquery.jplayer.min.js"></script>
-<script type="text/javascript" src="<?php echo SCRIPTS_PATH;?>gdocsview/jquery.gdocsviewer.js"></script>
-<script type="text/javascript" src="<?php echo SCRIPTS_PATH;?>viewerjs/viewer.js"></script>
-<script type="text/javascript" src="<?php echo SCRIPTS_PATH;?>ajax_searches.js"></script>
 <body>
 	<noscript>
 		<span style=" margin-left:auto; margin-right:auto; font-weight: bold; height: 75px; width: 100%; background: #AA5500">This website has many features which depend on JavaScript. Not having JavaScript enabled in your browser will mean that some features will not work properly.</span>

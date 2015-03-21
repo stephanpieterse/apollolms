@@ -11,6 +11,9 @@
 <meta http-equiv="refresh" content="4200; url=index.php?q=logout" > <!-- 70 min logged in time -->
 <script type="text/javascript" src="<?php echo SCRIPTS_PATH; ?>jquery-1.11.1.min.js"></script>
 <script type="text/javascript" src="<?php echo SCRIPTS_PATH; ?>jquery-ui-1.10.4.custom.min.js"></script>
+<script type="text/javascript" src="<?php echo SCRIPTS_PATH; ?>jplayer/jquery.jplayer.min.js"></script>
+<script type="text/javascript" src="<?php echo SCRIPTS_PATH;?>gdocsview/jquery.gdocsviewer.js"></script>
+<script type="text/javascript" src="<?php echo SCRIPTS_PATH;?>ajax_searches.js"></script>
 <link rel="apple-touch-icon" href="media/apple_icon.png" />
 <?php loadCSS(); ?>
 </head>

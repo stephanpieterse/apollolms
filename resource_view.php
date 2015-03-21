@@ -133,7 +133,7 @@ switch($fileExt){
 	case 'pdf':
 		$mimetype = "application/pdf";
 		$objWidth = '100%';
-		$toload = "gdocs";
+		$toload = "document";
 	break;
 	case 'mp3':
 		$mimetype = "audio/mpeg";
@@ -153,7 +153,7 @@ switch($fileExt){
 	case 'pptx':
 		//$mimetype = "application/pdf";
 		$objWidth = '100%';
-		$toload = "gdocs";
+		$toload = "document";
 	break;
 	case 'jpg':
 	case 'jpeg':
@@ -187,11 +187,39 @@ if($toload == "fullUrl"){
 ?>
 <?php
 //TODO: make a check here for http / https and use the correct domain thiny
-if($toload == "gdocs"){ ?>
+if($toload == "document"){ ?>
+<?php
+// check here if alternate video files are available yet and include them
+	$checkdir = pathinfo($file, PATHINFO_DIRNAME) . '/.doc_res/';
+	$cleanname = pathinfo($file, PATHINFO_FILENAME);
+	if(file_exists($checkdir . $cleanname .'.odt')){
+		$altfile = $checkdir . $cleanname . '.odt';
+	}
+	if(file_exists($checkdir . $cleanname .'.ods')){
+		$altfile = $checkdir . $cleanname . '.ods';
+	}	
+	if(file_exists($checkdir . $cleanname .'.odp')){
+		$altfile = $checkdir . $cleanname . '.odp';
+	}
+	if(isset($altfile)){
+		$docfile = $altfile;
+	}else{
+		$docfile = $file;
+		$nofilefound = true;
+	}
+	
+	$docarr = array('doc','docx','ppt','pptx','pps','ppsx','xls','xlsx');
+	
+	if(in_array($fileExt,$docarr) && $nofilefound){
+		echo "This document has not been converted yet. Please check back soon. We apologise for the inconvenience";
+	}
+?>
+<!-- 
 <a href="<?php if(check_is_valid_url($file)){ echo $file; }else{ echo 'http://' . $_SERVER['HTTP_HOST'] . dirname($_SERVER['REQUEST_URI']) . '/'. $file;} ?>" class="embed_this"></a>
 <script type="text/javascript">
 $('a.embed_this').gdocsViewer();
-</script>
+</script> -->
+<iframe src="scripts/viewerjs/#../../<?php echo rawurlencode($docfile); ?>" height="640px" width="100%" allowfullscreen webkitallowfullscreen></iframe>
 <?php
 }
 ?>

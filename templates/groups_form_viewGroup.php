@@ -7,7 +7,7 @@
 */
 	$smarty = new Smarty();
 ?>
-<div id="normgroupwrap" style="float: left; width: 50%;">
+
 <?php
 	$group = $_GET['gid'];
 	// assign variables for searching
@@ -26,7 +26,6 @@
 	$curIsAdmin = isUserInGroupAdminID($_SESSION['userID'], $group);
 	
 	//check permissions to view / edit admins
-	echo print_bold("Admins for this group:");
 	$q = "SELECT adminusers, requests FROM groupslist WHERE id='$group' LIMIT 1";
 	$r = sql_execute($q);
 	$d = sql_get($r);
@@ -40,19 +39,19 @@
 
 		$xmlDoc->loadXML($groupAdminUsers);
 		$rootNode = $xmlDoc->documentElement;	
-	
-	tag('p');
+
 		foreach($rootNode->childNodes as $child){
 			if($child->nodeName == 'user'){
-				echo $adminsNameArr[$child->getAttribute('id')];
+				$adminNames[] = $adminsNameArr[$child->getAttribute('id')];
 			}
 		}
-	tag('p',false);
+
+		if(isset($adminNames)){
+			$smarty->assign('adminNames',$adminNames);
+		}
+
 
 	// check permissios to accept requests
-		echo '<p>';
-		echo print_bold("Pending Join Requests:");
-		echo '<br/>';
 		$xmlDoc = new DOMDocument();
 		
 		if($d['requests'] == ''){
@@ -64,7 +63,7 @@
 		$xmlDoc->loadXML($dreq);
 		$rootNode = $xmlDoc->documentElement;	
 	
-
+		$xps = 0; //counter
 		foreach($rootNode->childNodes as $child){
 			if($child->nodeName == 'user'){
 				$reqUID = $child->getAttribute('id');
@@ -72,44 +71,41 @@
 				$reqD = sql_execute($reqQ);
 				$reqR = sql_get($reqD);
 				
-				echo $reqR['NAME'];
-				echo ' - ';
+				$pendingSection[$xps]['NAME'] = $reqR['NAME'];
 		
 				if($curIsAdmin || check_user_permission('group_all_requests')){
-				$link = '<a class="biglinkT1" href="groups.php?q=acceptGroupRequest&uid=' . $reqUID . '&gid=' . $group . '">Accept Join Request</a> ';
-				$link .= ' -- ';
-				$link .= '<a class="biglinkT1" href="groups.php?q=denyGroupRequest&uid=' . $reqUID . '&gid=' . $group . '">Deny Join Request</a> ';
-				$link .= '<br/>';
+				$pendingSection[$xps]['ACCEPTLINK'] = '<a class="biglinkT1" href="groups.php?q=acceptGroupRequest&uid=' . $reqUID . '&gid=' . $group . '">Accept Join Request</a> ';
+				$pendingSection[$xps]['REJECTLINK'] = '<a class="biglinkT1" href="groups.php?q=denyGroupRequest&uid=' . $reqUID . '&gid=' . $group . '">Deny Join Request</a> ';
 				
-				//ek dink hierdie is baie verkeerd. as niks breek by 8 maart dan delete.
-				
-	//			$smarty->assign('groupData',$dataArray);
-		//		$tplName = changeExtension(pathinfo(__FILE__,PATHINFO_BASENAME),'tpl');
-			//	$smarty->display(TEMPLATE_PATH . $tplName);
-				echo $link;
 				}
 				
 			}
 		}
-	echo '</p>';
+		if(isset($pendingSection)){
+			$smarty->assign('pendingSection',$pendingSection);
+		}
+
 	
 	$query1 = "SELECT * FROM members";
 	$result = sql_execute($query1);
 	echo '<p>';
 	echo print_bold("Users in this group:");
 	br();
-	echo sql_numrows($result);
-	br();
-	while($row = sql_get($result)){
-	if(isUserInGroup($row['ID'],$group)){
-		echo $row['NAME'];
-		br();
-		if($curIsAdmin && (!isUserInGroupAdminID($row['ID'],$group))){
-					$link = '<a href="groups.php?q=addGroupAdmin&uid=' . $row['ID'] . '&gid=' . $group . '">Assign user as admin</a>';
-					echo $link;
-				}
-	}
-	}
+	$xi = 0;
+	
+		while($row = sql_get($result)){
+				
+			if(isUserInGroup($row['ID'],$group)){
+				$xi++;
+				echo $row['NAME'];
+				br();
+				if($curIsAdmin && (!isUserInGroupAdminID($row['ID'],$group))){
+							$link = '<a href="groups.php?q=addGroupAdmin&uid=' . $row['ID'] . '&gid=' . $group . '">Assign user as admin</a>';
+							echo $link;
+						}
+			}
+		}
+		echo $xi;
 	echo '</p>';
 	echo '<p>';
 	echo print_bold("Courses available to this group:<br/>");
@@ -182,13 +178,8 @@
 		}
 	}
 ?>
-
-	</div>
-	<div id="chatwrap" style="float: left;">
-	<?php
-	include(TEMPLATE_PATH . 'groups_form_chatSection.php');
-?>
-
+	
+	
 <?php
 	if(isset($dataArray)){
 		$smarty->assign('groupData',$dataArray);

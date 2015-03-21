@@ -204,7 +204,7 @@ function media_func_convertAudio($fname){
 	}
 
 	$ext = pathinfo($fname, PATHINFO_EXTENSION);
-	$audarr =array('wav','mp2','ogg','mp3','aac','flac');
+	$audarr = array('wav','mp2','ogg','mp3','aac','flac');
 
 	if(!in_array($ext,$audarr)){
 		return false;
@@ -221,20 +221,79 @@ function media_func_convertAudio($fname){
 	}
 }
 
+function media_func_convertDocument($fname){
+	chdir(dirname(__FILE__));
+	
+	$filename = pathinfo($fname,PATHINFO_FILENAME);
+	$safedir = pathinfo($fname,PATHINFO_DIRNAME);
+	
+	$finaldir = $safedir.'/.doc_res/';
+	
+	if(!file_exists($finaldir)){
+		mkdir($finaldir);
+	}
+
+	$ext = pathinfo($fname, PATHINFO_EXTENSION);
+	$docarr = array('doc','docx','ppt','pptx','pps','ppsx','xls','xlsx');
+	
+	if(!in_array($ext,$docarr)){
+		return false;
+	}
+
+	switch($ext){
+		case 'doc':
+		case 'docx':
+			$newExt = 'odt';
+		break;
+		case 'xls':
+		case 'xlsx':
+			$newExt = 'ods';
+		break;
+		case 'pps':
+		case 'ppt':
+		case 'pptx':
+			$newExt = 'odp';
+		break;
+	}
+
+	if(file_exists($finaldir . $filename . $newExt)){
+		shell_exec('libreoffice --headless -convert-to pdf ' . $fname . ' -outdir ' . $finaldir . $filename . $newExt);
+	}
+	
+	if(file_exists($finaldir . $filename . $newExt)){
+		return true;
+	}else{
+		return false;
+	}
+	
+}
+
+/*
+ * Checks file types and wraps other conversion functions
+ * */
 function media_func_convertFile($fname){
 	$ext = pathinfo($fname,PATHINFO_EXTENSION);
-		$audarr =array('wav','mp2','ogg','mp3','aac','flac');
-
+	
+	$audarr =array('wav','mp2','ogg','mp3','aac','flac');
 	if(in_array($ext,$audarr)){
 		media_func_convertAudio($fname);
 	}	
+	
 	$vidarr =array('mpg','mpeg','mp4','flv','f4v','webm','ogv','vob');
-
 	if(in_array($ext,$vidarr)){
 		media_func_convertVideo($fname);
 	}
+	
+	$docarr =array('doc','docx','ppt','pptx','pps','ppsx','xls','xlsx');
+	if(in_array($ext,$vidarr)){
+		media_func_convertDocument($fname);
+	}
 }
 
+/*
+ * Die werk glad nog nie
+ * Supposed om ou files te delete wat se original file weg is
+ * */
 function media_func_scanForOrphanedConverts(){
 	// scan entire directory tree
 	return false;
@@ -280,4 +339,3 @@ function media_func_getLatestandConvert(){
 		}
 	}
 }
-?>
