@@ -70,7 +70,7 @@ class Controller {
 				br();
 			
 		}
-		br();br();
+		br();
 		
 		if(!isset($_COOKIE) && $_COOKIE != null){
 			echo 'Cookies seem to be disabled...';
@@ -84,7 +84,7 @@ class Controller {
 			br();
 		}
 		
-		br();br();
+		br();
 		foreach($_FILES as $key=>$val){
 			echo $key .' = ' .$val;
 			br();
@@ -106,9 +106,7 @@ class Controller {
 			$_SESSION['post_'.$key] = $val;
 			br();
 		}
-				
 		include(TEMPLATE_PATH . 'debug_jsTest.php');
-		
 	}
 
 	

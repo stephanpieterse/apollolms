@@ -104,6 +104,38 @@
 	}
 
 
+.mainNav li{display:block; float:left;}
+.mainNav li.last{margin-right:0;}
+
+.mainNav ul li a:link, .mainNav ul li a:visited, .mainNav ul li a:hover{
+	display:block;
+	float:left;
+	height:25px;
+	padding:7px 15px 1px 15px;
+	color: #000000;
+	}
+
+.mainNav ul ul li a:link, .mainNav ul ul li a:visited, .mainNav ul ul li a:hover{
+	float:left;
+	height:auto;
+	margin:13px 15px 0 0;
+	padding:0 16px 0 0;
+	margin: 1px;
+	color:#0D413D;
+	}
+
+.mainNav ul ul li.last a{
+	margin-right:0;
+	padding:0;
+	border-right:none;
+	}
+
+.mainNav ul li.active a, .mainNav ul li a:hover{
+	color:#eeeeee;
+	background: #000000;
+	}
+
+
 /*------------------------------------*\
     NAV
 \*------------------------------------*/

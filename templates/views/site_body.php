@@ -37,14 +37,13 @@
 	}
 ?>
 
-
+<div id="maincontainer">
 <?php
 if(isset($_SESSION['userID'])){
 		include("adminNavBar.php");
 	 }
 	 
 ?>
-<div id="maincontainer">
 <div id="topsection"><div class="innertube">
 <?php
 echo siteLogoUrl();
@@ -73,30 +72,8 @@ if(isset($SYSTEM_STAT_MSG)){
 REF;
 }
 ?>
-</div>
-</div>
+</div></div>
+
 <div id="contentwrapper">
 <div id="contentcolumn">
-<div class="innertube">
-	<?php echo $CONTENT_AREA; ?>WHYYYY<br/>
-</div>
-</div>
-	
-<div id="leftcolumn">
-<div class="innertube">
-<?php
-if(isset($_SESSION['userID'])){
-	$loggedIn = true;
-  include("navigation.php");
-//  include("secondNavBar.php");
-}
-?>
-</div>
-</div>
-
-<div id="rightcolumn">
-<div class="innertube">REGS</div>
-</div>
-</div>
-
-</div>
+<div class="innertube"><?php echo $CONTENT_AREA; ?>

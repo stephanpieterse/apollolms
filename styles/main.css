@@ -387,3 +387,14 @@
 	font: 10px "Lucida Grande", Sans-Serif; 
 	float: right; 
 }
+
+#adverts{
+	display:block;
+	float:left;
+	max-width:200px;
+}
+
+#adverts > div{
+	position: absolute;
+	max-width: 200px;
+}

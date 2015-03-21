@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.17, created on 2015-03-21 13:24:49
+<?php /* Smarty version Smarty-3.1.17, created on 2015-03-21 17:34:39
          compiled from "./templates/users_form_search.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:1737381072550d7051e801d1-56100557%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'abda244c064c1f4d557de411b4e0ece3cadc2ce5' => 
     array (
       0 => './templates/users_form_search.tpl',
-      1 => 1426944284,
+      1 => 1426944307,
       2 => 'file',
     ),
   ),
@@ -50,7 +50,7 @@ $_smarty_tpl->tpl_vars['smarty']->value['section']['sec2']['index_next'] = $_sma
 $_smarty_tpl->tpl_vars['smarty']->value['section']['sec2']['first']      = ($_smarty_tpl->tpl_vars['smarty']->value['section']['sec2']['iteration'] == 1);
 $_smarty_tpl->tpl_vars['smarty']->value['section']['sec2']['last']       = ($_smarty_tpl->tpl_vars['smarty']->value['section']['sec2']['iteration'] == $_smarty_tpl->tpl_vars['smarty']->value['section']['sec2']['total']);
 ?>
-	<br/><a href="users.php?f=viewUser&id=<?php echo $_smarty_tpl->tpl_vars['idarray']->value[$_smarty_tpl->getVariable('smarty')->value['section']['sec2']['index']]['ID'];?>
+	<br/><a href="users.php?f=viewUser&uid=<?php echo $_smarty_tpl->tpl_vars['idarray']->value[$_smarty_tpl->getVariable('smarty')->value['section']['sec2']['index']]['ID'];?>
 "><?php echo $_smarty_tpl->tpl_vars['idarray']->value[$_smarty_tpl->getVariable('smarty')->value['section']['sec2']['index']]['NAME'];?>
 <img src="<?php echo @constant('ICONS_PATH');?>
 magnifier.png" alt="View"/></a>

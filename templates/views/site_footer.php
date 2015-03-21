@@ -1,3 +1,30 @@
+</div>
+</div>
+</div>
+
+<div id="leftcolumn">
+<div class="innertube mainNav"><?php
+if(isset($_SESSION['userID'])){
+	$loggedIn = true;
+  include("navigation.php");
+  include("secondNavBar.php");
+}
+?></div>
+</div>
+
+<div id="rightcolumn">
+<div class="innertube">
+	<div id="adverts">
+		<div><img src="media/bottomAdDefault.png" title="Default Ad"/></div>
+		<div>ads section not populated yet</div>
+    </div>
+    <script type="text/javascript" src="scripts/ad-slideshow.js"></script>
+	</div>
+</div>
+
+</div>
+
+
 
 <!--
 <div class="wrapper col5 bannercolour">

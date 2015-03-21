@@ -98,6 +98,8 @@
 	echo '<p>';
 	echo print_bold("Users in this group:");
 	br();
+	echo sql_numrows($result);
+	br();
 	while($row = sql_get($result)){
 	if(isUserInGroup($row['ID'],$group)){
 		echo $row['NAME'];

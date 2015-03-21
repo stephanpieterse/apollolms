@@ -28,7 +28,7 @@ margin: 0 200px 0 230px; /*Margins for content column. Should be "0 RightColumnW
 
 #leftcolumn{
 float: left;
-width: 230px; /*Width of left column*/
+width: 150px; /*Width of left column*/
 margin-left: -100%;
 background: #C8FC98;
 }
