@@ -382,4 +382,3 @@ function xmlMoveNodeTo($xmldata, $curPos, $newPos){
 	}
 	return $reorder;
 }
-?>

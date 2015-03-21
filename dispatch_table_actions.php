@@ -54,8 +54,8 @@ $dispatch_action = array(
 	'addQuestion'=>function(){mod_test_addQuestion($_GET['id'], $_POST['question_type']);},
 	'insertQuestion'=>function(){mod_test_insertQuestion($_GET['id'], $_POST); goToLastPage();},
 	'mknewFolder'=>function(){makeNewFolder($_POST['rootDirPath'] . $_POST['newFolderName']);},
-	'set_module_a'=>function(){setModuleStatus($_GET['mid'], 1);},
-	'set_module_i'=>function(){setModuleStatus($_GET['mid'], 0);},
+	//'set_module_a'=>function(){setModuleStatus($_GET['mid'], 1);},
+	//'set_module_i'=>function(){setModuleStatus($_GET['mid'], 0);},
 	'a_del_result'=>function(){if(deleteTestResult($_GET['id']) !== true){goHome("permission_denied");}else{ goToLastPage();}},
 	'uplcsvuser'=>function(){importCSVFileToUser($_FILES, $_POST);},
 );

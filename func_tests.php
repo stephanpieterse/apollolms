@@ -602,6 +602,64 @@ function userHasTestPermission($uid,$tid){
 	$memberData = sql_get($sqlresultMembers);
 	
 	while($contentRow = sql_get($sqlresultContent)){
+		$xmlDoc = new DOMDocument();
+		
+		if($contentRow['ACCESS'] == ""){
+			$contentRowData = "<access></access>";
+		}else{
+			$contentRowData = $contentRow['ACCESS'];
+		}
+		$xmlDoc->loadXML($contentRowData);
+		$xmlDocRoot = $xmlDoc->documentElement;
+		$hasAccess = false;
+		
+		foreach($xmlDocRoot->childNodes as $option){
+			$name = $option->nodeName;
+			if($name == "public"){
+				$hasAccess = true;
+				break;
+			}
+			
+			if($name == "user"){
+				if($option->getAttribute("id") == $memberData['ID']){
+				$hasAccess = true;
+				break;
+				}
+			}
+			if($name == "group"){
+				if(isUserInGroup(($memberData['ID']),($option->getAttribute("id")))){
+				$hasAccess = true;
+				break;
+			}
+			}
+			/*
+			 * if($name == "grouptype"){
+				if(isUserInGroup(($memberData['ID']),($option->getAttribute("id")))){
+				$hasAccess = true;
+				break;
+			}
+			* */
+			}
+	}
+	return $hasAccess;
+}
+
+
+/**
+ * Generic function to check if group has permissions to a test
+ * TODO this was just copied over we can optimise it a lot probably
+ * */
+function groupHasTestPermission($gid,$tid){
+	$query = "SELECT * FROM tests WHERE id='" . $tid . "' LIMIT 1";
+	$sqlresultContent = sql_execute($query);
+
+	$query = "SELECT * FROM groupslist WHERE id='" . $gid . "' LIMIT 1";
+	$sqlresultMembers = sql_execute($query);
+	$x = 0;
+	
+	$memberData = sql_get($sqlresultMembers);
+	
+	while($contentRow = sql_get($sqlresultContent)){
 	$xmlDoc = new DOMDocument();
 	
 	if($contentRow['ACCESS'] == ""){
@@ -619,27 +677,17 @@ function userHasTestPermission($uid,$tid){
 			$hasAccess = true;
 			break;
 		}
+	
 		
-		if($name == "user"){
-			if($option->getAttribute("id") == $memberData['ID']){
-			$hasAccess = true;
-			break;
-			}
-		}
 		if($name == "group"){
 			if(isUserInGroup(($memberData['ID']),($option->getAttribute("id")))){
 			$hasAccess = true;
 			break;
 		}
 		}
-		if($name == "grouptype"){
-			if(isUserInGroup(($memberData['ID']),($option->getAttribute("id")))){
-			$hasAccess = true;
-			break;
-		}
+		
 		}
 	}
 	return $hasAccess;
 }
-}
-?>
+

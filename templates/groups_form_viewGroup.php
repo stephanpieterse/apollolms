@@ -50,7 +50,7 @@
 			$smarty->assign('adminNames',$adminNames);
 		}
 
-
+	//group requests section
 	// check permissios to accept requests
 		$xmlDoc = new DOMDocument();
 		
@@ -85,54 +85,55 @@
 			$smarty->assign('pendingSection',$pendingSection);
 		}
 
-	
+	// user section
 	$query1 = "SELECT * FROM members";
 	$result = sql_execute($query1);
-	echo '<p>';
-	echo print_bold("Users in this group:");
-	br();
 	$xi = 0;
 	
 		while($row = sql_get($result)){
-				
 			if(isUserInGroup($row['ID'],$group)){
-				$xi++;
-				echo $row['NAME'];
-				br();
+				$usersSection[$xi]['NAME'] = $row['NAME'];
+				$usersSection[$xi]['ID'] = $row['ID'];
 				if($curIsAdmin && (!isUserInGroupAdminID($row['ID'],$group))){
-							$link = '<a href="groups.php?q=addGroupAdmin&uid=' . $row['ID'] . '&gid=' . $group . '">Assign user as admin</a>';
-							echo $link;
+						$usersSection[$xi]['ADMINLINK'] = '<a href="groups.php?q=addGroupAdmin&uid=' . $row['ID'] . '&gid=' . $group . '">Assign user as admin</a>';
 						}
+				$xi++;
 			}
 		}
-		echo $xi;
-	echo '</p>';
-	echo '<p>';
-	echo print_bold("Courses available to this group:<br/>");
+		
+		$totalUsers = $xi;
+		$smarty->assign('totalUsers',$totalUsers);
+		if(isset($usersSection)){
+		$smarty->assign('usersSection',$usersSection);
+		}
+	//end users
+	
+	// course section
 		$availCourses = groups_backend_listgroupCourses($group,true);
 		for($xi = 0; $xi < sizeOf($availCourses['ID']); $xi++){
-			$link = '<a href="courses.php?f=displayCourse&cid=' . $availCourses['ID'][$xi] . '">' . $availCourses['NAME'][$xi] . '</a>';
-			echo $link;
-			echo '<br/>';
+			$coursesSection[]['LINK'] = '<a href="courses.php?f=displayCourse&cid=' . $availCourses['ID'][$xi] . '">' . $availCourses['NAME'][$xi] . '</a>';
 		}
-		
-	echo '<p>';
-	echo print_bold("Tests available to this group:");br();
-	//todo: display the available tests
+		if(isset($coursesSection)){
+		$smarty->assign('coursesSection',$coursesSection);
+		}
+	//end courses
 	
+	// tests section	
 	$q = "SELECT * FROM tests";
 	$d = sql_execute($q);
 	while($r = sql_get($d)){
-		if(userHasTestPermission($_SESSION['userID'],$r['ID'])){
-			$link = '<a>' . $r['NAME'] . '</a>';
-			echo $link . '<br/>';
+		if(groupHasTestPermission($_SESSION['userID'],$r['ID'])){
+			$testsSection[]['LINK'] = '<a href="tests.php?f=viewTest&tid=' . $r['ID'] . '">' . $r['NAME'] . '</a>';
 		}
 	}
 	
-	echo '</p>';
-	echo '<p>';
-	echo print_bold("Resources available to this group:");br();
+	if(isset($testsSection)){
+		$smarty->assign('testsSection',$testsSection);
+		}
 	
+	// end tests
+	
+	// resource section
 	$q = "SELECT * FROM resources";
 	$d = sql_execute($q);
 	
@@ -141,49 +142,52 @@
 		$anyResource = true;
 	}
 	
+	$xrc = 0; // counter
 	while($r = sql_get($d)){
 			if(xmlHasSpecifiedNode($r['PERMISSIONS'], array('tagname'=>'group','id'=>$group))){
-				$anyResource = true;
+				
 				if(strpos($r['URL'],'resource_view.php') !== false){
-					$link = '<img src="' . ICONS_PATH . 'brick.png" alt="Resource"/><a href="' . $r['URL'] . ' "> ' . $r['NAME'] . '</a><br/>';
-					echo $link;
+					$resourceSection[$xrc]['LINKS'][] = '<img src="' . ICONS_PATH . 'brick.png" alt="Resource"/><a href="' . $r['URL'] . ' "> ' . $r['NAME'] . '</a>';
 					}else{
-					$link = '<img src="' . ICONS_PATH . 'brick.png" alt="Resource"/><a href="resource_view.php?f=' . urlencode($r['URL']) . '&ref=' . urlencode(selfURL()) . '"> ' . $r['NAME'] . '</a><br/>';
-					echo $link;	
+					$resourceSection[$xrc]['LINKS'][] = '<img src="' . ICONS_PATH . 'brick.png" alt="Resource"/><a href="resource_view.php?f=' . urlencode($r['URL']) . '&ref=' . urlencode(selfURL()) . '"> ' . $r['NAME'] . '</a>';
 					}
-				echo '<a href="resources.php?q=removeFromGroup&resid=' . $r['ID'] . '" ><img src="' . ICONS_PATH . 'cancel.png" alt="Remove"/></a>';
+				if(check_user_permission(array('content_modify','groups_modify'))){
+					$resourceSection[$xrc]['LINKS'][] = '<a href="resources.php?q=removeFromGroup&resid=' . $r['ID'] . '" ><img src="' . ICONS_PATH . 'cancel.png" alt="Remove"/></a>';
+				}
+				$xrc++;
 		}
 	}
-
-	if($anyResource === false){
-		echo 'There are no resources currently available to you.'; 
+	
+	if(check_user_permission(array('content_modify','groups_modify'))){
+		//$resourceSection[$xrc]['LINKS'][] = '<a href="resources.php?f=addToGroup&gid=' . $groupName . '">Add a Resource</a><br/>';
+		$canAddResource = true;
+	}else{
+		$canAddResource = false;
 	}
 	
-	echo '</p>';
-	if(check_user_permission(array('content_modify','groups_modify'))){
-		$link = '<a href="resources.php?f=addToGroup&gid=' . $groupName . '">Add a Resource</a><br/>';
-		echo $link;
+	if(isset($resourceSection)){
+		$smarty->assign('resourceSection',$resourceSection);
 	}
-	?>
-	<br/>
-	<b>SUBGROUPS</b>
-	<br/>
-<?php
+		$smarty->assign('canAddResource',$canAddResource);
+	
+	// end resource
+	
+	// subgroups section
 	$sq = "SELECT * FROM groupslist";
 	$sr = sql_execute($sq);
 	while($sd = sql_get($sr)){
 		if(strpos($sd['PARENTS'],'id="' . $group . '"')){
-		echo '<a href="groups.php?f=viewGroup&gid=' . $sd['ID'] . '"' . $sd['NAME'] . '</a>';
-		echo "<br/>";
+		$subgroupsSection[] = '<a href="groups.php?f=viewGroup&gid=' . $sd['ID'] . '"' . $sd['NAME'] . '</a>';
 		}
 	}
-?>
-	
-	
-<?php
-	if(isset($dataArray)){
-		$smarty->assign('groupData',$dataArray);
+
+	if(isset($subgroupsSection)){
+		$smarty->assign('subgroupsSection',$subgroupsSection);
 	}
+
 	$tplName = changeExtension(pathinfo(__FILE__,PATHINFO_BASENAME),'tpl');
 	$smarty->display(TEMPLATE_PATH . $tplName);
 ?>
+<div id="chatwrap" style="float: left;">
+<?php include(TEMPLATE_PATH . 'groups_form_chatSection.php'); ?>
+</div>

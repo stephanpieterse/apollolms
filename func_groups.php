@@ -510,6 +510,55 @@ function groups_backend_listGroupCourses($gid, $includeParent = false){
 }
 
 /**
+	lists test id and name of selected group
+*/
+function groups_backend_listGroupTests($gid, $includeParent = false){
+	$group = $gid;
+
+    $q = "SELECT * FROM tests WHERE permissions LIKE '%$group%'";
+    $r = sql_execute($q);
+
+        while($d = sql_get($r)){
+                $stat = groupHasTestPermission($group, $d['ID']);
+                if($stat){
+			$resultSet['ID'][] = $d['ID'];
+			$resultSet['NAME'][] = $d['NAME'];
+                 }
+        }
+
+	if($includeParent){
+	
+	$q = "SELECT PARENTS FROM groupslist WHERE id='$gid' LIMIT 1";
+	$r = sql_execute($q);
+	$d = sql_get($r);
+
+	if($d['PARENTS'] == ''){
+		$d['PARENTS'] = "<data></data>";
+	}
+		
+	$xmldoc = new DOMDocument;
+	$xmldoc->loadXML($d['PARENTS']);
+
+	$rootNode = $xmldoc->documentElement;
+	foreach($rootNode->childNodes as $child){
+		$pgid = $child->getAttribute('id');
+		if(isset($resultSet)){
+			$otherarr = groups_backend_listGroupTests($pgid);
+			if($otherarr !== false){
+				$resultSet = array_merge($resultSet, $otherarr);
+			}
+		}
+		}
+	}
+	
+	if(isset($resultSet)){
+		return $resultSet;
+	}else{
+		return false;
+	}
+}
+
+/**
 	Remove a user from group
 */
 function groups_func_leave($data){
@@ -525,4 +574,3 @@ function groups_func_leave($data){
 	
 	return true;
 }
-?>

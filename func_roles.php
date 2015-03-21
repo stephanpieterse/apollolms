@@ -178,4 +178,3 @@ function check_user_permission($neededPerm, $nowarn = false){
 	}
 	return $hasPermission;
 }
-?>

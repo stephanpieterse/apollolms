@@ -20,9 +20,9 @@
 		tag('td',false);
 		tag('td');
 			if($x['ACTIVE'] == 0){
-				echo "<a href=\"index.php?action=set_module_a&mid=" . $x['ID'] ." \"> <img src=\"" . ICONS_PATH . "accept.png\" alt=\"Activate Module\"/></a>";
+				echo '<a href="modules.php?q=setStatus&mid=' . $x['ID'] . '&setto=1"> <img src="' . ICONS_PATH . "accept.png\" alt=\"Activate Module\"/></a>";
 			}else{
-				echo "<a href=\"index.php?action=set_module_i&mid=" . $x['ID'] ." \"> <img src=\"" . ICONS_PATH . "tick.png\" alt=\"De-activate Module\"/></a>";
+				echo '<a href="modules.php?q=setStatus&mid=' . $x['ID'] . '&setto=0"> <img src="' . ICONS_PATH . "tick.png\" alt=\"De-activate Module\"/></a>";
 		}
 		$link = "<a href=\"modules.php?f=settingsView&mid=" . $x['ID'] ." \"> <img src=\"" . ICONS_PATH . "cog.png\" alt=\"Module Settings\"/></a>";
 		echo $link;

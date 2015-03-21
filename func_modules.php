@@ -195,13 +195,30 @@ function loadPageModules($pageName){
 		}
 }
 
+function modules_func_setStatus($data){
+	$newstat = $data['setto'];
+	$mid = $data['mid'];
+	
+	if(setModuleStatus($mid,$newstat)){
+		return "success";
+	}
+}
 
 /**
 *	Set the module active/inactive
 */
 function setModuleStatus($mid, $stat){
+	$mid = makeSafe($mid);
+	$stat = makeSafe($stat);
+	
 	$q = "UPDATE modules SET active='$stat' WHERE id='$mid'";
 	$r = sql_execute($q);
+	
+	if($r >= 1){
+		return true;
+	}else{
+		return false;
+	}
 }
 
 /**

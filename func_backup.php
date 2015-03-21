@@ -144,4 +144,3 @@ function backupData($dataSet, $comments, $fromWhere){
 		$query = "INSERT INTO archived_data (DATA, DATE, COMMENTS, FROMTABLE) VALUES ('" . $xmlData . "','" . $curTime . "','" . $comments . "','" . $fromWhere . "')";
 		$result = sql_execute($query);
 }
-?>

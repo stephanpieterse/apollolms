@@ -187,4 +187,3 @@ function print_page_footer($prevBtn, $nxtBtn){
 	}
 	br_clear();
 }
-?>

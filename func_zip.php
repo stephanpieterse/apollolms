@@ -97,4 +97,3 @@ function create_dirs($path)
 
 // Extract C:/zipfiletest/zip-file.zip to C:/another_map/zipfiletest/ and doesn't overwrite existing files. NOTE: It doesn't create a map with the zip-file-name!
 //unzip("C:/zipfiletest/zip-file.zip", "C:/another_map/zipfiletest/", true, false);
-?>

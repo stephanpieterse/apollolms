@@ -7,13 +7,13 @@
 if(isset($_SESSION['userID'])){
 	$loggedIn = true;
   include("navigation.php");
-  include("secondNavBar.php");
 }
 ?></div>
 </div>
 
 <div id="rightcolumn">
 <div class="innertube">
+	<?php include("secondNavBar.php"); ?>
 	<div id="adverts">
 		<div><img src="media/bottomAdDefault.png" title="Default Ad"/></div>
 		<div>ads section not populated yet</div>
@@ -23,8 +23,6 @@ if(isset($_SESSION['userID'])){
 </div>
 
 </div>
-
-
 
 <!--
 <div class="wrapper col5 bannercolour">
@@ -52,17 +50,7 @@ if(isset($_SESSION['userID'])){
 	?>
 	 </ul>
     </div>
-    <div class="footbox">
-      <h2>Site Information</h2>  
-      <ul>
-        <li><a target="_blank" href="http:/apollolms.co.za/termsOfService.html" title="View the terms of service">Terms of Service</a></li>
-		<li><a target="_blank" href="http:/apollolms.co.za/privacyPolicy.html" title="View the privacy policy">Privacy Policy</a></li>
-		<li><a target="_blank" href="http://wiki.apollolms.co.za/index.php/Help:FAQ" title="View the privacy policy">F.A.Q.</a></li>
-      </ul>
-    </div>
-    <div class="footbox">
-   
-    </div>
+  
     <br class="clear" />
   </div>
 </div>
@@ -77,6 +65,22 @@ if(isset($_SESSION['userID'])){
     $time_end = microtime(true);
 	$execution_time = ($time_end - $_SESSION['time_start']);
     echo 'Request served in '.$execution_time.'s'; ?></div>
+    <a target="_blank" href="http://wiki.apollolms.co.za/index.php/Help:FAQ" title="Help Pages">Help</a>
+	-
+	<a target="_blank" href="http:/apollolms.co.za/termsOfService.html" title="View the terms of service">Terms of Service</a>
+	-
+	<a target="_blank" href="http:/apollolms.co.za/privacyPolicy.html" title="View the privacy policy">Privacy Policy</a>
+	-
+	<?php
+		if(is_user_loggedIn()){
+		?>
+		<a href="help.php?f=request">Content Request</a>
+		<?php
+		$fulldata = "";
+		foreach($_GET as $key=>$val){ $fulldata .= '&' . $key . '=' . $val;}
+		echo '<a href="index.php?f=reportitem' . $fulldata . '">Report this page</a>';
+		}
+		?>
     <br class="clear" />
   </div>
 </div>

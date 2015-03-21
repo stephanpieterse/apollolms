@@ -32,5 +32,3 @@ function translate_site_item($itype, $iid, $iarea, $lang){
 	}
 	
 }
-
-?>

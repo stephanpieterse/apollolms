@@ -45,6 +45,3 @@ function cron_func_killCaches(){
 	shell_exec("find . -name .aud_res -exec rm -rf {} \;");
 	return true;
 }
-
-
-?>

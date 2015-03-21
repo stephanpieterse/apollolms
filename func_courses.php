@@ -698,4 +698,3 @@ function make_certificate($certificateBody, $user){
 	$svg->output(); //to browser, with
 	return true;
 }
-?>

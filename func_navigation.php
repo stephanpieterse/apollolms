@@ -37,4 +37,3 @@ function generateURL($variables){
 	return $niceref;
 	
 	}
-?>

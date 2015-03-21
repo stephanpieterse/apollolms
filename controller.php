@@ -251,10 +251,10 @@ class Controller {
 				}
 				if($stat !== false){
 					if($stat == 'goBack'){
-					goToLastPage();
+						goToLastPage();
 					}else{
 					//page_redirect('index.php?msg=' . $stat);
-					goToLastPage($stat);
+						goToLastPage($stat);
 					}
 				}else{
 					//page_redirect('index.php?msg=failure');
