@@ -42,8 +42,9 @@ class Controller {
 		echo $view;
 	}
 	
-	function build_body_start(){
+	function build_body_start($content = ""){
 		$view = new Template(TEMPLATE_PATH . 'views/site_body.php');
+		$view->CONTENT_AREA = $content;
 		echo $view;
 		}	
 	
@@ -105,21 +106,11 @@ class Controller {
 			$_SESSION['post_'.$key] = $val;
 			br();
 		}
-		br();
-	//	system('dmesg | tail');
 				
-				echo'<script type="text/javascript">
-				{
-					var cookieEnabled = (navigator.cookieEnabled) ? true : false;
-					if (typeof navigator.cookieEnabled == "undefined" && !cookieEnabled)
-					{ 
-						document.cookie="testcookie";
-						cookieEnabled = (document.cookie.indexOf("testcookie") != -1) ? true : false;
-					}
-					document.write("status:" + cookieEnabled);
-				}				</script><noscript>JS is disabled</noscript>';
+		include(TEMPLATE_PATH . 'debug_jsTest.php');
+		
 	}
-	
+
 	
 	function build_footer(){
 		$view = new Template(TEMPLATE_PATH . 'views/site_footer.php');	

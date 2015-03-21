@@ -1,6 +1,6 @@
-<script type="text/javascript" src="<?php echo SCRIPTS_PATH;?>jquery-1.9.1.js"></script> 
 <script type="text/javascript" src="<?php echo SCRIPTS_PATH; ?>jplayer/jquery.jplayer.min.js"></script>
 <script type="text/javascript" src="<?php echo SCRIPTS_PATH;?>gdocsview/jquery.gdocsviewer.js"></script>
+<script type="text/javascript" src="<?php echo SCRIPTS_PATH;?>viewerjs/viewer.js"></script>
 <script type="text/javascript" src="<?php echo SCRIPTS_PATH;?>ajax_searches.js"></script>
 <body>
 	<noscript>
@@ -18,9 +18,7 @@
 	}
 	</script>
 <?php
-	if(isset($_SESSION['userID'])){
-		include("adminNavBar.php");
-	 }
+	
 	if(isset($_SESSION['SITE_ERROR_MSG'])){
 		$SYSTEM_ERROR_MSG = $_SESSION['SITE_ERROR_MSG'];
 		unset($_SESSION['SITE_ERROR_MSG']);
@@ -38,3 +36,67 @@
 		}
 	}
 ?>
+
+
+<?php
+if(isset($_SESSION['userID'])){
+		include("adminNavBar.php");
+	 }
+	 
+?>
+<div id="maincontainer">
+<div id="topsection"><div class="innertube">
+<?php
+echo siteLogoUrl();
+include("loginSection.php");
+
+if(isset($SYSTEM_ERROR_MSG)){
+	echo <<<REF
+<div class="redMsgBox" id="system_error_msg"> $SYSTEM_ERROR_MSG </div>
+REF;
+unset($SYSTEM_ERROR_MSG);
+}
+if(isset($SYSTEM_HELP_MSG)){
+	echo <<<REF
+<div class="yellowMsgBox" id="system_help_msg"> $SYSTEM_HELP_MSG </div>
+<script>
+	$('#system_help_msg').delay(8000).fadeOut(1000);
+</script>
+REF;
+}
+if(isset($SYSTEM_STAT_MSG)){
+	echo <<<REF
+<div class="greenMsgBox" id="system_stat_msg"> $SYSTEM_STAT_MSG </div>
+<script>
+	$('#system_stat_msg').delay(8000).fadeOut(1000);
+</script>
+REF;
+}
+?>
+</div>
+</div>
+<div id="contentwrapper">
+<div id="contentcolumn">
+<div class="innertube">
+	<?php echo $CONTENT_AREA; ?>WHYYYY<br/>
+</div>
+</div>
+	
+<div id="leftcolumn">
+<div class="innertube">
+<?php
+if(isset($_SESSION['userID'])){
+	$loggedIn = true;
+  include("navigation.php");
+//  include("secondNavBar.php");
+}
+?>
+</div>
+</div>
+
+<div id="rightcolumn">
+<div class="innertube">REGS</div>
+</div>
+</div>
+
+</div>
