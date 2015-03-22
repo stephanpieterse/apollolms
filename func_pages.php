@@ -139,32 +139,6 @@ function a_update_page($id,$data){
 	}
 }
 
-function displayPage($pnm, $aid = "0", $cid = "0"){
-	$query = 'SELECT * FROM articles WHERE id="' . $aid . '" LIMIT 1';
-	$result = sql_execute($query);
-	$data = sql_get($result);
-
-	$xmldata = $data['PAGES'];
-	$pid = getPageIDFromXML($pnm, $xmldata);
-	
-	$hasNext = xmlHasNextNode($pnm, $xmldata);
-	$hasPrev = xmlHasPrevNode($pnm, $xmldata);
-	
-	$query = "SELECT * FROM pages WHERE id='" . $pid . "' LIMIT 1";
-	$result = sql_execute($query);
-	$data = sql_get($result);
-	sidebarIndexPages($aid, $data['HTML_CONTENT']);
-	
-	echo '<div class="mainArticle">';
-	echo print_h2($data['NAME']);
-	br();
-	echo $data['HTML_CONTENT'];
-	echo '</div>';
-	echo '<br class="clear" />';
-	
-	print_page_footer($hasPrev, $hasNext);
-}
-
 /**
  * Prints the footer for a page containing next/prev buttons.
  * We should probably extend this code to work with articles as well or just remove it and replace it with something that makes more sense.
@@ -177,11 +151,11 @@ function print_page_footer($prevBtn, $nxtBtn){
 	$pnmP = $_GET['pnm'] - 1;
 	
 	if($nxtBtn == true){
-		$nextlink = '<a class="fl_R buttony" href="index.php?uq=viewPage&aid=' . $aid . '&pnm=' . $pnmN . '"> -> Next Page </a>';
+		$nextlink = '<a class="fl_R buttony" href="pages.php?f=viewPage&aid=' . $aid . '&pnm=' . $pnmN . '"> -> Next Page </a>';
 		echo $nextlink;
 	}
 	if(($pnmP > 0) && ($prevBtn == true)){
-		$backlink = '<a class="fl_L buttony" href="index.php?uq=viewPage&aid=' . $aid . '&pnm=' . $pnmP . '">Previous Page <-  </a>';
+		$backlink = '<a class="fl_L buttony" href="pages.php?f=viewPage&aid=' . $aid . '&pnm=' . $pnmP . '">Previous Page <-  </a>';
 		echo $backlink;
 	}
 	}

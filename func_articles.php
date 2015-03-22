@@ -294,7 +294,7 @@ function displayArticleIndex($articleID, $courseID = "0"){
 				$r = sql_execute($q);
 				$d = sql_get($r);
 		
-				$link = '<a href="index.php?uq=viewPage&pnm=' . $pnm . '&aid=' . $articleID .'">' . $d['NAME'] . '</a>';
+				$link = '<a href="pages.php?f=viewPage&pnm=' . $pnm . '&aid=' . $articleID .'">' . $d['NAME'] . '</a>';
 				br();
 				echo $link;
 				$pnm++;

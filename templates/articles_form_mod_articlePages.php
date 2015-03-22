@@ -35,7 +35,7 @@
 					$aR = sql_execute($aQ);
 					$adata = sql_get($aR);
 						echo '<td>';
-						$link = '<a target="_blank" href=?uq=viewPage&pnm=' . $x . '&aid=' . $aid . '>' . $adata['NAME'] . '</a>';
+						$link = '<a target="_blank" href="pages.php?f=viewPage&pnm=' . $x . '&aid=' . $aid . '">' . $adata['NAME'] . '</a>';
 						echo $link;
 						echo '</td>';
 						echo '<td>';

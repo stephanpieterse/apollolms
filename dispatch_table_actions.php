@@ -5,7 +5,7 @@
  * still included since not all functions have been remapped yet and the gq section might stay in permanent use.
  *
  * @TODO remap all these ASAP
- * @author Stephan
+ * @author Stephan Pieterse
  * @package ApolloLMS
  */
 
@@ -30,12 +30,10 @@ $dispatch_aq = array(
 
 $dispatch_uq = array(
 	'upload_profilePicture'=>function(){upload_profilePicture($_FILES);},
-	'viewPage'=>function(){displayPage($_GET['pnm'], $_GET['aid']);},
 	'submitRequest'=>function(){submitContentRequest($_POST);},
 );
 
 $dispatch_action = array(
-	'rem_user'=>function(){removeItem('members',$_GET['uid']);},	 //removeUser($_GET['user']);
 	'rem_course'=>function(){removeItem('courses', $_GET['course']); findOrphans();}, //removeCourse($_GET['course']);
 	'upd_article'=>function(){update_article($_GET['id'],$_POST); goToLastPage();},
 	'lostpassword2'=>function(){lostPassword2();},
@@ -54,9 +52,6 @@ $dispatch_action = array(
 	'addQuestion'=>function(){mod_test_addQuestion($_GET['id'], $_POST['question_type']);},
 	'insertQuestion'=>function(){mod_test_insertQuestion($_GET['id'], $_POST); goToLastPage();},
 	'mknewFolder'=>function(){makeNewFolder($_POST['rootDirPath'] . $_POST['newFolderName']);},
-	//'set_module_a'=>function(){setModuleStatus($_GET['mid'], 1);},
-	//'set_module_i'=>function(){setModuleStatus($_GET['mid'], 0);},
 	'a_del_result'=>function(){if(deleteTestResult($_GET['id']) !== true){goHome("permission_denied");}else{ goToLastPage();}},
 	'uplcsvuser'=>function(){importCSVFileToUser($_FILES, $_POST);},
 );
-?>

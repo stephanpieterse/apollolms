@@ -34,8 +34,6 @@
 				$pagesArray[$itemnum]['AID'] = $articleID;
 				$pagesArray[$itemnum]['PNM'] = $pnm;
 								
-				//$link = '<a href="index.php?uq=viewPage&pnm=' . $pnm . '&aid=' . $articleID .'">' . $d['NAME'] . '</a><br/>';
-				//echo $link;
 				$pnm++;
 				$itemnum++;
 				

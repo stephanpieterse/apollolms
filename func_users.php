@@ -322,8 +322,8 @@ function users_func_addUserItem($data, $tags = null){
 	$emailad=($data['emailad']);
 	$role= "User"; //$_POST['role'];
 	$contactnum=makeSafe($data['contactnum']);
-	$secuQ  = 'NA';//makeSafe($data['securityQ']);
-	$secuA = 'NA';//makeSafe($data['securityA']);
+	//$secuQ  = 'NA';//makeSafe($data['securityQ']);
+	//$secuA = 'NA';//makeSafe($data['securityA']);
 	
 	if((isset($data['addToGID'])) && ($data['addToGID'] != 0)){
 		$groups = '<groups><group id="' . $data['addToGID'] . '"></group></groups>';
@@ -429,8 +429,16 @@ function users_func_updateUserItem($data){
 	$sqlqueryA = "UPDATE members SET name='$name', email='$emailad', contactnum='$contactnum', role='$role', gender='$gender', birthdate='$birthDate' WHERE id='$uid'";
 	$result = sql_execute($sqlqueryA);
 	
-//	page_redirect("users.php?f=admin_UserManage");
 	return "success";
+}
+
+function users_func_removeUser($data){
+	$id = $data['uid'];
+	$member = new ALMS_UserItem;
+	$member->load($id);
+	$stat = $member->removeUser;
+	
+	return $stat;
 }
 
 function users_func_updateGroupsOnly($data){

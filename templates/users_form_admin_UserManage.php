@@ -37,7 +37,7 @@
 			$dataArray[$curPos]['LINKS'][] = '<a href="users.php?f=editUser&uid=' . $rowdata['ID'] . ' "><img src="' .ICONS_PATH . 'pencil.png" alt="Edit"/></a>';
 		}else {$dataArray[$curPos]['LINKS'][] = " "; }
 		if(check_user_permission("user_remove")){
-			$dataArray[$curPos]['LINKS'][] = '<a href="index.php?confirm&action=rem_user&uid=' . $rowdata['ID'] . ' "><img src="' . ICONS_PATH . 'cancel.png" alt="Delete"/></a>';	
+			$dataArray[$curPos]['LINKS'][] = '<a href="users.php?confirm&q=removeUser&uid=' . $rowdata['ID'] . ' "><img src="' . ICONS_PATH . 'cancel.png" alt="Delete"/></a>';	
 		}else {$dataArray[$curPos]['LINKS'][] = " "; }
 		}else{$dataArray[$curPos]['LINKS'][] = " ";$dataArray[$curPos]['LINKS'][] = " ";}
 		
