@@ -77,4 +77,3 @@ function do_post_request($url, $data, $optional_headers = null)
   }
   return $response;
 }
-?>

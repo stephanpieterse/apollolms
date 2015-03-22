@@ -158,4 +158,3 @@ function sql_escape_string($stringVar){
 	}
 	return $stringVar;
 }
-?>

@@ -48,11 +48,11 @@
 				$resurl = urldecode($resurl);
 				if(strpos($resurl,'resource_view.php') !== false){
 			//	$link = '<img src="' . ICONS_PATH . 'brick.png" alt="Resource"/><a href="' . $resurl . ' "> ' . $resname . '</a><br/>';
-			//	echo $link;
+	
 				$resArray[$resarrnum]['RESURL'] = $resurl;
 				}else{
 			//	$link = '<img src="' . ICONS_PATH . 'brick.png" alt="Resource"/><a href="resource_view.php?f=' . urlencode($resurl) . '&ref=' . urlencode(selfURL()) . '"> ' . $resname . '</a><br/>';
-			//	echo $link;	
+
 				$resArray[$resarrnum]['RESURL'] = 'resource_view.php?f=' . urlencode($resurl) . '&ref=' . urlencode(selfURL());
 				}
 				$resarrnum++;
@@ -66,4 +66,3 @@
 	
 	$tplName = changeExtension(pathinfo(__FILE__,PATHINFO_BASENAME),'tpl');
 	$smarty->display($tplName);
-?>

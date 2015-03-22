@@ -62,4 +62,3 @@ function resource_func_updateResource($data){
 	$d = sql_execute($q);
 	return true;
 }
-?>

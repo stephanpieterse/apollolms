@@ -53,4 +53,3 @@ function help_func_submitContentRequest($data){
 	
 	return 'success';
 }
-?>

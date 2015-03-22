@@ -298,4 +298,3 @@ function sendEmail($to, $subj, $body, $from){
 		return false;
 	}
 }
-?>

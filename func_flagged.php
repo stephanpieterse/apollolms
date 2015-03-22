@@ -18,4 +18,3 @@ function flagged_func_removeEntry($data){
 	
 	return true;
 }
-?>

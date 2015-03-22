@@ -68,4 +68,3 @@ function stat_getAgeStats(){
 	
 	return $retvals;
 	}
-?>

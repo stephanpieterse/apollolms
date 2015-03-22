@@ -29,6 +29,7 @@ class Controller {
 		$view = new Template(TEMPLATE_PATH . 'views/site_navbar.php');
 		if(isset($this->variables['secNav'])){
 			$view->VAR_SEC_MENU = $this->variables['secNav'];
+			$VAR_SEC_MENU = $this->variables['secNav'];
 		}
 		echo $view;
 	}
@@ -287,4 +288,3 @@ class Controller {
 		 if(!$this->slimPage){$this->build_footer();}
 	}
 }
-

@@ -43,5 +43,3 @@ function events_func_addEvent($data){
 	
 	return $stat;
 }
-
-?>

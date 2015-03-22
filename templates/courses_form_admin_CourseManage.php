@@ -64,4 +64,3 @@
 	$tplName = changeExtension(pathinfo(__FILE__,PATHINFO_BASENAME),'tpl');
 	$smarty->display($tplName);
 	echo tooltip("Edit course details and articles here","course_edit");
-?>

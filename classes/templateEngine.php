@@ -27,4 +27,3 @@ class Template{
 		//return ob_end_flush();
 	}
 }
-?>

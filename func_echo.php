@@ -92,4 +92,4 @@ function tagarg($tagName, $attrArr, $single = false){
 	}
 	echo $tagdata;
 }
-?>
+

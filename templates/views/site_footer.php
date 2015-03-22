@@ -6,7 +6,8 @@
 <div class="innertube mainNav"><?php
 if(isset($_SESSION['userID'])){
 	$loggedIn = true;
-  include("navigation.php");
+	require("navigation.php");
+	require("secondNavBar.php");
 }
 ?></div>
 </div>
@@ -23,38 +24,6 @@ if(isset($_SESSION['userID'])){
 </div>
 
 </div>
-
-<!--
-<div class="wrapper col5 bannercolour">
-  <div id="footer">
-    <div id="newsletter">
-		<div><img src="media/bottomAdDefault.png" title="Default Ad"/></div>
-		<div>ads section not populated yet</div>
-    </div>
-    <script type="text/javascript" src="scripts/ad-slideshow.js"></script>
-    <div class="footbox">
-    	<h2>Misc</h2>
-    	<ul>
-		<?php
-		if(isset($_SESSION['userID'])){
-        echo '<li class="last"><a href="help.php?f=request">Content Request</a></li>';
-        echo '<li class="last"><a href="index.php?f=help">Help</a></li>';
-		}
-		?>
-		<?php
-		if(isset($_SESSION['userID'])){
-		?>
-	<li><a href="index.php?f=reportitem<?php foreach($_GET as $key=>$val){ echo '&' . $key . '=' . $val;} ?>">Report this page</a></li>
-	<?php
-		} //endif
-	?>
-	 </ul>
-    </div>
-  
-    <br class="clear" />
-  </div>
-</div>
--->
 
 <!-- <div id="footer" class="wrapper col6"> -->
 <div id="footer">

@@ -118,4 +118,3 @@ function settings_func_update_defaultHomepage($post){
 		
 		return 'success';
 	}	
-?>

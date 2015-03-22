@@ -25,10 +25,6 @@ $loop->run();
 Server running at http://127.0.0.1:1337
 */
 
-
-
-
-
     $function = $_POST['function'];
     $gid = $_POST['gid'];
 
