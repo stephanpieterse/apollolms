@@ -2,7 +2,8 @@
 /**
  * Basic module class. All modules for the ApolloLMS should extend this base class.
  * 
- * Created by Stephan Pieterse
+ * @author Stephan Pieterse
+ * @package ApolloLMS
  */
 abstract class module_item{
 
@@ -52,4 +53,3 @@ function m_plugin_handler($type,$data){
         return $this->$pluginFunc($data);
 }
 }
-?>

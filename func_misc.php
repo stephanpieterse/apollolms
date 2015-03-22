@@ -38,6 +38,10 @@ require('func_crons.php');
 
 require(CLASS_PATH . 'modules.php');
 require(CLASS_PATH . 'test_item.php');
+require(CLASS_PATH . 'alms_courseitem.php');
+require(CLASS_PATH . 'alms_useritem.php');
+require(CLASS_PATH . 'alms_coursehandler.php');
+require(CLASS_PATH . 'alms_userhandler.php');
 require(CLASS_PATH . 'events_class.php');
 require(CLASS_PATH . 'templateEngine.php');
 require(CLASS_PATH . 'resource_handler.php');

@@ -90,29 +90,10 @@ function login_func_checkLogin($data){
  * Returns true/false
  */
 function isUserPendingForCourse($uid, $cid){
-	$q = "SELECT * FROM course_registrations WHERE uid='$uid' LIMIT 1";
-	$r = sql_execute($q);
-	$d = sql_get($r);
+	$member = new ALMS_UserItem();
+	$member->load($uid);
 	
-	$isPending = false;
-	
-	$pendData = $d['PENDING'];
-	
-	if($pendData == ""){
-		$pendData = "<pending></pending>";
-	}
-	
-	$xmlDoc = new DOMDocument();
-	$xmlDoc->loadXML($pendData);
-	$rootNode = $xmlDoc->documentElement;
-				
-	foreach($rootNode->childNodes as $ci){
-		if($ci->getAttribute('cid') == $cid){
-			$isPending = true;
-			break;
-		}
-	}
-	return $isPending;
+	return $member->isUserPendingForCourse($uid,$cid);
 }
 
 /**

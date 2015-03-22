@@ -20,7 +20,7 @@
 	</a>
 	</td>
 	<td>
-	Name: {$memberdata[sec1].NAME} - <a href="mailto:{$memberdata[sec1].EMAIL}">{$memberdata[sec1].EMAIL}</a>
+	{$memberdata[sec1].NAME}
 	</td>
 	{foreach name=sec2 from=$memberdata[sec1].LINKS item=link}
 	<td>{$link}</td>
