@@ -277,6 +277,15 @@ function set_tempEmailVerify($email){
 	return true;
 }
 
+function users_func_resendPassword($data){
+	$member = new ALMS_UserItem;
+	
+	$member->load($data['uid']);
+	$stat = $member->resendPassword();
+	
+	return $stat;
+}
+
 function login_func_addUserItem($data){
 	return users_func_addUserItem($data);
 }

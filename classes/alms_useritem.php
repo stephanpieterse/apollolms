@@ -64,6 +64,23 @@ class ALMS_UserItem {
 		return true;
 	}	
 
+	public function resendPassword(){
+		$username = $this->useremail;
+		$password = randomAlphaNum(9);
+		$passwordref = $password;
+		$passwordref = hash('sha512',$passwordref);
+		$password = substr($username,0,5) . $password;
+		$password = hash('sha512',$password);
+		
+		$q = "UPDATE members SET password='$password' WHERE email='$username'";
+		$r = sql_execute($q);
+		
+		$msgBody = "A request has been made to resend your password. Your details are as follows:<br/>Username: " . $emailad . " <br/>Password: " . $passwordref . ". <br/> Be sure to save this e-mail for future reference." ;
+		mail_inform($username,'Training site password resend request.',$msgBody);
+		
+		return $r;
+	}
+
 	public function addNewUser($pdata){
 		$name= makeSafe($pdata['name']);
 		$surname=makeSafe($pdata['surname']);
