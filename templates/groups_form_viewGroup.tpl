@@ -41,7 +41,7 @@ There don't seem to be any users in this group.
 <span class="bold">Courses:</span><br/>
 {if isset($coursesSection)}
 {section name=sec4 loop=$coursesSection}
-	{$coursesSection[sec4].LINK}
+	{$coursesSection[sec4].LINK}<br/>
 {/section}
 {else}
 This group doesn't have specific access to any courses.

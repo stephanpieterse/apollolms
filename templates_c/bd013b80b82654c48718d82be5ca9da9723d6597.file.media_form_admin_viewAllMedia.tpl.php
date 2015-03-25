@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.17, created on 2015-03-21 13:41:49
+<?php /* Smarty version Smarty-3.1.17, created on 2015-03-25 19:01:43
          compiled from "./templates/media_form_admin_viewAllMedia.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:1348886028550d751d7c3729-33336013%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'bd013b80b82654c48718d82be5ca9da9723d6597' => 
     array (
       0 => './templates/media_form_admin_viewAllMedia.tpl',
-      1 => 1426836583,
+      1 => 1427310096,
       2 => 'file',
     ),
   ),
@@ -15,6 +15,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'function' => 
   array (
   ),
+  'version' => 'Smarty-3.1.17',
+  'unifunc' => 'content_550d751da3f583_62441696',
   'variables' => 
   array (
     'breadcrumbs' => 0,
@@ -24,8 +26,6 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'userCanMod' => 0,
   ),
   'has_nocache_code' => false,
-  'version' => 'Smarty-3.1.17',
-  'unifunc' => 'content_550d751da3f583_62441696',
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_550d751da3f583_62441696')) {function content_550d751da3f583_62441696($_smarty_tpl) {?><br/>
 <span class="media_breadcrumbs">
@@ -35,7 +35,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 <div>
 <br/>
 <?php if (isset($_smarty_tpl->tpl_vars['selectors']->value)) {?> 
-		<form name="selector" method="POST" action="">
+		<form name="selector">
 <?php }?>
 
 <ul>
@@ -82,7 +82,7 @@ cancel.png" alt="Delete"/></a>
 	<?php } else { ?>
 	<?php if (isset($_smarty_tpl->tpl_vars['selectors']->value)) {?> 
 		<?php if ($_smarty_tpl->tpl_vars['selectors']->value=="radiobtn") {?>
-		<input name="fileurl" type="radio" value="<?php echo $_smarty_tpl->tpl_vars['itemData']->value[$_smarty_tpl->getVariable('smarty')->value['section']['sec1']['index']]['LINKVIEW'];?>
+		<input id="fileurl" name="fileurl" type="radio" value="<?php echo $_smarty_tpl->tpl_vars['itemData']->value[$_smarty_tpl->getVariable('smarty')->value['section']['sec1']['index']]['LINKVIEW'];?>
 " />
 	<?php }?>
 	<?php }?>
@@ -138,7 +138,7 @@ page_white_code.png" alt="Embed Code"/></a>
 </div>	
 </ul>
 <?php if (isset($_smarty_tpl->tpl_vars['selectors']->value)) {?> 
-		<input type="button" value="Submit" onclick="post_value();">
+		<input type="button" value="Select" onclick="post_value();" />
 		</form>
 <?php }?>
 </div>

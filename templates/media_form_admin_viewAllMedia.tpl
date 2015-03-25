@@ -5,7 +5,7 @@
 <div>
 <br/>
 {if isset($selectors)} 
-		<form name="selector" method="POST" action="">
+		<form name="selector">
 {/if}
 
 <ul>
@@ -24,7 +24,7 @@
 	{else}
 	{if isset($selectors)} 
 		{if $selectors == "radiobtn"}
-		<input name="fileurl" type="radio" value="{$itemData[sec1].LINKVIEW}" />
+		<input id="fileurl" name="fileurl" type="radio" value="{$itemData[sec1].LINKVIEW}" />
 	{/if}
 	{/if}
 	<a target="_blank" href="{$itemData[sec1].LINKVIEW}">
@@ -65,7 +65,7 @@
 </div>	
 </ul>
 {if isset($selectors)} 
-		<input type="button" value="Submit" onclick="post_value();">
+		<input type="button" value="Select" onclick="post_value();" />
 		</form>
 {/if}
 </div>

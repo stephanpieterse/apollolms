@@ -68,7 +68,7 @@ class ALMS_UserItem {
 		$username = $this->useremail;
 		$password = randomAlphaNum(9);
 		$passwordref = $password;
-		$passwordref = hash('sha512',$passwordref);
+		//$passwordref = hash('sha512',$passwordref);
 		$password = substr($username,0,5) . $password;
 		$password = hash('sha512',$password);
 		

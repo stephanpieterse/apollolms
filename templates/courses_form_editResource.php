@@ -29,7 +29,20 @@ Please provide the URL for the resource to be embedded.
 
 <script type="text/javascript">
 function openChildSelector(){
-		window.open("mediaslim.php?f=mediaSelect&dir=uploads&selector=single","SelectFile","width=550,height=550,resizable=1,scrollbars=1");		
+	//var childWin = window.open("<?php echo get_serverURL() . '/' . SUBDOMAIN_NAME . '/'; ?>mediaslim.php?f=mediaSelect&dir=uploads&selector=single","SelectFile","width=550,height=550,resizable=1,scrollbars=1");
+
+	var prevReturnValue = window.returnValue; // Save the current returnValue
+	window.returnValue = undefined;
+	var dlgReturnValue = window.showModalDialog("mediaslim.php?f=mediaSelect&dir=uploads&selector=single","SelectFile","width=550,height=550,resizable=1,scrollbars=1");
+	if (dlgReturnValue == undefined) // We don't know here if undefined is the real result...
+	{
+    // So we take no chance, in case this is the Google Chrome bug
+		dlgReturnValue = window.returnValue;
+	}
+	window.returnValue = prevReturnValue; // Restore the original returnValue
+
+	document.resdetails.resource_url.value = dlgReturnValue;
+	
 }
 </script>
 

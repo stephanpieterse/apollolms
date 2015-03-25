@@ -303,7 +303,6 @@ function get_serverURL() {
 	return $protocol."://".$_SERVER['SERVER_NAME'].$port;
 }
 
-
 /**
  * Returns the complete URL of the current page.
  */

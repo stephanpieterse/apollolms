@@ -123,4 +123,3 @@
 	$smarty->assign('iconpath',ICONS_PATH);
 	$tplName = changeExtension(pathinfo(__FILE__,PATHINFO_BASENAME),'tpl');
 	$smarty->display($tplName);
-?>
