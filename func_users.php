@@ -22,8 +22,8 @@ function is_user_loggedIn(){
  * Checks login details, then redirects or returns an error.
  */
 function login_func_checkLogin($data){
-	$user = $data['username'];
-	$pass = $data['password'];
+	$user = $data['login_username'];
+	$pass = $data['login_password'];
 	$fromwhere = isset($data['fromURL']) ? $data['fromURL'] : null;
 	
 	$password = $pass;
@@ -356,7 +356,7 @@ function users_func_addUserItem($data, $tags = null){
 			
 			if(($data['shouldLogin'] == 1) || ($data['shouldLogin'] == true)){
 				//checkLogin($emailad, $loginPass);
-				return login_func_checkLogin(array('username'=>$emailad,'password'=>$passwordref));				
+				return login_func_checkLogin(array('login_username'=>$emailad,'login_password'=>$passwordref));				
 			}
 		}else{
 		//	$retval = "Some of the required fields are incorrect. Please make sure you are using a valid email address and that the passwords you have entered match.";

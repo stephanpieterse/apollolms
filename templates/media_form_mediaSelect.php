@@ -7,8 +7,8 @@
 		window.opener.returnValue = window.document.getElementById('fileurl').value;
 		}	
 		window.returnValue = window.document.getElementById('fileurl').value;
+		window.parent.opener.document.resdetails.resource_url.value = window.document.getElementById('fileurl').value;
 		self.close();
-		
 	}
 </script>
 <?php

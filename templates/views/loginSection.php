@@ -1,7 +1,7 @@
 <?php
 /**
  * @package ApolloLMS
-  @author Stephan Pieterse
+   @author Stephan Pieterse
  * */
 ?>
 <div style="margin: 10px;" class="fl_right">

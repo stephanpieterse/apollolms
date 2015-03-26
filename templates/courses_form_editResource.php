@@ -33,7 +33,7 @@ function openChildSelector(){
 
 	var prevReturnValue = window.returnValue; // Save the current returnValue
 	window.returnValue = undefined;
-	var dlgReturnValue = window.showModalDialog("mediaslim.php?f=mediaSelect&dir=uploads&selector=single","SelectFile","width=550,height=550,resizable=1,scrollbars=1");
+	var dlgReturnValue = window.open("mediaslim.php?f=mediaSelect&dir=uploads&selector=single","SelectFile","width=550,height=550,resizable=1,scrollbars=1");
 	if (dlgReturnValue == undefined) // We don't know here if undefined is the real result...
 	{
     // So we take no chance, in case this is the Google Chrome bug
@@ -41,7 +41,7 @@ function openChildSelector(){
 	}
 	window.returnValue = prevReturnValue; // Restore the original returnValue
 
-	document.resdetails.resource_url.value = dlgReturnValue;
+	//document.resdetails.resource_url.value = dlgReturnValue;
 	
 }
 </script>
