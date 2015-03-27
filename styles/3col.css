@@ -23,7 +23,7 @@ width: 100%;
 }
 
 #contentcolumn{
-margin: 0 160px 0 160px; /*Margins for content column. Should be "0 RightColumnWidth 0 LeftColumnWidth*/
+margin: 0 175px 0 180px; /*Margins for content column. Should be "0 RightColumnWidth 0 LeftColumnWidth*/
 }
 
 #leftcolumn{

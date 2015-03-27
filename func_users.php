@@ -239,14 +239,13 @@ function showProfilePic($width = '50', $picUID = 0){
 		$q = "SELECT GENDER FROM members WHERE id='" . $picUID . "'";
 		$r = sql_execute($q);
 		$d = sql_get($r);
-		
 		if($d['GENDER'] == 0){
 			$picN = 'male.png';
 			}else{
 			$picN = 'female.png';
 				}
 		
-		$link = '<img alt="' . $picN . '"style="background: #ffffff; float:right; margin: 10px;" src="members/profile_images/' . $picN . '" width="' . $width . '"/>';
+		$link = '<img alt="' . $picN . '" class="roundImage" src="members/profile_images/' . $picN . '" width="' . $width . '"/>';
 	}
 	return $link;
 }

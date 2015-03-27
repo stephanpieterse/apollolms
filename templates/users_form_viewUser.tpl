@@ -1,5 +1,4 @@
-	<a href="users.php?q=resendPassword&uid={$userData.ID}">Resend Password</a>
-	
+	<a href="users.php?q=resendPassword&uid={$userData.ID}">Resend Password</a><br/>
 	<span class="bold">Registered at:</span>
 	{$userData.REGDATE}
 	<br/>

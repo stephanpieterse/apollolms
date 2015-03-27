@@ -63,7 +63,7 @@ function isArticleAlreadySelected($cdata, $aid){
 				$articleTableData[$xi]['LINKS'][] = "<a href=\"articles.php?q=mv_art&id=" . $cid ."&dir=down&aid=" . $nodeID ." \"><img src=\"" . ICONS_PATH . "arrow_down.png\" alt=\"Move Down\"/></a>";
 			}
 			if(check_user_permission("content_remove")){
-				$articleTableData[$xi]['LINKS'][] = "<a href=\"index.php?confirm&aq=rm_article&aid=" . $data['ID'] ."&cid=" . $cid . " \"><img src=\"" . ICONS_PATH . "cancel.png\" alt=\"Delete\"/></a>";
+				$articleTableData[$xi]['LINKS'][] = "<a href=\"articles.php?confirm&q=removeArticle&aid=" . $data['ID'] ."&cid=" . $cid . " \"><img src=\"" . ICONS_PATH . "cancel.png\" alt=\"Delete\"/></a>";
 			}
 			
 		}
@@ -80,11 +80,11 @@ function isArticleAlreadySelected($cdata, $aid){
 			}
 			if(check_user_permission("content_modify")){
 				//edit
-				$articleTableData[$xi]['LINKS'][] = "<a href=\"courses.php?f=editResource&cid=".$cid."&resid=" . $nodeID ." \"><img src=\"" . ICONS_PATH . "pencil.png\" alt=\"Edit\"/>Edit</a>";
+				$articleTableData[$xi]['LINKS'][] = "<a href=\"courses.php?f=editResource&cid=".$cid."&resid=" . $sid ." \"><img src=\"" . ICONS_PATH . "pencil.png\" alt=\"Edit\"/>Edit</a>";
 				//moveup
-				$articleTableData[$xi]['LINKS'][] = "<a href=\"articles.php?q=mv_art&id=" . $cid ."&dir=up&aid=". $nodeID ." \"><img src=\"" . ICONS_PATH . "arrow_up.png\" alt=\"Move Up\"/></a>";
+				$articleTableData[$xi]['LINKS'][] = "<a href=\"articles.php?q=mv_art&id=" . $cid ."&dir=up&aid=". $sid ." \"><img src=\"" . ICONS_PATH . "arrow_up.png\" alt=\"Move Up\"/></a>";
 				//movedown
-				$articleTableData[$xi]['LINKS'][] = "<a href=\"articles.php?q=mv_art&id=" . $cid ."&dir=down&aid=" . $nodeID ." \"><img src=\"" . ICONS_PATH . "arrow_down.png\" alt=\"Move Down\"/></a>";
+				$articleTableData[$xi]['LINKS'][] = "<a href=\"articles.php?q=mv_art&id=" . $cid ."&dir=down&aid=" . $sid ." \"><img src=\"" . ICONS_PATH . "arrow_down.png\" alt=\"Move Down\"/></a>";
 			
 			}
 			if(check_user_permission("content_remove")){

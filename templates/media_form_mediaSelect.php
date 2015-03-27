@@ -4,10 +4,18 @@
 		//window.parent.opener.document.resdetails.resource_url.value = window.document.selectFor.fileurl.value;
 		if (window.opener)
 		{
-		window.opener.returnValue = window.document.getElementById('fileurl').value;
+			window.opener.returnValue = window.document.getElementById('fileurl').value;
 		}	
-		window.returnValue = window.document.getElementById('fileurl').value;
-		window.parent.opener.document.resdetails.resource_url.value = window.document.getElementById('fileurl').value;
+		
+		var selectedValue = "none selected";
+		
+		var radios = document.getElementsByName("fileurl");
+		for(var i = 0; i < radios.length; i++) {
+			if(radios[i].checked) selectedValue = radios[i].value;   
+		}
+		
+		window.returnValue = selectedValue; //window.document.getElementById('fileurl').value;
+		window.parent.opener.document.resdetails.resource_url.value = selectedValue; //window.document.getElementById('fileurl').value;
 		self.close();
 	}
 </script>

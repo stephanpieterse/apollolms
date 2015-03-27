@@ -314,3 +314,10 @@ function displayArticleIndex($articleID, $courseID = "0"){
 function articles_func_mv_art($data){
 	moveNode('courses', $data['id'], 'ARTICLES', $data['aid'], $data['dir']);
 }
+
+function articles_func_removeArticle($data){
+	removeItem('articles', $data['aid']);
+	verifyXML('courses',$data['cid']);
+	
+	return true;
+}
