@@ -1,32 +1,4 @@
-</div>
-</div>
-</div>
 
-<div id="leftcolumn">
-<div class="innertube mainNav"><?php
-if(isset($_SESSION['userID'])){
-	$loggedIn = true;
-	require("navigation.php");
-	require("secondNavBar.php");
-}
-?></div>
-</div>
-
-<div id="rightcolumn">
-<div class="innertube">
-	<?php include("secondNavBar.php"); ?>
-	<div id="adverts">
-		<div><img src="media/bottomAdDefault.png" title="Default Ad"/></div>
-		<div>ads section not populated yet</div>
-    </div>
-    <script type="text/javascript" src="scripts/ad-slideshow.js"></script>
-	</div>
-</div>
-
-</div>
-
-<!-- <div id="footer" class="wrapper col6"> -->
-<div id="footer">
   <div id="copyright">
     <div class="centertext fullwidth">Copyright &copy; 2013-<?php echo date("Y"); ?> - All Rights Reserved - <a target="_blank" href="http://www.apollolms.co.za">Apollo Learning Management System</a></div>
     <div class="centertext fullwidth">Mail: <a href="mailto:<?php echo SITE_EMAIL; ?>"> <?php echo SITE_EMAIL; ?> </a></div>
@@ -43,16 +15,11 @@ if(isset($_SESSION['userID'])){
 	<?php
 		if(is_user_loggedIn()){
 		?>
-		<a href="help.php?f=request">Content Request</a>
+		<a href="help.php?f=request">Content Request</a>-
 		<?php
 		$fulldata = "";
 		foreach($_GET as $key=>$val){ $fulldata .= '&' . $key . '=' . $val;}
-		echo '<a href="index.php?f=reportitem' . $fulldata . '">Report this page</a>';
+			echo '<a href="index.php?f=reportitem' . $fulldata . '">Report this page</a>';
 		}
 		?>
-    <br class="clear" />
-  </div>
-</div>
-</div>
-
-</body>
+		</div>

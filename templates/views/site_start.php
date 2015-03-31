@@ -2,6 +2,8 @@
 /**
  * @package ApolloLMS
  * @author Stephan Pieterse
+ * 
+ * Sends the initial header data, sets custom cookies.
  * */
 	$request = parse_url($_SERVER['REQUEST_URI']);
 	$path = $request["path"];

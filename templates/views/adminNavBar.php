@@ -1,7 +1,9 @@
 <?php
 /**
  * @package ApolloLMS
-  @author Stephan Pieterse
+   @author Stephan Pieterse
+ * 
+ * Prints the navigation area to be used by admins
  * */
 ?>
 <div class="wrapper" id="admin_floating_nav">

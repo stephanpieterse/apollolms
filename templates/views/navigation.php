@@ -1,3 +1,11 @@
+<?php
+/*
+ * @author Stephan Pieterse
+ * @package ApolloLMS
+ * 
+ * */
+?>
+
 <ul class="box">
 <li><a href="index.php">Home</a></li>
 <li><a href="groups.php?f=joinNewGroup">Groups</a></li>

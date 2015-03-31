@@ -2,6 +2,8 @@
 /**
  * @package ApolloLMS
    @author Stephan Pieterse
+   * 
+   * Generates the login section / logged in info
  * */
 ?>
 <div style="margin: 10px;" class="fl_right">

@@ -25,6 +25,19 @@ class Controller {
 		$this->variables[$key] = $val;
 	}
 	
+	function return_ob_navigation(){
+		ob_start();
+		$view = new Template(TEMPLATE_PATH . 'views/site_navbar.php');
+		if(isset($this->variables['secNav'])){
+			$view->VAR_SEC_MENU = $this->variables['secNav'];
+			$VAR_SEC_MENU = $this->variables['secNav'];
+		}
+		echo $view;
+		$retval = ob_get_clean();
+		
+		return $retval;
+	}
+	
 	function build_navigation(){
 		$view = new Template(TEMPLATE_PATH . 'views/site_navbar.php');
 		if(isset($this->variables['secNav'])){
@@ -43,9 +56,12 @@ class Controller {
 		echo $view;
 	}
 	
-	function build_body_start($content = ""){
-		$view = new Template(TEMPLATE_PATH . 'views/site_body.php');
-		$view->CONTENT_AREA = $content;
+	function build_body_start($contentArray){
+		$view = new Template(TEMPLATE_PATH . 'views/site_full.php');
+		
+		foreach($contentArray as $k => $v){
+			$view->$k = $v;;	
+		}
 		echo $view;
 		}	
 	
@@ -57,7 +73,7 @@ class Controller {
 		
 		$this->headerBuilt = true;
 		
-		$this->build_body_start();
+		//$this->build_body_start();
 		logAction($_GET);
 	}
 	
@@ -110,6 +126,26 @@ class Controller {
 		include(TEMPLATE_PATH . 'debug_jsTest.php');
 	}
 
+	function return_ob_adminnav(){
+		ob_start();
+		if(isset($_SESSION['userID'])){
+		$view = new Template(TEMPLATE_PATH ."views/adminNavBar.php");
+		echo $view;
+		}
+		
+		return ob_get_clean();
+	}
+	
+	function return_ob_footer(){
+		ob_start();
+		$view = new Template(TEMPLATE_PATH . 'views/site_footer.php');	
+		echo $view;
+		if( defined("DEBUG_MODE") && (DEBUG_MODE === 'on')){
+			$this->print_debug_info();
+		}
+		
+		return ob_get_clean();
+	}
 	
 	function build_footer(){
 		$view = new Template(TEMPLATE_PATH . 'views/site_footer.php');	
@@ -137,12 +173,16 @@ class Controller {
 		$formPre = $this->formPre;
 		$funcPre = $this->funcPre;
 		
+		//start capturing input to store in content area
+		ob_start();
+		
+		
 		if(!isset($_SESSION['userID']) && $this->protectedPages){
-			if(!$this->headerBuilt){$this->build_header();}
-			$this->build_navigation();
+			//if(!$this->headerBuilt){$this->build_header();}
+			//$this->build_navigation();
 			defaultHome();
-			$this->build_footer();
-			exit;
+			//$this->build_footer();
+			//exit;
 		}
 		
 		if(isset($searchFor)){
@@ -187,7 +227,7 @@ class Controller {
 			markLastPage($GETDAT);
 			$formToShow = '' . TEMPLATE_PATH . $formPre . 'search' .'.php';
 				
-			$this->build_navigation();
+			//$this->build_navigation();
 		
 			chdir(dirname(__FILE__));
 			
@@ -202,7 +242,7 @@ class Controller {
 		
 		if((isset($mq)) && (isset($GETDAT['mi']))){
 			if(!$this->headerBuilt){$this->build_header();}
-			$this->build_navigation();
+			//$this->build_navigation();
 			markLastPage($GETDAT);
 			module_getCSS($GETDAT['mi']);
 			module_runFunction($GETDAT['mi'],$mq,$GETDAT);
@@ -211,7 +251,7 @@ class Controller {
 		if(isset($gq)){
 			// get calls from something like dispatch_table_actions
 			// execute as same
-			$this->build_header();
+			if(!$this->headerBuilt){$this->build_header();}
 			include_once('dispatch_table_actions.php');
 			if(isset($dispatch_gq[$gq])){
 				call_user_func($dispatch_gq[$gq]);
@@ -221,7 +261,7 @@ class Controller {
 		}
 		
 		if(isset($f)){
-			if(!$this->headerBuilt){$this->build_header();}
+			//if(!$this->headerBuilt){$this->build_header();}
 			markLastPage(pathinfo($_SERVER['SCRIPT_FILENAME'],PATHINFO_BASENAME) . '?' .  $_SERVER['QUERY_STRING']);
 			$formToShow = '' . TEMPLATE_PATH . $formPre . $f .'.php';
 			
@@ -231,7 +271,7 @@ class Controller {
 				$this->secNav = 'user_' . $this->secNav;
 			}
 				
-			if(!$this->slimPage){$this->build_navigation();}
+			//if(!$this->slimPage){$this->build_navigation();}
 		
 			chdir(dirname(__FILE__));
 			
@@ -285,6 +325,20 @@ class Controller {
 			}
 		}
 
-		 if(!$this->slimPage){$this->build_footer();}
+		// if(!$this->slimPage){$this->build_footer();}
+		 
+		 $printedData = ob_get_clean();
+		 
+		 $navbarArea = $this->return_ob_navigation();
+		 $footerArea = $this->return_ob_footer();
+		 $adminNav = $this->return_ob_adminnav();
+		 
+		 if(!$this->headerBuilt){$this->build_header();}
+		 
+		if(!$this->slimPage){
+		 $this->build_body_start(array('ADMINNAV_AREA'=>$adminNav,'NAVBAR_AREA'=>$navbarArea,'CONTENT_AREA'=>$printedData,'FOOTER_AREA'=>$footerArea));
+		}else{
+		 $this->build_body_start(array('CONTENT_AREA'=>$printedData,));
+		}
 	}
 }
