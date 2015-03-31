@@ -1,39 +1,3 @@
-#topnav2{
-	height:35px;
-	overflow:hidden;
-	float:left;
-	position: relative;
-	left: -25%;
-	}
-
-#topnav2 ul{
-	display:block;
-	height:75px;
-	margin-left:auto;
-	margin-right:auto;
-	margin-top: 0px;
-	padding:0;
-	list-style:none;
-	}
-	
-#topnav2 li{display:block; float:left;}
-#topnav2 li.last{margin-right:0;}
-
-#topnav2 ul li a:link, #topnav2 ul li a:visited{
-	display:block;
-	float:left;
-	height:25px;
-	padding:10px 15px 0 15px;
-	color:#121212;
-	}
-
-#topnav2 ul li a:hover{
-	color:#eeeeee;
-	background: #2D837D;
-	}
-	
-/*___*/
-
 .col2{
 	float:left;
 	left: 50%;
@@ -45,89 +9,25 @@
 	overflow: hidden;
 }
 
-#topnav{
-	height:37px;
-	font-size : 1.25em;
-	float:left;
-	position: relative;
-	left: -25%;
-	}
-
-#topnav ul{
-	display: inline-block;
-	height:35px;
-	margin-top:0px;
-	margin-left:auto;
-	margin-right:auto;
-	padding:0;
-	list-style:none;
-	width: 100%;
-	}
-
-#topnav ul li.active ul{
-	display:block;
-	position:absolute;
-	top:25px;
-	left:0;
-	width:100%;
-	height:40px;
-	}
-
-#topnav li{display:block; float:left;}
-#topnav li.last{margin-right:0;}
-
-#topnav ul li a:link, #topnav ul li a:visited, #topnav ul li a:hover{
-	display:block;
-	float:left;
-	height:25px;
-	padding:7px 15px 1px 15px;
-	color: #000000;
-	}
-
-#topnav ul ul li a:link, #topnav ul ul li a:visited, #topnav ul ul li a:hover{
-	float:left;
-	height:auto;
-	margin:13px 15px 0 0;
-	padding:0 16px 0 0;
-	margin: 1px;
-	color:#0D413D;
-	}
-
-#topnav ul ul li.last a{
-	margin-right:0;
-	padding:0;
-	border-right:none;
-	}
-
-#topnav ul li.active a, #topnav ul li a:hover{
-	color:#eeeeee;
-	}
-
 
 .mainNav li{display:block; float:left;}
-.mainNav li.last{margin-right:0;}
 
-.mainNav ul li a:link, .mainNav ul li a:visited, .mainNav ul li a:hover{
+.mainNav ul li a:link, .mainNav ul li a:visited{
 	display:block;
 	float:left;
-	height:25px;
-	padding:7px 15px 1px 15px;
+	min-height:20px;
+	padding:3px 3px 3px 3px;
+	width:45px;
 	color: #000000;
 	}
 
-.mainNav ul ul li a:link, .mainNav ul ul li a:visited, .mainNav ul ul li a:hover{
+.mainNav ul ul li a:link, .mainNav ul ul li a:visited{
 	float:left;
 	height:auto;
-	margin:13px 15px 0 0;
-	padding:0 16px 0 0;
+	margin:2px 2px 0 0;
+	padding:0 2px 0 0;
 	margin: 1px;
 	color:#0D413D;
-	}
-
-.mainNav ul ul li.last a{
-	margin-right:0;
-	padding:0;
-	border-right:none;
 	}
 
 .mainNav ul li.active a, .mainNav ul li a:hover{

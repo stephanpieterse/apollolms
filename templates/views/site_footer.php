@@ -1,5 +1,4 @@
-
-  <div id="copyright">
+ <div id="copyright">
     <div class="centertext fullwidth">Copyright &copy; 2013-<?php echo date("Y"); ?> - All Rights Reserved - <a target="_blank" href="http://www.apollolms.co.za">Apollo Learning Management System</a></div>
     <div class="centertext fullwidth">Mail: <a href="mailto:<?php echo SITE_EMAIL; ?>"> <?php echo SITE_EMAIL; ?> </a></div>
     <div class="centertext fullwidth"><?php 
@@ -22,4 +21,4 @@
 			echo '<a href="index.php?f=reportitem' . $fulldata . '">Report this page</a>';
 		}
 		?>
-		</div>
+</div>

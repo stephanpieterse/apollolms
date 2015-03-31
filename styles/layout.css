@@ -40,10 +40,6 @@ div.wrapper{
 	margin-right:auto;
 	text-align:left;
 	}
-.sitelogo img{
-	max-width: 150px;
-	max-height: 30px;
-}
 }
 
 /* Smartphones (portrait) ----------- */
@@ -78,10 +74,6 @@ div.wrapper{
 	text-align:left;
 	}
 
-.sitelogo img {
-	max-width:150px;
-	max-height: 30px;
-}
 }
 
 /* iPads Retina (landscape) ----------- */
@@ -101,11 +93,6 @@ div.wrapper{
 	margin-right:auto;
 	text-align:left;
 	}
-
-.sitelogo img {
-	max-width:150px;
-	max-height: 30px;
-}
 
 }
 
@@ -186,11 +173,7 @@ div.wrapper{
 	margin-right:auto;
 	text-align:left;
 	}
-		
-.sitelogo img {
-	max-width:150px;
-	max-height: 30px;
-}
+	
 }
 
 body{
@@ -210,6 +193,8 @@ div.wrapper{
 	
 .sitelogo img{
 	margin:8px;
+	max-height:150px;
+	max-width:150px;
 }
 
 img{

@@ -3,10 +3,11 @@
  * @author Stephan Pieterse
  * @package ApolloLMS
  * 
+ * The links for the first level navigation
  * */
 ?>
 
-<ul class="box">
+<ul class="firstnavbar">
 <li><a href="index.php">Home</a></li>
 <li><a href="groups.php?f=joinNewGroup">Groups</a></li>
 <!-- <li><a href="courses.php?f=viewCourses">Courses</a></li> -->

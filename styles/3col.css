@@ -1,61 +1,74 @@
 body{
-margin:0;
-padding:0;
-line-height: 1.5em;
+	margin:0;
+	padding:0;
+	line-height: 1.5em;
 }
 
 b{font-size: 110%;}
 em{color: red;}
 
+.firstnavbar{
+	float:left;
+	width: 50px;
+	padding-left: 5px;
+}
+
+.secondnavbar{
+	float:left;
+	width: 50px;
+	padding-left:5px;
+}
+
 #topsection{
-background: #EAEAEA;
-height: 90px; /*Height of top section*/
+	background: #EAEAEA;
+	height: 90px; /*Height of top section*/
 }
 
 #topsection h1{
-margin: 0;
-padding-top: 15px;
+	margin: 0;
+	padding-top: 15px;
 }
 
 #contentwrapper{
-float: left;
-width: 100%;
+	float: left;
+	width: 100%;
 }
 
 #contentcolumn{
-margin: 0 175px 0 180px; /*Margins for content column. Should be "0 RightColumnWidth 0 LeftColumnWidth*/
+	margin: 0 175px 0 150px; /*Margins for content column. Should be "0 RightColumnWidth 0 LeftColumnWidth*/
 }
 
 #leftcolumn{
-float: left;
-width: 150px; /*Width of left column*/
-margin-left: -100%;
-background: #C8FC98;
+	float: left;
+	width: 150px; /*Width of left column*/
+	margin-left: -100%;
+	background: #C8FC98;
 }
 
 #rightcolumn{
-float: left;
-width: 200px; /*Width of right column*/
-margin-left: -200px; /*Set left marginto -(RightColumnWidth)*/
-background: #FDE95E;
+	float: left;
+	width: 175px; /*Width of right column*/
+	margin-left: -175px; /*Set left margin to -(RightColumnWidth)*/
+	background: #FDE95E;
 }
 
 #footer{
-clear: left;
-width: 100%;
-background: black;
-color: #FFF;
-text-align: center;
-padding: 4px 0;
+	clear: left;
+	width: 100%;
+	background: black;
+	color: #FFF;
+	text-align: center;
+	padding: 4px 0;
 }
 
 #footer a{
-color: #FFFF80;
+	color: #FFFF80;
 }
 
 .innertube{
-margin: 10px; /*Margins for inner DIV inside each column (to provide padding)*/
-margin-top: 0;
+	margin: 5px; /*Margins for inner DIV inside each column (to provide padding)*/
+	padding: 5px;
+	margin-top: 0;
 }
 
 /* ####### responsive layout CSS ####### */
@@ -80,13 +93,17 @@ margin-top: 0;
 
 @media (max-width: 600px){ /* 2nd level responsive layout break point- drop left column down */
 	#leftcolumn{
-	float: none;
-	width: 100%;
-	clear: both;
-	margin-left: 0;
+		/* float: none; */
+		width: 100%;
+		clear: both;
+		margin-left: 0;
 	}
 	
 	#contentcolumn{
-	margin-left: 0;
+		margin-left: 0;
+	}
+	
+	.firstnavbar, .secondnavbar{
+		width: 100%;
 	}
 }
