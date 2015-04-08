@@ -176,8 +176,9 @@ class Controller {
 		//start capturing input to store in content area
 		ob_start();
 		
+		$protection = $this->protectedPages;
 		
-		if(!isset($_SESSION['userID']) && $this->protectedPages){
+		if(!isset($_SESSION['userID']) && $protection){
 			//if(!$this->headerBuilt){$this->build_header();}
 			//$this->build_navigation();
 			defaultHome();
@@ -185,6 +186,7 @@ class Controller {
 			//exit;
 		}
 		
+		if(!$protection || isset($_SESSION['userID'])){
 		if(isset($searchFor)){
 			$queryToExec = $funcPre . 'search';
 			if(function_exists($queryToExec)){
@@ -324,7 +326,7 @@ class Controller {
 				page_redirect('index.php');
 			}
 		}
-
+	} // end protection
 		// if(!$this->slimPage){$this->build_footer();}
 		 
 		 $printedData = ob_get_clean();

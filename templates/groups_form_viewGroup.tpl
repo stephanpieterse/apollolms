@@ -25,6 +25,7 @@ There are no requests currently pending.
 <p>
 <span class="bold">Members:</span>{$totalUsers}<br/>
 {if isset($usersSection)}
+<div class="size_scrollbox">
 {section name=sec3 loop=$usersSection}
 		<a href="users.php?f=viewUser&uid={$usersSection[sec3].ID}">{$usersSection[sec3].NAME}</a>
 		{if isset($usersSection[sec3].ADMINLINK)}
@@ -32,6 +33,7 @@ There are no requests currently pending.
 		 {/if}
 		 <br/>
 {/section}
+</div>
 {else}
 There don't seem to be any users in this group.
 {/if}

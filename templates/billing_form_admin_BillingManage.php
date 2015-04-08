@@ -1,4 +1,7 @@
 <?php
+/*
+ * @author Stephan Pieterse
+ * */
 	define('BASE_COST',350);
 
 	$smarty = new Smarty;

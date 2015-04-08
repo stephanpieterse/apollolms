@@ -1,3 +1,8 @@
+<?php
+/*
+ * @author Stephan Pieterse
+ * */
+?>
 <link rel="stylesheet" type="text/css" href="<?php echo SCRIPTS_PATH; ?>/jqplot/jquery.jqplot.css" />
 <div>
 <span class="bold">Gender Statistics:</span>
@@ -10,7 +15,7 @@
 	echo "Females: " . $values['f'] . " - " . floor($values['f'] / $values['t'] * 100) . "%";
 
 ?>
-<div id="chartGender" style="height:300px;width:50%; "></div>
+<div id="chartGender" style="height:300px;width:75%; "></div>
 <script>
 	$(document).ready(function(){
   var data = [
@@ -49,7 +54,7 @@
 	br();
 
 ?>
-<div id="chartAges" style="height:300px;width:50%; "></div>
+<div id="chartAges" style="height:300px;width:75%; "></div>
 <script>
 	$(document).ready(function(){
   var data = [
@@ -73,10 +78,41 @@
 <p>
 	<?php
 	
+	$groupstats = stat_getGroupStats();
+	//var_dump($groupstats);
+	$passToGroups = '';
 	
+	foreach($groupstats as $gs){
+		$passToGroups .= '[';
+		$passToGroups .= "'" . $gs['NAME'] . "',";
+		$passToGroups .=  $gs['TOTALS'];
+		$passToGroups .=  '],';
+	}
+	
+	//var_dump($passToGroups);
 	?>
+	
+	<div id="chartGroups" style="height:450px;width:75%; "></div>
+<script>
+	$(document).ready(function(){
+  var data = [
+    <?php echo $passToGroups; ?>
+  ];
+  var plot1 = jQuery.jqplot ('chartGroups', [data],
+    {
+      seriesDefaults: {
+        renderer: jQuery.jqplot.PieRenderer,
+        rendererOptions: {
+          showDataLabels: true
+        }
+      },
+      legend: { show:true, location: 'e' }
+    }
+  );
+});
+</script>
 </p>
 </div>
-<h1>NOTE: The accuracy of these statistics depend on the complete and accurate info of the users. These statistics are not guaranteed to be accurate.</h1>
+<h2>NOTE: The accuracy of these statistics depend on the complete and accurate info of the users. These statistics are not guaranteed to be accurate.</h2>
 <script language="javascript" type="text/javascript" src="<?php echo SCRIPTS_PATH ?>jqplot/jquery.jqplot.min.js"></script>
 <script type="text/javascript" src="<?php echo SCRIPTS_PATH ?>jqplot/plugins/jqplot.pieRenderer.min.js"></script>

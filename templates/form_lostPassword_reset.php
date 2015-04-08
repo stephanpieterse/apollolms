@@ -1,3 +1,8 @@
+<?php
+/*
+ * @author Stephan Pieterse
+ * */
+?>
 <span class="bold">Please enter the security number you received via e-mail:</span><br/>
 <form name="secAnsForm" method="post" action="index.php?f=checkSecurityQ">
 <?php

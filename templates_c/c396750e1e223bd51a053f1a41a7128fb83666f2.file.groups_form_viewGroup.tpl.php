@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.17, created on 2015-03-22 04:02:25
+<?php /* Smarty version Smarty-3.1.17, created on 2015-04-08 17:13:38
          compiled from "templates/groups_form_viewGroup.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:1239147124550daa15a68838-21370991%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'c396750e1e223bd51a053f1a41a7128fb83666f2' => 
     array (
       0 => 'templates/groups_form_viewGroup.tpl',
-      1 => 1426971194,
+      1 => 1428513203,
       2 => 'file',
     ),
   ),
@@ -110,6 +110,7 @@ There are no requests currently pending.
 <span class="bold">Members:</span><?php echo $_smarty_tpl->tpl_vars['totalUsers']->value;?>
 <br/>
 <?php if (isset($_smarty_tpl->tpl_vars['usersSection']->value)) {?>
+<div class="size_scrollbox">
 <?php if (isset($_smarty_tpl->tpl_vars['smarty']->value['section']['sec3'])) unset($_smarty_tpl->tpl_vars['smarty']->value['section']['sec3']);
 $_smarty_tpl->tpl_vars['smarty']->value['section']['sec3']['name'] = 'sec3';
 $_smarty_tpl->tpl_vars['smarty']->value['section']['sec3']['loop'] = is_array($_loop=$_smarty_tpl->tpl_vars['usersSection']->value) ? count($_loop) : max(0, (int) $_loop); unset($_loop);
@@ -143,6 +144,7 @@ $_smarty_tpl->tpl_vars['smarty']->value['section']['sec3']['last']       = ($_sm
 		 <?php }?>
 		 <br/>
 <?php endfor; endif; ?>
+</div>
 <?php } else { ?>
 There don't seem to be any users in this group.
 <?php }?>
@@ -176,7 +178,7 @@ $_smarty_tpl->tpl_vars['smarty']->value['section']['sec4']['first']      = ($_sm
 $_smarty_tpl->tpl_vars['smarty']->value['section']['sec4']['last']       = ($_smarty_tpl->tpl_vars['smarty']->value['section']['sec4']['iteration'] == $_smarty_tpl->tpl_vars['smarty']->value['section']['sec4']['total']);
 ?>
 	<?php echo $_smarty_tpl->tpl_vars['coursesSection']->value[$_smarty_tpl->getVariable('smarty')->value['section']['sec4']['index']]['LINK'];?>
-
+<br/>
 <?php endfor; endif; ?>
 <?php } else { ?>
 This group doesn't have specific access to any courses.

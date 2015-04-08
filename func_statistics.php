@@ -1,4 +1,32 @@
 <?php
+/*
+ * @author Stephan Pieterse
+ * */
+
+function stat_getGroupStats(){
+	$gq = "SELECT * FROM groupslist";
+	$gr = sql_execute($gq);
+	while($gd = sql_get($gr)){
+		$groupTotals[$gd['ID']]['NAME'] = $gd['NAME'];
+		$groupTotals[$gd['ID']]['TOTALS'] = 0;
+	}
+	
+	$mq = "SELECT * FROM members";
+	$mr = sql_execute($mq);
+	while($md = sql_get($mr)){
+			$ui = new ALMS_UserItem;
+			$ui->load($md['ID']);
+			$gids = $ui->get_userGroupIDs();
+			if($gids){
+				foreach($gids as $gid){
+					//if(in_array($gid,$groupTotals)){
+					$groupTotals[$gid]['TOTALS'] = $groupTotals[$gid]['TOTALS'] + 1;
+					//}
+				}
+			}
+	}
+	return $groupTotals;
+	}
 
 function stat_getGenderStats(){
 		$q = "SELECT * FROM members";

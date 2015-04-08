@@ -398,3 +398,8 @@
 	position: absolute;
 	max-width: 200px;
 }
+
+.size_scrollbox{
+	max-height:350px;
+	overflow: scoll;
+}

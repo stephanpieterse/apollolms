@@ -11,6 +11,7 @@ class ALMS_UserItem {
 	private $userlocked;
 	private $userQueryDump;
 	private $userlastlogin;
+	private $userGroups;
 	
 	public function get_userQueryDump(){
 		return $this->userQueryDump;
@@ -48,6 +49,7 @@ class ALMS_UserItem {
 		$this->username = ($r['NAME']);	
 		$this->useremail = ($r['EMAIL']);	
 		$this->userlocked = ($r['LOCKED']);
+		$this->userGroups = $r['GROUPS'];
 		
 		$this->userQueryDump = $r;
 		
@@ -202,5 +204,24 @@ class ALMS_UserItem {
 	}
 	return $isPending;
 }
-								
+	
+	public function get_userGroupIDs(){
+		$xmlDoc = new DOMDocument();
+		$xmlDoc->loadXML($this->userGroups);
+		$rootNode = $xmlDoc->documentElement;
+		
+		foreach($rootNode->childNodes as $item){
+		if($item->hasAttributes()){
+			foreach($item->attributes as $attr){
+				$retIDS[] = (int)$attr->value;
+				}
+			}
+		}
+			
+		if(!isset($retIDS)){
+			return false;
+		}else{
+			return $retIDS;
+	}
+	}				
 }

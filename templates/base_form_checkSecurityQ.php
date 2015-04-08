@@ -1,4 +1,7 @@
 <?php
+/*
+ * @author Stephan Pieterse
+ * */
 
 		$typedAns = makeSafe($_POST['secAns']);
 		$nameCell = makeSafe($_POST['identifier']);
