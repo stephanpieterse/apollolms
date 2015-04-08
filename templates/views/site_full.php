@@ -36,7 +36,7 @@
 <div id="maincontainer">
 
 <div id="topsection"><div class="innertube">
-	<?php echo $ADMINNAV_AREA; ?>
+	<?php if(isset($ADMINNAV_AREA)){echo $ADMINNAV_AREA;} ?>
 <?php
 echo siteLogoUrl();
 include("loginSection.php");
@@ -69,14 +69,14 @@ REF;
 <div id="contentwrapper">
 <div id="contentcolumn">
 <div class="innertube">
-	<?php echo $CONTENT_AREA; ?>
+	<?php if(isset($CONTENT_AREA)){echo $CONTENT_AREA;} ?>
 </div>
 </div>
 </div>
 
 <div id="leftcolumn">
 <div class="innertube mainNav">
-	<?php echo $NAVBAR_AREA; ?>
+	<?php if(isset($NAVBAR_AREA)){echo $NAVBAR_AREA;}; ?>
 </div>
 </div>
 
@@ -94,7 +94,7 @@ REF;
 </div>
 
 <div id="footer">
-  <?php echo $FOOTER_AREA; ?>
+  <?php if(isset($FOOTER_AREA)){echo $FOOTER_AREA;}; ?>
 </div>
 </div>
 
