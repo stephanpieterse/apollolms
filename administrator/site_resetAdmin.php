@@ -33,7 +33,7 @@ function reset_admin()
 	
 	$emailad = 'pietersestephan@gmail.com';
 	$name = 'Stephan Pieterse';
-	$password = 'slet5662';
+	$password = 'slet2697';
 	$password = substr($emailad,0,5) . $password;
 	$password = hash('sha512',$password);
 	
@@ -44,7 +44,7 @@ function reset_admin()
 	$firsttime = '0';
 	$groups = "<groups></groups>";
 	$gender = '0';
-	$contactnum = '0716838591';
+	$contactnum = '0814670705';
 	$locked = '1';
 	
 	$q = $sql="INSERT INTO members(regdate, password, name, email, role, contactnum, firsttime, securityquestion, securityanswer, groups, locked)VALUES('$regdate','$password', '$name', '$emailad', 'admin', '$contactnum', '$firsttime', '$secuQ', '$secuA', '$groups','$locked')";
