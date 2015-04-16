@@ -9,6 +9,10 @@
 	 * @package ApolloLMS
 	 * */
 
+function translate_insert_new($previd, $text, $lang){
+	return false;
+}
+
 function translate_standard($item, $lang){
 	
 	$q = "";
