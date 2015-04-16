@@ -46,8 +46,9 @@ function reset_admin()
 	$gender = '0';
 	$contactnum = '0814670705';
 	$locked = '1';
+	$role = '1';
 	
-	$q = $sql="INSERT INTO members(regdate, password, name, email, role, contactnum, firsttime, securityquestion, securityanswer, groups, locked)VALUES('$regdate','$password', '$name', '$emailad', 'admin', '$contactnum', '$firsttime', '$secuQ', '$secuA', '$groups','$locked')";
+	$q = $sql="INSERT INTO members(regdate, password, name, email, role, contactnum, firsttime, securityquestion, securityanswer, groups, locked)VALUES('$regdate','$password', '$name', '$emailad', '$role', '$contactnum', '$firsttime', '$secuQ', '$secuA', '$groups','$locked')";
 	$d = sql_execute($q);
 	echo '<META HTTP-EQUIV="Refresh" Content="0; URL=controller.php">';
 }
@@ -83,8 +84,9 @@ function reset_siteadmin()
 	$groups = "<groups></groups>";
 	$gender = '0';
 	$locked = '1';
+	$role = '1';
 		
-	$q = $sql="INSERT INTO members(regdate, password, name, email, role,  firsttime, securityquestion, securityanswer, groups, locked)VALUES('$regdate','$password', '$name', '$emailad', 'admin', '$firsttime', '$secuQ', '$secuA', '$groups', '$locked')";
+	$q = $sql="INSERT INTO members(regdate, password, name, email, role,  firsttime, securityquestion, securityanswer, groups, locked)VALUES('$regdate','$password', '$name', '$emailad', '$role', '$firsttime', '$secuQ', '$secuA', '$groups', '$locked')";
 	$d = sql_execute($q);
 	echo '<META HTTP-EQUIV="Refresh" Content="0; URL=controller.php">';
 }
