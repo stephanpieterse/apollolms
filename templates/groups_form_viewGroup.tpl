@@ -41,6 +41,7 @@ There don't seem to be any users in this group.
 
 <p>
 <span class="bold">Courses:</span><br/>
+<div class="size_scrollbox">
 {if isset($coursesSection)}
 {section name=sec4 loop=$coursesSection}
 	{$coursesSection[sec4].LINK}<br/>
@@ -48,6 +49,7 @@ There don't seem to be any users in this group.
 {else}
 This group doesn't have specific access to any courses.
 {/if}
+</div>
 </p>
 
 <p>
