@@ -400,6 +400,6 @@
 }
 
 .size_scrollbox{
-	max-height:350px;
-	overflow: scoll;
+	max-height: 350px;
+	overflow: scroll;
 }
