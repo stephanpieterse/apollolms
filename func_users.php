@@ -307,12 +307,9 @@ function users_func_addUserItem($data, $tags = null){
 	}
 	
 	$name=makeSafe($data['name']);
-	//$surname=makeSafe($_POST['surname']);
 	$emailad=($data['emailad']);
 	$role= "User"; //$_POST['role'];
 	$contactnum=makeSafe($data['contactnum']);
-	//$secuQ  = 'NA';//makeSafe($data['securityQ']);
-	//$secuA = 'NA';//makeSafe($data['securityA']);
 	
 	if((isset($data['addToGID'])) && ($data['addToGID'] != 0)){
 		$groups = '<groups><group id="' . $data['addToGID'] . '"></group></groups>';
@@ -337,7 +334,6 @@ function users_func_addUserItem($data, $tags = null){
 	    }
 	}
 	
-	//$allfieldscorrect = (check_email_address($emailad) && check_cellphone_number($contactnum) && ($passwordref == $passwordConf));
 	$allfieldscorrect = (check_email_address($emailad) && ($passwordref == $passwordConf));
 
 	if($canadduser){
@@ -354,7 +350,6 @@ function users_func_addUserItem($data, $tags = null){
 			mail_inform($emailad,'Welcome',$msgBody);
 			
 			if(($data['shouldLogin'] == 1) || ($data['shouldLogin'] == true)){
-				//checkLogin($emailad, $loginPass);
 				return login_func_checkLogin(array('login_username'=>$emailad,'login_password'=>$passwordref));				
 			}
 		}else{
@@ -362,8 +357,8 @@ function users_func_addUserItem($data, $tags = null){
 			return "err_register_invalid_data";
 		}
 	}else{
-	//$retval = "The e-mail you have entered is already in use, please choose another and try again."; 
-	$retval = "err_register_email_taken";
+		//$retval = "The e-mail you have entered is already in use, please choose another and try again."; 
+		$retval = "err_register_email_taken";
 	}
 	return $retval;
 }

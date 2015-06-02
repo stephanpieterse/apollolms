@@ -79,15 +79,13 @@ class Controller {
 	
 	function print_debug_info(){
 		echo session_id();
-		br();
-		//echo error_get_last();
-		br();
+		echo '<br/>';
 		foreach($_SESSION as $key=>$val){
 				echo $key .' = ' .var_dump($val);
-				br();
+				echo '<br/>';
 			
 		}
-		br();
+		echo '<br/>';
 		
 		if(!isset($_COOKIE) && $_COOKIE != null){
 			echo 'Cookies seem to be disabled...';
@@ -98,13 +96,13 @@ class Controller {
 		
 		foreach($_COOKIE as $key=>$val){
 			echo $key .' = ' .$val;
-			br();
+			echo '<br/>';
 		}
 		
-		br();
+		echo '<br/>';
 		foreach($_FILES as $key=>$val){
 			echo $key .' = ' .$val;
-			br();
+			echo '<br/>';
 		}
 		foreach($_SERVER as $key=>$val){
 			if(is_array($val)){
@@ -114,14 +112,14 @@ class Controller {
 			}else{
 			echo $key .' = ' .$val;
 			}
-			br();
+			echo '<br/>';
 		}
-		br();br();
+		echo '<br/>';;
 		
 		foreach($_POST as $key=>$val){
 			echo $key .' = ' .$val;
 			$_SESSION['post_'.$key] = $val;
-			br();
+			echo '<br/>';
 		}
 		include(TEMPLATE_PATH . 'debug_jsTest.php');
 	}

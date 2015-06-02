@@ -8,6 +8,7 @@
  * @version 1.x
  */
 
+/*
 require('func_security.php');
 require('func_courses.php');
 require('func_backup.php');
@@ -35,6 +36,11 @@ require('func_sitesettings.php');
 require('func_resources.php');
 require('func_events.php');
 require('func_crons.php');
+*/
+s
+foreach(requireAllFuncsFiles() as $funcfile){
+	require($funcfile);
+}
 
 require(CLASS_PATH . 'modules.php');
 require(CLASS_PATH . 'test_item.php');
@@ -47,6 +53,32 @@ require(CLASS_PATH . 'templateEngine.php');
 require(CLASS_PATH . 'resource_handler.php');
 require(CLASS_PATH . 'smarty/libs/Smarty.class.php');
 require(CLASS_PATH . 'php-svg/svglib/svglib.php');
+
+function requireAllFuncsFiles(){
+	chdir(dirname(__FILE__));
+	
+	$scanPath = dirname(__FILE__);
+	
+	$prefix = '';
+ 	$dir = $scanPath;
+ 	//$result = array();
+    foreach (scandir($dir) as $f) {
+      if ($f !== '.' and $f !== '..') {
+      //	$filename = pathinfo($f, PATHINFO_FILENAME);
+      //	$ext = pathinfo($f, PATHINFO_EXTENSION);
+		if((strpos($f,'func_') === 0) && $f != 'func_misc.php'){
+			$retfiles[] = $f;
+		}
+      }
+    }
+    
+	if(isset($retfiles)){
+		return $retfiles;
+	}else{
+		return false;
+	}
+}
+
 
 /*
  * Really simple human readable filesize func

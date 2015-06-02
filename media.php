@@ -7,4 +7,3 @@
 	$control->funcPre = 'media_func_';
 	$control->protectedPages = true;
 	$control->executeControl($_GET,$_POST);
-?>
