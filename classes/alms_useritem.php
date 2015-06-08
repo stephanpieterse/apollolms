@@ -125,7 +125,6 @@ class ALMS_UserItem {
 	public function checkLogin($data){
 		$user = $data['username'];
 		$pass = $data['password'];
-		//$fromwhere = isset($data['fromURL']) ? $data['fromURL'] : null;
 		
 		$password = $pass;
 		$username = makeSafe($user);
@@ -168,11 +167,13 @@ class ALMS_UserItem {
 			$sql = "UPDATE members SET lastlogin='$curdate' WHERE id='$userID'";
 			$result = sql_execute($sql);
 
-			if(isset($fromwhere)){
-				page_redirect($fromwhere);
-			}else{
-				return true;
-			}
+			$allLogins = $rows['LOGINS'];
+			$allLogins .= ',' . $curdate;
+			
+			$sql = "UPDATE members SET lastlogin='$curdate' WHERE id='$userID'";
+			$result = sql_execute($sql);
+
+			return true;
 		}else{
 			sleep(3);
 			return "wrongpassword";

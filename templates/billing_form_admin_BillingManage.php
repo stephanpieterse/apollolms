@@ -43,9 +43,9 @@
 	$totalSpaceUsed = bill_calculateSpaceUsed();
 	$smarty->assign('totalSpaceUsed',$totalSpaceUsed);
 	$smarty->assign('totalUploadsMax',MAX_TOTAL_UPLOADS / 1024);
-	$totalSpaceUsedBandwith = $totalSpaceUsed * 0.15;
+	$totalSpaceUsedBandwith = $totalSpaceUsed * 0.10;
 	$smarty->assign('totalSpaceUsedBandwith',round($totalSpaceUsedBandwith));
-	$costSoFar += round(BASE_COST + ($totalSpaceUsedBandwith / 1024 * $activeMembers * 4)); // im not so sure what the 4 does anymore
+	$costSoFar += round(BASE_COST + ($totalSpaceUsedBandwith / 1024 * $activeMembers * 2)); // im not so sure what the 4 does anymore
 	$smarty->assign('totalAdminCost',$costSoFar);
 	$smarty->assign('listAllUsers',$membersList);
 	$billCourse = bill_calculateCoursesCost();

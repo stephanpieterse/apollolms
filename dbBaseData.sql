@@ -410,6 +410,7 @@ CREATE TABLE `members` (
   `SECURITYQUESTION` text NOT NULL,
   `SECURITYANSWER` text NOT NULL,
   `LASTLOGIN` text NOT NULL,
+  `LOGINS` text NOT NULL,
   `LOCKED` tinyint(4) NOT NULL,
   `VERIFIED_EMAIL` tinyint(1) NOT NULL,
   `VERIFIED_CONTACT` tinyint(1) NOT NULL,
@@ -423,16 +424,16 @@ CREATE TABLE `members` (
 
 LOCK TABLES `members` WRITE;
 /*!40000 ALTER TABLE `members` DISABLE KEYS */;
-INSERT INTO `members` VALUES (13,'2013-08-19-17-51-30','a58a1cd8c72d39ca2297405b03fa321d7f5f6047d3dce16a5200be9bb47e88e5407ce460afab625b8ccd0ec02b522773d3dd233e1bdac67cdb04751d303f699f','Stephan Pieterse',0,'stephanp@woordenlewe.com','2','<groups></groups>\n','0761342657','',0,'What was the name of your first pet?','snuffels','2013-09-13-15-58-22',0,0,0);
-INSERT INTO `members` VALUES (14,'2013-08-23-11-15-32','039ad3c50bc79dd7f5dff4c3f0d8e03b35052ba2c2fef208cee415e1d5cd41d2f9cf7e6e2323554cb83a8880ca53bfa813e20f944ca39ff66781b643395290e4','Zelda Botes',0,'zelda@woordenlewe.com','2','<groups></groups>','0722663689','',0,'What is the name of the first school you attended?','Dalview','2013-08-23-11-17-45',0,0,0);
-INSERT INTO `members` VALUES (15,'2013-09-05-08-59-39','7b99c6454f9b16ce1a0965683274e0d1192c9b27a885b24cd85ac156852919e0f9c24e850a81ec8affefeefbc413df14cf483e967c76fd5067c214f82d1aed91','Stephan Pieterse',0,'pietersestephan@gmail.com','1','<groups><group id=\"1\"></group><group id=\"3\"></group></groups>\n','0716838591','',0,'Not that easy...','You Wont believe it but No it is ! not','2015-04-08-17-13-28',1,0,0);
-INSERT INTO `members` VALUES (18,'2013-09-11-08-20-30','d918698c9bcf1a2ca19ff87db641a202de01200f1aae7a4778bc56c2c8d89a4a7edf753d60d04374cdea7d24a5c4f97b120af2cc31dbf0031597f5e81cf35651','Site Admin',0,'admin@apollolms.co.za','1','<groups></groups>','SITE_CONTACTNUM','',0,'Not that easy...','You Wont believe it but No it is ! not','2013-09-11-08-21-58',1,0,0);
-INSERT INTO `members` VALUES (19,'2013-09-13-15-14-08','a58a1cd8c72d39ca2297405b03fa321d7f5f6047d3dce16a5200be9bb47e88e5407ce460afab625b8ccd0ec02b522773d3dd233e1bdac67cdb04751d303f699f','Stephan Pieterse',0,'stephanp@woordenlewe.com','2','<access><group id=\"3\"></group><group id=\"5\"></group></access>\n','0716838591','',1,'What was your childhood nickname?','Slifs','',0,0,0);
-INSERT INTO `members` VALUES (20,'2014-02-18-20-45-15','0e6345160a5767ca813c006390af7f78496945030aab321856b463e6e18cf6a47ce6cd970c3e48c370050fa7f59756186ce4495c904d5dbe6dce2a46a8464100','Johna Anss',0,'slayer@slet.com','2','<groups></groups>','0716838591','',0,'','','2014-02-18-20-49-05',0,0,0);
-INSERT INTO `members` VALUES (21,'2014-02-21-09-37-47','356014f023796b0d5dd5f987b4d2654bee09243d44103770836923fbd61a805259e89867952fa45b97938b335766f1180155bc3df07d38ee6b741ad91c06cd6f','Jogan',0,'johndoe@web.co.za','2','<groups></groups>','0119134567','',1,'NA','NA','',0,0,0);
-INSERT INTO `members` VALUES (24,'2014-02-21-09-42-45','71b24c54c4c7ffcb457a50653d2fc67164c93fdd41d23cbefd1e904b031061e751818d48d4e406276ce94c224ab771a229e39898d965b6aaf1be0c0b04dd12b5','susan',0,'james@lames.com','2','<groups></groups>','7458965214','',1,'NA','NA','',0,0,0);
-INSERT INTO `members` VALUES (25,'2015-02-27-12-32-59','70417779b94ddd9676d75bf6ac7bb79ddcc3eb10bc4605c028180152e7393f0829ac9e23f914d7d8d2efd43765b6ae01073f2e5867caada608c29465a4bd7a90','jan man',0,'jan@man.com','User','<groups></groups>','0101010101','',0,'NA','NA','2015-02-27-12-33-18',0,0,0);
-INSERT INTO `members` VALUES (26,'2015-02-27-12-46-04','9e7d074b1848cfd4e362e6197bc8e2ec11926c8718301050373b5d803c042c94c54ab53cc2d47d989bce2ed1e3f44ca85da396731e21d225fd6172c3bf0394fc','sahara',0,'saha@ra.com','User','<groups></groups>','0101010101','',0,'NA','NA','2015-02-27-12-46-05',0,0,0);
+INSERT INTO `members` VALUES (13,'2013-08-19-17-51-30','a58a1cd8c72d39ca2297405b03fa321d7f5f6047d3dce16a5200be9bb47e88e5407ce460afab625b8ccd0ec02b522773d3dd233e1bdac67cdb04751d303f699f','Stephan Pieterse',0,'stephanp@woordenlewe.com','2','<groups></groups>\n','0761342657','',0,'What was the name of your first pet?','snuffels','2013-09-13-15-58-22','',0,0,0);
+INSERT INTO `members` VALUES (14,'2013-08-23-11-15-32','039ad3c50bc79dd7f5dff4c3f0d8e03b35052ba2c2fef208cee415e1d5cd41d2f9cf7e6e2323554cb83a8880ca53bfa813e20f944ca39ff66781b643395290e4','Zelda Botes',0,'zelda@woordenlewe.com','2','<groups></groups>','0722663689','',0,'What is the name of the first school you attended?','Dalview','2013-08-23-11-17-45','',0,0,0);
+INSERT INTO `members` VALUES (15,'2013-09-05-08-59-39','7b99c6454f9b16ce1a0965683274e0d1192c9b27a885b24cd85ac156852919e0f9c24e850a81ec8affefeefbc413df14cf483e967c76fd5067c214f82d1aed91','Stephan Pieterse',0,'pietersestephan@gmail.com','1','<groups><group id=\"1\"></group><group id=\"3\"></group></groups>\n','0716838591','',0,'Not that easy...','You Wont believe it but No it is ! not','2015-04-08-17-13-28','',1,0,0);
+INSERT INTO `members` VALUES (18,'2013-09-11-08-20-30','d918698c9bcf1a2ca19ff87db641a202de01200f1aae7a4778bc56c2c8d89a4a7edf753d60d04374cdea7d24a5c4f97b120af2cc31dbf0031597f5e81cf35651','Site Admin',0,'admin@apollolms.co.za','1','<groups></groups>','SITE_CONTACTNUM','',0,'Not that easy...','You Wont believe it but No it is ! not','2013-09-11-08-21-58','',1,0,0);
+INSERT INTO `members` VALUES (19,'2013-09-13-15-14-08','a58a1cd8c72d39ca2297405b03fa321d7f5f6047d3dce16a5200be9bb47e88e5407ce460afab625b8ccd0ec02b522773d3dd233e1bdac67cdb04751d303f699f','Stephan Pieterse',0,'stephanp@woordenlewe.com','2','<access><group id=\"3\"></group><group id=\"5\"></group></access>\n','0716838591','',1,'What was your childhood nickname?','Slifs','','',0,0,0);
+INSERT INTO `members` VALUES (20,'2014-02-18-20-45-15','0e6345160a5767ca813c006390af7f78496945030aab321856b463e6e18cf6a47ce6cd970c3e48c370050fa7f59756186ce4495c904d5dbe6dce2a46a8464100','Johna Anss',0,'slayer@slet.com','2','<groups></groups>','0716838591','',0,'','','2014-02-18-20-49-05','',0,0,0);
+INSERT INTO `members` VALUES (21,'2014-02-21-09-37-47','356014f023796b0d5dd5f987b4d2654bee09243d44103770836923fbd61a805259e89867952fa45b97938b335766f1180155bc3df07d38ee6b741ad91c06cd6f','Jogan',0,'johndoe@web.co.za','2','<groups></groups>','0119134567','',1,'NA','NA','','',0,0,0);
+INSERT INTO `members` VALUES (24,'2014-02-21-09-42-45','71b24c54c4c7ffcb457a50653d2fc67164c93fdd41d23cbefd1e904b031061e751818d48d4e406276ce94c224ab771a229e39898d965b6aaf1be0c0b04dd12b5','susan',0,'james@lames.com','2','<groups></groups>','7458965214','',1,'NA','NA','','',0,0,0);
+INSERT INTO `members` VALUES (25,'2015-02-27-12-32-59','70417779b94ddd9676d75bf6ac7bb79ddcc3eb10bc4605c028180152e7393f0829ac9e23f914d7d8d2efd43765b6ae01073f2e5867caada608c29465a4bd7a90','jan man',0,'jan@man.com','User','<groups></groups>','0101010101','',0,'NA','NA','2015-02-27-12-33-18','',0,0,0);
+INSERT INTO `members` VALUES (26,'2015-02-27-12-46-04','9e7d074b1848cfd4e362e6197bc8e2ec11926c8718301050373b5d803c042c94c54ab53cc2d47d989bce2ed1e3f44ca85da396731e21d225fd6172c3bf0394fc','sahara',0,'saha@ra.com','User','<groups></groups>','0101010101','',0,'NA','NA','2015-02-27-12-46-05','',0,0,0);
 /*!40000 ALTER TABLE `members` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1205,4 +1206,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-06-02 11:37:31
+-- Dump completed on 2015-06-08 21:19:05

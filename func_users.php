@@ -22,61 +22,22 @@ function is_user_loggedIn(){
  * Checks login details, then redirects or returns an error.
  */
 function login_func_checkLogin($data){
-	$user = $data['login_username'];
-	$pass = $data['login_password'];
+	$loguser = new ALMS_UserItem;
+	$logstatus = $loguser->checkLogin($data);
+
 	$fromwhere = isset($data['fromURL']) ? $data['fromURL'] : null;
 	
-	$password = $pass;
-	$username = makeSafe($user);
-	$passwordref = $password;	
-	$passwordref = hash('sha512',$passwordref);
-	$password = substr($username,0,5) . $password;
-	$password = hash('sha512',$password);
-
-	$q = "SELECT * FROM members WHERE email='$username' LIMIT 1";
-	$r = sql_execute($q);
-	$c = sql_numrows($r);
-	
-	if($c == 0){
-		return "wronguser";
-	}
-
-	$sql="SELECT * FROM members WHERE email='$username' and password='$passwordref' LIMIT 1";
-	$result = sql_execute($sql);
-	$count = sql_numrows($result);
-
-	if($count==1){
-		$sql = "UPDATE members SET password='$password' WHERE email='$username'";
-		$result = sql_execute($sql);
-	}
-
-	$sql="SELECT * FROM members WHERE email='$username' and password='$password' LIMIT 1";
-	$result=sql_execute($sql);
-	$count = sql_numrows($result);
-
-	if($count==1){
-	//mysql_data_seek($result,0);
-	$rows = sql_get($result);
-	$role = $rows['ROLE'];
-	$firsttimetest = $rows['FIRSTTIME'];
-	$_SESSION['userID'] = $rows['ID'];
-	$userID = $rows['ID'];
+	if($logstatus){
 	$_SESSION['username'] = $rows['NAME'] . " " . $rows['SURNAME'];
-	//$_SESSION['role'] = $role;
 	$_SESSION['firsttime'] = $firsttimetest;
-	$curdate = date("Y-m-d-H-i-s");
-	$sql="UPDATE members SET lastlogin='$curdate' WHERE id='$userID'";
-	$result=sql_execute($sql);
-	//goHome();
-	//echo 'Please wait while redirecting your login... if the page does not redirect please click <a href="index.php">here</a>';
 	if(isset($fromwhere)){
 		page_redirect($fromwhere);
 	}else{
 		return true;
 	}
-}else{
+}else
 	sleep(3);
-	return "wrongpassword";
+	return $logstatus;
 	}
 }
 
