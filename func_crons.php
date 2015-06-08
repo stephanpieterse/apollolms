@@ -69,7 +69,7 @@ function cron_func_billingInvoice(){
 	$memCount = 0;
 	while($d = sql_get($r)){
 		$loggedInOnce = false;
-		$loginArr = explode(',',$d['LOGINS'];
+		$loginArr = explode(',',$d['LOGINS']);
 		foreach($loginArr as $loginDate){
 			$dateArrUser = explode('-',$loginDate);
 			if(isset($dateArrUser[1])){
