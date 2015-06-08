@@ -96,7 +96,12 @@ function cron_func_billingInvoice(){
 	$costSoFar += $billCourse;
 	$smarty->assign('totalCoursesBill',$billCourse);
 	$smarty->assign('totalFinalCost',$costSoFar);
-	//insert into template and email it	
 	
+	ob_start();
+	$view = new Template(TEMPLATE_PATH . 'emails/billing_form_invoice.php');
+	$view->BILLING_INFO = $finalBillInfo;		
+	echo $view;
+	$emsgbody = ob_get_clean();
+		
 	mail_inform($billingEmail,'ApolloLMS Billing Cycle',$emsgbody);
 }

@@ -37,7 +37,7 @@ require('func_resources.php');
 require('func_events.php');
 require('func_crons.php');
 */
-s
+
 foreach(requireAllFuncsFiles() as $funcfile){
 	require($funcfile);
 }

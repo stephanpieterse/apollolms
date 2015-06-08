@@ -170,7 +170,7 @@ class ALMS_UserItem {
 			$allLogins = $rows['LOGINS'];
 			$allLogins .= ',' . $curdate;
 			
-			$sql = "UPDATE members SET lastlogin='$curdate' WHERE id='$userID'";
+			$sql = "UPDATE members SET logins='$allLogins' WHERE id='$userID'";
 			$result = sql_execute($sql);
 
 			return true;
