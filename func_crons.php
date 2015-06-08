@@ -102,15 +102,14 @@ function cron_func_billingInvoice(){
 	
 	ob_start();
 		$view = new Template(TEMPLATE_PATH . 'emails/billing_form_invoice.php');
-		$view->BILLING_DATA = $finalBillInfo;		
-		$view->BILLING_BILLINGEMAIL = $billingEmail;		
-		$view->BILLING_ACTIVEMEMBERS = $activeMembers;		
-		$view->BILLING_TOTALSPACEUSED = $totalSpaceUsed;		
-		$view->BILLING_TOTALSPACEUSEDBANDWITH = $totalSpaceUsedBandwith;				
-		$view->BILLING_TOTALADMINCOST = $costSoFar;		
-		$view->BILLING_LISTALLUSERS = $MEMBERSLIST;		
-		$view->BILLING_BILLCOURSE = $billCourse;		
-		$view->BILLING_FINALCOST = $finalCost;		
+		$view->BILLING_BILLINGEMAIL = $billingEmail;
+		$view->BILLING_ACTIVEMEMBERS = $activeMembers;
+		$view->BILLING_TOTALSPACEUSED = $totalSpaceUsed;
+		$view->BILLING_TOTALSPACEUSEDBANDWITH = $totalSpaceUsedBandwith;
+		$view->BILLING_TOTALADMINCOST = $costSoFar;
+		$view->BILLING_LISTALLUSERS = $membersList;
+		$view->BILLING_BILLCOURSE = $billCourse;
+		$view->BILLING_FINALCOST = $finalCost;
 	echo $view;
 	$emsgbody = ob_get_clean();
 		
