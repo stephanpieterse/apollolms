@@ -123,8 +123,8 @@ class ALMS_UserItem {
 		}
 
 	public function checkLogin($data){
-		$user = $data['username'];
-		$pass = $data['password'];
+		$user = $data['login_username'];
+		$pass = $data['login_password'];
 		
 		$password = $pass;
 		$username = makeSafe($user);
@@ -138,14 +138,14 @@ class ALMS_UserItem {
 		$c = sql_numrows($r);
 		
 		if($c == 0){
-			return "wronguser";
+			$retval = "wronguser";
 		}
 
-		$sql="SELECT * FROM members WHERE email='$username' and password='$passwordref' LIMIT 1";
+		$sql = "SELECT * FROM members WHERE email='$username' and password='$passwordref' LIMIT 1";
 		$result = sql_execute($sql);
 		$count = sql_numrows($result);
 
-		if($count==1){
+		if($count == 1){
 			$sql = "UPDATE members SET password='$password' WHERE email='$username'";
 			$result = sql_execute($sql);
 		}
@@ -154,15 +154,16 @@ class ALMS_UserItem {
 		$result = sql_execute($sql);
 		$count = sql_numrows($result);
 
-		if($count==1){
+		if($count == 1){
 			$rows = sql_get($result);
 			$role = $rows['ROLE'];
 			$firsttimetest = $rows['FIRSTTIME'];
-			$_SESSION['userID'] = $rows['ID'];
+			$retval['ID'] = $rows['ID'];
 			$userID = $rows['ID'];
-			$_SESSION['username'] = $rows['NAME'] . " " . $rows['SURNAME'];
+			$retval['NAME'] = $rows['NAME'];// . " " . $rows['SURNAME'];
 			//$_SESSION['role'] = $role;
-			$_SESSION['firsttime'] = $firsttimetest;
+			$retval['FIRSTTIME'] = $firsttimetest;
+			
 			$curdate = date("Y-m-d-H-i-s");
 			$sql = "UPDATE members SET lastlogin='$curdate' WHERE id='$userID'";
 			$result = sql_execute($sql);
@@ -173,11 +174,15 @@ class ALMS_UserItem {
 			$sql = "UPDATE members SET logins='$allLogins' WHERE id='$userID'";
 			$result = sql_execute($sql);
 
-			return true;
+			//return true;
 		}else{
 			sleep(3);
-			return "wrongpassword";
+			if(!isset($retval)){
+				$retval = "wrongpassword";
 			}
+			}
+			
+			return $retval;
 	}
 		
 	public function isUserPendingForCourse($uid, $cid){

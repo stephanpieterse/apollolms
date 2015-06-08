@@ -39,7 +39,7 @@ require('func_crons.php');
 */
 
 foreach(requireAllFuncsFiles() as $funcfile){
-	require($funcfile);
+	require_once($funcfile);
 }
 
 require(CLASS_PATH . 'modules.php');

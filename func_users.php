@@ -27,16 +27,17 @@ function login_func_checkLogin($data){
 
 	$fromwhere = isset($data['fromURL']) ? $data['fromURL'] : null;
 	
-	if($logstatus){
-	$_SESSION['username'] = $rows['NAME'] . " " . $rows['SURNAME'];
-	$_SESSION['firsttime'] = $firsttimetest;
+	if(is_array($logstatus)){
+		$_SESSION['userID'] = $logstatus['ID'];
+		$_SESSION['username'] = $logstatus['NAME'];
+		$_SESSION['firsttime'] = $logstatus['FIRSTTIME'];
 	if(isset($fromwhere)){
 		page_redirect($fromwhere);
 	}else{
 		return true;
 	}
 }else{
-	sleep(3);
+	sleep(1);
 	return $logstatus;
 	}
 }

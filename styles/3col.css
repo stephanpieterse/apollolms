@@ -49,7 +49,7 @@ em{color: red;}
 	float: left;
 	width: 175px; /*Width of right column*/
 	margin-left: -175px; /*Set left margin to -(RightColumnWidth)*/
-	background: #FDE95E;
+	/* background: #FDE95E; */
 }
 
 #footer{

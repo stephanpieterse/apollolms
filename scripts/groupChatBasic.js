@@ -15,7 +15,7 @@ function getStateOfChat( chatID ){
 		 instanse = true;
 		 $.ajax({
 			   type: "POST",
-			   url: "func_chat.php",
+			   url: "chat_loader.php",
 			   data: {  
 			   			'function': 'getState',
 						'file': file,
@@ -37,7 +37,7 @@ function updateChat( chatID ){
 		 instanse = true;
 	     $.ajax({
 			   type: "POST",
-			   url: "func_chat.php",
+			   url: "chat_loader.php",
 			   data: {  
 			   			'function': 'update',
 						'state': state,
@@ -69,7 +69,7 @@ function sendChat(message, nickname, chatcolour, chatID)
     updateChat( chatID );
      $.ajax({
 		   type: "POST",
-		   url: "func_chat.php",
+		   url: "chat_loader.php",
 		   data: {  
 		   			'function': 'send',
 					'message': message,
