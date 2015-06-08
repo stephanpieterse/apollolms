@@ -35,7 +35,7 @@ function login_func_checkLogin($data){
 	}else{
 		return true;
 	}
-}else
+}else{
 	sleep(3);
 	return $logstatus;
 	}
