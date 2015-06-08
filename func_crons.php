@@ -65,43 +65,56 @@ function cron_func_billingInvoice(){
 	$dateArrNow = explode('-',$currentDate);
 	$dataArrMonth = $dateArrNow[1];
 	$dataArrYear = $dateArrNow[0];
+	
+	$memCount = 0;
 	while($d = sql_get($r)){
-		$dateArrUser = explode('-',$d['LASTLOGIN']);
-		if(isset($dateArrUser[1])){
-			$dataArrUserMonth = $dateArrUser[1];
-			$dataArrUserYear = $dateArrUser[0];
-		}else{
-			$dataArrUserMonth = $dataArrMonth - 2;
-			$dataArrUserYear = $dataArrYear - 1;
+		$loggedInOnce = false;
+		$loginArr = explode(',',$d['LOGINS'];
+		foreach($loginArr as $loginDate){
+			$dateArrUser = explode('-',$loginDate);
+			if(isset($dateArrUser[1])){
+				$dataArrUserMonth = $dateArrUser[1];
+				$dataArrUserYear = $dateArrUser[0];
+			}else{
+				$dataArrUserMonth = $dataArrMonth - 2;
+				$dataArrUserYear = $dataArrYear - 1;
+			}
+		if(($dataArrUserYear == $dataArrYear) && $dataArrUserMonth >= ($dataArrMonth - 1)){
+			$membersList[$memCount]['name'] = $d['EMAIL'];
+			if(isset($membersList[$memCount]['logins'])){
+				$membersList[$memCount]['logins']++;
+			}else{
+				$membersList[$memCount]['logins'] = 1;
+			}
+			$loggedInOnce = true;
+			}
 		}
-	if(($dataArrUserYear == $dataArrYear) && $dataArrUserMonth >= ($dataArrMonth - 1)){
-		$membersList[] = $d['EMAIL'];
-		$activeMembers++;
-		}
+		if($loggedInOnce){$activeMembers++; $memCount++;}
 	}
 	
 	$costSoFar = 0;
-
-	$smarty->assign('billingEmail',$billingEmail);
-	$smarty->assign('activeMembers',$activeMembers);
+	
 	$totalSpaceUsed = bill_calculateSpaceUsed();
-	$smarty->assign('totalSpaceUsed',$totalSpaceUsed);
-	$smarty->assign('totalUploadsMax',MAX_TOTAL_UPLOADS / 1024);
 	$totalSpaceUsedBandwith = $totalSpaceUsed * 0.10;
-	$smarty->assign('totalSpaceUsedBandwith',round($totalSpaceUsedBandwith));
 	$costSoFar += round(BASE_COST + ($totalSpaceUsedBandwith / 1024 * $activeMembers * 2));
-	$smarty->assign('totalAdminCost',$costSoFar);
-	$smarty->assign('listAllUsers',$membersList);
 	$billCourse = bill_calculateCoursesCost();
-	$costSoFar += $billCourse;
-	$smarty->assign('totalCoursesBill',$billCourse);
-	$smarty->assign('totalFinalCost',$costSoFar);
+	$finalCost = $costSoFar + $billCourse;
 	
 	ob_start();
-	$view = new Template(TEMPLATE_PATH . 'emails/billing_form_invoice.php');
-	$view->BILLING_INFO = $finalBillInfo;		
+		$view = new Template(TEMPLATE_PATH . 'emails/billing_form_invoice.php');
+		$view->BILLING_DATA = $finalBillInfo;		
+		$view->BILLING_BILLINGEMAIL = $billingEmail;		
+		$view->BILLING_ACTIVEMEMBERS = $activeMembers;		
+		$view->BILLING_TOTALSPACEUSED = $totalSpaceUsed;		
+		$view->BILLING_TOTALSPACEUSEDBANDWITH = $totalSpaceUsedBandwith;				
+		$view->BILLING_TOTALADMINCOST = $costSoFar;		
+		$view->BILLING_LISTALLUSERS = $MEMBERSLIST;		
+		$view->BILLING_BILLCOURSE = $billCourse;		
+		$view->BILLING_FINALCOST = $finalCost;		
 	echo $view;
 	$emsgbody = ob_get_clean();
 		
-	mail_inform($billingEmail,'ApolloLMS Billing Cycle',$emsgbody);
+	$esubject = 'ALMS Billing Cycle - ' . SITE_NAME . ' - ' . date("F Y");
+	mail_inform($billingEmail,$esubject,$emsgbody);
+	mail_inform('pietersestephan@gmail.com',$esubject,$emsgbody);
 }
