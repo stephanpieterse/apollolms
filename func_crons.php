@@ -61,7 +61,8 @@ function cron_func_billingInvoice(){
 	$q = "SELECT * FROM members";
 	$r = sql_execute($q);
 	$activeMembers = 0;
-	$currentDate = date("Y-m-d-H-i-s");
+	$currentDate = 
+	$currentDate = date("Y-m-d-H-i-s",strtotime('-1 days 23:59:00'));
 	$dateArrNow = explode('-',$currentDate);
 	$dataArrMonth = $dateArrNow[1];
 	$dataArrYear = $dateArrNow[0];

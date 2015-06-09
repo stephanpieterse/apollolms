@@ -1,4 +1,8 @@
 <?php
+/*
+ * @author Stephan Pieterse
+ * @package ApolloLMS
+ * */
 // move to misc?
 function ipn_to_utf8($ipn_data){
 	if(array_key_exists('charset', $ipn_data) && ($charset = $ipn_data['charset']))

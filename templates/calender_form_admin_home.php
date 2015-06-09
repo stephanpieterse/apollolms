@@ -1,1 +1,3 @@
-This feature has not been fully implemented yet.
+<?php
+
+ echo calender_func_draw_calendar(2,2010);

@@ -272,6 +272,63 @@ function page_redirect($url,$time=0,$POSTDAT = '') {
 }
 
 /**
+ * Redirects the current page. First tries with php header(), then with javascript, then with a meta refresh tag.
+ * 
+ * @param
+ * url - the relative url of the page
+ * time - default 0 - how long to wait before redirecting
+ * postdat - array - default null - any data to be included in the session as posted data
+ */
+function page_redirect_post($url,$time=0,$POSTDAT = '') {
+	if(strpos($url,'http') === false){
+		$needfullurl = true;
+	}else{
+		$needfullurl = false;
+		$fullurl = $url;
+	}
+	
+		$request = parse_url($_SERVER['REQUEST_URI']);
+		$path = $request["path"];
+		$result = trim(str_replace(basename($_SERVER['SCRIPT_NAME']), '', $path), '/');
+		//$result = explode('/', $result);
+		//$max_level = 2;
+		//$sitepath = $result[0];	
+	
+	if(is_array($POSTDAT)){
+		do_post_request('https://' . $_SERVER['SERVER_NAME'] . '/' .$result .'/' .$url, $POSTDAT);
+	//$_SESSION['SERV_ERR_MSG'] = ;
+	//$_SESSION = array_merge($_SESSION,$POSTDAT);
+	//exit;
+	}
+	
+	if($time = ''){
+		$time = 0;
+	}
+	
+	if ($needfullurl){
+		$fullurl = 'http://' . $_SERVER['SERVER_NAME'] . '/' .$result .'/' .$url;
+	}
+	
+    if(!headers_sent()) {
+        //If headers not sent yet... then do php redirect
+        if($time != 0){
+        	sleep($time);
+        }
+        header('Location: ' . $fullurl );
+        exit;
+    } else {
+        //If headers are sent... do javascript redirect... if javascript disabled, do html redirect.
+        echo '<script type="text/javascript">'
+        . "setTimeout(\"window.location.href='" . $fullurl . "'\"," . $time*60 . ")"
+        . '</script>'
+        . '<noscript>'
+        . '<meta http-equiv="refresh" content="' . $time*60 . ';url='.$fullurl.'" />'
+        . '</noscript>';
+        exit;
+    }
+}
+
+/**
  * Marks the url in the session
  */
 function markLastPage($string){
