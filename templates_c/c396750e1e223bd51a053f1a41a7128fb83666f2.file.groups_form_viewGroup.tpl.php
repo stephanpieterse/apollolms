@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.17, created on 2015-04-08 17:13:38
+<?php /* Smarty version Smarty-3.1.17, created on 2015-06-10 19:13:45
          compiled from "templates/groups_form_viewGroup.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:1239147124550daa15a68838-21370991%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'c396750e1e223bd51a053f1a41a7128fb83666f2' => 
     array (
       0 => 'templates/groups_form_viewGroup.tpl',
-      1 => 1428513203,
+      1 => 1433963617,
       2 => 'file',
     ),
   ),
@@ -19,6 +19,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'unifunc' => 'content_550daa15a80684_52416007',
   'variables' => 
   array (
+    'groupName' => 0,
     'adminNames' => 0,
     'pendingSection' => 0,
     'totalUsers' => 0,
@@ -32,7 +33,10 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_550daa15a80684_52416007')) {function content_550daa15a80684_52416007($_smarty_tpl) {?><div id="normgroupwrap" style="float: left; width: 50%;">
+<?php if ($_valid && !is_callable('content_550daa15a80684_52416007')) {function content_550daa15a80684_52416007($_smarty_tpl) {?><h2><?php echo $_smarty_tpl->tpl_vars['groupName']->value;?>
+</h2>
+
+<div id="normgroupwrap" style="float: left; width: 50%;">
 <p>
 <span class="bold">Admins:</span><br/>
 <?php if (isset($_smarty_tpl->tpl_vars['adminNames']->value)) {?>
@@ -152,6 +156,7 @@ There don't seem to be any users in this group.
 
 <p>
 <span class="bold">Courses:</span><br/>
+<div class="size_scrollbox">
 <?php if (isset($_smarty_tpl->tpl_vars['coursesSection']->value)) {?>
 <?php if (isset($_smarty_tpl->tpl_vars['smarty']->value['section']['sec4'])) unset($_smarty_tpl->tpl_vars['smarty']->value['section']['sec4']);
 $_smarty_tpl->tpl_vars['smarty']->value['section']['sec4']['name'] = 'sec4';
@@ -183,6 +188,7 @@ $_smarty_tpl->tpl_vars['smarty']->value['section']['sec4']['last']       = ($_sm
 <?php } else { ?>
 This group doesn't have specific access to any courses.
 <?php }?>
+</div>
 </p>
 
 <p>

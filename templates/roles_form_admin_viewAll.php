@@ -1,8 +1,8 @@
 <?php
-	/**
-	 * @package ApolloLMS
-	 * @author Stephan Pieterse
-	 * */
+/**
+ * @package ApolloLMS
+ * @author Stephan Pieterse
+ * */
 	
 	$smarty = new Smarty;
 	
@@ -26,4 +26,3 @@
 	$smarty->assign('roledata',$dataArray);
 	$tplName = changeExtension(pathinfo(__FILE__,PATHINFO_BASENAME),'tpl');
 	$smarty->display($tplName);
-?>

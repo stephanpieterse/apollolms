@@ -3,7 +3,6 @@
 @import url(tables.css);
 @import url(mobilemain.css);
 
-
 @media (max-width:1024px) {
 body {
 	width: 1024px;

@@ -1,9 +1,11 @@
 <?php
 /*
  * @author Stephan Pieterse
+ * @package ApolloLMS
  * */
+ 
+ $smarty = new Smarty;
 ?>
-<link rel="stylesheet" type="text/css" href="<?php echo SCRIPTS_PATH; ?>/jqplot/jquery.jqplot.css" />
 <div>
 <span class="bold">Gender Statistics:</span>
 <p>
@@ -113,6 +115,14 @@
 </script>
 </p>
 </div>
-<h2>NOTE: The accuracy of these statistics depend on the complete and accurate info of the users. These statistics are not guaranteed to be accurate.</h2>
+
 <script language="javascript" type="text/javascript" src="<?php echo SCRIPTS_PATH ?>jqplot/jquery.jqplot.min.js"></script>
 <script type="text/javascript" src="<?php echo SCRIPTS_PATH ?>jqplot/plugins/jqplot.pieRenderer.min.js"></script>
+
+<?php
+
+$smarty->assign('testlist',$linklist);
+	$tplName = changeExtension(pathinfo(__FILE__,PATHINFO_BASENAME),'tpl');
+	$smarty->display($tplName);
+	
+?>

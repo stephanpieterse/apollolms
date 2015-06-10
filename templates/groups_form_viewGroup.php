@@ -6,9 +6,7 @@
 	This form displays the details of an individually selected group.
 */
 	$smarty = new Smarty();
-?>
 
-<?php
 	$group = $_GET['gid'];
 	// assign variables for searching
 	$groupName = $group;
@@ -19,16 +17,16 @@
 	$result = sql_execute($query1);
 	while ($data = sql_get($result)){
 		$adminsNameArr[$data['ID']] = $data['NAME'];
-		//echo $data['NAME'];
-		//echo $data['ID'];
 	}
 	
 	$curIsAdmin = isUserInGroupAdminID($_SESSION['userID'], $group);
 	
 	//check permissions to view / edit admins
-	$q = "SELECT adminusers, requests FROM groupslist WHERE id='$group' LIMIT 1";
+	$q = "SELECT name, adminusers, requests FROM groupslist WHERE id='$group' LIMIT 1";
 	$r = sql_execute($q);
 	$d = sql_get($r);
+	// i only do this here because it is one less query than at the top
+	$smarty->assign('groupName',$d['name']);
 	
 		$xmlDoc = new DOMDocument();
 		if($d['adminusers'] != ""){
@@ -42,7 +40,14 @@
 
 		foreach($rootNode->childNodes as $child){
 			if($child->nodeName == 'user'){
+				if(!isset($adminsNameArr[$child->getAttribute('id')])){
+						//TODO: i need to report this? should these types of things be autocorrected?
+						$reportSet['database_wrong'] = true;
+						$reportSet['database_dump'] = 'user ' . $child->getAttribute('id') . ' in group admin ' . $group;
+						base_func_report_item($reportSet);
+				}else{
 				$adminNames[] = $adminsNameArr[$child->getAttribute('id')];
+				}
 			}
 		}
 
@@ -74,10 +79,9 @@
 				$pendingSection[$xps]['NAME'] = $reqR['NAME'];
 		
 				if($curIsAdmin || check_user_permission('group_all_requests')){
-				$pendingSection[$xps]['ACCEPTLINK'] = '<a class="biglinkT1" href="groups.php?q=acceptGroupRequest&uid=' . $reqUID . '&gid=' . $group . '">Accept Join Request</a> ';
-				$pendingSection[$xps]['REJECTLINK'] = '<a class="biglinkT1" href="groups.php?q=denyGroupRequest&uid=' . $reqUID . '&gid=' . $group . '">Deny Join Request</a> ';
-				
-				}
+					$pendingSection[$xps]['ACCEPTLINK'] = '<a class="biglinkT1" href="groups.php?q=acceptGroupRequest&uid=' . $reqUID . '&gid=' . $group . '">Accept Join Request</a> ';
+					$pendingSection[$xps]['REJECTLINK'] = '<a class="biglinkT1" href="groups.php?q=denyGroupRequest&uid=' . $reqUID . '&gid=' . $group . '">Deny Join Request</a> ';
+					}
 				
 			}
 		}

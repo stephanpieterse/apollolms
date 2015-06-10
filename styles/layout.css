@@ -7,6 +7,7 @@
 @import url("fancy_tree.css");
 @import url("3col.css");
 @import url("calender.css");
+@import url(jquery.jqplot.min.css);
 
 /* Smartphones (portrait and landscape) ----------- */
 @media only screen 

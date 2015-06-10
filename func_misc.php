@@ -701,6 +701,8 @@ function base_func_report_item($data){
 	if(isset($data['offensive'])){$msg .= ' - Offensive';};
 	if(isset($data['false'])){$msg .= ' - False / Misleading';};
 	if(isset($data['copyright'])){$msg .= ' - Copyright Issues';};
+	if(isset($data['database_wrong'])){$msg .= ' - Database data issue';};
+	if(isset($data['database_dump'])){$msg .= $data['database_dump'];};
 	
 	$subBy = (isset($_SESSION['userID'])) ? $_SESSION['userID'] : -1; 
 	

@@ -173,7 +173,14 @@ function check_user_permission($neededPerm, $nowarn = false){
 	} // end if array
 	
 	if($hasPermission === false && $nowarn === false){
-		$neededPermDump = ($neededPerm);
+		$neededPermDump = "no_val";
+		if(is_array($neededPerm)){
+			foreach($neededPerm as $np){
+				$neededPermDump .= $np;
+			}
+		}else{
+		$neededPermDump = $neededPerm;
+	}
 		$_SESSION['SITE_ERROR_MSG'] = 'A permissions error occured at ' . $neededPermDump ;
 	}
 	return $hasPermission;

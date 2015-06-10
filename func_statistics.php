@@ -1,6 +1,7 @@
 <?php
 /*
  * @author Stephan Pieterse
+ * @package ApolloLMS
  * */
 
 function stat_getGroupStats(){
@@ -19,9 +20,13 @@ function stat_getGroupStats(){
 			$gids = $ui->get_userGroupIDs();
 			if($gids){
 				foreach($gids as $gid){
-					//if(in_array($gid,$groupTotals)){
+					if(!isset($groupTotals[$gid])){
+						$reportSet['database_wrong'] = true;
+						$reportSet['database_dump'] = "user is in group which no longer exists uid $md['id'] and gid $gid";
+						base_func_report_item($reportSet);
+					}else{	
 					$groupTotals[$gid]['TOTALS'] = $groupTotals[$gid]['TOTALS'] + 1;
-					//}
+				}
 				}
 			}
 	}

@@ -1,3 +1,5 @@
+<h2>{$groupName}</h2>
+
 <div id="normgroupwrap" style="float: left; width: 50%;">
 <p>
 <span class="bold">Admins:</span><br/>
