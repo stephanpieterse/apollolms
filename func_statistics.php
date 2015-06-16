@@ -4,6 +4,9 @@
  * @package ApolloLMS
  * */
 
+/*
+Group stats to feed into the stats page
+*/
 function stat_getGroupStats(){
 	$gq = "SELECT * FROM groupslist";
 	$gr = sql_execute($gq);
@@ -22,7 +25,7 @@ function stat_getGroupStats(){
 				foreach($gids as $gid){
 					if(!isset($groupTotals[$gid])){
 						$reportSet['database_wrong'] = true;
-						$reportSet['database_dump'] = "user is in group which no longer exists uid $md['id'] and gid $gid";
+						$reportSet['database_dump'] = "user is in group which no longer exists uid " . $md['id'] . " and gid " . $gid;
 						base_func_report_item($reportSet);
 					}else{	
 					$groupTotals[$gid]['TOTALS'] = $groupTotals[$gid]['TOTALS'] + 1;

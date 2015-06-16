@@ -105,12 +105,12 @@ class ALMS_UserItem {
 			return false;
 		}
 		
-		$name= makeSafe($pdata['name']);
-		$surname=makeSafe($pdata['surname']);
-		$emailad=makeSafe($pdata['emailad']);
-		$role= makeSafe($pdata['role']);
-		$contactnum=makeSafe($pdata['contactnum']);
-		$secuQ  = makeSafe($pdata['securityQ']);
+		$name = makeSafe($pdata['name']);
+		$surname = makeSafe($pdata['surname']);
+		$emailad = makeSafe($pdata['emailad']);
+		$role = makeSafe($pdata['role']);
+		$contactnum = makeSafe($pdata['contactnum']);
+		$secuQ = makeSafe($pdata['securityQ']);
 		$secuA = makeSafe($pdata['securityA']);
 		$query ="UPDATE members SET name='$name', surname='$surname', email='$emailad', contactnum='$contactnum', securityquestion='$secuQ', securityanswer='$secuA' WHERE id='" . $this->memberID . "'";
 		$result=sql_execute($query);
