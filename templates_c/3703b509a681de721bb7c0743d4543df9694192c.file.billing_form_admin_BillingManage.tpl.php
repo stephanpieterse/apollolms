@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.17, created on 2015-03-21 20:24:18
+<?php /* Smarty version Smarty-3.1.17, created on 2015-06-16 15:30:54
          compiled from "./templates/billing_form_admin_BillingManage.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:1858388422550dd37280e285-07380059%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '3703b509a681de721bb7c0743d4543df9694192c' => 
     array (
       0 => './templates/billing_form_admin_BillingManage.tpl',
-      1 => 1426836583,
+      1 => 1434468648,
       2 => 'file',
     ),
   ),
@@ -15,6 +15,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'function' => 
   array (
   ),
+  'version' => 'Smarty-3.1.17',
+  'unifunc' => 'content_550dd37289bdf9_97564581',
   'variables' => 
   array (
     'billingEmail' => 0,
@@ -28,8 +30,6 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'totalFinalCost' => 0,
   ),
   'has_nocache_code' => false,
-  'version' => 'Smarty-3.1.17',
-  'unifunc' => 'content_550dd37289bdf9_97564581',
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_550dd37289bdf9_97564581')) {function content_550dd37289bdf9_97564581($_smarty_tpl) {?><form method="post" action="sitesettings.php?q=update_billingEmail">
 Billing Adress:<br/>
@@ -88,4 +88,5 @@ Cost for newly registered courses: </td><td><?php echo $_smarty_tpl->tpl_vars['t
 </tr>
 </table>
 These figures are for testing and reference only, no bills will be sent and the information displayed is purely for informing you of the estimated cost of the system once out of beta phase.
+<a href="crons.php?f=invoicePreview">Preview Invoice</a>
 <?php }} ?>

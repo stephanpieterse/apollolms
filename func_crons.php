@@ -5,27 +5,27 @@
 * @description Holds all the cron jobs that run at specified times.
 */
 
-function cron_createLock(){
+function cron_createLock($exname = ""){
 	chdir(dirname(__FILE__));
-	if(file_exists("crons.lock")){
+	if(file_exists("crons_" . $exname . ".lock")){
 		return false;
 	}else{
-		echo shell_exec("touch crons.lock");
+		echo shell_exec("touch crons_" . $exname . ".lock");
 		return true;
 	}
 }
 
-function cron_removeLock(){
+function cron_removeLock($exname = ""){
 	chdir(dirname(__FILE__));
-	if(file_exists("crons.lock")){
-		return unlink("crons.lock");
+	if(file_exists("crons_" . $exname . ".lock")){
+		return unlink("crons_" . $exname . ".lock");
 	}else{
 		return false;
 	}
 }
 
 function cron_func_mediaConversion(){
-	if(cron_createLock()){
+	if(cron_createLock('mediaconv')){
 	chdir(dirname(__FILE__));
 	$fulldir = scanForFiles('uploads','uploads/',true,false);
 	//var_dump($fulldir);
@@ -34,20 +34,19 @@ function cron_func_mediaConversion(){
 		echo "Trying " . $file;
 		media_func_convertFile($file);
 	}
-	cron_removeLock();
+	cron_removeLock('mediaconv');
 	exit;
 	}
-	
 }
 
 function cron_func_killCaches(){
-        chdir(dirname(__FILE__));
-        shell_exec("find . -name .vid_res -exec rm -rf {} \;");
+    chdir(dirname(__FILE__));
+    shell_exec("find . -name .vid_res -exec rm -rf {} \;");
 	shell_exec("find . -name .aud_res -exec rm -rf {} \;");
 	return true;
 }
 
-function cron_func_billingInvoice(){
+function cron_func_billingInvoice($preview = false){
 	define('BASE_COST',350);
 
 	$q = "SELECT value FROM site_settings WHERE item='billing_email' LIMIT 1";
@@ -102,7 +101,7 @@ function cron_func_billingInvoice(){
 	$finalCost = $costSoFar + $billCourse;
 	
 	ob_start();
-		$view = new Template(TEMPLATE_PATH . 'emails/billing_form_invoice.php');
+		$view = new Template(TEMPLATE_PATH . 'invoice/invoice.php');
 		$view->BILLING_BILLINGEMAIL = $billingEmail;
 		$view->BILLING_ACTIVEMEMBERS = $activeMembers;
 		$view->BILLING_TOTALSPACEUSED = $totalSpaceUsed;
@@ -113,8 +112,15 @@ function cron_func_billingInvoice(){
 		$view->BILLING_FINALCOST = $finalCost;
 	echo $view;
 	$emsgbody = ob_get_clean();
+	
+	if(!$preview){	
+		$q = "INSERT INTO invoices SET DATE='', AMOUNT='', REFERENCE=''";
 		
-	$esubject = 'ALMS Billing Cycle - ' . SITE_NAME . ' - ' . date("F Y");
-	mail_inform($billingEmail,$esubject,$emsgbody);
-	mail_inform('pietersestephan@gmail.com',$esubject,$emsgbody);
+		$esubject = 'ALMS Billing Cycle - ' . SITE_NAME . ' - ' . date("F Y");
+		mail_inform($billingEmail,$esubject,$emsgbody);
+		mail_inform('pietersestephan@gmail.com',$esubject,$emsgbody);
+	}else
+	{
+		echo $emsgbody;
+	}
 }

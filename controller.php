@@ -65,7 +65,6 @@ class Controller {
 		echo $view;
 		}	
 	
-	
 	function build_header(){
 		$view = new Template(TEMPLATE_PATH . 'views/site_header.php');	
 		$view->_SITE_TITLE = ($this->_SITE_TITLE != '') ? SITE_NAME . ' - ' . $this->_SITE_TITLE : SITE_NAME;
@@ -77,7 +76,7 @@ class Controller {
 		logAction($_GET);
 	}
 	
-	function print_debug_info(){
+	private function print_debug_info(){
 		echo session_id();
 		echo '<br/>';
 		foreach($_SESSION as $key=>$val){
@@ -124,7 +123,7 @@ class Controller {
 		include(TEMPLATE_PATH . 'debug_jsTest.php');
 	}
 
-	function return_ob_adminnav(){
+	private function return_ob_adminnav(){
 		ob_start();
 		if(isset($_SESSION['userID'])){
 		$view = new Template(TEMPLATE_PATH ."views/adminNavBar.php");
@@ -134,7 +133,7 @@ class Controller {
 		return ob_get_clean();
 	}
 	
-	function return_ob_footer(){
+	private function return_ob_footer(){
 		ob_start();
 		$view = new Template(TEMPLATE_PATH . 'views/site_footer.php');	
 		echo $view;
@@ -145,7 +144,7 @@ class Controller {
 		return ob_get_clean();
 	}
 	
-	function build_footer(){
+	private function build_footer(){
 		$view = new Template(TEMPLATE_PATH . 'views/site_footer.php');	
 		echo $view;
 		if( defined("DEBUG_MODE") && (DEBUG_MODE === 'on')){
@@ -153,7 +152,7 @@ class Controller {
 		}
 	}
 	
-	function executeControl($GETDAT, $POSTDAT){
+	public function executeControl($GETDAT, $POSTDAT){
 		//$f = $GETDAT['f'];
 		$f = (isset($GETDAT['f']) ? $GETDAT['f'] : null);
 		//$q = $GETDAT['q'];

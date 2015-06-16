@@ -23,3 +23,4 @@ Cost for newly registered courses: </td><td>{$totalCoursesBill}</td>
 </tr>
 </table>
 These figures are for testing and reference only, no bills will be sent and the information displayed is purely for informing you of the estimated cost of the system once out of beta phase.
+<a href="crons.php?f=invoicePreview">Preview Invoice</a>
