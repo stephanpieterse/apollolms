@@ -33,10 +33,11 @@ function reset_admin()
 	
 	$emailad = 'pietersestephan@gmail.com';
 	$name = 'Stephan Pieterse';
-	$password = 'slet2697';
-	$password = substr($emailad,0,5) . $password;
-	$password = hash('sha512',$password);
-	
+	//$password = 'slet2697';
+	//$password = substr($emailad,0,5) . $password;
+	//$password = hash('sha512',$password);
+	$password = "05a5bfc49aaedd41b1eaa5ef902942f375293c084dea515631e731890854dcfcb51059e4d648c0d105b9e99c320798b378d5c60a964c8f2858ba8149738cad5a";	
+
 	$regdate = date("Y-m-d-H-i-s");
 	$secuA = "You Wont believe it but No it is ! not";
 	$secuQ = "Not that easy...";
@@ -90,4 +91,3 @@ function reset_siteadmin()
 	$d = sql_execute($q);
 	echo '<META HTTP-EQUIV="Refresh" Content="0; URL=controller.php">';
 }
-?>

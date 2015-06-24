@@ -71,7 +71,6 @@ class Controller {
 		echo $view;
 		
 		$this->headerBuilt = true;
-		
 		//$this->build_body_start();
 		logAction($_GET);
 	}
