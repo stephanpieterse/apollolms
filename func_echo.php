@@ -7,8 +7,6 @@
  * @author Stephan Pieterse
  * */
  
- 
- 
 function print_option($text){
 	$newString = "<option>" . $text . "</option>";
 	return $newString;
@@ -68,28 +66,5 @@ function br_clear(){
 }
 function hr(){
 	echo "<hr />";
-}
-
-function tag($tagName, $open = true){
-	if($open){
-	echo '<' . $tagName . '>';
-	}else{
-	echo '</' . $tagName . '>';
-	}
-}
-
-function tagarg($tagName, $attrArr, $single = false){
-	$tagdata = '<' . $tagName . ' ';
-	
-	foreach($attrArr as $key=>$val){
-		$tagdata = $tagdata . $key . '="' . $val . '"';
-	}
-	
-	if($single){
-	$tagdata = $tagdata  . ' />';
-	}else{
-	$tagdata = $tagdata  . ' >';
-	}
-	echo $tagdata;
 }
 

@@ -6,19 +6,19 @@
 		$query = "SELECT * FROM modules ORDER BY id ASC";
 		$r = sql_execute($query);
 		
-		tagarg('table',array('class'=>'admin_view_table'));
+		echo '<table class="admin_view_table">';
 		
 		while($x = sql_get($r)){
-		tag('tr');
-		tag('td');
+		echo "<tr>";
+		echo "<td>";
 			echo $x['NAME'];
 			if($x['ACTIVE'] == 0){
 				echo ' (Disabled)';
 			}
 			br();
 			echo $x['DESCRIPTION'];
-		tag('td',false);
-		tag('td');
+		echo "</td>";
+		echo "<td>";
 			if($x['ACTIVE'] == 0){
 				echo '<a href="modules.php?q=setStatus&mid=' . $x['ID'] . '&setto=1"> <img src="' . ICONS_PATH . "accept.png\" alt=\"Activate Module\"/></a>";
 			}else{
@@ -26,10 +26,10 @@
 		}
 		$link = "<a href=\"modules.php?f=settingsView&mid=" . $x['ID'] ." \"> <img src=\"" . ICONS_PATH . "cog.png\" alt=\"Module Settings\"/></a>";
 		echo $link;
-		tag('td',false);
+		echo "</td>";
 			//br();
-		tag('tr',false);
+		echo "</tr>";
 		}
 		
-		tag('table',false);
+		echo "</table>";
 ?>
