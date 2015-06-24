@@ -1,4 +1,8 @@
 <?php
+/*
+ * @author Stephan Pieterse
+ * @package ApolloLMS
+ * */
 
 class Resource_Handler{
 	
@@ -6,7 +10,7 @@ class Resource_Handler{
 	private $RESstore = array('resname'=>'','resurl'=>'','resid'=>'');
 	
 /**
- * Returns 1 greater than the highest id value currently present in the data.
+ * @return 1 greater than the highest id value currently present in the data.
  * 
  */
 function get_nextAvailableID(){
@@ -56,12 +60,18 @@ function resourceLink_view(){
 		return $link;	
 	}
 }
-	
+
+/*
+ * @param $resdata - Array containing (resource_url,resource_name)
+ * @return The new XML to be added to the database
+ * */
 function addResource($resdata){
 	$xmldata = $this->XMLstore;
 	
-	$resname = sql_escape_string($resdata['resource_name']);
-	$resurl = urlencode(sql_escape_string($resdata['resource_url']));
+	//$resname = sql_escape_string($resdata['resource_name']);
+	$resname = makeSafe($resdata['resource_name']);
+	//$resurl = urlencode(sql_escape_string($resdata['resource_url']));
+	$resurl = urlencode(makeSafe($resdata['resource_url']));
 	$resid = $this->get_nextAvailableID();
 	$newCXML = addNode($xmldata, 'resource', array('id'=>$resid,'url'=>$resurl,'name'=>$resname));
 	
@@ -70,6 +80,7 @@ function addResource($resdata){
 
 /**
  * @param $resdata The node number to be removed
+ * @return The updated XML data for DB insertion
  */
 function removeResource($resdata){
 	$nodeNum = $resdata;
@@ -103,4 +114,3 @@ function updateResource($resdata){
 }
 
 }
-?>
