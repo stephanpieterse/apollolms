@@ -6,6 +6,9 @@
 	 * Basic functions for the email system
 	 * */
 
+/*
+ * Inform all the users in a course.
+ * */
 function mail_func_informCourseUsers($data){
 	$cid = $data['cid'];
 	$subj= $data['subject'];
@@ -41,11 +44,17 @@ function inform_users_aboutNewCourse($cid){
 	$r = sql_get($d);
 	$courseName = $r['name'];
 	
+	$courseURL = get_serverURL() . 'courses.php?f=displayCourse&cid=' . $cid;
+	
 	$q = "SELECT id,email FROM members";
 	$d = sql_execute($q);
 
+	$courseLink = '<a href="">';
+	$courseLink .= $courseName;
+	$courseLink .= '</a>';
+	
 	$subj = "A new course is nou available to you!";
-	$msgbody = "A new course, " . $courseName . " is now available to you. Logon to the site to register.";
+	$msgbody = "A new course, " . $courseLink . " is now available to you! You can logon to the site to register, or follow the link provided.s";
 	
 	while($r = sql_get($d)){
 		if(userHasCoursePermission($r['id'],$cid)){
@@ -260,11 +269,10 @@ function mail_func_sendEmail($data){
 
 /**
  * Function to send emails - always wrap this function
- * Param:
- * 	to - email adresses
- * subj - msg subject
- * body - msg content
- * from - from email address
+ * @param to - email adresses
+ * @param subj - msg subject
+ * @param body - msg content
+ * @param from - from email address
  */
 function sendEmail($to, $subj, $body, $from){
 	if(get_siteLogoFile()){

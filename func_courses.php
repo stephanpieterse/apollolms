@@ -305,11 +305,28 @@ function courses_func_registerForCourse($data){
 }
 
 /**
- * @params
- * data
- * 
+ * @param $data - Array containing all the variables needed
+ * courseName
+ * courseDescription
+ * courseIntroContent
+ * publishedStatus
+ * autojoin - as POST
+ * price
+ * tags (array)
+ * open_for_d
+ * open_for_m
+ * open_for_y
+ * open_since_d
+ * open_since_m
+ * open_since_y
+ * open_till_d
+ * open_till_m
+ * open_till_y
  */
 function courses_func_addCourse($data){
+	// $citem = new ALMS_CourseItem;
+	// return $citem->insertNew($data);
+	
 	$courseName = makeSafe($data['courseName']);
 	$courseDesc = sql_escape_string($data['courseDescription']);
 	$htmlContent = sql_escape_string($data['courseIntroContent']);
@@ -380,7 +397,7 @@ function courses_func_addCourse($data){
 
 /**
  * Updates a course with the new info submitted via form
- * 
+ * @param $data - Array of all the needed variables.
  */
 function courses_func_updateCourse($data){
 	$cid = $data['id'];

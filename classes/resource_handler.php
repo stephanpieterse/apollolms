@@ -20,7 +20,7 @@ function get_nextAvailableID(){
 		if($numNodes > 0){
 		$lastNode = $rootNode->childNodes->item($numNodes-1);
 		if($lastNode->hasAttributes()){
-			$lastID = $lastNode->getAttribute(id);
+			$lastID = $lastNode->getAttribute('id');
 			$availableID = $lastID + 1;
 		}
 		}
@@ -69,7 +69,7 @@ function addResource($resdata){
 }
 
 /**
- * @param resdata The node number to be removed
+ * @param $resdata The node number to be removed
  */
 function removeResource($resdata){
 	$nodeNum = $resdata;
@@ -78,6 +78,9 @@ function removeResource($resdata){
 	return $xmldata;
 }
 
+/*
+ * @param $resdata - Node number to be updated
+ * */
 function updateResource($resdata){
 	$xmldata = $this->XMLstore;
 	
