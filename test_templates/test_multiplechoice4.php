@@ -8,25 +8,24 @@ private $thisIsMarkable = true;
 private $thisClassNiceName = "Multiple Choice (4)";
 
 function form_insertQuestions(){
-
-	echo 'Question: <input type="text" name="question"/>';
-	echo '<br />';
-	echo 'Option 1: <input type="text" name="option1" />';
-	echo '<br />';
-	echo 'Option 2: <input type="text" name="option2" />';
-	echo '<br />';
-	echo 'Option 3: <input type="text" name="option3" />';
-	echo '<br />';
-	echo 'Option 4: <input type="text" name="option4" />';
-	echo '<br />';
-	echo 'Correct Answer: ';
-	echo '<select name="answer">';
-	echo '<option>1</option>';
-	echo '<option>2</option>';
-	echo '<option>3</option>';
-	echo '<option>4</option>';
-	echo '</select>';
-	echo '<br />';
+	echo 'Question: <input type="text" name="question"/>
+	<br />
+	Option 1: <input type="text" name="option1" />
+	<br />
+	Option 2: <input type="text" name="option2" />
+	<br />
+	Option 3: <input type="text" name="option3" />
+	<br />
+	Option 4: <input type="text" name="option4" />
+	<br />
+	Correct Answer: 
+	<select name="answer">
+	<option>1</option>
+	<option>2</option>
+	<option>3</option>
+	<option>4</option>
+	</select>
+	<br />';
 }
 
 function markData($xmlData){
@@ -96,21 +95,14 @@ foreach($questionData as $key=>$value){
 	continue;
 	}
 	}
-	print_bold("Question: ");
-	br();
+	echo "<b>Question: </b><br/>";
 	echo $q;
-	br();
-	print_bold("1: " . $o1);
-	br();
-	print_bold("2: " . $o2);
-	br();
-	print_bold("3: " . $o3);
-	br();
-	print_bold("4: " . $o4);
-	br();
+	echo "1: " . $o1 . '<br/>';
+	echo "2: " . $o2 . '<br/>';
+	echo "3: " . $o3 . '<br/>';
+	echo "4: " . $o4 . '<br/>';
 	
 	echo "Please select an answer:" . '</br>';
 	echo '<select name="answered"><option>' . $o1 .' </option><option>' . $o2 .' </option><option>' . $o3 .' </option><option>' . $o4 .' </option></select>';
 	}
 }
-?>

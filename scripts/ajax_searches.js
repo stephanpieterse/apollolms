@@ -1,3 +1,7 @@
+function searchInA(text){
+	
+	return true;
+}
 
 function searchForUsers(searchFor){
 $.ajax({

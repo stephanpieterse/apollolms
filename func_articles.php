@@ -150,7 +150,7 @@ function makeIndex($article = "<articles></articles>"){
 }
 
 /**
- * 
+ * TODO: move this to a template ?
  * 
  */
 function sidebarIndex($course,$article){
@@ -158,11 +158,8 @@ function sidebarIndex($course,$article){
 	echo '<div class="sidebarIndex css-treeview" >';
 	//	echo "Course";
 		//displayCourseIndex($course);
-		//br();
 		include(TEMPLATE_PATH . 'courses_form_displayCourseIndex.php');
-		echo print_bold("Article Index");
-		
-		br();
+		echo "Article Index<br/>";
 		echo '<a href="#">TOP</a>';
 		echo makeIndex($article);
 	echo '</div>';
