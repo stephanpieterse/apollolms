@@ -99,13 +99,6 @@ function courses_func_updateResource($data){
 	$res->importXML($rd['ARTICLES']);
 	$finalxml = $res->updateResource($resdata);
 	
-	/*
-	$xmldata = $rd['ARTICLES'];
-	$xmldata = rmNodeX($xmldata, $nodeNum);
-	$newCXML = addNode($xmldata, 'resource', array('url'=>$resurl,'name'=>$resname));
-	$newNodeNum = xmlGetSpecifiedNode_Position($xmldata, array('url'=>$resurl,'name'=>$resname));
-	$finalxml = xmlMoveNodeTo($xmldata, $nodeNum, $newNodeNum);
-	*/
 	$q = "UPDATE courses SET articles='$finalxml' WHERE id='$cid'";
 	$d = sql_execute($q);
 	return 'success';
