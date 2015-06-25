@@ -25,30 +25,6 @@ if($gid == false){
 <textarea type="textbox" id="groupDescription" name="groupDescription">
 <?php if($gid != false){echo $rd['DESCRIPTION'];}?>
 </textarea>
-
-<br />
-<!--
-<label for="groupType">Group Type</label>
-<select id="groupType" name="groupType">
-<?php
-/**
-		$query = 'SELECT * FROM groups_types';
-		$result = sql_execute($query);
-		
-		while ($row = sql_get($result)){
-			echo "<option ";
-			if($gid != false && $rd['GROUPTYPE'] == $row['NAME']){
-				echo "selected";
-			}
-			echo ">";
-			echo $row['NAME'];
-			echo "</option>";
-		}	
-*/
-?>
-</select>
--->
-
 <br />
 <label for="groupClosed">Closed Group</label>
 <select id="groupClosed" name="closed">

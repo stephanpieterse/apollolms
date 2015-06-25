@@ -38,7 +38,6 @@ $dispatch_action = array(
 	'upd_article'=>function(){update_article($_GET['id'],$_POST); goToLastPage();},
 	'del_role'=>function(){rm_roleItem($_GET['id']);},
 	'rem_group'=>function(){removeItem('groupslist', $_GET['group']);},//removeGroupData($_GET['group']);},
-	'rm_groupType'=>function(){rm_groupType($_GET['id']);},
 	'setInitTest'=>function(){initTestData(); echo '<META HTTP-EQUIV="Refresh" Content="0; URL=index.php?action=test">';},
 	'test'=>function(){showTest($_SESSION['currentTestName']);},
 	'addResult'=>function(){$_SESSION['currentQuestion'] = $_SESSION['currentQuestion'] + 1;addResultData($_GET['qid'],$_GET['tid'],$_POST);echo '<META HTTP-EQUIV="Refresh" Content="0; URL=index.php?action=test">';},

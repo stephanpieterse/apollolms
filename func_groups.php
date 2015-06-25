@@ -346,7 +346,7 @@ function groups_func_addGroup($data){
 	if(check_user_permission('groups_add')){
 	$groupName = makeSafe($data['groupName']);
 	$groupDesc = $data['groupDescription'];
-	$groupType = makeSafe($dataT['groupType']);
+	//$groupType = makeSafe($dataT['groupType']);
 	$closedT = makeSafe($data['closed']);
 	$autoJoin = makeSafe($data['autojoin']);
 	
@@ -375,19 +375,6 @@ function groups_func_addGroup($data){
 	
 	$query = "INSERT INTO groupslist(name, description, closed, autojoin, adminusers, requests, parents) VALUES('$groupName','$groupDesc', '$closed', '$autoJoin', '$adminUsers', '$requests', '$parents')";
 	$result = sql_execute($query);
-	}
-}
-
-function groups_func_updateGroupType($data){
-	$id = $data['id'];
-	$newDesc = $data['description'];
-	
-	if(check_user_permission('grouptype_modify')){
-	$query = "UPDATE groups_types SET description='$newDesc' WHERE id='$id'";
-	$result = sql_execute($query);
-		return true;
-	}else{
-		return false;
 	}
 }
 

@@ -569,11 +569,13 @@ function userHasCoursePermissionXML($memberID,$xmldata){
 		}
 		}
 		
+/*
 		if($name == "grouptype"){
 			if(isUserInGroup(($memberID),($option->getAttribute("id")))){
 			$hasAccess = true;
 			break;
 		}
+*/
 		}
 	}
 	return $hasAccess;
