@@ -65,26 +65,13 @@ class ALMS_CourseItem{
 		
 		$modified = "<modified><created uid=\"" . $sesUID ."\" time=\"" . $dateCreated . "\"></created></modified>";
 		
-		$query="INSERT INTO courses(name, description, html_content, created_date, published_date, published_user, published_status, code, par_hours, permissions, articles, modified_date, autojoin, price, tags, avail_for, avail_during) VALUES('$courseName','$courseDesc', '$htmlContent', '$dateCreated', '$publishedDate', '$publishedBy', '$pubStat', '$courseCode', '$partime', '<access></access>', '<articles></articles>', '$modified', '$autojoin', '$price', '$tags', '$availFor', '$avBetweenDates')";
+		$query="INSERT INTO courses(name, description, html_content, created_date, published_date, published_user, published_status, code, par_hours, permissions, articles, modified_date, autojoin, price, tags, avail_for, avail_during, owner_member) VALUES('$courseName','$courseDesc', '$htmlContent', '$dateCreated', '$publishedDate', '$publishedBy', '$pubStat', '$courseCode', '$partime', '<access></access>', '<articles></articles>', '$modified', '$autojoin', '$price', '$tags', '$availFor', '$avBetweenDates', '$sesUID')";
 		$result = sql_execute($query);
 
 		$q = "SELECT * FROM courses WHERE published_date='$publishedDate' AND name='$courseName'";
 		$r = sql_get(sql_execute($q));
 		
-		// remove this section
-		set_course_permissions($r['ID'], $data);
-		
-		$plugDataSet = modules_backend_plugin_stripData($data);
-
-		if(modules_backend_plugin_addData($plugMid,$plugCol,$plugName,$plugData)){
-				//nice
-		}
-
-		if($pubStat == 1){
-			inform_users_aboutNewCourse($r['ID']);
-		}
-		// remove until here
-		return 'success';
+		return array("id"=>$r['ID'],"published"=>$pubStat);
 	}
 	
 }

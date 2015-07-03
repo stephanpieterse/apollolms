@@ -1,14 +1,12 @@
-<form method="post" action="media.php?pq=mknewFolder" >
-<select name="rootDirPath">
+<form name="newFolderForm" method="post" action="media.php?pq=mknewFolder" >
 <?php
-echo print_option("uploads/");
-$result = scanMkDir("uploads/","uploads/");
-	
-	foreach($result as $f){
-	 echo print_option($f . "/");
+ if(isset($_GET['dir']){
+	$pdir = makeSafe($_GET['dir']) . '/';
+	}else{
+	$pdir = "uploads/";
 	}
 ?>
-</select>
 <input name="newFolderName" value="New Folder Name"/>
+<input type="hidden" name="rootDirPath" value="<?php echo $pdir; ?>"/>
 <input type="submit" value="Create Folder" />
 </form>

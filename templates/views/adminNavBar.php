@@ -58,10 +58,11 @@ if(check_user_permission(array('media_view','media_modify'),true)){
 	if(check_user_permission("media_modify")){
 	if(isset($_GET['dir'])){
 		$link .= '<li><a href="media.php?f=uploadFile&dir=' . $_GET['dir'] . '">Upload a File</a></li>';
+		$link .= '<li><a href="media.php?f=newFolder&dir=' . $_GET['dir'] . '">Create New Folder</a></li>';
 	}else{
-		$link .= '<li><a href="media.php?f=uploadFile' . '">Upload a File</a></li>';	
+		$link .= '<li><a href="media.php?f=uploadFile">Upload a File</a></li>';	
+		$link .= '<li><a href="media.php?f=newFolder">Create New Folder</a></li>';
 	}
-	$link .= '<li><a href="media.php?f=newFolder">Create New Folder</a></li>';
 	
 	}
 	$link .= '</ul></li>';

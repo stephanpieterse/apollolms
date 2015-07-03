@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.17, created on 2015-03-21 14:17:24
+<?php /* Smarty version Smarty-3.1.17, created on 2015-07-03 20:07:31
          compiled from "./templates/courses_form_admin_CourseManage.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:1502936693550d7d745b4a67-99554535%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'e9fdf9aa7067114283878c2654beea1f2c276a82' => 
     array (
       0 => './templates/courses_form_admin_CourseManage.tpl',
-      1 => 1426836583,
+      1 => 1435237059,
       2 => 'file',
     ),
   ),
@@ -15,6 +15,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'function' => 
   array (
   ),
+  'version' => 'Smarty-3.1.17',
+  'unifunc' => 'content_550d7d74671504_04983424',
   'variables' => 
   array (
     'courseData' => 0,
@@ -22,8 +24,6 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'coursePackagesData' => 0,
   ),
   'has_nocache_code' => false,
-  'version' => 'Smarty-3.1.17',
-  'unifunc' => 'content_550d7d74671504_04983424',
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_550d7d74671504_04983424')) {function content_550d7d74671504_04983424($_smarty_tpl) {?><noscript>
 	<form method="GET" action="courses.php">

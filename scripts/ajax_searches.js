@@ -1,6 +1,20 @@
-function searchInA(text){
-	
-	return true;
+function searchInTable(searchbox){
+$('#' + searchbox).on('keyup', function(e) {
+    if ('' != this.value) {
+        var reg = new RegExp(this.value, 'i'); // case-insesitive
+
+        $('table tbody').find('tr').each(function() {
+            var $me = $(this);
+            if (!$me.children('td').text().match(reg)) {
+                $me.hide();
+            } else {
+                $me.show();
+            }
+        });
+    } else {
+        $('table tbody').find('tr').show();
+    }	
+});
 }
 
 function searchForUsers(searchFor){

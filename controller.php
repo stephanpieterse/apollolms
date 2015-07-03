@@ -137,6 +137,7 @@ class Controller {
 		$view = new Template(TEMPLATE_PATH . 'views/site_footer.php');	
 		echo $view;
 		if( defined("DEBUG_MODE") && (DEBUG_MODE === 'on')){
+			error_reporting(E_ALL);
 			$this->print_debug_info();
 		}
 		

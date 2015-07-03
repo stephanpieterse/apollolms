@@ -1,8 +1,7 @@
 <div name="custUserArea" id="custUserArea">
 	<script type="text/javascript" src="scripts/ajax_searches.js"></script>
 	<script type="text/javascript">
-		document.write('Find Users: <input class="searchBox" type="text" id="searchbox_user" name="searchbox_user" value="" />');
-		document.write('<input class="searchButton" type="button" onclick="searchForUsers(document.getElementById(\'searchbox_user\').value);" value="Search"/>');
+		document.write('Find Users: <input class="searchBox" type="text" id="searchbox_user" value="" />');
 	</script>
 	<noscript>
 		<form method="GET" action="users.php">
@@ -14,8 +13,7 @@
 {section name=sec1 loop=$memberdata}
 	<tr>
 	<td>
-	<a href="users.php?f=viewUser&uid={$memberdata[sec1].ID}">
-	
+	<a href="users.php?f=viewUser&uid={$memberdata[sec1].ID}">	
 	{$memberdata[sec1].PROFILEPIC}
 	</a>
 	</td>
@@ -26,8 +24,9 @@
 	<td>{$link}</td>
 	{/foreach}
 	</tr>
-	
 {/section}
-
 </table>
 </div>
+<script type="text/javascript">
+	searchInTable("searchbox_user");
+</script>
