@@ -575,8 +575,8 @@ function userHasCoursePermissionXML($memberID,$xmldata){
 			$hasAccess = true;
 			break;
 		}
-*/
 		}
+*/
 	}
 	return $hasAccess;
 }
