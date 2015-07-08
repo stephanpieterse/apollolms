@@ -7,38 +7,10 @@
  * @author Stephan Pieterse
  * */
  
-function print_option($text){
-	$newString = "<option>" . $text . "</option>";
-	return $newString;
-}
-
 function print_h1($text){
 	$newString = "<h2>" . $text . "</h2>";
 	return $newString;
 }
-
-function print_h2($text){
-	$newString = "<h2>" . $text . "</h2>";
-	return $newString;
-}
-
-function print_h3($text){
-	$newString = "<h3>" . $text . "</h3>";
-	return $newString;
-}
-function print_h4($text){
-	$newString = "<h4>" . $text . "</h4>";
-	return $newString;
-}
-function print_h5($text){
-	$newString = "<h5>" . $text . "</h5>";
-	return $newString;
-}
-function print_h6($text){
-	$newString = "<h6>" . $text . "</h6>";
-	return $newString;
-}
-
 function print_bold($text){
 	$newString = "<b>" . $text . "</b>";
 	return $newString;
@@ -64,7 +36,3 @@ function br(){
 function br_clear(){
 	echo '<br class="clear" />';
 }
-function hr(){
-	echo "<hr />";
-}
-

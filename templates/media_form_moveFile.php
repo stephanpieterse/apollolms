@@ -8,16 +8,15 @@
 <select name="rootDirPath">
 
 <?php
-	echo print_option("uploads/");
+	echo '<option>uploads/</option>';
 	$result = scanMkDir("uploads/","uploads/");
 	
 	foreach($result as $f){
-	echo print_option($f . "/");
+	echo '<option>' . $f . "/" . '</option>';
 	}
 ?>
 
 </select>
-
 <input type="hidden" name="dir" value="<?php echo $_GET['dir'];?>" />
 <input type="hidden" name="file" value="<?php echo $_GET['file'];?>" />
 <input type="submit" value="Move To Folder" />

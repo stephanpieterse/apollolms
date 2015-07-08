@@ -29,8 +29,8 @@
 	$result = sql_execute($query);
 	
 	$data = sql_get($result);
-	echo print_h2($data['NAME']);
-br();
+	echo $data['NAME'];
+	br();
 	echo $data['HTML_CONTENT'];
 	br();
 	$xmlDoc = new DOMDocument;

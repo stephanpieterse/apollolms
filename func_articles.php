@@ -275,7 +275,7 @@ function displayArticleIndex($articleID, $courseID = "0"){
 	$query = 'SELECT * FROM articles WHERE id="' . $articleID . '"';
 	$result = sql_execute($query);
 	$data = sql_get($result);
-	echo print_h2($data['NAME']);
+	echo '<h2>' . $data['NAME'] . '</h2>';
 	br();
 	
 	$xmlDoc = new DOMDocument();

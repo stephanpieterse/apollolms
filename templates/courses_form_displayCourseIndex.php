@@ -4,7 +4,7 @@
 	$result = sql_execute($query);
 
 	$data = sql_get($result);
-	echo print_h2($data['NAME']);
+	echo $data['NAME'];
 	echo '<div class="css-treeview"><ul>';
 
 	$xmlDoc = new DOMDocument;

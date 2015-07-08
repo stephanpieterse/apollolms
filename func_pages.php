@@ -8,6 +8,12 @@
  * 
  * */
 
+function pages_func_rm_page($data){
+	$stat = removeItem('pages',$data['pid']);
+	verifyXML('articles',$data['aid']);
+	return $stat;
+}
+
 function makeIndexPages($article = "<articles></articles>"){
 	$xmlDoc = new DOMDocument;
 	libxml_use_internal_errors(true);
@@ -71,7 +77,7 @@ function view_pages($aid){
 		echo '<a href="pages.php?f=mod_page&pid=' . $childID . ' "><img src="' . ICONS_PATH . 'pencil.png" alt="Edit"/></a>';
 		}
 		if(check_user_permission("content_remove")){
-		echo '<a href="pages.php?aq=rm_page&pid=' . $childID .' "><img src="' . ICONS_PATH . 'cancel.png" alt="Delete"/></a>';
+		echo '<a href="pages.php?q=rm_page&pid=' . $childID .' "><img src="' . ICONS_PATH . 'cancel.png" alt="Delete"/></a>';
 		}
 		echo "<br />";
 

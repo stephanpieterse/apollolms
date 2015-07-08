@@ -459,7 +459,7 @@ Module Location:
 
 function buildGroupsForm($exclude = false, $oldPermissions = "<none></none>"){
 	echo '<div class="permissions_area_box fancyPress" name="groupsArea">';
-	echo print_h1("Groups: ");
+	echo "Groups: ";
 	$query = "SELECT * FROM groupslist";
 	$result = sql_execute($query);
 	while($row = sql_get($result)){
@@ -484,7 +484,7 @@ function buildGroupsForm($exclude = false, $oldPermissions = "<none></none>"){
 function buildPermissionsForm($oldPermissions = "<none></none>"){
 	/*
 	echo '<div class="permissions_area_box" name="usersArea">';
-	echo print_h1("Users: ");
+	echo "Users: ";
 	$query = "SELECT * FROM members";
 	$result = sql_execute($query);
 	while($row = sql_get($result)){
@@ -495,7 +495,7 @@ function buildPermissionsForm($oldPermissions = "<none></none>"){
 	br();
 	*/
 	echo '<div class="permissions_area_box fancyPress" name="groupsArea">';
-	echo print_h1("Groups: ");
+	echo "Groups: ";
 	$query = "SELECT * FROM groupslist";
 	$result = sql_execute($query);
 	while($row = sql_get($result)){
@@ -511,7 +511,7 @@ function buildPermissionsForm($oldPermissions = "<none></none>"){
 	br();
 	/*
 	echo '<div class="permissions_area_box fancyPress" name="groupTypesArea">';
-	echo print_h1("Group Types: ");
+	echo "Group Types: ";
 	$query = "SELECT * FROM groups_types";
 	$result = sql_execute($query);
 	while($row = sql_get($result)){
@@ -522,7 +522,7 @@ function buildPermissionsForm($oldPermissions = "<none></none>"){
 	* */
 	br();
 	echo '<div class="fancyPress">';
-	echo print_h1("Public: ");
+	echo "Public: ";
 	$link = '<input id="public" type="checkbox" name="add-public"';
 	if(xmlHasSpecifiedNode($oldPermissions,array('tagname'=>'public'))){
 			$link .= ' checked ';

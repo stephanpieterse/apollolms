@@ -7,7 +7,7 @@ $d = sql_get($r);
 	    $oldPermissions = $d['PARENTS'];
 
 	    echo '<div class="permissions_area_box fancyPress" name="groupsArea">';
-	    echo print_h1("Groups: ");
+	    echo "Groups:";
 	    $query = "SELECT * FROM groupslist";
 	    $result = sql_execute($query);
 	    while($row = sql_get($result)){

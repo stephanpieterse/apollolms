@@ -1,5 +1,7 @@
 <?php
-
+/*
+*	@author Stephan Pieterse
+*/
 	$pnm = $_GET['pnm'];
 	$aid = isset($_GET['aid']) ? $_GET['aid'] : 0;
 	$cid = isset($_GET['cid']) ? $_GET['cid'] : 0;
@@ -20,8 +22,8 @@
 	sidebarIndexPages($aid, $data['HTML_CONTENT']);
 	
 	echo '<div class="mainArticle">';
-	echo print_h2($data['NAME']);
-	br();
+	echo $data['NAME'];
+	echo '<br/>';
 	echo $data['HTML_CONTENT'];
 	echo '</div>';
 	echo '<br class="clear" />';

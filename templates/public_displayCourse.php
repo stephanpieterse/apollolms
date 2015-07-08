@@ -10,7 +10,7 @@
 	$result = sql_execute($query);
 	
 	$data = sql_get($result);
-	echo print_h2($data['NAME']);
+	echo $data['NAME'];
 	br();
 	echo $data['HTML_CONTENT'];
 	br();

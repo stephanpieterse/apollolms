@@ -15,8 +15,7 @@
 //);
 
 $dispatch_aq = array(
-	'rm_page'=>function(){removeItem('pages', $_GET['pid']); verifyXML('articles',$_GET['aid']);},
-	'add_page'=>function(){a_page_AddNewData($_GET['aid'],$_POST); goToLastPage("add_success");},
+//DEL	'add_page'=>function(){a_page_AddNewData($_GET['aid'],$_POST); goToLastPage("add_success");},
 	'upd_page'=>function(){a_update_page($_GET['pid'],$_POST); goToLastPage("update_success");},
 	//'rm_article'=>function(){removeItem('articles', $_GET['aid']); verifyXML('courses',$_GET['cid']);},
 	'mv_page'=>function(){moveNode('articles', $_GET['aid'], 'PAGES', $_GET['pid'], $_GET['dir']); goToLastPage();},
@@ -30,13 +29,11 @@ $dispatch_aq = array(
 
 $dispatch_uq = array(
 	'upload_profilePicture'=>function(){upload_profilePicture($_FILES);},
-	'submitRequest'=>function(){submitContentRequest($_POST);},
 );
 
 $dispatch_action = array(
 	'rem_course'=>function(){removeItem('courses', $_GET['course']); findOrphans();}, //removeCourse($_GET['course']);
 	'upd_article'=>function(){update_article($_GET['id'],$_POST); goToLastPage();},
-	'del_role'=>function(){rm_roleItem($_GET['id']);},
 	'rem_group'=>function(){removeItem('groupslist', $_GET['group']);},//removeGroupData($_GET['group']);},
 	'setInitTest'=>function(){initTestData(); echo '<META HTTP-EQUIV="Refresh" Content="0; URL=index.php?action=test">';},
 	'test'=>function(){showTest($_SESSION['currentTestName']);},
