@@ -3,25 +3,18 @@
 	$result = sql_execute($query);
 	
 	if(sql_numrows($result) == 0){
-		echo "There are no items in the archive.";
+		echo "There are no items in the archive.";	
 	}
 	
-	echo '<table class="admin_view_table">';
+	$cc = 0;
 	while($data = sql_get($result)){
-		echo '<tr><td>';
-		echo $data['DATE'];
-		echo '</td><td>';
-		echo $data['COMMENTS'];
-		echo '</td><td>';
-	$link = '<a href="backup.php?f=previewData&bid=' . $data['ID'] . '"><img src="' . ICONS_PATH . 'eye.png" alt="preview" /></a>';
-	echo $link;
-	echo '</td><td>';
-	$link = '<a href="backup.php?q=restoreData&bid=' . $data['ID'] . '"><img src="' . ICONS_PATH . 'arrow_redo.png" alt="restore" /></a>';
-	echo $link;
-	echo '</td><td>';
-	$link = '<a href="backup.php?q=removeData&bid=' . $data['ID'] . '"><img src="' . ICONS_PATH . 'bin.png" alt="remove" /></a>';
-	echo $link;
-	echo '</td></tr>';
+		$bdata[$cc]['DATE'] =  $data['DATE'];
+		$bdata[$cc]['ID'] =  $data['ID'];
+		$bdata[$cc]['COMMENTS'] =  $data['COMMENTS'];
+		$cc++;
 	}
-	echo '</table>';
-?>
+	
+	$smarty->assign('iconsPath',ICONS_PATH);
+	$smarty->assign('bdata',$bdata);
+	$tplName = changeExtension(pathinfo(__FILE__,PATHINFO_BASENAME),'tpl');
+	$smarty->display($tplName);
