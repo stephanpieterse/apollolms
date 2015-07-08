@@ -13,6 +13,7 @@
 		$fullArray[$cc]['NAME'] = $rowdata['NAME'];
 		$fullArray[$cc]['GROUPTYPE'=] = $rowdata['GROUPTYPE'];
 		$fullArray[$cc]['DESCRIPTION'] = $rowdata['DESCRIPTION'];
+		$cc++;
 	}
 
 	$iconsPath = ICONS_PATH;	

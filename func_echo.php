@@ -6,15 +6,6 @@
  * @package ApolloLMS
  * @author Stephan Pieterse
  * */
- 
-function print_h1($text){
-	$newString = "<h2>" . $text . "</h2>";
-	return $newString;
-}
-function print_bold($text){
-	$newString = "<b>" . $text . "</b>";
-	return $newString;
-}
 
 /**
  * DONT DEPRECATE THIS

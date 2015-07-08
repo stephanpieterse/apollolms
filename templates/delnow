@@ -20,20 +20,15 @@
 						$permName[] = $child->tagName;
 						
 					//	echo $child->nodeValue;
+						//br();
 				}
 	
 	$sqlArr = implode("','",$permName);
 	$q = "SELECT * FROM role_permissions WHERE permission IN ('" . $sqlArr . "')";
 	$d = sql_execute($q);
 	
-	$cc = 0;
 	while($r = sql_get($d)){
-		$rdata[$cc]['NAME'] =  $r['NAME'];
-		$rdata[$cc]['DESCRIPTION'] = $r['DESCRIPTION'];
-		$cc++;
+		echo $r['NAME'];
+		br();
+		echo $r['DESCRIPTION'];
 	}
-
-	$smarty->assign('rdata',$rdata);
-	$tplName = changeExtension(pathinfo(__FILE__,PATHINFO_BASENAME),'tpl');
-	$smarty->display($tplName);
-
