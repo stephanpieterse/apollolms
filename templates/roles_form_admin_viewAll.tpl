@@ -4,7 +4,7 @@
 		document.write('Find Users: <input class="searchBox" type="text" id="searchbox_roles" value="" />');
 	</script>
 	<noscript>
-		<form method="GET" action="users.php">
+		<form method="GET" action="roles.php">
 		<input name="s" type="text" value="Search"/>
 		<input type="submit" />
 		</form>
