@@ -153,11 +153,8 @@ class Controller {
 	}
 	
 	public function executeControl($GETDAT, $POSTDAT){
-		//$f = $GETDAT['f'];
 		$f = (isset($GETDAT['f']) ? $GETDAT['f'] : null);
-		//$q = $GETDAT['q'];
 		$q = (isset($GETDAT['q']) ? $GETDAT['q'] : null);
-		//$pq = $GETDAT['pq'];
 		$pq = (isset($GETDAT['pq']) ? $GETDAT['pq'] : null);
 		$gq = (isset($GETDAT['gq']) ? $GETDAT['gq'] : null);
 		$fq = (isset($GETDAT['fq']) ? $GETDAT['fq'] : null);
@@ -192,7 +189,6 @@ class Controller {
 			}
 		}
 		
-		// BETA FOR HANDLING FILES VIA CONTROLLER
 		if(isset($fq)){
 			$queryToExec = $funcPre . $fq;
 			if(function_exists($queryToExec)){
@@ -200,13 +196,13 @@ class Controller {
 				$POSTDAT = array_merge($POSTDAT,$_FILES);
 				$stat = call_user_func($queryToExec, $POSTDAT);
 				if($stat !== false){
-					page_redirect('index.php?msg=' . $stat);//goToLastPage('success');
+					//page_redirect('index.php?msg=' . $stat);;
+					goToLastPage($stat);
 				}else{
-					page_redirect('index.php?msg=failure');
+					goToLastPage('failure');
 				}
 			}else{
-				//goHome('failure_nofunc');
-				page_redirect('index.php');
+				goToLastPage('failure');
 			}
 		}
 		
@@ -227,7 +223,6 @@ class Controller {
 			$formToShow = '' . TEMPLATE_PATH . $formPre . 'search' .'.php';
 				
 			//$this->build_navigation();
-		
 			chdir(dirname(__FILE__));
 			
 			if(file_exists($formToShow)){
@@ -271,7 +266,6 @@ class Controller {
 			}
 				
 			//if(!$this->slimPage){$this->build_navigation();}
-		
 			chdir(dirname(__FILE__));
 			
 			if(file_exists($formToShow)){

@@ -28,12 +28,11 @@ $dispatch_aq = array(
 );
 
 $dispatch_uq = array(
-	'upload_profilePicture'=>function(){upload_profilePicture($_FILES);},
+	//'upload_profilePicture'=>function(){upload_profilePicture($_FILES);},
 );
 
 $dispatch_action = array(
 	'rem_course'=>function(){removeItem('courses', $_GET['course']); findOrphans();}, //removeCourse($_GET['course']);
-	'upd_article'=>function(){update_article($_GET['id'],$_POST); goToLastPage();},
 	'rem_group'=>function(){removeItem('groupslist', $_GET['group']);},//removeGroupData($_GET['group']);},
 	'setInitTest'=>function(){initTestData(); echo '<META HTTP-EQUIV="Refresh" Content="0; URL=index.php?action=test">';},
 	'test'=>function(){showTest($_SESSION['currentTestName']);},

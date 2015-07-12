@@ -28,7 +28,7 @@
 			}
 			$linkB = $linkB . $L;
 			$breadcrumbData .= '<a href="media.php?f=admin_viewAllMedia&dir=' . $linkB . '">';
-			$breadcrumbData .= print_bold($L);
+			$breadcrumbData .= $L;
 			$breadcrumbData .= '</a>';
 		}
 		

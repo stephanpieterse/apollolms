@@ -1,14 +1,13 @@
-<noscript>
-	<form method="GET" action="courses.php">
-	<input name="s" type="text" value="Search"/>
-	<input type="submit" value="Search"/>
-	</form>
-	</noscript>
 	<script type="text/javascript" src="scripts/ajax_searches.js"></script>
 	<script type="text/javascript">
-	document.write('<input class="searchBox" type="text" id="searchbox_courses" name="searchbox_courses" value="" />');
-	document.write('<input class="searchButton" type="button" onclick="searchForCoursesComplete(document.getElementById(\'searchbox_courses\').value);" value="Search"/>');
+		document.write('Find Users: <input class="searchBox" type="text" id="searchbox_course" value="" />');
 	</script>
+	<noscript>
+		<form method="GET" action="users.php">
+		<input name="s" type="text" value="Search"/>
+		<input type="submit" />
+		</form>
+	</noscript>
 <table class="admin_view_table">
 
 {section name=sec1 loop=$courseData}
@@ -36,3 +35,6 @@ Course Packages:
 	</tr>
 {/section}
 </table>
+<script type="text/javascript">
+	searchInTable("searchbox_course");
+</script>

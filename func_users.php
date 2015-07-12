@@ -403,7 +403,7 @@ function users_func_updateGroupsOnly($data){
  * 
  * @param $filedata A passed $_FILES array
  * */
-function upload_ProfilePicture($filedata){
+function users_func_upload_ProfilePicture($filedata){
 	if($filedata['uploadedfile']['error'] == 1){
 		return false;
 	}

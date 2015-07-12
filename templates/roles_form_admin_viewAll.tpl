@@ -1,9 +1,15 @@
+<div name="custUserArea" id="custUserArea">
+	<script type="text/javascript" src="scripts/ajax_searches.js"></script>
+	<script type="text/javascript">
+		document.write('Find Users: <input class="searchBox" type="text" id="searchbox_roles" value="" />');
+	</script>
+	<noscript>
+		<form method="GET" action="users.php">
+		<input name="s" type="text" value="Search"/>
+		<input type="submit" />
+		</form>
+	</noscript>
 <table class="admin_view_table">
-	<form method="GET" action="roles.php">
-	<input name="s" type="text" value="Search"/>
-	<input type="submit" />
-	</form>
-
 {section name=sec1 loop=$roledata}
 	<tr>
 	<td>
@@ -13,7 +19,8 @@
 	<td>{$link}</td>
 	{/foreach}
 	</tr>
-	
 {/section}
-
 </table>
+<script type="text/javascript">
+	searchInTable("searchbox_roles");
+</script>

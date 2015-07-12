@@ -1,4 +1,9 @@
 <?php
+/*
+ * @author Stephan Pieterse
+ * */
+	$smarty = new Smarty;
+	
 	$query = "SELECT * FROM archived_data";
 	$result = sql_execute($query);
 	

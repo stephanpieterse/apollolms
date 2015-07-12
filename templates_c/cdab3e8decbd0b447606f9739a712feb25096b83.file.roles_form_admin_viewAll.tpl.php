@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.17, created on 2015-03-22 19:10:31
+<?php /* Smarty version Smarty-3.1.17, created on 2015-07-12 21:27:06
          compiled from "./templates/roles_form_admin_viewAll.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:1676707505550f13a7ba50c6-34534091%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'cdab3e8decbd0b447606f9739a712feb25096b83' => 
     array (
       0 => './templates/roles_form_admin_viewAll.tpl',
-      1 => 1426836583,
+      1 => 1436736260,
       2 => 'file',
     ),
   ),
@@ -15,21 +15,27 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'function' => 
   array (
   ),
+  'version' => 'Smarty-3.1.17',
+  'unifunc' => 'content_550f13a7c588c3_86390294',
   'variables' => 
   array (
     'roledata' => 0,
     'link' => 0,
   ),
   'has_nocache_code' => false,
-  'version' => 'Smarty-3.1.17',
-  'unifunc' => 'content_550f13a7c588c3_86390294',
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_550f13a7c588c3_86390294')) {function content_550f13a7c588c3_86390294($_smarty_tpl) {?><table class="admin_view_table">
-	<form method="GET" action="roles.php">
-	<input name="s" type="text" value="Search"/>
-	<input type="submit" />
-	</form>
-
+<?php if ($_valid && !is_callable('content_550f13a7c588c3_86390294')) {function content_550f13a7c588c3_86390294($_smarty_tpl) {?><div name="custUserArea" id="custUserArea">
+	<script type="text/javascript" src="scripts/ajax_searches.js"></script>
+	<script type="text/javascript">
+		document.write('Find Users: <input class="searchBox" type="text" id="searchbox_roles" value="" />');
+	</script>
+	<noscript>
+		<form method="GET" action="users.php">
+		<input name="s" type="text" value="Search"/>
+		<input type="submit" />
+		</form>
+	</noscript>
+<table class="admin_view_table">
 <?php if (isset($_smarty_tpl->tpl_vars['smarty']->value['section']['sec1'])) unset($_smarty_tpl->tpl_vars['smarty']->value['section']['sec1']);
 $_smarty_tpl->tpl_vars['smarty']->value['section']['sec1']['name'] = 'sec1';
 $_smarty_tpl->tpl_vars['smarty']->value['section']['sec1']['loop'] = is_array($_loop=$_smarty_tpl->tpl_vars['roledata']->value) ? count($_loop) : max(0, (int) $_loop); unset($_loop);
@@ -68,8 +74,9 @@ $_smarty_tpl->tpl_vars['link']->_loop = true;
 </td>
 	<?php } ?>
 	</tr>
-	
 <?php endfor; endif; ?>
-
 </table>
+<script type="text/javascript">
+	searchInTable("searchbox_roles");
+</script>
 <?php }} ?>

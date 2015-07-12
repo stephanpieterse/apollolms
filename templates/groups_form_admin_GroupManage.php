@@ -10,8 +10,9 @@
 
 	$cc = 0;
 	while($rowdata = sql_get($sqlresult)){
+		$fullArray[$cc]['ID'] = $rowdata['ID'];
 		$fullArray[$cc]['NAME'] = $rowdata['NAME'];
-		$fullArray[$cc]['GROUPTYPE'=] = $rowdata['GROUPTYPE'];
+		$fullArray[$cc]['GROUPTYPE'] = $rowdata['GROUPTYPE'];
 		$fullArray[$cc]['DESCRIPTION'] = $rowdata['DESCRIPTION'];
 		$cc++;
 	}
@@ -22,4 +23,3 @@
 	
 	$tplName = changeExtension(pathinfo(__FILE__,PATHINFO_BASENAME),'tpl');
 	$smarty->display($tplName);
-?>

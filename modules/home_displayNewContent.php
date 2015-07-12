@@ -66,7 +66,7 @@
 					$dataArray[$curItem]['HEADLINK'] = 'courses.php?f=displayCourse&cid=' . $rowdata['ID'];
 				}else{
 					if(!isset($onlyRegCourses)){
-						$link = print_bold($rowdata['NAME'] . "<a class=\"disp_block\" href=\"courses.php?f=register&cid=" . $rowdata['ID'] ." \"> - REGISTER");
+						$link = $rowdata['NAME'] . "<a class=\"disp_block\" href=\"courses.php?f=register&cid=" . $rowdata['ID'] ." \"> - REGISTER";
 						$dataArray[$curItem]['HEADLINK'] = 'courses.php?f=register&cid=' . $rowdata['ID'];
 						$link .= " Price: ";
 						if($rowdata['PRICE'] == 0){

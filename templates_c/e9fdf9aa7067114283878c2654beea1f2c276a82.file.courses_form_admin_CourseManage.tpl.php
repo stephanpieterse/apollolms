@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.17, created on 2015-07-03 20:07:31
+<?php /* Smarty version Smarty-3.1.17, created on 2015-07-12 20:28:46
          compiled from "./templates/courses_form_admin_CourseManage.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:1502936693550d7d745b4a67-99554535%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'e9fdf9aa7067114283878c2654beea1f2c276a82' => 
     array (
       0 => './templates/courses_form_admin_CourseManage.tpl',
-      1 => 1435237059,
+      1 => 1436732923,
       2 => 'file',
     ),
   ),
@@ -25,17 +25,16 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_550d7d74671504_04983424')) {function content_550d7d74671504_04983424($_smarty_tpl) {?><noscript>
-	<form method="GET" action="courses.php">
-	<input name="s" type="text" value="Search"/>
-	<input type="submit" value="Search"/>
-	</form>
-	</noscript>
-	<script type="text/javascript" src="scripts/ajax_searches.js"></script>
+<?php if ($_valid && !is_callable('content_550d7d74671504_04983424')) {function content_550d7d74671504_04983424($_smarty_tpl) {?>	<script type="text/javascript" src="scripts/ajax_searches.js"></script>
 	<script type="text/javascript">
-	document.write('<input class="searchBox" type="text" id="searchbox_courses" name="searchbox_courses" value="" />');
-	document.write('<input class="searchButton" type="button" onclick="searchForCoursesComplete(document.getElementById(\'searchbox_courses\').value);" value="Search"/>');
+		document.write('Find Users: <input class="searchBox" type="text" id="searchbox_course" value="" />');
 	</script>
+	<noscript>
+		<form method="GET" action="users.php">
+		<input name="s" type="text" value="Search"/>
+		<input type="submit" />
+		</form>
+	</noscript>
 <table class="admin_view_table">
 
 <?php if (isset($_smarty_tpl->tpl_vars['smarty']->value['section']['sec1'])) unset($_smarty_tpl->tpl_vars['smarty']->value['section']['sec1']);
@@ -121,4 +120,7 @@ $_smarty_tpl->tpl_vars['link']->_loop = true;
 	</tr>
 <?php endfor; endif; ?>
 </table>
+<script type="text/javascript">
+	searchInTable("searchbox_course");
+</script>
 <?php }} ?>
