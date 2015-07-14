@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.17, created on 2015-07-12 20:17:04
+<?php /* Smarty version Smarty-3.1.17, created on 2015-07-14 19:03:02
          compiled from "./templates/groups_form_admin_GroupManage.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:11157818995575fc7e537df3-33953988%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '0c600105de0a516dd5618d457354034566f38dce' => 
     array (
       0 => './templates/groups_form_admin_GroupManage.tpl',
-      1 => 1436732223,
+      1 => 1436900577,
       2 => 'file',
     ),
   ),
@@ -24,12 +24,16 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_5575fc7e54b3c1_28875878')) {function content_5575fc7e54b3c1_28875878($_smarty_tpl) {?><script type="text/javascript" src="scripts/ajax_searches.js"></script>
-<script type="text/javascript">
-document.write('<input class="searchBox" type="text" id="group_search" name="group_search" value="" />');
-document.write('<input class="searchButton" type="button" onclick="searchForGroups(document.getElementById(\'group_search\').value);" value="Search"/>');
-</script>
-
+<?php if ($_valid && !is_callable('content_5575fc7e54b3c1_28875878')) {function content_5575fc7e54b3c1_28875878($_smarty_tpl) {?>	<script type="text/javascript" src="scripts/ajax_searches.js"></script>
+	<script type="text/javascript">
+		document.write('Search: <input class="searchBox" type="text" id="searchbox_groups" value="" />');
+	</script>
+	<noscript>
+		<form method="GET" action="groups.php">
+		<input name="s" type="text" value="Search"/>
+		<input type="submit" />
+		</form>
+	</noscript>
 <div id="custGroupArea">
 <table class="admin_view_table">
 <?php if (isset($_smarty_tpl->tpl_vars['smarty']->value['section']['sec1'])) unset($_smarty_tpl->tpl_vars['smarty']->value['section']['sec1']);
@@ -76,4 +80,7 @@ cancel.png" alt="Delete"/></a>
 </table>
 </div>
 <br class="clear"/>
+<script type="text/javascript">
+	searchInTable("searchbox_groups");
+</script>
 <?php }} ?>

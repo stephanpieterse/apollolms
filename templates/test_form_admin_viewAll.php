@@ -1,25 +1,28 @@
-<input class="searchBox" name="test_search" value="Search Tests" />
-<button class="searchButton">Search</button>
-<br/>
-<br/>
-<table class="admin_view_table">
 <?php
+/*
+ * @author Stephan Pieterse
+ * */
+	$smarty = new Smarty;
 	$sqlquery = "SELECT * FROM tests ORDER BY name ASC";
 	$sqlresult = sql_execute($sqlquery);
 	
+	$cc = 0;
 	while($rowdata = sql_get($sqlresult)){
-		echo "<tr>";
-		echo '<td>' . $rowdata['NAME'] . '</td>';
+		$arrdata[$cc]['NAME'] = $rowdata['NAME'];
+		$arrdata[$cc]['ID'] = $rowdata['ID'];
 		//if(check_user_permission("test_view")){
 		//echo "<td><a target=\"_blank\" href=\"index.php?aq=admin_view_test&id=" . $rowdata['ID'] ." \"> <img src=\"" . ICONS_PATH . "magnifier.png\" alt=\"View\"/></a></td>";
 		//}
 		if(check_user_permission("test_modify")){
-		echo "<td><a target=\"_blank\" href=\"tests.php?f=modItem&id=" . $rowdata['ID'] ." \"> <img src=\"" . ICONS_PATH . "pencil.png\" alt=\"Edit\"/></a></td>";
+		$arrdata[$cc]['MOD'] = true;
 		}
 		if(check_user_permission("test_remove")){
-		echo "<td><a href=\"index.php?confirm&aq=rem_test&id=" . $rowdata['ID'] . " \"> <img src=\"" . ICONS_PATH . "cancel.png\" alt=\"Delete\"/></a></td>";
+		$arrdata[$cc]['DEL'] = true;
 		}
-		echo "</tr>";
+		$cc++;
 	}
-?>
-</table>
+	
+	$smarty->assign('testData',$arrdata);
+	$smarty->assign('iconsPath',ICONS_PATH);
+	$tplName = changeExtension(pathinfo(__FILE__,PATHINFO_BASENAME),'tpl');
+	$smarty->display($tplName);

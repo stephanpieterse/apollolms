@@ -1,9 +1,13 @@
-<script type="text/javascript" src="scripts/ajax_searches.js"></script>
-<script type="text/javascript">
-document.write('<input class="searchBox" type="text" id="group_search" name="group_search" value="" />');
-document.write('<input class="searchButton" type="button" onclick="searchForGroups(document.getElementById(\'group_search\').value);" value="Search"/>');
-</script>
-
+	<script type="text/javascript" src="scripts/ajax_searches.js"></script>
+	<script type="text/javascript">
+		document.write('Search: <input class="searchBox" type="text" id="searchbox_groups" value="" />');
+	</script>
+	<noscript>
+		<form method="GET" action="groups.php">
+		<input name="s" type="text" value="Search"/>
+		<input type="submit" />
+		</form>
+	</noscript>
 <div id="custGroupArea">
 <table class="admin_view_table">
 {section name=sec1 loop=$gdata}
@@ -21,3 +25,6 @@ document.write('<input class="searchButton" type="button" onclick="searchForGrou
 </table>
 </div>
 <br class="clear"/>
+<script type="text/javascript">
+	searchInTable("searchbox_groups");
+</script>

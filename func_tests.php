@@ -401,7 +401,8 @@ function listAvailableTestsWithResults(){
 	return $linklist;
 }
 
-function deleteTestResult($id){
+function test_func_deleteTestResult($data){
+		$id = $data['id'];
 		if(check_user_permission("test_result_remove")){
 		
 		$query = 'SELECT * FROM testresults WHERE ID="' . $id . '"';
@@ -410,15 +411,9 @@ function deleteTestResult($id){
 		
 		$query = 'DELETE FROM testresults WHERE ID="' . $id . '"';
 		$result = sql_execute($query);
-		/*if($result){
-		echo '<META HTTP-EQUIV="Refresh" Content="0; URL=index.php?msg=result_remove_success">';
-		}else
-		{
-		echo '<META HTTP-EQUIV="Refresh" Content="0; URL=index.php?msg=content_remove_failure">';
-		}*/
-		return true;
+		return 'success';
 	}else{
-		return false;
+		return 'failure';
 	}
 }
 
@@ -528,13 +523,14 @@ function insertNewTestItem($name, $desc, $code){
 	$name = makeSafe($name);
 	$desc = makeSafe($desc);
 	$code = makeSafe($code);
-
-	$query = "INSERT INTO tests(name, description, code, access, questions, misccommands) VALUES('$name', '$desc', '$code', '<access></access>', '<testdata></testdata>', '<commands></commands>')";
-	$result = sql_execute($query);
-		return true;
+	
+	$test = new ALMS_TestHandler;
+	$ret = $test->insertNewTestItem($name, $desc, $code);
+	
+	return $ret;
 	}else{
 		return false;
-	}	
+	}
 }
 
 function loadInsertForm($type){

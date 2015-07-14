@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.17, created on 2015-07-12 21:29:09
+<?php /* Smarty version Smarty-3.1.17, created on 2015-07-14 19:06:26
          compiled from "./templates/roles_form_admin_viewAll.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:1676707505550f13a7ba50c6-34534091%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'cdab3e8decbd0b447606f9739a712feb25096b83' => 
     array (
       0 => './templates/roles_form_admin_viewAll.tpl',
-      1 => 1436736482,
+      1 => 1436900577,
       2 => 'file',
     ),
   ),
@@ -24,13 +24,12 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_550f13a7c588c3_86390294')) {function content_550f13a7c588c3_86390294($_smarty_tpl) {?><div name="custUserArea" id="custUserArea">
-	<script type="text/javascript" src="scripts/ajax_searches.js"></script>
+<?php if ($_valid && !is_callable('content_550f13a7c588c3_86390294')) {function content_550f13a7c588c3_86390294($_smarty_tpl) {?>	<script type="text/javascript" src="scripts/ajax_searches.js"></script>
 	<script type="text/javascript">
-		document.write('Find Users: <input class="searchBox" type="text" id="searchbox_roles" value="" />');
+		document.write('Search: <input class="searchBox" type="text" id="searchbox_roles" value="" />');
 	</script>
 	<noscript>
-		<form method="GET" action="users.php">
+		<form method="GET" action="roles.php">
 		<input name="s" type="text" value="Search"/>
 		<input type="submit" />
 		</form>

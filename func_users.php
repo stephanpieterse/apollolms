@@ -92,6 +92,13 @@ function isUserRegisteredForCourse($uid, $cid){
 	return $isRegistered;
 }
 
+/*
+ * This should get fed _file and _post data
+ * */
+function users_func_importcsv($data){
+	return importCSVFileToUser($data);
+}
+
 /**
  * 
  * Parameters: path to file , extra data
@@ -103,14 +110,14 @@ function isUserRegisteredForCourse($uid, $cid){
  * 
  * doesn't return anything
  */
-function importCSVFileToUser($file, $extra){
+function importCSVFileToUser($data){
 	
-	$ext = pathinfo($file['uploadedfile']['name'], PATHINFO_EXTENSION);
+	$ext = pathinfo($data['uploadedfile']['name'], PATHINFO_EXTENSION);
 	if(($ext != 'csv')){
 		return false;
 	}
 	
-	$fileDat = fopen($file['uploadedfile']['tmp_name'], 'r');
+	$fileDat = fopen($data['uploadedfile']['tmp_name'], 'r');
 	
 	$totalrecords = 0;
 	
@@ -122,8 +129,8 @@ function importCSVFileToUser($file, $extra){
 		//var_dump($csvArr);
 		$csvArr['randomPass'] = 1;
 		
-		if(isset($extra['autogroup'])){
-		$gid = makeSafe($extra['autogroup']);
+		if(isset($data['autogroup'])){
+		$gid = makeSafe($data['autogroup']);
 		$addtogid = explode('-',$gid);
 		$csvArr['addToGID'] = $addtogid[0];
 	}else{
@@ -136,7 +143,7 @@ function importCSVFileToUser($file, $extra){
 		br();
 		echo "Import completed. " . $totalrecords . " items imported.";
 		
-		$mailBody = $totalrecords . " new users have been imported to the site by user id " . $_SESSION['userID'];
+		$mailBody = $totalrecords . " new users have been imported to the site by user ID: " . $_SESSION['userID'];
 		mail_informAdmin('New users have been added', '');
 		return true;
 }

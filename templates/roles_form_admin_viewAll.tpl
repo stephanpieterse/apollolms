@@ -1,7 +1,6 @@
-<div name="custUserArea" id="custUserArea">
 	<script type="text/javascript" src="scripts/ajax_searches.js"></script>
 	<script type="text/javascript">
-		document.write('Find Users: <input class="searchBox" type="text" id="searchbox_roles" value="" />');
+		document.write('Search: <input class="searchBox" type="text" id="searchbox_roles" value="" />');
 	</script>
 	<noscript>
 		<form method="GET" action="roles.php">

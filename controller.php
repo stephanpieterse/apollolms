@@ -158,7 +158,7 @@ class Controller {
 		$pq = (isset($GETDAT['pq']) ? $GETDAT['pq'] : null);
 		$gq = (isset($GETDAT['gq']) ? $GETDAT['gq'] : null);
 		$fq = (isset($GETDAT['fq']) ? $GETDAT['fq'] : null);
-		$s = (isset($GETDAT['s']) ? $GETDAT['s'] : null);
+		$sq = (isset($GETDAT['sq']) ? $GETDAT['sq'] : null);
 		$mq = (isset($GETDAT['mq']) ? $GETDAT['mq'] : null);
 		$msg = (isset($GETDAT['msg']) ? $GETDAT['msg'] : null);
 		$searchFor = (isset($POSTDAT['search']) ? $POSTDAT['search'] : null);
@@ -217,7 +217,7 @@ class Controller {
 			$f = 'home';
 		}
 		
-		if(isset($s)){
+		if(isset($sq)){
 			if(!$this->headerBuilt){$this->build_header();}
 			markLastPage($GETDAT);
 			$formToShow = '' . TEMPLATE_PATH . $formPre . 'search' .'.php';
@@ -227,7 +227,7 @@ class Controller {
 			
 			if(file_exists($formToShow)){
 				include($formToShow);
-				echo $s;
+				echo $sq;
 			}else{
 				goHome('404');
 			}

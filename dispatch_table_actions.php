@@ -24,11 +24,6 @@ $dispatch_aq = array(
 	'mod_test_prerequisites'=>function(){mod_test_prerequisites($_GET['tid']);},
 	'rem_test'=>function(){removeItem('tests', $_GET['id']); goToLastPage();},
 	//'module_settings_update'=>function(){module_update_settings($_GET['mid'],$_POST); goToLastPage();},
-	'uploadModule'=>function(){installModule($_FILES);goToLastPage();},
-);
-
-$dispatch_uq = array(
-	//'upload_profilePicture'=>function(){upload_profilePicture($_FILES);},
 );
 
 $dispatch_action = array(
@@ -43,7 +38,4 @@ $dispatch_action = array(
 	'mod_test_rmQuestion'=>function(){rm_question($_GET['tid'],$_GET['qid']);},
 	'addQuestion'=>function(){mod_test_addQuestion($_GET['id'], $_POST['question_type']);},
 	'insertQuestion'=>function(){mod_test_insertQuestion($_GET['id'], $_POST); goToLastPage();},
-	'mknewFolder'=>function(){makeNewFolder($_POST['rootDirPath'] . $_POST['newFolderName']);},
-	'a_del_result'=>function(){if(deleteTestResult($_GET['id']) !== true){goHome("permission_denied");}else{ goToLastPage();}},
-	'uplcsvuser'=>function(){importCSVFileToUser($_FILES, $_POST);},
 );

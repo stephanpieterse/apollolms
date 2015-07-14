@@ -4,7 +4,6 @@
  * @package ApolloLMS
  * */
  
- $smarty = new Smarty;
 ?>
 <div>
 <span class="bold">Gender Statistics:</span>
@@ -120,8 +119,8 @@
 <script type="text/javascript" src="<?php echo SCRIPTS_PATH ?>jqplot/plugins/jqplot.pieRenderer.min.js"></script>
 
 <?php
-
-$smarty->assign('testlist',$linklist);
+	$smarty = new Smarty;
+	//$smarty->assign('testlist',$linklist);
 	$tplName = changeExtension(pathinfo(__FILE__,PATHINFO_BASENAME),'tpl');
 	$smarty->display($tplName);
 	

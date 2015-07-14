@@ -5,4 +5,3 @@
 	$control->formPre = 'public_';
 	$control->funcPre = 'public_func_';
 	$control->executeControl($_GET,$_POST);
-?>

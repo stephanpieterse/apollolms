@@ -97,7 +97,7 @@ function get_file_class($filename){
 /*
 	Loads a file from the path specified, and checks if the class has a basic function returning the data we need to add it into the db.
 */
-function installModule($moduleFile){
+function modules_func_installModule($moduleFile){
 	$target_path =  dirname(__FILE__) . '/' . MODULE_PATH;
 	$ext = pathinfo($moduleFile['uploadedfile']['name'], PATHINFO_EXTENSION);
 

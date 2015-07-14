@@ -9,15 +9,18 @@
 	overflow: hidden;
 }
 
-
-.mainNav li{display:block; float:left;}
+.mainNav li{
+	display:block; 
+	float:left;
+	width: 75px;
+	}
 
 .mainNav ul li a:link, .mainNav ul li a:visited{
 	display:block;
 	float:left;
 	min-height:20px;
 	padding:3px 3px 3px 3px;
-	width:45px;
+	width: 75px;
 	color: #000000;
 	}
 
@@ -31,8 +34,8 @@
 	}
 
 .mainNav ul li.active a, .mainNav ul li a:hover{
-	color:#eeeeee;
-	background: #000000;
+	color:#111111;
+	background: #A6DA76;
 	}
 
 
