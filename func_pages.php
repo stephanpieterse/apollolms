@@ -84,6 +84,35 @@ function view_pages($aid){
 			}
 }
 
+/**
+ * TODO beta of article as one system
+ * */
+function func_courses_addNewNode($data){
+	$artId = makeSafe($data['articleId']);
+	$nodeParent = makeSafe($data['nodeParId']);
+	$nodeContent = makeSafe($data['nodeContent']);
+	$dateMod = date("Y-m-d-H-i-s");
+	
+	$q = "SELECT * FROM articles WHERE id='$artId' LIMIT 1";
+	$r = sql_execute($q);
+	$d = sql_get($r);
+	
+	$oldData = $r['packagecontent']
+	
+	if($oldData = ''){
+		$oldData = '<pack></pack>';
+	}
+	
+	$newNodeId = get_nextAvailableIdRecur($oldData);
+	
+	$newXML = addNode($oldData, "node", array('id'=>$newNodeId,'modified'=>$dateMod,'content'=>$nodeContent));
+	
+	$q = "UPDATE articles SET packagecontent='$newXML' WHERE id='$artId'";
+	$r = sql_execute($q);
+	
+	return true;
+}
+
 function a_page_AddNewData($aid,$pdata){
 	$pName = $pdata['pageName'];
 	$pName = makeSafe($pName);

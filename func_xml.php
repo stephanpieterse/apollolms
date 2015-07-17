@@ -43,6 +43,24 @@ function xmlGetSpecifiedNode_Position($xmldata, $nodeattrib){
 	return $foundNode;
 }
 
+function xmlGetSpecifiedNode2($xmldata, $nodeattrib){
+	if(!isset($nodeattrib['tagname'])){
+		return 'Function has to specify a tag name for searching';
+	}
+	
+	$tagname = $nodeattrib['tagname'];
+	
+	$attrlist = $tagname;
+	foreach($nodeattrib as $key=>$val){
+			if($key != 'tagname'){
+				$attrlist .= ' and @' . $key . '="' . $val . '"';
+			}
+	
+	$doc = new ALMS_XMLHandler($xmldata);
+	$nodeQ = '//' . '[' . $attrlist . ']';
+	$doc->getNodeList($nodeQ);
+}
+
 /**
  * 
  * NOTA: die function is baie van 'n moerawiese fokop wat nogal goed werk. maar ek kan maybe xpath gebruik in die toekoms om dit makliker te maak.

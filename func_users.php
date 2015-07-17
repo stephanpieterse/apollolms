@@ -408,7 +408,7 @@ function users_func_updateGroupsOnly($data){
 /**
  * Uploads a file as the users profile picture
  * 
- * @param $filedata A passed $_FILES array
+ * @param $filedata A passed $_FILES and $_POST array
  * */
 function users_func_upload_ProfilePicture($filedata){
 	if($filedata['uploadedfile']['error'] == 1){
@@ -433,16 +433,12 @@ function users_func_upload_ProfilePicture($filedata){
 	
 	$target_path .= $ext;
 	
-	//if(move_uploaded_file($_FILES['uploadedfile']['tmp_name'], $target_path)) {
 	if(saveThumb($filedata['uploadedfile']['tmp_name'], $target_path,256,256)){
-	//echo "Your profile picture has been successfully uploaded.";
 		return "success";
 	} else{
-	//echo "There was an error uploading your image, please try again!";
 		return "err_upload";
 	}
 	}else{
-		//echo "The file needs to be of image format png or jpeg.";
 		return "err_photo_format";
 	}	
 }

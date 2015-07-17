@@ -29,9 +29,8 @@ $dispatch_aq = array(
 $dispatch_action = array(
 	'rem_course'=>function(){removeItem('courses', $_GET['course']); findOrphans();}, //removeCourse($_GET['course']);
 	'rem_group'=>function(){removeItem('groupslist', $_GET['group']);},//removeGroupData($_GET['group']);},
-	'setInitTest'=>function(){initTestData(); echo '<META HTTP-EQUIV="Refresh" Content="0; URL=index.php?action=test">';},
-	'test'=>function(){showTest($_SESSION['currentTestName']);},
-	'addResult'=>function(){$_SESSION['currentQuestion'] = $_SESSION['currentQuestion'] + 1;addResultData($_GET['qid'],$_GET['tid'],$_POST);echo '<META HTTP-EQUIV="Refresh" Content="0; URL=index.php?action=test">';},
+	'setInitTest'=>function(){initTestData(); echo '<META HTTP-EQUIV="Refresh" Content="0; URL=tests.php?q=test&tid='. $_SESSION['currentTestName'] . ' ">';},
+	'addResult'=>function(){$_SESSION['currentQuestion'] = $_SESSION['currentQuestion'] + 1;addResultData($_GET['qid'],$_GET['tid'],$_POST);echo '<META HTTP-EQUIV="Refresh" Content="0; URL=tests.php?q=test&tid='. $_SESSION['currentTestName'] . ' ">';},
 	'insertTestQuestion'=>function(){loadInsertForm($_GET['questionType']);},		
 	'newTestItem'=>function(){insertNewTestItem($_POST['testname'],$_POST['description'],$_POST['code']); goToLastPage();},
 	'set_test_permissions'=>function(){set_test_permissions($_GET['id'], $_POST);},

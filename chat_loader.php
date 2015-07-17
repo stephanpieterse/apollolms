@@ -75,13 +75,10 @@ Server running at http://127.0.0.1:1337
         	
 			 if(preg_match($reg_exUrl, $message, $url)) {
        			$message = preg_replace($reg_exUrl, '<a href="'.$url[0].'" target="_blank">'.$url[0].'</a>', $message);
-				} 
-			 
-        	
+				}
         	 fwrite(fopen( $chatfile , 'a'), '<span style="color:' . $_POST['chatcolour'] . '">'. $nickname . "</span>" . $message = str_replace("\n", " ", $message) . "\n"); 
 		 }
-        	 break;
-    	
+        	 break;	
     }
     
     echo json_encode($log);

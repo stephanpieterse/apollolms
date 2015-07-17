@@ -136,6 +136,10 @@ function test_generateQuestionList($testToStart){
 	return $d['id'];
 }
 
+function test_func_showTest($testToStart){
+		showTest($testToStart);
+}
+
 /**
  * Parameters:
  * 	- the id of the test to start (as given by generate questionlist function usually)
@@ -269,8 +273,37 @@ function initTestData(){
 	return true;
 }
 
+function get_nextAvailableIdRecur($questionSet){
+	$docXML = new DOMDocument;
+	$docXML->loadXML($questionSet);
+	$rootNode = $docXML->documentElement;
+	
+	$availableID = 1;
+	
+	$numNodes = $rootNode->childNodes->length;
+	if($numNodes > 0){
+		foreach($rootNode->childNodes as $item){
+		//$lastNode = $rootNode->childNodes->item($numNodes-1);
+		
+		if($item->childNodes->length > 0){
+			$availableID = get_nextAvailableIdRecur($item->saveHTML());
+		}
+		
+		if($item->hasAttributes()){
+			$lastID = $item->getAttribute(id);
+			if($lastID > $availableID){
+				$availableID = $lastID + 1;
+			}
+		}
+		}
+	}
+		
+	return $availableID;
+}
+
 /**
- * Scans for highest available id and returns one higher
+ * Scans for highest available id in xml and returns one higher
+ * Hierdie function werk maar is nogal verkeerd eintik volgens naam
  * 
  */
 function get_nextAvailableID($questionSet){

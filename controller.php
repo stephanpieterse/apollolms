@@ -6,7 +6,7 @@
  * 
  * @author Stephan Pieterse
  * @package ApolloLMS
- * 
+ * @modified 2015 07 18
  * */
 class Controller {
 	
@@ -25,7 +25,7 @@ class Controller {
 		$this->variables[$key] = $val;
 	}
 	
-	function return_ob_navigation(){
+	private function return_ob_navigation(){
 		ob_start();
 		$view = new Template(TEMPLATE_PATH . 'views/site_navbar.php');
 		if(isset($this->variables['secNav'])){
@@ -38,7 +38,7 @@ class Controller {
 		return $retval;
 	}
 	
-	function build_navigation(){
+	private function build_navigation(){
 		$view = new Template(TEMPLATE_PATH . 'views/site_navbar.php');
 		if(isset($this->variables['secNav'])){
 			$view->VAR_SEC_MENU = $this->variables['secNav'];
@@ -47,7 +47,7 @@ class Controller {
 		echo $view;
 	}
 	
-	function build_site_start(){
+	private function build_site_start(){
 		chdir(dirname(__FILE__));
 		require_once("config.php");
 		require_once("func_misc.php");
@@ -56,7 +56,7 @@ class Controller {
 		echo $view;
 	}
 	
-	function build_body_start($contentArray){
+	private function build_body_start($contentArray){
 		$view = new Template(TEMPLATE_PATH . 'views/site_full.php');
 		
 		foreach($contentArray as $k => $v){
@@ -65,7 +65,7 @@ class Controller {
 		echo $view;
 		}	
 	
-	function build_header(){
+	private function build_header(){
 		$view = new Template(TEMPLATE_PATH . 'views/site_header.php');	
 		$view->_SITE_TITLE = ($this->_SITE_TITLE != '') ? SITE_NAME . ' - ' . $this->_SITE_TITLE : SITE_NAME;
 		echo $view;
