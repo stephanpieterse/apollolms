@@ -42,21 +42,6 @@ function makeIndexPages($article = "<articles></articles>"){
 	return $allLinks;
 }
 
-function sidebarIndexPages($course,$article){
-	
-	echo '<div class="sidebarIndex" >';
-	if($course >= 1){
-		displayArticleIndex($course);
-		br();
-		}
-		echo print_bold("Article Index");
-		br();
-		echo '<a href="#">TOP</a>';
-		echo makeIndexPages($article);
-	echo '</div>';
-	
-}
-
 
 function view_pages($aid){
 	$sqlquery = "SELECT * FROM articles WHERE id='" . $aid ."' LIMIT 1";
@@ -97,7 +82,7 @@ function func_courses_addNewNode($data){
 	$r = sql_execute($q);
 	$d = sql_get($r);
 	
-	$oldData = $r['packagecontent']
+	$oldData = $r['packagecontent'];
 	
 	if($oldData = ''){
 		$oldData = '<pack></pack>';

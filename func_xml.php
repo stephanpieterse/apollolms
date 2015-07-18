@@ -55,6 +55,7 @@ function xmlGetSpecifiedNode2($xmldata, $nodeattrib){
 			if($key != 'tagname'){
 				$attrlist .= ' and @' . $key . '="' . $val . '"';
 			}
+			}
 	
 	$doc = new ALMS_XMLHandler($xmldata);
 	$nodeQ = '//' . '[' . $attrlist . ']';

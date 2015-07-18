@@ -7,10 +7,6 @@
  * @author Stephan Pieterse
  * */
 
-/**
- * DONT DEPRECATE THIS
- * 
- * */
 function tooltip($tip, $link = ""){
 
 	if($link != ""){

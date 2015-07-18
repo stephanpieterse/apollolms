@@ -1,9 +1,9 @@
 <?php
 /*
-BY STEPHAN PIETERSE
 THIS FILE DEFINES THE CONSTANTS USED (RELATIVE FILEPATHS, DATABASE NAMES AND PASSWORDS ETC)
 * 
 * @package ApolloLMS
+* @author Stephan Pieterse
 */
 
 ini_set( "display_errors", true );

@@ -22,8 +22,6 @@ function isArticleAlreadySelected($cdata, $aid){
 	return $isSel;
 }
 */
-?>
-<?php
 	$cid = $_GET['id'];
 	$articleData['COURSEID'] = $_GET['id'];
 	$sqlquery = "SELECT * FROM courses WHERE id='" . $articleData['COURSEID'] . "' LIMIT 1";

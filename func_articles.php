@@ -38,6 +38,30 @@ function articles_func_addResource($data){
 	return 'goBack';
 }
 
+function articles_func_addResource2($data){
+	$resname = $data['resource_name'];
+	$resname = makeSafe($resname);
+	$resurl = urlencode($data['resource_url']);
+	
+	$cid = $data['cid'];
+	$nid = $data['nid'];
+	
+	$q = "SELECT packagecontent FROM courses WHERE id='$cid' LIMIT 1";
+	$r = sql_execute($q);
+	$rd = sql_get($r);
+	
+	$doc = new ALMS_XMLHandler($rd['packagecontent']);
+	$doc->insertNode('resource',array('url'=>$resurl,'name'=>$resname),$xpath);
+	$newCXML = $doc->getXML();
+	
+	$q = "UPDATE courses SET packagecontent='" . $newCXML . "' WHERE id='$cid'";
+	$r = sql_execute($q);
+	
+	//return true;
+	return 'goBack';
+}
+
+
 /**
  * Removes the specified resource
  * 
@@ -147,23 +171,6 @@ function makeIndex($article = "<articles></articles>"){
 	}
 	
 	return $allLinks;
-}
-
-/**
- * TODO: move this to a template ?
- * 
- */
-function sidebarIndex($course,$article){
-	if($course >= 1){
-	echo '<div class="sidebarIndex css-treeview" >';
-	//	echo "Course";
-		//displayCourseIndex($course);
-		include(TEMPLATE_PATH . 'courses_form_displayCourseIndex.php');
-		echo "Article Index<br/>";
-		echo '<a href="#">TOP</a>';
-		echo makeIndex($article);
-	echo '</div>';
-	}
 }
 
 /**
