@@ -4,7 +4,7 @@
 
 	$cid = $_GET['id'];
 	if(isset($_GET['root'])){
-		$noderoot = '//[@id = "' . $_GET['root'] . '"]/';
+		$noderoot = '//*[@id = "' . $_GET['root'] . '"]/';
 	}else{
 		$noderoot = '/';
 	}
@@ -23,21 +23,22 @@
 	$articlelist = $xmlDoc->getNodeList($noderoot . 'article');
 	$resourcelist = $xmlDoc->getNodeList($noderoot . 'resource');
 	
+	$xi = 0;
 	foreach($articlelist as $item){
 		$sid = $item->getAttribute('id');
 		
 		$articleTableData[$xi]['ITEMNAME'] = 'Article';
 		$articleTableData[$xi]['NAME'] = '';
+		$articleTableData[$xi]['ID'] = $sid;
 		if(check_user_permission("content_view")){
 			$articleTableData[$xi]['VIEW'] = true;
 		}
-		
 		if(check_user_permission("content_modify")){
-				$articleTableData[$xi]['MODIFY'] = true; // = "<a href=\"articles.php?f=mod_article&aid=" . $data['ID'] ." \"><img src=\"" . ICONS_PATH . "pencil.png\" alt=\"Edit\"/>Article</a>";
-			}
-			if(check_user_permission("content_remove")){
-				$articleTableData[$xi]['DELETE'] = true;
-			}
+			$articleTableData[$xi]['MODIFY'] = true;
+		}
+		if(check_user_permission("content_remove")){
+			$articleTableData[$xi]['DELETE'] = true;
+		}
 	}
 	
 	/*

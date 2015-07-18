@@ -4,7 +4,7 @@
 <br/>
 <div class="pages">
 {section name=sec1 loop=$pagesData}
-<a href="pages.php?f=viewPage&pnm={$pagesData[sec1].PNM}&aid={$pagesData[sec1].AID}">{$pagesData[sec1].NAME} </a><br/>
+<a href="articles.php?f=displayArticle&id={$pagesData[sec1].AID}&cid={$courseID}">{$pagesData[sec1].NAME} </a><br/>
 {/section}
 </div>	
 <div class="resources">

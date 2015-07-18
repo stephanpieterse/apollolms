@@ -1,8 +1,8 @@
 <script type="text/javascript" src="scripts/ckeditor/ckeditor.js"></script>
-{if $new == true}
-<form method="POST" action="articles.php?pq=updateArticle">';
+{if $new == false}
+<form method="POST" action="articles.php?pq=updateArticle">
 <input type="hidden" name="courseID" value="{$COURSE_ID}" />
-<input type="hidden" name="id" value="{$ARTICLE_ID}" />';
+<input type="hidden" name="id" value="{$ARTICLE_ID}" />
 {else}
 <form method="POST" action="articles.php?pq=addNewArticle">
 <input type="hidden" name="courseID" value="{$COURSE_ID}" />

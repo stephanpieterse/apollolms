@@ -9,13 +9,7 @@
  * @package ApolloLMS
  */
 
-//$dispatch_gq = array(
-	//'report_item'=>function(){log_report_item($_POST); goToLastPage();},
-	//'report_form'=>function(){include(TEMPLATE_PATH . "form_reportitem.php");},
-//);
-
 $dispatch_aq = array(
-	//'rm_article'=>function(){removeItem('articles', $_GET['aid']); verifyXML('courses',$_GET['cid']);},
 	//'mve_file'=>function(){renameFile(($_POST['dir'] . makeSafe($_POST['file'])), ($_POST['rootDirPath'] . $_POST['file'])); goToLastPage();},
 	'mv_tstQ'=>function(){moveNode('tests', $_GET['id'], 'QUESTIONS', $_GET['qid'], $_GET['dir']);},
 	'mod_test_prerequisites'=>function(){mod_test_prerequisites($_GET['tid']);},

@@ -15,35 +15,34 @@
  * 
  */
 function articles_func_addResource($data){
-	//$resname = $data['resource_name'];
-	//$resname = makeSafe($resname);
-	//$resurl = urlencode($data['resource_url']);
+	$resname = $data['resource_name'];
+	$resname = makeSafe($resname);
+	$resurl = urlencode($data['resource_url']);
 	
 	$aid = $data['aid'];
+	$cid = $data['cid'];
 	
-	$q = "SELECT PAGES FROM articles WHERE id='$aid' LIMIT 1";
+	$q = "SELECT PACKAGECONTENTS FROM courses WHERE id='$cid' LIMIT 1";
 	$r = sql_execute($q);
 	$rd = sql_get($r);
 	
-	$res = new Resource_Handler();
-	$res->importXML($rd['PAGES']);
-	$newCXML = $res->addResource($data);
+	$doc = new ALMS_XMLHandler($rd['PACKAGECONTENTS']);
+	$xpath = '//*[@id = "$aid"]';
+	$nodeAttr = array('url'=>$resurl,'name'=>$resname);
+	$doc->insertNode('resource',$nodeAttr,$xpath);
 	
-	//$newCXML = addNode($rd['PAGES'], 'resource', array('url'=>$resurl,'name'=>$resname));
+	$newCXML = $doc->getXML();
 	
-	$q = "UPDATE articles SET pages='" . $newCXML . "' WHERE id='$aid'";
+	$q = "UPDATE courses SET packagecontents='" . $newCXML . "' WHERE id='$cid'";
 	$r = sql_execute($q);
 	
-	//return true;
 	return 'goBack';
 }
 
 /**
  * Removes the specified resource
- * 
  * Params: 
  * data - post data
- * 
  */
 function articles_func_removeResource($data){
 	if(isset($data['resid'])){
@@ -52,26 +51,25 @@ function articles_func_removeResource($data){
 		return false;
 	}
 	
-	if(isset($data['aid'])){
-		$aid = $data['aid'];
+	if(isset($data['cid'])){
+		$aid = $data['cid'];
 	}else{
 		return false;
 	}
 	
-	$q = "SELECT PAGES FROM articles WHERE id='$aid'";
+	$cid = $data['cid'];
+	
+	$q = "SELECT PACKAGECONTENTS FROM courses WHERE id='$cid'";
 	$r = sql_execute($q);
 	$rd = sql_get($r);
 	
-	$res = new Resource_Handler();
-	$res->importXML($rd['PAGES']);
-	$xmldata = $res->removeResource($nodeNum);
+	$doc = new ALMS_XMLHandler($rd['PACKAGECONTENTS']);
+	$xpath = '//resource[@id = "$nodeNum"]';
+	$doc->removeNode($xpath);
+	$xmldata = $doc->getXML;
 	
-//	$xmldata = $rd['PAGES'];
-//	$xmldata = rmNodeX($xmldata, $nodeNum);
-	
-	$q = "UPDATE articles SET pages='$xmldata' WHERE id='$aid'";
+	$q = "UPDATE courses SET packagecontents='$xmldata' WHERE id='$cid'";
 	$d = sql_execute($q);
-//	return true;
 	return 'goBack';
 }
 
@@ -155,7 +153,9 @@ function makeIndex($article = "<articles></articles>"){
  * @param $data pass the $_POST dataset
  */
 function articles_func_addNewArticle($data){
-	$articleParent = makeSafe($data['parentID']);
+	if(isset($data['parentID'])){
+		$articleParent = makeSafe($data['parentID']);
+	}
 	$articleName = $data['articleName'];
 	$articleName = makeSafe($articleName);
 	$articleDesc = $data['articleDescription'];
@@ -181,6 +181,12 @@ function articles_func_addNewArticle($data){
 	$articleCode = makeSafe($articleCode);
 	$publishedBy = $_SESSION['username'];	
 	
+	$q = "SELECT PACKAGECONTENTS FROM courses WHERE id='$cid' LIMIT 1";
+	$r = sql_execute($q);
+	$d = sql_get($r);
+	
+	$coursePack = $d['PACKAGECONTENTS'];
+	
 	$doc = new ALMS_XMLHandler($coursePack);
 	$newNodeAttr = array('name'=>$articleName,'description'=>$articleDesc,'html_content'=>$htmlContent,'created_date'=>$dateCreated,'published_date'=>$publishedDate,'published_user'=>$publishedBy,'published_status'=>$pubStat,'code'=>$articleCode,'modified'=>$modified);
 	
@@ -191,7 +197,7 @@ function articles_func_addNewArticle($data){
 	$doc->insertNode('article',$newNodeAttr,$xpath);
 	$newCXML = $doc->getXML();
 	
-	$q = "UPDATE courses SET packagecontents='" . $newCXML . "' WHERE id='$cid'";
+	$q = "UPDATE courses SET packagecontents='" . sql_escape_string($newCXML) . "' WHERE id='$cid'";
 	$r = sql_execute($q);
 	
 	return 'goBack';
@@ -293,8 +299,19 @@ function articles_func_mv_art($data){
 }
 
 function articles_func_removeArticle($data){
-	removeItem('articles', $data['aid']);
-	verifyXML('courses',$data['cid']);
+	$cid = $data['cid'];
+	$aid = $data['aid'];
+	$q = "SELECT PACKAGECONTENTS FROM courses WHERE id='$cid' LIMIT 1";
+	$r = sql_execute($q);
+	$d = sql_get($r);
+	
+	$doc = new ALMS_XMLHandler($r['PACKAGECONTENTS']);
+	$xpath = '//article[@id = "$aid"]';
+	$doc->removeNode($xpath);
+	$newxml = $doc->getXML();
+	
+	$q = "UPDATE courses SET packagecontents='$newxml' WHERE id='$cid'";
+	$r = sql_execute($q);
 	
 	return true;
 }
@@ -317,7 +334,7 @@ function print_article_footer(){
 		$nextlink = '<a class="fl_R buttony" href="pages.php?f=viewPage&aid=' . $aid . '&pnm=' . $pnmN . '"> -> Next Page </a>';
 		echo $nextlink;
 	}
-	if($prevBtn == true)){
+	if($prevBtn == true){
 		$backlink = '<a class="fl_L buttony" href="pages.php?f=viewPage&aid=' . $aid . '&pnm=' . $pnmP . '">Previous Page <-  </a>';
 		echo $backlink;
 	}

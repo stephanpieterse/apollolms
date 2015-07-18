@@ -129,49 +129,6 @@ function time_difference($time1, $time2, $humanreadable = true){
 }	
 
 /**
- * Quickly checks that pages / articles still have corresponding course parents. If not...
- */
-function verifyXML($whatTo, $wid){
-	switch($whatTo){
-		case 'courses':
-			$colName = 'articles';
-			$colNameR = 'ARTICLES';
-		break;
-		case 'articles':
-			$colName = 'pages';
-			$colNameR = 'PAGES';
-		break;
-	}
-	
-	$q = "SELECT * FROM $whatTo WHERE id='$wid' LIMIT 1";
-	$r = sql_get(sql_execute($q));
-	$xmldata = $r[$colNameR];
-		$doc = new DOMDocument; 
-		$doc->loadXML($xmldata);
-		$docRoot = $doc->documentElement;
-		
-		foreach($docRoot->childNodes as $child){
-		$nodeToRemove = null;
-			if($child->hasAttributes()){
-			$checkFor = $child->getAttribute('id');
-			
-			$q2 = "SELECT * FROM $colName WHERE id='$checkFor' LIMIT 1";
-			$r2 = sql_execute($q2);
-			if ((sql_numrows($r2) == 0 || (sql_numrows($r2) == false))){
-						 $nodeToRemove = $child; 
-						}
-					}	
-				if ($nodeToRemove != null){
-					$docRoot->removeChild($nodeToRemove);	
-				}
-		$newData = $doc->saveHTML(); 		
-	}
-	$newData = $doc->saveHTML(); 		
-	$q3 = "UPDATE $whatTo SET $colName='$newData' WHERE id='$wid'";
-	$r3 = sql_execute($q3);
-}
-
-/**
  * Generic wrapper to remove items from the database.
  */
 function removeItem($tablename, $iid, $comment = " "){

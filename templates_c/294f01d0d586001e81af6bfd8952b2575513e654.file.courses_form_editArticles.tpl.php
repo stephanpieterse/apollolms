@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.17, created on 2015-07-18 10:21:25
+<?php /* Smarty version Smarty-3.1.17, created on 2015-07-18 13:22:29
          compiled from "./templates/courses_form_editArticles.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:1862577749550f13acc9aeb9-37234585%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '294f01d0d586001e81af6bfd8952b2575513e654' => 
     array (
       0 => './templates/courses_form_editArticles.tpl',
-      1 => 1437214823,
+      1 => 1437225747,
       2 => 'file',
     ),
   ),
@@ -22,7 +22,6 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'articleData' => 0,
     'tableData' => 0,
     'iconsPath' => 0,
-    'tabeData' => 0,
   ),
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
@@ -31,8 +30,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 <br/>
 <p><a href="courses.php?f=admin_CourseManage">Back to Courses</a></p>
 <p><a href="articles.php?f=editArticle&cid=<?php echo $_smarty_tpl->tpl_vars['articleData']->value['COURSEID'];?>
-">Add a New Article</a></p>
-<p><a href="courses.php?f=editResource&cid=<?php echo $_smarty_tpl->tpl_vars['articleData']->value['COURSEID'];?>
+">Add a New Article</a><br/>
+<a href="courses.php?f=editResource&cid=<?php echo $_smarty_tpl->tpl_vars['articleData']->value['COURSEID'];?>
 ">Add a New Resource</a></p>
 <br/>
 Articles:
@@ -66,17 +65,19 @@ $_smarty_tpl->tpl_vars['smarty']->value['section']['s1']['last']       = ($_smar
 <td><?php echo $_smarty_tpl->tpl_vars['tableData']->value[$_smarty_tpl->getVariable('smarty')->value['section']['s1']['index']]['ITEMNAME'];?>
 </td>
 <?php if (isset($_smarty_tpl->tpl_vars['tableData']->value[$_smarty_tpl->getVariable('smarty',null,true,false)->value['section']['s1']['index']]['VIEW'])) {?>
-<td><a href="articles.php?f=displayArticle&id=$tableData[s1].ID"><img src="<?php echo $_smarty_tpl->tpl_vars['iconsPath']->value;?>
+<td><a href="articles.php?f=displayArticle&id=<?php echo $_smarty_tpl->tpl_vars['tableData']->value[$_smarty_tpl->getVariable('smarty')->value['section']['s1']['index']]['ID'];?>
+"><img src="<?php echo $_smarty_tpl->tpl_vars['iconsPath']->value;?>
 magnifier.png" alt="View"/><?php echo $_smarty_tpl->tpl_vars['tableData']->value[$_smarty_tpl->getVariable('smarty')->value['section']['s1']['index']]['NAME'];?>
 </a><td>
 <?php } else { ?>
 <td></td>
 <?php }?>
 <?php if (isset($_smarty_tpl->tpl_vars['tableData']->value[$_smarty_tpl->getVariable('smarty',null,true,false)->value['section']['s1']['index']]['MODIFY'])) {?>
-<td><a href="articles.php?f=mod_article&aid=<?php echo $_smarty_tpl->tpl_vars['tabeData']->value[$_smarty_tpl->getVariable('smarty')->value['section']['s1']['index']]['ID'];?>
+<td><a href="articles.php?f=mod_article&aid=<?php echo $_smarty_tpl->tpl_vars['tableData']->value[$_smarty_tpl->getVariable('smarty')->value['section']['s1']['index']]['ID'];?>
 "><img src="<?php echo $_smarty_tpl->tpl_vars['iconsPath']->value;?>
 pencil.png" alt="Edit"/>Edit</a></td>
-<td><a href="courses.php?f=editArticles&id=<?php echo $_smarty_tpl->tpl_vars['articleData']->value['ID'];?>
+<td><a href="courses.php?f=editArticles&id=<?php echo $_smarty_tpl->tpl_vars['articleData']->value['COURSEID'];?>
+&root=<?php echo $_smarty_tpl->tpl_vars['tableData']->value[$_smarty_tpl->getVariable('smarty')->value['section']['s1']['index']]['ID'];?>
 "><img src="<?php echo $_smarty_tpl->tpl_vars['iconsPath']->value;?>
 pencil.png" alt="Edit Articles"/>sub-Articles</a></td>
 <td><a href="articles.php?q=mv_art&id=<?php echo $_smarty_tpl->tpl_vars['articleData']->value['ID'];?>

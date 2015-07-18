@@ -1,22 +1,27 @@
 <?php
 	$smarty = new Smarty;
-	$newArticle = false;
+	$newArticle = true;
 	if(isset($_GET['aid'])){
 		$aid = $_GET['aid'];
-		$q = "SELECT * FROM articles WHERE id='$aid' LIMIT 1";
-		$r = sql_execute($q);
-		$data = sql_get($r);
-		$newArticle = true;
+		$newArticle = false;
 	}
-	if(isset($_GET['cid'])){
+	if($newArticle){
 		$cid = $_GET['cid'];
+		$q = "SELECT * FROM courses WHERE id='$cid' LIMIT 1";
+		$r = sql_execute($q);
+		$cdata = sql_get($r);
+		
+		$doc = new ALMS_XMLHandler($cdata['PACKAGECONTENTS']);
+		$xpath = '//*[@id="$aid"]';
+		$nodelist = $doc->getNodeList($xpath);
+		$data = $nodelist->item(0);
 	}	
 	
-	if($newArticle){
-		$smarty->assign('ARTICLE_NAME',$data['NAME']);
-		$smarty->assign('HTML_CONTENT',$data['HTML_CONTENT']);
-		$smarty->assign('ARTICLE_CODE',$data['CODE']);
-		$smarty->assign('ARTICLE_DESC',$data['DESCRIPTION']);
+	if(!$newArticle){
+		$smarty->assign('ARTICLE_NAME',$data->getAttribute('NAME'));
+		$smarty->assign('HTML_CONTENT',$data->getAttribute('HTML_CONTENT'));
+		$smarty->assign('ARTICLE_CODE',$data->getAttribute('CODE'));
+		$smarty->assign('ARTICLE_DESC',$data->getAttribute('DESCRIPTION'));
 		$smarty->assign('COURSE_ID',$cid);
 		$smarty->assign('ARTICLE_ID',$aid);
 	}else{

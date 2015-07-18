@@ -40,11 +40,15 @@ class ALMS_XMLHandler {
 		
 		$newChild = $this->xmlDoc->createElement($tagname);
 
+		if(!isset($newNodeData['id'])){
+			$newNodeData['id'] = $this->getNextHighId();
+		}
+
 		foreach($newNodeData as $key=>$value){
 			$newChild->setAttribute($key, $value);
 		}
 	
-		$newRef = $nodeList[0]->appendChild($newChild);
+		$newRef = $nodeList->item(0)->appendChild($newChild);
 		
 		return true;
 	}
@@ -59,6 +63,15 @@ class ALMS_XMLHandler {
 		return true;
 	}
 	
+	public function removeNode($whereTo){
+		$xpath = new DOMXPath($this->xmlDoc);
+		$nodeList = $xpath->query($whereTo);
+		foreach($nodeList as $node){
+			$this->xmlDoc->removeChild($node);
+		}
+		return true;
+	}
+	
 	public function getNodeList($whereTo){
 		$xpath = new DOMXPath($this->xmlDoc);
 		$nodeList = $xpath->query($whereTo);
@@ -66,7 +79,7 @@ class ALMS_XMLHandler {
 	}
 	
 	public function getXML(){
-		return $this->xmlDoc->saveHTML;
+		return $this->xmlDoc->saveHTML();
 	}
 	
 }
