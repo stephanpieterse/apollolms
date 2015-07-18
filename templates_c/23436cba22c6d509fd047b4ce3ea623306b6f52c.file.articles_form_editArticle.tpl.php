@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.17, created on 2015-07-18 13:04:06
+<?php /* Smarty version Smarty-3.1.17, created on 2015-07-18 18:47:33
          compiled from "./templates/articles_form_editArticle.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:50045347655aa28d9ef5b15-67800865%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '23436cba22c6d509fd047b4ce3ea623306b6f52c' => 
     array (
       0 => './templates/articles_form_editArticle.tpl',
-      1 => 1437224645,
+      1 => 1437245251,
       2 => 'file',
     ),
   ),
@@ -22,6 +22,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'new' => 0,
     'COURSE_ID' => 0,
     'ARTICLE_ID' => 0,
+    'PARENT_ID' => 0,
     'ARTICLE_NAME' => 0,
     'ARTICLE_DESC' => 0,
     'ARTICLE_CODE' => 0,
@@ -41,6 +42,10 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 <input type="hidden" name="courseID" value="<?php echo $_smarty_tpl->tpl_vars['COURSE_ID']->value;?>
 " />
 <?php }?>
+<?php if (isset($_smarty_tpl->tpl_vars['PARENT_ID']->value)) {?>
+<input type="hidden" name="parentID" value="<?php echo $_smarty_tpl->tpl_vars['PARENT_ID']->value;?>
+" />
+<?php }?>
 <div style="border: 1px solid; padding: 5px;">
 <table>
 <tr>
@@ -50,8 +55,10 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 </tr>
 <tr>
 <td>Description:</td><td>
-<input type="text" name="articleDescription" value="<?php echo $_smarty_tpl->tpl_vars['ARTICLE_DESC']->value;?>
-" /></td>
+<textarea id="articleDescription" name="articleDescription" ><?php echo $_smarty_tpl->tpl_vars['ARTICLE_DESC']->value;?>
+
+</textarea>
+</td>
 </tr>
 <tr>
 <td>Code:</td><td><input type="text" name="articleCode" value="<?php echo $_smarty_tpl->tpl_vars['ARTICLE_CODE']->value;?>

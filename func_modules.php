@@ -275,7 +275,6 @@ if(!check_user_permission('module_move')){
 Strips away all data but that allocated or named as used by modules
 */
 function modules_backend_plugin_stripData($dirtyData){
-
 	$cleanarr['mid'] = 0;
 	$cleanarr['mcol'] = 0;
 	$cleanarr['mname'] = 'editme';
@@ -283,10 +282,10 @@ function modules_backend_plugin_stripData($dirtyData){
 	return true;
 }
 
-function modules_backend_plugin_updateData($a,$b,$c,$d){
+function modules_backend_plugin_updateData($plugMid,$plugCol,$plugName,$plugData){
 	return true;
 }
 
-function modules_backend_plugin_addData($a,$b,$c,$d){
+function modules_backend_plugin_addData($plugMid,$plugCol,$plugName,$plugData){
 	return true;
 }

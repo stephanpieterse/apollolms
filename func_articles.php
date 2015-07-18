@@ -19,21 +19,21 @@ function articles_func_addResource($data){
 	$resname = makeSafe($resname);
 	$resurl = urlencode($data['resource_url']);
 	
-	$aid = $data['aid'];
-	$cid = $data['cid'];
+	$aid = makeSafe($data['aid']);
+	$cid = makeSafe($data['cid']);
 	
 	$q = "SELECT PACKAGECONTENTS FROM courses WHERE id='$cid' LIMIT 1";
 	$r = sql_execute($q);
-	$rd = sql_get($r);
+	$d = sql_get($r);
 	
-	$doc = new ALMS_XMLHandler($rd['PACKAGECONTENTS']);
-	$xpath = '//*[@id = "$aid"]';
+	$doc = new ALMS_XMLHandler($d['PACKAGECONTENTS']);
+	$xpath = '//article[@id = "'.$aid.'"]';
 	$nodeAttr = array('url'=>$resurl,'name'=>$resname);
 	$doc->insertNode('resource',$nodeAttr,$xpath);
 	
 	$newCXML = $doc->getXML();
 	
-	$q = "UPDATE courses SET packagecontents='" . $newCXML . "' WHERE id='$cid'";
+	$q = "UPDATE courses SET packagecontents='" . sql_escape_string($newCXML) . "' WHERE id='$cid'";
 	$r = sql_execute($q);
 	
 	return 'goBack';
@@ -64,7 +64,7 @@ function articles_func_removeResource($data){
 	$rd = sql_get($r);
 	
 	$doc = new ALMS_XMLHandler($rd['PACKAGECONTENTS']);
-	$xpath = '//resource[@id = "$nodeNum"]';
+	$xpath = '//resource[@id = "'.$nodeNum.'"]';
 	$doc->removeNode($xpath);
 	$xmldata = $doc->getXML;
 	
@@ -190,9 +190,9 @@ function articles_func_addNewArticle($data){
 	$doc = new ALMS_XMLHandler($coursePack);
 	$newNodeAttr = array('name'=>$articleName,'description'=>$articleDesc,'html_content'=>$htmlContent,'created_date'=>$dateCreated,'published_date'=>$publishedDate,'published_user'=>$publishedBy,'published_status'=>$pubStat,'code'=>$articleCode,'modified'=>$modified);
 	
-	$xpath = '/';
+	$xpath = '/*';
 	if(isset($articleParent)){
-		$xpath .= '/article[@id = "$articleParent"]';
+		$xpath = '//article[@id="'.$articleParent.'"]';
 	}
 	$doc->insertNode('article',$newNodeAttr,$xpath);
 	$newCXML = $doc->getXML();
@@ -305,12 +305,12 @@ function articles_func_removeArticle($data){
 	$r = sql_execute($q);
 	$d = sql_get($r);
 	
-	$doc = new ALMS_XMLHandler($r['PACKAGECONTENTS']);
-	$xpath = '//article[@id = "$aid"]';
+	$doc = new ALMS_XMLHandler($d['PACKAGECONTENTS']);
+	$xpath = '//article[@id = "'.$aid.'"]';
 	$doc->removeNode($xpath);
 	$newxml = $doc->getXML();
 	
-	$q = "UPDATE courses SET packagecontents='$newxml' WHERE id='$cid'";
+	$q = "UPDATE courses SET packagecontents='".sql_escape_string($newxml)."' WHERE id='$cid'";
 	$r = sql_execute($q);
 	
 	return true;

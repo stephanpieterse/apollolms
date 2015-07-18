@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.17, created on 2015-06-08 20:30:11
+<?php /* Smarty version Smarty-3.1.17, created on 2015-07-18 15:43:52
          compiled from "./templates/courses_form_editCoursePackage.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:7370212855575fb538198e1-50512183%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'f8141b75cc97558bb379c81540da024d2cc0c1e2' => 
     array (
       0 => './templates/courses_form_editCoursePackage.tpl',
-      1 => 1426836583,
+      1 => 1437234226,
       2 => 'file',
     ),
   ),
@@ -15,6 +15,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'function' => 
   array (
   ),
+  'version' => 'Smarty-3.1.17',
+  'unifunc' => 'content_5575fb53a9ee55_99606718',
   'variables' => 
   array (
     'formTop' => 0,
@@ -27,8 +29,6 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'coursePERM' => 0,
   ),
   'has_nocache_code' => false,
-  'version' => 'Smarty-3.1.17',
-  'unifunc' => 'content_5575fb53a9ee55_99606718',
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_5575fb53a9ee55_99606718')) {function content_5575fb53a9ee55_99606718($_smarty_tpl) {?><div style="border:1px solid; padding: 5px;">
 <?php echo $_smarty_tpl->tpl_vars['formTop']->value;?>
@@ -83,14 +83,14 @@ $_smarty_tpl->tpl_vars['smarty']->value['section']['s1']['last']       = ($_smar
 ?>
 <label>
 <li>
-	<input type="checkbox" name="pack_includes" value="<?php echo $_smarty_tpl->tpl_vars['coursesList']->value[$_smarty_tpl->getVariable('smarty')->value['section']['s1']['index']]['ID'];?>
+<input type="checkbox" name="pack_includes" value="<?php echo $_smarty_tpl->tpl_vars['coursesList']->value[$_smarty_tpl->getVariable('smarty')->value['section']['s1']['index']]['ID'];?>
 " /> 
-	<?php echo $_smarty_tpl->tpl_vars['coursesList']->value[$_smarty_tpl->getVariable('smarty')->value['section']['s1']['index']]['NAME'];?>
+<?php echo $_smarty_tpl->tpl_vars['coursesList']->value[$_smarty_tpl->getVariable('smarty')->value['section']['s1']['index']]['NAME'];?>
 <br/>
-	<?php echo $_smarty_tpl->tpl_vars['coursesList']->value[$_smarty_tpl->getVariable('smarty')->value['section']['s1']['index']]['CODE'];?>
+<?php echo $_smarty_tpl->tpl_vars['coursesList']->value[$_smarty_tpl->getVariable('smarty')->value['section']['s1']['index']]['CODE'];?>
 <br/>
-	</li>
-	</label>
+</li>
+</label>
 <?php endfor; endif; ?>
 </ul>
 <br class="clear"/>

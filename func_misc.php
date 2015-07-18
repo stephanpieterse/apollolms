@@ -410,6 +410,12 @@ function buildGroupsForm($exclude = false, $oldPermissions = "<none></none>"){
  * todo: move this to a template file and just include.
  */
 function buildPermissionsForm($oldPermissions = "<none></none>"){
+/*
+	<script type="text/javascript" src="scripts/ajax_searches.js"></script>
+<script type="text/javascript">
+	document.write('Search: <input class="searchBox" type="text" id="searchbox_course" value="" />');
+</script>
+*/
 	/*
 	echo '<div class="permissions_area_box" name="usersArea">';
 	echo "Users: ";
@@ -437,18 +443,7 @@ function buildPermissionsForm($oldPermissions = "<none></none>"){
 	}
 	echo '</div>';
 	br();
-	/*
-	echo '<div class="permissions_area_box fancyPress" name="groupTypesArea">';
-	echo "Group Types: ";
-	$query = "SELECT * FROM groups_types";
-	$result = sql_execute($query);
-	while($row = sql_get($result)){
-		echo '<input id="grouptype-' . $row['ID'] .'" type="checkbox" name="add-grouptype-' . $row['ID'] . '-' . $row['NAME'] . '" />';
-		echo '<label for="grouptype-' . $row['ID'] .'">' . $row['NAME'] .'</label>';
-	}
-	echo '</div>';
-	* */
-	br();
+
 	echo '<div class="fancyPress">';
 	echo "Public: ";
 	$link = '<input id="public" type="checkbox" name="add-public"';

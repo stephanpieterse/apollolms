@@ -7,6 +7,9 @@
 <form method="POST" action="articles.php?pq=addNewArticle">
 <input type="hidden" name="courseID" value="{$COURSE_ID}" />
 {/if}
+{if isset($PARENT_ID)}
+<input type="hidden" name="parentID" value="{$PARENT_ID}" />
+{/if}
 <div style="border: 1px solid; padding: 5px;">
 <table>
 <tr>
@@ -15,7 +18,9 @@
 </tr>
 <tr>
 <td>Description:</td><td>
-<input type="text" name="articleDescription" value="{$ARTICLE_DESC}" /></td>
+<textarea id="articleDescription" name="articleDescription" >{$ARTICLE_DESC}
+</textarea>
+</td>
 </tr>
 <tr>
 <td>Code:</td><td><input type="text" name="articleCode" value="{$ARTICLE_CODE}" /></td>

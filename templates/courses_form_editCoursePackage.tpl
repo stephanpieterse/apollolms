@@ -22,11 +22,11 @@
 {section name=s1 loop=$coursesList}
 <label>
 <li>
-	<input type="checkbox" name="pack_includes" value="{$coursesList[s1].ID}" /> 
-	{$coursesList[s1].NAME}<br/>
-	{$coursesList[s1].CODE}<br/>
-	</li>
-	</label>
+<input type="checkbox" name="pack_includes" value="{$coursesList[s1].ID}" /> 
+{$coursesList[s1].NAME}<br/>
+{$coursesList[s1].CODE}<br/>
+</li>
+</label>
 {/section}
 </ul>
 <br class="clear"/>

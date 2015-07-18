@@ -3,16 +3,23 @@
 	$smarty = new Smarty();
 
 	$cid = $_GET['id'];
+	$nodeHasParent = false;
 	if(isset($_GET['root'])){
-		$noderoot = '//*[@id = "' . $_GET['root'] . '"]/';
+		$parentID = $_GET['root'];
+		$noderoot = '//article[@id = "' . $_GET['root'] . '"]/';
+		$nodeHasParent = true;
 	}else{
-		$noderoot = '/';
+		$noderoot = '';
 	}
 	$articleData['COURSEID'] = $_GET['id'];
 	$sqlquery = "SELECT * FROM courses WHERE id='" . $articleData['COURSEID'] . "' LIMIT 1";
 	$sqlresult = sql_execute($sqlquery);
 	$crow = sql_get($sqlresult);
 	$articleData['COURSENAME'] = $crow['NAME'];
+	
+	if($nodeHasParent){
+		$articleData['PARENTID'] = $parentID;
+	}
 	
 	$packData = $crow['PACKAGECONTENTS'];
 	if($packData == ''){
@@ -25,11 +32,10 @@
 	
 	$xi = 0;
 	foreach($articlelist as $item){
-		$sid = $item->getAttribute('id');
 		
 		$articleTableData[$xi]['ITEMNAME'] = 'Article';
-		$articleTableData[$xi]['NAME'] = '';
-		$articleTableData[$xi]['ID'] = $sid;
+		$articleTableData[$xi]['NAME'] = $item->getAttribute('name');
+		$articleTableData[$xi]['ID'] = $item->getAttribute('id');
 		if(check_user_permission("content_view")){
 			$articleTableData[$xi]['VIEW'] = true;
 		}
@@ -39,16 +45,16 @@
 		if(check_user_permission("content_remove")){
 			$articleTableData[$xi]['DELETE'] = true;
 		}
+		$xi++;
 	}
 	
 	$xi = 0;
 	foreach($resourcelist as $item){
-		$sid = $item->getAttribute('id');
 		
 		$resourceTableData[$xi]['ITEMNAME'] = 'Resource';
 		$resourceTableData[$xi]['NAME'] = $item->getAttribute('name');
-		$resourceTableData[$xi]['ID'] = $item->getAttribute('url');
-		$resourceTableData[$xi]['URL'] = $sid;
+		$resourceTableData[$xi]['URL'] = $item->getAttribute('url');
+		$resourceTableData[$xi]['ID'] = $item->getAttribute('id');
 		if(check_user_permission("content_view")){
 			$resourceTableData[$xi]['VIEW'] = true;
 		}
@@ -58,6 +64,7 @@
 		if(check_user_permission("content_remove")){
 			$resourceTableData[$xi]['DELETE'] = true;
 		}
+		$xi++;
 	}
 	
 	$smarty->assign('articleData',$articleData);

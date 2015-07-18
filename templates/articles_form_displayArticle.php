@@ -3,22 +3,22 @@
 	
 	$articleID = makeSafe($_GET['id']);
 	$courseID = isset($_GET['cid']) ? makeSafe($_GET['cid']) : '0';
-	$query = 'SELECT * FROM courses WHERE id="' . $courseID . '"';
+	$query = 'SELECT * FROM courses WHERE id="' . $courseID . '" LIMIT 1';
 	$result = sql_execute($query);
 	$data = sql_get($result);
 	//sidebarIndex($courseID, $data['HTML_CONTENT']);
 	
 	$xmlDoc = new ALMS_XMLHandler($data['PACKAGECONTENTS']);
 	
-	$xpath = '//article[@id="$articleID"]';
+	$xpath = '//article[@id="'.$articleID.'"]';
 	$nodelist = $xmlDoc->getNodeList($xpath);
 	
 	if($nodelist->length == 0){
 		goHome('404');
 	}else{
 	
-	$dataArray['NAME'] = $nodelist->item(0)->getAttribute('NAME');
-	$dataArray['HTML_CONTENT'] = $nodelist->item(0)->getAttribute('HTML_CONTENT');
+	$dataArray['NAME'] = $nodelist->item(0)->getAttribute('name');
+	$dataArray['HTML_CONTENT'] = $nodelist->item(0)->getAttribute('html_content');
 	
 	$pagesArray = array();
 	$resArray = array();
@@ -27,13 +27,13 @@
 
 	foreach($nodelist->item(0)->childNodes as $item){
 		if($item->tagName == 'article'){
-			$pagesArray[$itemnum]['NAME'] = $item->getAttribute('NAME');
-			$pagesArray[$itemnum]['AID'] = $item->getAttribute('ID');
+			$pagesArray[$itemnum]['NAME'] = $item->getAttribute('name');
+			$pagesArray[$itemnum]['AID'] = $item->getAttribute('id');
 			$itemnum++;
 		}
 		if($item->tagName == 'resource'){
-			$resurl = $child->getAttribute('url');
-			$resname = $child->getAttribute('name');
+			$resurl = $item->getAttribute('url');
+			$resname = $item->getAttribute('name');
 			
 			$resArray[$resarrnum]['NAME'] = $resname;
 			
@@ -51,7 +51,7 @@
 	$smarty->assign('pagesData',$pagesArray);
 	$smarty->assign('resData',$resArray);
 	$smarty->assign('courseID',$courseID);
-	$smarty->assign('vars',array('ICONS_PATH'=>ICONS_PATH));
+	$smarty->assign('iconsPath',ICONS_PATH);
 	
 	$tplName = changeExtension(pathinfo(__FILE__,PATHINFO_BASENAME),'tpl');
 	$smarty->display($tplName);

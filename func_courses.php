@@ -12,26 +12,27 @@
  */
 function courses_func_addResource($data){
 	$resname = $data['resource_name'];
+	$resname = makeSafe($resname);
 	$resurl = urlencode($data['resource_url']);
+	
+	$aid = makeSafe($data['aid']);
 	$cid = makeSafe($data['cid']);
-
+	
 	$q = "SELECT PACKAGECONTENTS FROM courses WHERE id='$cid' LIMIT 1";
 	$r = sql_execute($q);
-	$rd = sql_get($r);
-
-	if($rd['PACKAGECONTENTS'] == ''){
-		$package = '<package></package>';
-	}
+	$d = sql_get($r);
 	
-	$res = new ALMS_XMLHandler($package);
+	$doc = new ALMS_XMLHandler($d['PACKAGECONTENTS']);
+	$xpath = '//article[@id="'.$aid.'"]';
 	$nodeAttr = array('url'=>$resurl,'name'=>$resname);
-	$xpath = '/';
-	$res->insertNode('resource',$nodeAttr,$xpath);
-	$newCXML = $res->getXML();
-
-	$q = "UPDATE courses SET packagecontents='" . $newCXML . "' WHERE id='$cid'";
+	$doc->insertNode('resource',$nodeAttr,$xpath);
+	
+	$newCXML = $doc->getXML();
+	
+	$q = "UPDATE courses SET packagecontents='" . sql_escape_string($newCXML) . "' WHERE id='$cid'";
 	$r = sql_execute($q);
-	return 'success';
+	
+	return 'goBack';
 }
 
 /**
@@ -52,14 +53,14 @@ function courses_func_removeResource($data){
 	
 	$q = "SELECT PACKAGECONTENTS FROM courses WHERE id='$cid'";
 	$r = sql_execute($q);
-	$rd = sql_get($r);
+	$d = sql_get($r);
 	
-	$res = new ALMS_XMLHandler($rd['PACKAGECONTENTS']);
-	$xpath = '//resource[@id = "$nodeNum"]';
+	$res = new ALMS_XMLHandler($d['PACKAGECONTENTS']);
+	$xpath = '//resource[@id = "'.$nodeNum.'"]';
 	$res->removeNode($xpath);
 	$xmldata = $res->getXML();
 	
-	$q = "UPDATE courses SET packagecontents='$xmldata' WHERE id='$cid'";
+	$q = "UPDATE courses SET packagecontents='" . sql_escape_string($xmldata) . "' WHERE id='$cid'";
 	$d = sql_execute($q);
 	return 'success';
 }
@@ -318,6 +319,11 @@ function courses_func_addCourse($data){
 	}
 	
 	return 'success';
+}
+
+function courses_func_removeCourse($data){
+	$cid = $data['cid'];
+	removeItem('courses',$cid);
 }
 
 /**

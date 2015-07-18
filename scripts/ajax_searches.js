@@ -17,6 +17,25 @@ $('#' + searchbox).on('keyup', function(e) {
 });
 }
 
+function searchInUL(searchbox){
+$('#' + searchbox).on('keyup', function(e) {
+    if ('' != this.value) {
+        var reg = new RegExp(this.value, 'i'); // case-insesitive
+
+        $('body').find('ul').each(function() {
+            var $me = $(this);
+            if (!$me.children('li').text().match(reg)) {
+                $me.hide();
+            } else {
+                $me.show();
+            }
+        });
+    } else {
+        $('body').find('ul').show();
+    }	
+});
+}
+
 function searchForUsers(searchFor){
 $.ajax({
 	url: "users.php",

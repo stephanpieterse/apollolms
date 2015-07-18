@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.17, created on 2015-07-18 13:33:39
+<?php /* Smarty version Smarty-3.1.17, created on 2015-07-18 18:43:50
          compiled from "./templates/articles_form_displayArticle.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:180315579355aa53988f9228-75002512%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '8dfc5ae3dae46967db71beed1727417fd89efd8b' => 
     array (
       0 => './templates/articles_form_displayArticle.tpl',
-      1 => 1437226415,
+      1 => 1437245028,
       2 => 'file',
     ),
   ),
@@ -23,6 +23,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'pagesData' => 0,
     'courseID' => 0,
     'resData' => 0,
+    'iconsPath' => 0,
   ),
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
@@ -59,7 +60,7 @@ $_smarty_tpl->tpl_vars['smarty']->value['section']['sec1']['last']       = ($_sm
 ?>
 <a href="articles.php?f=displayArticle&id=<?php echo $_smarty_tpl->tpl_vars['pagesData']->value[$_smarty_tpl->getVariable('smarty')->value['section']['sec1']['index']]['AID'];?>
 &cid=<?php echo $_smarty_tpl->tpl_vars['courseID']->value;?>
-"><?php echo $_smarty_tpl->tpl_vars['pagesData']->value[$_smarty_tpl->getVariable('smarty')->value['section']['sec1']['index']]['NAME'];?>
+"> <?php echo $_smarty_tpl->tpl_vars['pagesData']->value[$_smarty_tpl->getVariable('smarty')->value['section']['sec1']['index']]['NAME'];?>
  </a><br/>
 <?php endfor; endif; ?>
 </div>	
@@ -88,10 +89,10 @@ $_smarty_tpl->tpl_vars['smarty']->value['section']['sec1']['index_next'] = $_sma
 $_smarty_tpl->tpl_vars['smarty']->value['section']['sec1']['first']      = ($_smarty_tpl->tpl_vars['smarty']->value['section']['sec1']['iteration'] == 1);
 $_smarty_tpl->tpl_vars['smarty']->value['section']['sec1']['last']       = ($_smarty_tpl->tpl_vars['smarty']->value['section']['sec1']['iteration'] == $_smarty_tpl->tpl_vars['smarty']->value['section']['sec1']['total']);
 ?>
-<img src="<?php echo @constant('ICONPATH');?>
+<img src="<?php echo $_smarty_tpl->tpl_vars['iconsPath']->value;?>
 brick.png" alt="Resource"/><a href="<?php echo $_smarty_tpl->tpl_vars['resData']->value[$_smarty_tpl->getVariable('smarty')->value['section']['sec1']['index']]['RESURL'];?>
-"><?php echo $_smarty_tpl->tpl_vars['resData']->value[$_smarty_tpl->getVariable('smarty')->value['section']['sec1']['index']]['NAME'];?>
-</a><br/>'
+"> <?php echo $_smarty_tpl->tpl_vars['resData']->value[$_smarty_tpl->getVariable('smarty')->value['section']['sec1']['index']]['NAME'];?>
+</a><br/>
 <?php endfor; endif; ?>	
 </div>
 </div>

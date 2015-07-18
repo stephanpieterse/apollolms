@@ -20,7 +20,7 @@ class ALMS_XMLHandler {
 	$availableID = 1;
 	foreach($nodelist as $item){
 			$lastID = $item->getAttribute('id');
-			if($lastID > $availableID){
+			if($lastID >= $availableID){
 				$availableID = $lastID + 1;
 			}
 		}
@@ -38,12 +38,11 @@ class ALMS_XMLHandler {
 		$xpath = new DOMXPath($this->xmlDoc);
 		$nodeList = $xpath->query($whereTo);
 		
-		$newChild = $this->xmlDoc->createElement($tagname);
-
 		if(!isset($newNodeData['id'])){
 			$newNodeData['id'] = $this->getNextHighId();
 		}
-
+		
+		$newChild = $this->xmlDoc->createElement($tagname);
 		foreach($newNodeData as $key=>$value){
 			$newChild->setAttribute($key, $value);
 		}
@@ -58,16 +57,19 @@ class ALMS_XMLHandler {
 		$nodeList = $xpath->query($whereTo);
 		
 		$prevID = $nodeList[0]->getAttribute('id');
-		
-		
+
 		return true;
 	}
 	
 	public function removeNode($whereTo){
 		$xpath = new DOMXPath($this->xmlDoc);
 		$nodeList = $xpath->query($whereTo);
+		$parentList = $xpath->query($whereTo.'/..');
+		$x = 0;
 		foreach($nodeList as $node){
-			$this->xmlDoc->removeChild($node);
+			//$this->xmlDoc->removeChild($node);
+			$parentList->item($x)->removeChild($node);
+			$x++;
 		}
 		return true;
 	}

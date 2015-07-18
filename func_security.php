@@ -17,7 +17,6 @@ function simple_encrypt($salt,$text){
 
 /**
   * Decrypts a given text with password (salt param)
-  * 
   * @param $salt
   * @param $text
   * */
@@ -138,7 +137,7 @@ function strip_html_tags($stringVar){
 }
 
 /**
- * Wrapper to do a few strips to make sql injection much harder
+ * Wrapper to do a few strips to make sql injection harder
  * 
  * @param $stringVar
  * */
