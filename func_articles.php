@@ -150,28 +150,12 @@ function makeIndex($article = "<articles></articles>"){
 }
 
 /**
- * TODO: move this to a template ?
- * 
- */
-function sidebarIndex($course,$article){
-	if($course >= 1){
-	echo '<div class="sidebarIndex css-treeview" >';
-	//	echo "Course";
-		//displayCourseIndex($course);
-		include(TEMPLATE_PATH . 'courses_form_displayCourseIndex.php');
-		echo "Article Index<br/>";
-		echo '<a href="#">TOP</a>';
-		echo makeIndex($article);
-	echo '</div>';
-	}
-}
-
-/**
  * Add a new article into the database
  * 
  * @param $data pass the $_POST dataset
  */
 function articles_func_addNewArticle($data){
+	$articleParent = makeSafe($data['parentID']);
 	$articleName = $data['articleName'];
 	$articleName = makeSafe($articleName);
 	$articleDesc = $data['articleDescription'];
@@ -196,30 +180,20 @@ function articles_func_addNewArticle($data){
 	$articleCode = $data['articleCode'];
 	$articleCode = makeSafe($articleCode);
 	$publishedBy = $_SESSION['username'];	
-	$query="INSERT INTO articles(name, description, html_content, created_date, published_date, published_user, published_status, code, pages, course, modified)VALUES('$articleName','$articleDesc', '$htmlContent', '$dateCreated', '$publishedDate', '$publishedBy', '$pubStat', '$articleCode', '<pages></pages>', '$cid', '$modified')";
-	$result = sql_execute($query);
 	
-	$q = "SELECT * FROM articles WHERE created_date='$dateCreated' AND name='$articleName' LIMIT 1";
-	$r = sql_execute($q);
-	$rd = sql_get($r);
-	$newAID = $rd['ID'];
+	$doc = new ALMS_XMLHandler($coursePack);
+	$newNodeAttr = array('name'=>$articleName,'description'=>$articleDesc,'html_content'=>$htmlContent,'created_date'=>$dateCreated,'published_date'=>$publishedDate,'published_user'=>$publishedBy,'published_status'=>$pubStat,'code'=>$articleCode,'modified'=>$modified);
 	
-	$q = "SELECT * FROM courses WHERE id='$cid' LIMIT 1";
-	$r = sql_execute($q);
-	$rd = sql_get($r);
-	
-	if($rd['ARTICLES'] == ''){
-		$rdArticles = "<articles></articles>";
-	}else{
-		$rdArticles = $rd['ARTICLES'];
+	$xpath = '/';
+	if(isset($articleParent)){
+		$xpath .= '/article[@id = "$articleParent"]';
 	}
+	$doc->insertNode('article',$newNodeAttr,$xpath);
+	$newCXML = $doc->getXML();
 	
-	$newCXML = addNode($rdArticles, 'article', array('id'=>$newAID));
-	
-	$q = "UPDATE courses SET articles='" . $newCXML . "' WHERE id='$cid'";
+	$q = "UPDATE courses SET packagecontents='" . $newCXML . "' WHERE id='$cid'";
 	$r = sql_execute($q);
 	
-//	return true;
 	return 'goBack';
 }
 
@@ -229,13 +203,14 @@ function articles_func_addNewArticle($data){
  * @param $data pass the $_POST dataset - remember to include aid (id of article)
  * */
 function articles_func_updateArticle($data){
-	$id = $data['aid'];
+	$id = makeSafe($data['aid']);
+	$cid = makeSafe($data['courseID']);
 	$articleName = $data['articleName'];
 	$articleName = makeSafe($articleName);
 	$articleDesc = $data['articleDescription'];
 	$articleDesc = makeSafe($articleDesc);
 	$htmlContent = $data['pageContent'];
-	$publishedStatus = $data['publishedStatus'];
+	$publishedStatus = makeSafe($data['publishedStatus']);
 	
 	$pubStat = 0;
 	if($publishedStatus == "Yes"){
@@ -243,7 +218,7 @@ function articles_func_updateArticle($data){
 		$publishedDate = date("Y-m-d-H-i-s");
 	}
 	
-	$q = "SELECT * FROM articles WHERE id='$id' LIMIT 1";
+	$q = "SELECT PACKAGECONTENTS FROM courses WHERE id='$cid' LIMIT 1";
 	$r = sql_execute($q);
 	$d = sql_get($r);
 	if($d['MODIFIED_DATE'] == ""){
@@ -251,19 +226,24 @@ function articles_func_updateArticle($data){
 	}else{
 		$rXMLdata = $d['MODIFIED_DATE'];
 	}
+	
 	$modificationdata = addNode($rXMLdata,'updated',array('uid'=>$_SESSION['userID'],'time'=>$publishedDate,));
 	
 	$articleCode = $data['articleCode'];
 	$articleCode = makeSafe($articleCode);
 	$dateCreated = date("Y-m-d-H-i-s");
 	$publishedBy = $_SESSION['username'];	
-	$query="UPDATE articles SET name='$articleName', description='$articleDesc', html_content='$htmlContent', created_date='$dateCreated', published_date='$publishedDate', published_user='$publishedBy', published_status='$pubStat', code='$articleCode', modified='$modificationdata' WHERE id='$id'";
-	$result = sql_execute($query);
+	$doc = new ALMS_XMLHandler($d['PACKAGECONTENTS']);
+	$xpath = '//article[@id = "$id"]';
+	$newData = array('name'=>'$articleName', 'description'=>'$articleDesc', 'html_content'=>'$htmlContent', 'created_date'=>'$dateCreated', 'published_date'=>'$publishedDate', 'published_user'=>'$publishedBy', 'published_status'=>'$pubStat', 'code'=>'$articleCode', 'modified'=>'$modificationdata');
+	$newxml = $doc->updateNode('article',$newData,$xpath);
+	
+	$q = "UPDATE courses SET packagecontents='$newxml' WHERE id='$cid'";
 	
 	if(isset($data['save'])){
-	return true;
+		return true;
 	}else{
-	page_redirect('articles.php?f=editArticle&aid=' . $id);
+		page_redirect('articles.php?f=editArticle&aid=' . $id);
 	}
 }
 

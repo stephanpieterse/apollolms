@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.17, created on 2015-07-14 19:03:02
+<?php /* Smarty version Smarty-3.1.17, created on 2015-07-18 10:21:01
          compiled from "./templates/groups_form_admin_GroupManage.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:11157818995575fc7e537df3-33953988%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '0c600105de0a516dd5618d457354034566f38dce' => 
     array (
       0 => './templates/groups_form_admin_GroupManage.tpl',
-      1 => 1436900577,
+      1 => 1436967554,
       2 => 'file',
     ),
   ),

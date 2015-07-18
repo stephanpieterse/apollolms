@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.17, created on 2015-03-22 19:10:36
+<?php /* Smarty version Smarty-3.1.17, created on 2015-07-18 10:21:25
          compiled from "./templates/courses_form_editArticles.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:1862577749550f13acc9aeb9-37234585%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '294f01d0d586001e81af6bfd8952b2575513e654' => 
     array (
       0 => './templates/courses_form_editArticles.tpl',
-      1 => 1426836583,
+      1 => 1437214823,
       2 => 'file',
     ),
   ),
@@ -15,15 +15,16 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'function' => 
   array (
   ),
+  'version' => 'Smarty-3.1.17',
+  'unifunc' => 'content_550f13acd93540_09109669',
   'variables' => 
   array (
     'articleData' => 0,
     'tableData' => 0,
-    'link' => 0,
+    'iconsPath' => 0,
+    'tabeData' => 0,
   ),
   'has_nocache_code' => false,
-  'version' => 'Smarty-3.1.17',
-  'unifunc' => 'content_550f13acd93540_09109669',
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_550f13acd93540_09109669')) {function content_550f13acd93540_09109669($_smarty_tpl) {?><span class="bold"><?php echo $_smarty_tpl->tpl_vars['articleData']->value['COURSENAME'];?>
 </span>
@@ -64,14 +65,41 @@ $_smarty_tpl->tpl_vars['smarty']->value['section']['s1']['last']       = ($_smar
 <tr>
 <td><?php echo $_smarty_tpl->tpl_vars['tableData']->value[$_smarty_tpl->getVariable('smarty')->value['section']['s1']['index']]['ITEMNAME'];?>
 </td>
-<?php  $_smarty_tpl->tpl_vars['link'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['link']->_loop = false;
- $_from = $_smarty_tpl->tpl_vars['tableData']->value[$_smarty_tpl->getVariable('smarty')->value['section']['s1']['index']]['LINKS']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
-foreach ($_from as $_smarty_tpl->tpl_vars['link']->key => $_smarty_tpl->tpl_vars['link']->value) {
-$_smarty_tpl->tpl_vars['link']->_loop = true;
-?>
-	<td><?php echo $_smarty_tpl->tpl_vars['link']->value;?>
-</td>
-<?php } ?>
+<?php if (isset($_smarty_tpl->tpl_vars['tableData']->value[$_smarty_tpl->getVariable('smarty',null,true,false)->value['section']['s1']['index']]['VIEW'])) {?>
+<td><a href="articles.php?f=displayArticle&id=$tableData[s1].ID"><img src="<?php echo $_smarty_tpl->tpl_vars['iconsPath']->value;?>
+magnifier.png" alt="View"/><?php echo $_smarty_tpl->tpl_vars['tableData']->value[$_smarty_tpl->getVariable('smarty')->value['section']['s1']['index']]['NAME'];?>
+</a><td>
+<?php } else { ?>
+<td></td>
+<?php }?>
+<?php if (isset($_smarty_tpl->tpl_vars['tableData']->value[$_smarty_tpl->getVariable('smarty',null,true,false)->value['section']['s1']['index']]['MODIFY'])) {?>
+<td><a href="articles.php?f=mod_article&aid=<?php echo $_smarty_tpl->tpl_vars['tabeData']->value[$_smarty_tpl->getVariable('smarty')->value['section']['s1']['index']]['ID'];?>
+"><img src="<?php echo $_smarty_tpl->tpl_vars['iconsPath']->value;?>
+pencil.png" alt="Edit"/>Edit</a></td>
+<td><a href="courses.php?f=editArticles&id=<?php echo $_smarty_tpl->tpl_vars['articleData']->value['ID'];?>
+"><img src="<?php echo $_smarty_tpl->tpl_vars['iconsPath']->value;?>
+pencil.png" alt="Edit Articles"/>sub-Articles</a></td>
+<td><a href="articles.php?q=mv_art&id=<?php echo $_smarty_tpl->tpl_vars['articleData']->value['ID'];?>
+&dir=up&aid=<?php echo $_smarty_tpl->tpl_vars['tableData']->value[$_smarty_tpl->getVariable('smarty')->value['section']['s1']['index']]['ID'];?>
+"><img src="<?php echo $_smarty_tpl->tpl_vars['iconsPath']->value;?>
+arrow_up.png" alt="Move Up"/></a></td>
+<td><a href="articles.php?q=mv_art&id=<?php echo $_smarty_tpl->tpl_vars['articleData']->value['ID'];?>
+&dir=down&aid=<?php echo $_smarty_tpl->tpl_vars['tableData']->value[$_smarty_tpl->getVariable('smarty')->value['section']['s1']['index']]['ID'];?>
+"><img src="<?php echo $_smarty_tpl->tpl_vars['iconsPath']->value;?>
+arrow_up.png" alt="Move Down"/></a></td>
+<?php } else { ?>
+<td></td>
+<td></td>
+<td></td>
+<?php }?>
+<?php if (isset($_smarty_tpl->tpl_vars['tableData']->value[$_smarty_tpl->getVariable('smarty',null,true,false)->value['section']['s1']['index']]['DELETE'])) {?>
+<td><a href="articles.php?confirm&q=removeArticle&aid=<?php echo $_smarty_tpl->tpl_vars['tableData']->value[$_smarty_tpl->getVariable('smarty')->value['section']['s1']['index']]['ID'];?>
+&cid=<?php echo $_smarty_tpl->tpl_vars['articleData']->value['ID'];?>
+"><img src="<?php echo $_smarty_tpl->tpl_vars['iconsPath']->value;?>
+cancel.png" alt="Delete"/></a></td>
+<?php } else { ?>
+<td></td>
+<?php }?>
 </tr>
 <?php endfor; endif; ?>
 </table>

@@ -12,13 +12,19 @@
 		$cid = $_GET['cid'];
 	}	
 	
-	if($newArticle)){
+	if($newArticle){
 		$smarty->assign('ARTICLE_NAME',$data['NAME']);
 		$smarty->assign('HTML_CONTENT',$data['HTML_CONTENT']);
 		$smarty->assign('ARTICLE_CODE',$data['CODE']);
 		$smarty->assign('ARTICLE_DESC',$data['DESCRIPTION']);
 		$smarty->assign('COURSE_ID',$cid);
 		$smarty->assign('ARTICLE_ID',$aid);
+	}else{
+		$smarty->assign('ARTICLE_NAME','');
+		$smarty->assign('HTML_CONTENT','');
+		$smarty->assign('ARTICLE_CODE','');
+		$smarty->assign('ARTICLE_DESC','');
+		$smarty->assign('COURSE_ID',$cid);
 	}
 	$smarty->assign('new',$newArticle);
 	$tplName = changeExtension(pathinfo(__FILE__,PATHINFO_BASENAME),'tpl');

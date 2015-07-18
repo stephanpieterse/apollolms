@@ -60,6 +60,7 @@ function xmlGetSpecifiedNode2($xmldata, $nodeattrib){
 	$nodeQ = '//' . '[' . $attrlist . ']';
 	$doc->getNodeList($nodeQ);
 }
+}
 
 /**
  * 

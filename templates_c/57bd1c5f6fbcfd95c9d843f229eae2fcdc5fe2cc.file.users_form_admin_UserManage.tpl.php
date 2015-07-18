@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.17, created on 2015-07-12 20:25:21
+<?php /* Smarty version Smarty-3.1.17, created on 2015-07-18 10:18:54
          compiled from "./templates/users_form_admin_UserManage.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:1109859946550dab8e07a622-07066828%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '57bd1c5f6fbcfd95c9d843f229eae2fcdc5fe2cc' => 
     array (
       0 => './templates/users_form_admin_UserManage.tpl',
-      1 => 1436635171,
+      1 => 1436967554,
       2 => 'file',
     ),
   ),
@@ -27,11 +27,11 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 <?php if ($_valid && !is_callable('content_550dab8e1326c9_72281825')) {function content_550dab8e1326c9_72281825($_smarty_tpl) {?><div name="custUserArea" id="custUserArea">
 	<script type="text/javascript" src="scripts/ajax_searches.js"></script>
 	<script type="text/javascript">
-		document.write('Find Users: <input class="searchBox" type="text" id="searchbox_user" value="" />');
+		document.write('Search: <input class="searchBox" type="text" id="searchbox_user" value="" />');
 	</script>
 	<noscript>
 		<form method="GET" action="users.php">
-		<input name="s" type="text" value="Search"/>
+		<input name="sq" type="text" value="Search"/>
 		<input type="submit" />
 		</form>
 	</noscript>

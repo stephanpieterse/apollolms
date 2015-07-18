@@ -5,38 +5,8 @@
  * 
  * @package ApolloLMS
  * @author Stephan
- * @version 1.x
+ * @modified 2015 07 18
  */
-
-/*
-require('func_security.php');
-require('func_courses.php');
-require('func_backup.php');
-require('func_articles.php');
-require('func_users.php');
-require('func_mediaManage.php');
-require('func_navigation.php');
-require('func_tests.php');
-require('func_groups.php');
-require('func_echo.php');
-require('func_roles.php');
-require('func_help.php');
-require('func_xml.php');
-require('func_css.php');
-require('func_pages.php');
-require('func_modules.php');
-require('func_email.php');
-require('func_billing.php');
-require('func_statistics.php');
-require('func_search.php');
-require('func_zip.php');
-require('func_payments.php');
-require('func_flagged.php');
-require('func_sitesettings.php');
-require('func_resources.php');
-require('func_events.php');
-require('func_crons.php');
-*/
 
 foreach(requireAllFuncsFiles() as $funcfile){
 	require_once($funcfile);
@@ -47,6 +17,7 @@ require(CLASS_PATH . 'test_item.php');
 require(CLASS_PATH . 'alms_courseitem.php');
 require(CLASS_PATH . 'alms_useritem.php');
 require(CLASS_PATH . 'alms_coursehandler.php');
+require(CLASS_PATH . 'alms_xmlhandler.php');
 require(CLASS_PATH . 'alms_userhandler.php');
 require(CLASS_PATH . 'events_class.php');
 require(CLASS_PATH . 'templateEngine.php');

@@ -97,7 +97,7 @@ function func_courses_addNewNode($data){
 	$r = sql_execute($q);
 	$d = sql_get($r);
 	
-	$oldData = $r['packagecontent']
+	$oldData = $r['packagecontent'];
 	
 	if($oldData = ''){
 		$oldData = '<pack></pack>';
