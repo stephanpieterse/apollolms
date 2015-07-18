@@ -29,36 +29,3 @@ function resource_func_removeFromGroup($data){
 	$d = sql_execute($q);
 	return true;
 }
-
-function resource_func_updateResource($data){
-	if(isset($data['resid'])){
-		$nodeNum = $data['resid'];
-	}else{
-		return false;
-	}
-	
-	if(isset($data['cid'])){
-		$cid = $data['cid'];
-	}else{
-		return false;
-	}
-	
-	$q = "SELECT ARTICLES FROM courses WHERE id='$cid'";
-	$r = sql_execute($q);
-	$rd = sql_get($r);
-	
-	$res = new Resource_Handler();
-	$res->importXML($rd['ARTICLES']);
-	$finalxml = $res->updateResource($resdata);
-	
-	/*
-	$xmldata = $rd['ARTICLES'];
-	$xmldata = rmNodeX($xmldata, $nodeNum);
-	$newCXML = addNode($xmldata, 'resource', array('url'=>$resurl,'name'=>$resname));
-	$newNodeNum = xmlGetSpecifiedNode_Position($xmldata, array('url'=>$resurl,'name'=>$resname));
-	$finalxml = xmlMoveNodeTo($xmldata, $nodeNum, $newNodeNum);
-	*/
-	$q = "UPDATE courses SET articles='$finalxml' WHERE id='$cid'";
-	$d = sql_execute($q);
-	return true;
-}

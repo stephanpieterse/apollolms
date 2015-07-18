@@ -4,6 +4,7 @@ class ALMS_CourseItem{
 	private $courseID;
 	private $courseName;
 	private $coursePermissions;
+	private $courseTags;
 	
 	public function load($id){
 		$q = sql_execute("SELECT * FROM courses WHERE id='$id' LIMIT 1");
@@ -11,9 +12,22 @@ class ALMS_CourseItem{
 		if(sql_numrows($q) == 1){
 			$this->courseID = $id;
 			$this->courseName = $d['NAME'];
+			$this->courseTags = $d['TAGS'];
 		}else{
 			return false;
 		}
+	}
+	
+	public function hasTag($tag){
+	$ctags = explode(';',$this->courseTags);
+	
+	if(in_array($tag,$ctags)){
+		$stat = true;
+	}else{
+		$stat = false;
+	}
+	
+	return $stat;
 	}
 	
 	public function insertNew($data){

@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.17, created on 2015-03-21 13:24:52
+<?php /* Smarty version Smarty-3.1.17, created on 2015-07-18 15:30:35
          compiled from "./templates/users_form_viewHistory.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:472408036550d7124f12452-04768376%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'a7c90fd0f153b8fd670bb3cb45a672d13e62ef10' => 
     array (
       0 => './templates/users_form_viewHistory.tpl',
-      1 => 1426836583,
+      1 => 1432632493,
       2 => 'file',
     ),
   ),
@@ -15,6 +15,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'function' => 
   array (
   ),
+  'version' => 'Smarty-3.1.17',
+  'unifunc' => 'content_550d7125041c92_41954368',
   'variables' => 
   array (
     'itemdata' => 0,
@@ -22,8 +24,6 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'itVal' => 0,
   ),
   'has_nocache_code' => false,
-  'version' => 'Smarty-3.1.17',
-  'unifunc' => 'content_550d7125041c92_41954368',
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_550d7125041c92_41954368')) {function content_550d7125041c92_41954368($_smarty_tpl) {?><div name="custUserArea" id="custUserArea">
 <table class="admin_view_table">

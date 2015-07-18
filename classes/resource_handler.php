@@ -4,6 +4,10 @@
  * @package ApolloLMS
  * */
 
+/*
+ * THIS MAY BE SUPERCEDED BY THE XMLHANDLER EXCEPT FOR RESOURCE SPECIFIC FUNCS LIKE VIEW
+ * */
+
 class Resource_Handler{
 	
 	private $XMLstore = '<root></root>';

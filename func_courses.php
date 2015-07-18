@@ -4,42 +4,38 @@
  * 
  * @author Stephan Pieterse
  * @package ApolloLMS
- * @version 1.0.0
  */
-
 
 /**
  * Adds a resource to the specified course.
- * 
  * @param data - Contains _POST data
  */
 function courses_func_addResource($data){
-//	$resname = $data['resource_name'];
-//	$resurl = urlencode($data['resource_url']);
+	$resname = $data['resource_name'];
+	$resurl = urlencode($data['resource_url']);
 	$cid = makeSafe($data['cid']);
 
-	$q = "SELECT ARTICLES FROM courses WHERE id='$cid' LIMIT 1";
+	$q = "SELECT PACKAGECONTENTS FROM courses WHERE id='$cid' LIMIT 1";
 	$r = sql_execute($q);
 	$rd = sql_get($r);
-	
-//	$newCXML = addNode($rd['ARTICLES'], 'resource', array('url'=>$resurl,'name'=>$resname));
-	
-	if($rd['ARTICLES'] == ''){
-		$rd['ARTICLES'] = '<articles></articles>';
+
+	if($rd['PACKAGECONTENTS'] == ''){
+		$package = '<package></package>';
 	}
 	
-	$res = new Resource_Handler();
-	$res->importXML($rd['ARTICLES']);
-	$newCXML = $res->addResource($data);
+	$res = new ALMS_XMLHandler($package);
+	$nodeAttr = array('url'=>$resurl,'name'=>$resname);
+	$xpath = '/';
+	$res->insertNode('resource',$nodeAttr,$xpath);
+	$newCXML = $res->getXML();
 
-	$q = "UPDATE courses SET articles='" . $newCXML . "' WHERE id='$cid'";
+	$q = "UPDATE courses SET packagecontents='" . $newCXML . "' WHERE id='$cid'";
 	$r = sql_execute($q);
 	return 'success';
 }
 
 /**
  * Removes a specified resource from the course.
- * 
  */
 function courses_func_removeResource($data){
 	if(isset($data['id'])){
@@ -54,18 +50,16 @@ function courses_func_removeResource($data){
 		return false;
 	}
 	
-	$q = "SELECT ARTICLES FROM courses WHERE id='$cid'";
+	$q = "SELECT PACKAGECONTENTS FROM courses WHERE id='$cid'";
 	$r = sql_execute($q);
 	$rd = sql_get($r);
 	
-	$res = new Resource_Handler();
-	$res->importXML($rd['ARTICLES']);
-	$xmldata = $res->removeResource($nodeNum);
+	$res = new ALMS_XMLHandler($rd['PACKAGECONTENTS']);
+	$xpath = '//resource[@id = "$nodeNum"]';
+	$res->removeNode($xpath);
+	$xmldata = $res->getXML();
 	
-//	$xmldata = $rd['ARTICLES'];
-//	$xmldata = rmNodeX($xmldata, $nodeNum);
-	
-	$q = "UPDATE courses SET articles='$xmldata' WHERE id='$cid'";
+	$q = "UPDATE courses SET packagecontents='$xmldata' WHERE id='$cid'";
 	$d = sql_execute($q);
 	return 'success';
 }
@@ -102,15 +96,6 @@ function courses_func_updateResource($data){
 	$q = "UPDATE courses SET articles='$finalxml' WHERE id='$cid'";
 	$d = sql_execute($q);
 	return 'success';
-}
-
-/**
- * BETA
- * Returns the tags of a specified course.
- */
-function courses_func_check_tags(){
-	$tag = $_GET['tag'];
-	return $tag;
 }
 
 /**
@@ -441,19 +426,6 @@ function set_course_permissions($id, $access){
 if(!check_user_permission('content_modify')){
 	return false;
 	}
-	/**
-	$query = "SELECT * FROM courses WHERE id='$id' LIMIT 1";
-	$result = sql_execute($query);
-	$testRow = sql_get($result);
-	
-	$docXML = new DOMDocument;
-	
-	if($testRow['PERMISSIONS'] == ""){
-		$testRow['PERMISSIONS'] = "<access></access>";
-	}
-	
-	 * 
-	 */
 	
 	$newDoc = common_set_permissions($access);
 	
@@ -515,15 +487,6 @@ function userHasCoursePermissionXML($memberID,$xmldata){
 			break;
 		}
 		}
-		
-/*
-		if($name == "grouptype"){
-			if(isUserInGroup(($memberID),($option->getAttribute("id")))){
-			$hasAccess = true;
-			break;
-		}
-		}
-*/
 	}
 	return $hasAccess;
 }

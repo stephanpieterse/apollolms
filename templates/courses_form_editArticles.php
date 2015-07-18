@@ -41,42 +41,32 @@
 		}
 	}
 	
-	/*
-		if($child->tagName == 'resource'){
-			$sid = $child->getAttribute('id');
-			$resurl = $child->getAttribute('url');
-			$resname = $child->getAttribute('name');
-			$sqlquery = "SELECT * FROM articles WHERE id='$sid' LIMIT 1";
-			$sqlresult = sql_execute($sqlquery);
-			$data = sql_get($sqlresult);
-			$articleTableData[$xi]['ITEMNAME'] = $resname;
-			if(check_user_permission("content_view")){
-				$articleTableData[$xi]['LINKS'][] = '<a target="_blank" href="resource_view.php?f=' . $resurl .'"><img src="' . ICONS_PATH . 'magnifier.png" alt="View"/>' . $data['NAME'] . "</a>";
-			}
-			if(check_user_permission("content_modify")){
-				//edit
-				$articleTableData[$xi]['LINKS'][] = "<a href=\"courses.php?f=editResource&cid=".$cid."&resid=" . $sid ." \"><img src=\"" . ICONS_PATH . "pencil.png\" alt=\"Edit\"/>Edit</a>";
-				//moveup
-				$articleTableData[$xi]['LINKS'][] = "<a href=\"articles.php?q=mv_art&id=" . $cid ."&dir=up&aid=". $nodeID ." \"><img src=\"" . ICONS_PATH . "arrow_up.png\" alt=\"Move Up\"/></a>";
-				//movedown
-				$articleTableData[$xi]['LINKS'][] = "<a href=\"articles.php?q=mv_art&id=" . $cid ."&dir=down&aid=" . $nodeID ." \"><img src=\"" . ICONS_PATH . "arrow_down.png\" alt=\"Move Down\"/></a>";
-			
-			}
-			if(check_user_permission("content_remove")){
-				// functions previously used nodeid
-				$articleTableData[$xi]['LINKS'][] = '<a href="courses.php?q=removeResource&id=' . $sid . '&cid=' . $_GET['id'] .' "><img src="' . ICONS_PATH . 'cancel.png" alt="Delete"/></a><br/>';
-			}
-				
+	$xi = 0;
+	foreach($resourcelist as $item){
+		$sid = $item->getAttribute('id');
+		
+		$resourceTableData[$xi]['ITEMNAME'] = 'Resource';
+		$resourceTableData[$xi]['NAME'] = $item->getAttribute('name');
+		$resourceTableData[$xi]['ID'] = $item->getAttribute('url');
+		$resourceTableData[$xi]['URL'] = $sid;
+		if(check_user_permission("content_view")){
+			$resourceTableData[$xi]['VIEW'] = true;
 		}
-		$nodeID++;
-		$xi++;
+		if(check_user_permission("content_modify")){
+			$resourceTableData[$xi]['MODIFY'] = true;
+		}
+		if(check_user_permission("content_remove")){
+			$resourceTableData[$xi]['DELETE'] = true;
+		}
 	}
-	*/
 	
 	$smarty->assign('articleData',$articleData);
 	$smarty->assign('iconsPath',ICONS_PATH);
 	if(isset($articleTableData)){
 		$smarty->assign('tableData',$articleTableData);
+	}
+	if(isset($resourceTableData)){
+		$smarty->assign('resourceData',$resourceTableData);
 	}
 	$tplName = changeExtension(pathinfo(__FILE__,PATHINFO_BASENAME),'tpl');
 	$smarty->display($tplName);

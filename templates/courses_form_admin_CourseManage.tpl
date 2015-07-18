@@ -1,15 +1,14 @@
-	<script type="text/javascript" src="scripts/ajax_searches.js"></script>
-	<script type="text/javascript">
-		document.write('Search: <input class="searchBox" type="text" id="searchbox_course" value="" />');
-	</script>
-	<noscript>
-		<form method="GET" action="courses.php?">
-		<input name="sq" type="text" value="Search"/>
-		<input type="submit" />
-		</form>
-	</noscript>
+<script type="text/javascript" src="scripts/ajax_searches.js"></script>
+<script type="text/javascript">
+	document.write('Search: <input class="searchBox" type="text" id="searchbox_course" value="" />');
+</script>
+<noscript>
+	<form method="GET" action="courses.php?">
+	<input name="sq" type="text" value="Search"/>
+	<input type="submit" />
+	</form>
+</noscript>
 <table class="admin_view_table">
-
 {section name=sec1 loop=$courseData}
 	<tr>
 	<td>

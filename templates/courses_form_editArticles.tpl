@@ -26,7 +26,33 @@ Articles:
 <td></td>
 {/if}
 {if isset($tableData[s1].DELETE)}
-<td><a href="articles.php?confirm&q=removeArticle&aid={$tableData[s1].ID}&cid={$articleData.ID}"><img src="{$iconsPath}cancel.png" alt="Delete"/></a></td>
+<td><a href="articles.php?confirm&q=removeArticle&aid={$tableData[s1].ID}&cid={$articleData.COURSEID}"><img src="{$iconsPath}cancel.png" alt="Delete"/></a></td>
+{else}
+<td></td>
+{/if}
+</tr>
+{/section}
+</table>
+{/if}
+
+Resources:
+{if isset($resourceData)}
+<table class="admin_view_table">
+{section name=s1 loop=$resourceData}
+<tr>
+<td>{$resourceData[s1].ITEMNAME}</td>
+{if isset($resourceData[s1].VIEW)}
+<td><a target="_blank" href="resource_view.php?f={$resourceData[s1].URL}"><img src="{$iconsPath}magnifier.png" alt="View"/>{$resourceData[s1].NAME}</a><td>
+{else}
+<td></td>
+{/if}
+{if isset($resourceData[s1].MODIFY)}
+<td><a href="courses.php?f=editResource&cid={$articeData.COURSEID}&resid={$resourceTable[s1].ID}"><img src="{$iconsPath}pencil.png" alt="Edit"/>Edit</a></td>
+{else}
+<td></td>
+{/if}
+{if isset($tableData[s1].DELETE)}
+<td><a href="courses.php?q=removeResource&id={$resourceTable[s1].ID}&cid={$articleData.COURSEID}"><img src="{$iconsPath}cancel.png" alt="Delete"/></a></td>
 {else}
 <td></td>
 {/if}

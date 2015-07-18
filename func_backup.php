@@ -48,46 +48,6 @@ function killOrphanedPages(){
 }
 
 /**
- * Removes pages and articles that no longer have parents. (usually a course)
- * */
-function killOrphanedArticles(){
-	$qc = "SELECT * FROM courses";
-	$rc = sql_execute($qc);
-	
-	$qa = "SELECT * FROM articles";
-	$ra = sql_execute($qa);
-	
-	$x = 0;
-	while($coursedata = sql_get($rc)){
-		$courseIDs[$x] = $coursedata['ID'];
-		$x++;
-	}
-	
-	$x = 0;
-	while($articledata = sql_get($ra)){
-		$articleIDs[$x]['ID'] = $articledata['ID'];
-		$articleIDs[$x]['OWNER'] = $articledata['COURSE'];
-		$x++;
-	}
-	
-	if($x != 0){
-	foreach($articleIDs as $a){
-		if(!in_array($a['OWNER'], $courseIDs)){
-			removeItem('articles', $a['ID']); 
-		}
-	}
-	}
-}
-
-/**
- * Wrapper for the functions to delete any left over course parts
- * */
-function findOrphans(){
-	killOrphanedArticles();
-	killOrphanedPages();
-}
-
-/**
  * Restores a selected backup unit back into the system
  * @param int $backID id of the backup
  * */

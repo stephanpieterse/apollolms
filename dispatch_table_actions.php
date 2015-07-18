@@ -18,8 +18,6 @@ $dispatch_aq = array(
 );
 
 $dispatch_action = array(
-	'rem_course'=>function(){removeItem('courses', $_GET['course']); findOrphans();}, //removeCourse($_GET['course']);
-	'rem_group'=>function(){removeItem('groupslist', $_GET['group']);},//removeGroupData($_GET['group']);},
 	'setInitTest'=>function(){initTestData(); echo '<META HTTP-EQUIV="Refresh" Content="0; URL=tests.php?q=test&tid='. $_SESSION['currentTestName'] . ' ">';},
 	'addResult'=>function(){$_SESSION['currentQuestion'] = $_SESSION['currentQuestion'] + 1;addResultData($_GET['qid'],$_GET['tid'],$_POST);echo '<META HTTP-EQUIV="Refresh" Content="0; URL=tests.php?q=test&tid='. $_SESSION['currentTestName'] . ' ">';},
 	'insertTestQuestion'=>function(){loadInsertForm($_GET['questionType']);},		
