@@ -13,11 +13,11 @@ class ALMS_XMLHandler {
 	}
 	
 	private function getNextHighId(){
-	$availableID = 1;
 	$xpath = '//*[@id]';
 	$xdoc = new DOMXPath($this->xmlDoc);
 	$nodelist = $xdoc->query($xpath);
 	
+	$availableID = 1;
 	foreach($nodelist as $item){
 			$lastID = $item->getAttribute('id');
 			if($lastID > $availableID){
@@ -52,6 +52,9 @@ class ALMS_XMLHandler {
 	public function updateNode($tagname, $newNodeData, $whereTo){
 		$xpath = new DOMXPath($this->xmlDoc);
 		$nodeList = $xpath->query($whereTo);
+		
+		$prevID = $nodeList[0]->getAttribute('id');
+		
 		
 		return true;
 	}

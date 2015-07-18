@@ -298,3 +298,29 @@ function articles_func_removeArticle($data){
 	
 	return true;
 }
+
+/**
+ * Prints the footer for a page containing next/prev buttons.
+ * We should probably extend this code to work with articles as well or just remove it and replace it with something that makes more sense.
+ * */
+function print_article_footer(){
+	if(isset($_GET['aid'])){
+	$aid = $_GET['aid'];
+
+	$nextBtn = false;
+	$prevBtn = false;
+
+	//get prev article id
+	//get next article id
+	
+	if($nextBtn == true){
+		$nextlink = '<a class="fl_R buttony" href="pages.php?f=viewPage&aid=' . $aid . '&pnm=' . $pnmN . '"> -> Next Page </a>';
+		echo $nextlink;
+	}
+	if($prevBtn == true)){
+		$backlink = '<a class="fl_L buttony" href="pages.php?f=viewPage&aid=' . $aid . '&pnm=' . $pnmP . '">Previous Page <-  </a>';
+		echo $backlink;
+	}
+	}
+	br_clear();
+}
